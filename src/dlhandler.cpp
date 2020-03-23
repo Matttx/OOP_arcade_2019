@@ -26,8 +26,8 @@ dlHandler::~dlHandler() {
     }
 }
 
-std::unique_ptr<IDescription> dlHandler::create() const {
-    return std::unique_ptr<IDescription>(_creator());
+IDescription* dlHandler::create() const {
+    return _creator();
 }
 
 void dlHandler::resetDlerror() {

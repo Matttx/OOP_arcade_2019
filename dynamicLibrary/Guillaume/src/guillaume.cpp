@@ -19,11 +19,6 @@ extern "C" Guillaume* create_object()
     return new Guillaume();
 }
 
-extern "C" void destroy_object( Guillaume* object)
-{
-    delete object;
-}
-
 std::string Guillaume::getLastName() {
     return _lastName;
 }

@@ -30,7 +30,8 @@ LDFLAGS				+=		-L $(TOM_DIR) -ltom
 
 MAIN_SRC			=		main.cpp					\
 
-PROJ_SRC			=		IDescription.cpp			\
+PROJ_SRC			=		dlhandler.cpp				\
+							IDescription.cpp			\
 
 TEST_SRC			=
 
