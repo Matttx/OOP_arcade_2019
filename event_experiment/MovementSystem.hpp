@@ -13,19 +13,23 @@
 #include "CollisionEvent.hpp"
 #include "FunctionHandler.hpp"
 
-class MovementSystem {
-    public:
-        void init(EventBus& eventBus) {
-            //FunctionHandler(this, MovementSystem::onCollisionEvent)
-            eventBus.subscribe(this, this::&this.onCollisionEvent);
-            std::cout << "Init du système movement" << std::endl;
-        }
+class MovementSystem
+{
+public:
+    void init(EventBus &eventBus)
+    {
+        std::cout << "MOVEMENT :: Init du système movement" << std::endl;
+        eventBus.subscribe(this, &MovementSystem::onCollisionEvent);
+    }
 
-        void onCollisionEvent(CollisionEvent *collision) {
-            std::cout << "Eh y'a eu une collision" << std::endl;
-        }
-    protected:
-    private:
+    void onCollisionEvent(CollisionEvent *collision)
+    {
+        std::cout << "MOVEMENT :: Eh y'a eu une collision" << std::endl;
+        (void)collision;
+    }
+
+protected:
+private:
 };
 
 #endif /* !MOVEMENTSYSTEM_HPP_ */

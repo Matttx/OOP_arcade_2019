@@ -5,18 +5,17 @@
 ** CollisionEvent
 */
 
-#ifndef COLLISIONEVENT_HPP_
-#define COLLISIONEVENT_HPP_
+#ifndef COLLISIONEVENT1_HPP_
+#define COLLISIONEVENT1_HPP_
 
-#include <iostream>
 #include "Event.hpp"
 #include "Entity.hpp"
 
-class CollisionEvent : public Event {
+class CollisionEvent1 : public Event {
     public:
-        CollisionEvent(Entity a, Entity b): entityA(a), entityB(b) {};
-        void print() {
-            std::cout << "Print collision" << std::endl;
+        CollisionEvent1(Entity a, Entity b): entityA(a), entityB(b) {};
+        void print2() {
+            std::cout << "Print collision 2" << std::endl;
         };
         Entity entityA;
         Entity entityB;
