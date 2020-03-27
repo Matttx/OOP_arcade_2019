@@ -23,7 +23,9 @@ RM					=		rm -rf
 
 LDLIBS				+=		-lsfml-audio -lsfml-graphics -lsfml-system -lsfml-window
 
-PROJ_SRC			=		src.cpp			\
+PROJ_SRC			=		Graphical.cpp				\
+							component/Audio.cpp			\
+							component/Render.cpp		\
 
 TEST_SRC			=
 
