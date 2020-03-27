@@ -26,7 +26,7 @@ RM					=		rm -rf
 
 MAIN_SRC			=		main.cpp
 
-PROJ_SRC			=
+PROJ_SRC			=		graphical/AGraphical.cpp
 
 TEST_SRC			=
 
