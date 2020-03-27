@@ -26,7 +26,9 @@ RM					=		rm -rf
 
 MAIN_SRC			=		main.cpp
 
-PROJ_SRC			=
+PROJ_SRC			=		engine/eventbus/AEvent.cpp			\
+							engine/eventbus/EventBus.cpp		\
+							engine/eventbus/IEvent.cpp			\
 
 TEST_SRC			=
 
