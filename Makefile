@@ -26,7 +26,7 @@ RM					=		rm -rf
 
 MAIN_SRC			=		main.cpp
 
-PROJ_SRC			=
+PROJ_SRC			=		core/DLManager.cpp					\
 
 TEST_SRC			=
 
