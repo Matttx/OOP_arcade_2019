@@ -21,7 +21,7 @@ LIB_NCURSES_DIR		=		src/graphical/ncurses
 LIB_SDL_DIR			=		src/graphical/sdl
 LIB_SFML_DIR		=		src/graphical/sfml
 
-CC					=		gcc
+CC					=		g++
 RM					=		rm -rf
 
 MAIN_SRC			=		main.cpp
