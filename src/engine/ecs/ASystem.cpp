@@ -6,3 +6,14 @@
 */
 
 #include "ASystem.hpp"
+
+engine::ecs::ASystem::ASystem(World& world) : _world(world)
+{
+}
+
+engine::ecs::ASystem::~ASystem() = default;
+
+engine::ecs::World& engine::ecs::ASystem::getWorld() const
+{
+    return this->_world;
+}

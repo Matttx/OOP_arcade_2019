@@ -6,3 +6,14 @@
 */
 
 #include "AComponent.hpp"
+
+engine::ecs::AComponent::AComponent(Entity& entity) : _entity(entity)
+{
+}
+
+engine::ecs::AComponent::~AComponent() = default;
+
+engine::ecs::Entity& engine::ecs::AComponent::getEntity() const
+{
+    return this->_entity;
+}

@@ -21,7 +21,7 @@ LIB_NCURSES_DIR		=		src/graphical/ncurses
 LIB_SDL_DIR			=		src/graphical/sdl
 LIB_SFML_DIR		=		src/graphical/sfml
 
-CC					=		gcc
+CC					=		g++
 RM					=		rm -rf
 
 MAIN_SRC			=		main.cpp
@@ -38,6 +38,8 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/ecs/AComponent.cpp			\
 							engine/ecs/ASystem.cpp				\
 							engine/ecs/Entity.cpp				\
+							engine/ecs/IComponent.cpp			\
+							engine/ecs/ISystem.cpp				\
 							engine/ecs/Universe.cpp				\
 							engine/ecs/World.cpp				\
 							engine/event/Collision.cpp			\
