@@ -183,6 +183,15 @@ libs_fclean:		libs_game_fclean libs_graphical_fclean
 
 libs_re:			libs_fclean libs
 
+$(TEST_NAME):		CFLAGS += -fprofile-arcs -ftest-coverage
+$(TEST_NAME):		LDLIBS += -lgcov -lcriterion
+$(TEST_NAME):		$(PROJ_OBJ) $(TEST_OBJ)
+					if [ -d $(TEST_DIR) ]; then \
+						$(CC) $(PROJ_OBJ) $(TEST_OBJ) -o $(TEST_NAME) $(LDFLAGS) $(LDLIBS) \
+						&& echo "$(GREEN_B_COLOR)$(TEST_NAME) successfully created$(NO_COLOR)" \
+						|| { echo "$(RED_B_COLOR)$(TEST_NAME) couldn't be created$(NO_COLOR)"; exit 1; } \
+					fi
+
 tests_run:			$(TEST_NAME)
 					if [ ! -d $(TEST_DIR) ] || [ ! -f $(TEST_NAME) ]; then \
 						echo "$(YELLOW_B_COLOR)Unit tests not found$(NO_COLOR)"; \
