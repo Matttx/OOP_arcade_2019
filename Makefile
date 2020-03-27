@@ -26,11 +26,14 @@ RM					=		rm -rf
 
 MAIN_SRC			=		main.cpp
 
-PROJ_SRC			=
+PROJ_SRC			=		engine/component/AAudio.cpp				\
+							engine/component/ARender.cpp			\
+							engine/component/Size.cpp				\
+							engine/component/Transform.cpp			\
 
 TEST_SRC			=
 
-CFLAGS				+=		-I $(INCL_DIR)
+CFLAGS				+=		-I $(INCL_DIR) -I $(SRC_DIR)/engine/
 CFLAGS				+=		-W -Wall -Wextra -Werror
 
 MAIN_OBJ			=		$(MAIN_SRC:%.cpp=$(OBJ_DIR)/%.o)
