@@ -17,6 +17,7 @@ class World;
 #include <functional>
 #include <map>
 
+#include "../eventbus/EventBus.hpp"
 #include "World.hpp"
 
 namespace engine {
@@ -27,6 +28,9 @@ class Universe {
   public:
     Universe();
     ~Universe();
+
+  public:
+    eventbus::EventBus getEventBus() const;
 
   public:
     void init();
@@ -42,6 +46,7 @@ class Universe {
     void deleteWorld(const std::string& name);
 
   private:
+    eventbus::EventBus _eventBus;
     std::map<std::string, std::reference_wrapper<World>> _worlds;
     std::string _current;
 };
