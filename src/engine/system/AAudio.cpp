@@ -6,3 +6,9 @@
 */
 
 #include "AAudio.hpp"
+
+engine::system::AAudio::AAudio(engine::ecs::World& world) : ASystem(world)
+{
+}
+
+engine::system::AAudio::~AAudio() = default;

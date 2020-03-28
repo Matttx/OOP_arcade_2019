@@ -8,4 +8,21 @@
 #ifndef OOP_ARCADE_2019_SYSTEM_AANIMATIONS_HPP
 #define OOP_ARCADE_2019_SYSTEM_AANIMATIONS_HPP
 
+#include "../ecs/ASystem.hpp"
+#include "../ecs/World.hpp"
+
+namespace engine {
+
+namespace system {
+
+class AAnimations : public ecs::ASystem {
+  public:
+    explicit AAnimations(ecs::World& world);
+    ~AAnimations() override = 0;
+};
+
+} // namespace system
+
+} // namespace engine
+
 #endif // OOP_ARCADE_2019_SYSTEM_AANIMATIONS_HPP

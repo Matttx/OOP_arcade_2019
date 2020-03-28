@@ -6,3 +6,9 @@
 */
 
 #include "AAI.hpp"
+
+engine::system::AAI::AAI(engine::ecs::World& world) : ASystem(world)
+{
+}
+
+engine::system::AAI::~AAI() = default;
