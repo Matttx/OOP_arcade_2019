@@ -8,6 +8,7 @@
 #ifndef OOP_ARCADE_2019_EVENTBUS_EVENTBUS_HPP
 #define OOP_ARCADE_2019_EVENTBUS_EVENTBUS_HPP
 
+#include <functional>
 #include <map>
 #include <typeindex>
 #include <typeinfo>
@@ -57,8 +58,9 @@ class EventBus {
     void subscribe(T& subscriber, Callback<T, E> callback)
     {
         std::type_index id = typeid(E);
+        auto* cbHandler = new CallbackHandler<T, E>(subscriber, callback);
 
-        this->_cbHandlers[id].emplace_back(subscriber, callback);
+        this->_cbHandlers[id].emplace_back(*cbHandler);
     }
 
     void unsubscribe()
@@ -70,14 +72,16 @@ class EventBus {
     void publish(E& event)
     {
         std::type_index id = typeid(E);
-        std::vector<ICallbackHandler>& cbHandler = this->_cbHandlers.at(id);
+        auto& cbHandler = this->_cbHandlers.at(id);
 
         for (const auto& handler : cbHandler)
-            handler.call(event);
+            handler.get().call(event);
     }
 
   private:
-    std::map<std::type_index, std::vector<ICallbackHandler>> _cbHandlers;
+    std::map<std::type_index,
+        std::vector<std::reference_wrapper<ICallbackHandler>>>
+        _cbHandlers;
 };
 
 } // namespace eventbus
