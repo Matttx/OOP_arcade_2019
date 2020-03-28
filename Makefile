@@ -26,9 +26,32 @@ RM					=		rm -rf
 
 MAIN_SRC			=		main.cpp
 
-PROJ_SRC			=		engine/eventbus/AEvent.cpp			\
+PROJ_SRC			=		engine/component/AAI.cpp			\
+							engine/component/AAudio.cpp			\
+							engine/component/Animations.cpp		\
+							engine/component/ARender.cpp		\
+							engine/component/AUser.cpp			\
+							engine/component/Hitbox.cpp			\
+							engine/component/Size.cpp			\
+							engine/component/Transform.cpp		\
+							engine/core/Core.cpp				\
+							engine/ecs/AComponent.cpp			\
+							engine/ecs/ASystem.cpp				\
+							engine/ecs/Entity.cpp				\
+							engine/ecs/IComponent.cpp			\
+							engine/ecs/ISystem.cpp				\
+							engine/ecs/Universe.cpp				\
+							engine/ecs/World.cpp				\
+							engine/event/Collision.cpp			\
+							engine/event/Input.cpp				\
 							engine/eventbus/EventBus.cpp		\
-							engine/eventbus/IEvent.cpp			\
+							engine/system/AAI.cpp				\
+							engine/system/AAnimations.cpp		\
+							engine/system/AAudio.cpp			\
+							engine/system/ARender.cpp			\
+							engine/system/AUser.cpp				\
+							engine/system/Movement.cpp			\
+							engine/system/Physics.cpp			\
 
 TEST_SRC			=
 
