@@ -16,7 +16,7 @@ SRC_DIR				=		src
 TEST_DIR			=		tests
 OUT_DIR				=		../../../lib
 
-CC					=		gcc
+CC					=		g++
 MKDIR				=		mkdir -p
 MV					=		mv
 RM					=		rm -rf
