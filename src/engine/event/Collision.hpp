@@ -15,7 +15,7 @@ namespace engine {
 
 namespace event {
 
-class Collision : eventbus::AEvent {
+class Collision : public eventbus::AEvent {
   public:
     ecs::Entity &entity1;
     ecs::Entity &entity2;
