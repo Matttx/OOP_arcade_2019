@@ -6,3 +6,9 @@
 */
 
 #include "Input.hpp"
+
+engine::event::Input::Input(engine::event::Input::KEYCODE code) : code(code)
+{
+}
+
+engine::event::Input::~Input() = default;
