@@ -5,17 +5,28 @@
 ** Size.hpp
 */
 
-#ifndef OOP_ARCADE_2019_SIZE_HPP
-#define OOP_ARCADE_2019_SIZE_HPP
+#ifndef OOP_ARCADE_2019_COMPONENT_SIZE_HPP
+#define OOP_ARCADE_2019_COMPONENT_SIZE_HPP
 
-namespace engine { namespace component {
-class Size : public engine::ecs::AComponent {
-public:
-    Size(engine::ecs::Entity& entity, int width, int height);
-    ~Size();
+#include "../ecs/AComponent.hpp"
+#include "../ecs/Entity.hpp"
+
+namespace engine {
+
+namespace component {
+
+class Size : public ecs::AComponent {
+  public:
     int width;
     int height;
-};
-} }
 
-#endif // OOP_ARCADE_2019_SIZE_HPP
+  public:
+    Size(ecs::Entity& entity, int width, int height);
+    ~Size() override = 0;
+};
+
+} // namespace component
+
+} // namespace engine
+
+#endif // OOP_ARCADE_2019_COMPONENT_SIZE_HPP

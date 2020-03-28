@@ -5,18 +5,30 @@
 ** Motion.hpp
 */
 
-#ifndef OOP_ARCADE_2019_MOTION_HPP
-#define OOP_ARCADE_2019_MOTION_HPP
+#ifndef OOP_ARCADE_2019_COMPONENT_MOTION_HPP
+#define OOP_ARCADE_2019_COMPONENT_MOTION_HPP
 
-#include "engine/type/Vector2D.hpp"
+#include "../ecs/AComponent.hpp"
+#include "../ecs/Entity.hpp"
+#include "../type/Vector2D.hpp"
 
-namespace engine { namespace component {
-class Motion : public engine::ecs::AComponent {
-public:
-    Motion(engine::ecs::Entity& entity, engine::type::Vector2D velocity, engine::type::Vector2D acceleration)
+namespace engine {
+
+namespace component {
+
+class Motion : public ecs::AComponent {
+  public:
     engine::type::Vector2D velocity;
     engine::type::Vector2D acceleration;
-};
-}}
 
-#endif // OOP_ARCADE_2019_MOTION_HPP
+  public:
+    Motion(ecs::Entity& entity, type::Vector2D velocity,
+        type::Vector2D acceleration);
+    ~Motion() override = 0;
+};
+
+} // namespace component
+
+} // namespace engine
+
+#endif // OOP_ARCADE_2019_COMPONENT_MOTION_HPP

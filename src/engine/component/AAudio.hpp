@@ -5,20 +5,30 @@
 ** AAudio.hpp
 */
 
-#ifndef OOP_ARCADE_2019_AAUDIO_HPP
-#define OOP_ARCADE_2019_AAUDIO_HPP
+#ifndef OOP_ARCADE_2019_COMPONENT_AAUDIO_HPP
+#define OOP_ARCADE_2019_COMPONENT_AAUDIO_HPP
 
-#include <vector>
 #include <string>
+#include <vector>
 
-namespace engine { namespace component {
-class AAudio : public engine::ecs::AComponent {
-public:
-    AAudio(engine::ecs::Entity& entity, const std::vector<std::string>& paths);
-    virtual ~AAudio() = 0;
-private:
-    std::vector<std::string> _paths;
+#include "../ecs/AComponent.hpp"
+#include "../ecs/Entity.hpp"
+
+namespace engine {
+
+namespace component {
+
+class AAudio : public ecs::AComponent {
+  public:
+    const std::vector<std::string> paths;
+
+  public:
+    AAudio(ecs::Entity& entity, const std::vector<std::string>& paths);
+    ~AAudio() override = 0;
 };
-} }
 
-#endif // OOP_ARCADE_2019_AAUDIO_HPP
+} // namespace component
+
+} // namespace engine
+
+#endif // OOP_ARCADE_2019_COMPONENT_AAUDIO_HPP
