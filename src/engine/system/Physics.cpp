@@ -11,6 +11,7 @@
 
 #include "../component/Hitbox.hpp"
 #include "../component/Transform.hpp"
+#include "../event/Collision.hpp"
 
 static bool isCollide(engine::component::Hitbox& hitbox1,
     engine::component::Transform& transform1,
@@ -58,7 +59,11 @@ void engine::system::Physics::update()
                 entities[j].get().getComponent<component::Transform>();
 
             if (isCollide(hitbox1, transform1, hitbox2, transform2)) {
-            } // TODO: Publish Collide event
+                auto* event =
+                    new event::Collision(entities[i].get(), entities[j].get());
+
+                this->getWorld().getUniverse().getEventBus().publish(*event);
+            }
         }
     }
 }
