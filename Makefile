@@ -44,7 +44,9 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/ecs/World.cpp				\
 							engine/event/Collision.cpp			\
 							engine/event/Input.cpp				\
+							engine/eventbus/AEvent.cpp			\
 							engine/eventbus/EventBus.cpp		\
+							engine/eventbus/IEvent.cpp			\
 							engine/system/AAI.cpp				\
 							engine/system/AAnimations.cpp		\
 							engine/system/AAudio.cpp			\
