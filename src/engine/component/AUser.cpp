@@ -6,3 +6,10 @@
 */
 
 #include "AUser.hpp"
+
+engine::component::AUser::AUser(engine::ecs::Entity& entity)
+    : AComponent(entity)
+{
+}
+
+engine::component::AUser::~AUser() = default;

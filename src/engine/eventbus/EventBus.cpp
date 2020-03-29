@@ -6,3 +6,7 @@
 */
 
 #include "EventBus.hpp"
+
+engine::eventbus::EventBus::EventBus() = default;
+
+engine::eventbus::EventBus::~EventBus() = default;
