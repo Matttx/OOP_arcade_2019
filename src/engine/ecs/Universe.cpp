@@ -15,6 +15,11 @@ engine::ecs::Universe::~Universe()
         delete &_world.second.get();
 }
 
+engine::eventbus::EventBus engine::ecs::Universe::getEventBus() const
+{
+    return this->_eventBus;
+}
+
 void engine::ecs::Universe::init()
 {
     if (this->_worlds.count(this->_current) == 0)
