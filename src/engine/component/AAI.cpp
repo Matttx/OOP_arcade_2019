@@ -6,3 +6,9 @@
 */
 
 #include "AAI.hpp"
+
+engine::component::AAI::AAI(engine::ecs::Entity& entity) : AComponent(entity)
+{
+}
+
+engine::component::AAI::~AAI() = default;
