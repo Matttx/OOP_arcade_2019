@@ -26,7 +26,6 @@ RM					=		rm -rf
 
 MAIN_SRC			=		main.cpp
 
-PROJ_SRC			=		core/DLManager.cpp					\
 PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/component/AAudio.cpp			\
 							engine/component/Animations.cpp		\
@@ -37,6 +36,7 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/component/Size.cpp			\
 							engine/component/Transform.cpp		\
 							engine/core/Core.cpp				\
+							engine/core/DLManager.cpp			\
 							engine/ecs/AComponent.cpp			\
 							engine/ecs/ASystem.cpp				\
 							engine/ecs/Entity.cpp				\
