@@ -32,6 +32,7 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/component/ARender.cpp		\
 							engine/component/AUser.cpp			\
 							engine/component/Hitbox.cpp			\
+							engine/component/Motion.cpp			\
 							engine/component/Size.cpp			\
 							engine/component/Transform.cpp		\
 							engine/core/Core.cpp				\
@@ -44,7 +45,9 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/ecs/World.cpp				\
 							engine/event/Collision.cpp			\
 							engine/event/Input.cpp				\
+							engine/eventbus/AEvent.cpp			\
 							engine/eventbus/EventBus.cpp		\
+							engine/eventbus/IEvent.cpp			\
 							engine/system/AAI.cpp				\
 							engine/system/AAnimations.cpp		\
 							engine/system/AAudio.cpp			\

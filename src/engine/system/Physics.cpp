@@ -6,3 +6,68 @@
 */
 
 #include "Physics.hpp"
+
+#include <tuple>
+
+#include "../component/Hitbox.hpp"
+#include "../component/Transform.hpp"
+#include "../event/Collision.hpp"
+
+static bool isCollide(engine::component::Hitbox& hitbox1,
+    engine::component::Transform& transform1,
+    engine::component::Hitbox& hitbox2,
+    engine::component::Transform& transform2)
+{
+    if ((transform1.position.x >= transform2.position.x) &&
+        (transform1.position.x <= transform2.position.x + hitbox2.width) &&
+        (transform1.position.y >= transform2.position.y) &&
+        (transform1.position.y <= transform2.position.y + hitbox2.height))
+        return true;
+
+    if ((transform2.position.x >= transform1.position.x) &&
+        (transform2.position.x <= transform1.position.x + hitbox1.width) &&
+        (transform2.position.y >= transform1.position.y) &&
+        (transform2.position.y <= transform1.position.y + hitbox1.height))
+        return true;
+
+    return false;
+}
+
+engine::system::Physics::Physics(engine::ecs::World& world) : ASystem(world)
+{
+}
+
+engine::system::Physics::~Physics() = default;
+
+void engine::system::Physics::init()
+{
+}
+
+void engine::system::Physics::update()
+{
+    auto entities =
+        this->getWorld().getEntities<component::Hitbox, component::Transform>();
+
+    for (std::size_t i = 0; i < entities.size(); ++i) {
+        auto& hitbox1 = entities[i].get().getComponent<component::Hitbox>();
+        auto& transform1 =
+            entities[i].get().getComponent<component::Transform>();
+
+        for (std::size_t j = i + 1; j < entities.size(); ++j) {
+            auto& hitbox2 = entities[j].get().getComponent<component::Hitbox>();
+            auto& transform2 =
+                entities[j].get().getComponent<component::Transform>();
+
+            if (isCollide(hitbox1, transform1, hitbox2, transform2)) {
+                auto* event =
+                    new event::Collision(entities[i].get(), entities[j].get());
+
+                this->getWorld().getUniverse().getEventBus().publish(*event);
+            }
+        }
+    }
+}
+
+void engine::system::Physics::render()
+{
+}

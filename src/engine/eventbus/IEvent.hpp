@@ -8,4 +8,17 @@
 #ifndef OOP_ARCADE_2019_EVENTBUS_IEVENT_HPP
 #define OOP_ARCADE_2019_EVENTBUS_IEVENT_HPP
 
+namespace engine {
+
+namespace eventbus {
+
+class IEvent {
+  public:
+    virtual ~IEvent() = 0;
+};
+
+} // namespace eventbus
+
+} // namespace engine
+
 #endif // OOP_ARCADE_2019_EVENTBUS_IEVENT_HPP
