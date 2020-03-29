@@ -17,16 +17,16 @@ namespace event {
 
 class Collision : public eventbus::AEvent {
   public:
-    ecs::Entity &entity1;
-    ecs::Entity &entity2;
+    ecs::Entity& entity1;
+    ecs::Entity& entity2;
 
   public:
     Collision(ecs::Entity& entity1, ecs::Entity& entity2);
     ~Collision() override;
 };
 
-}
+} // namespace event
 
-}
+} // namespace engine
 
 #endif // OOP_ARCADE_2019_EVENT_COLLISION_HPP
