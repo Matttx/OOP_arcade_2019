@@ -18,8 +18,8 @@ class AEvent {
     virtual ~AEvent() = 0;
 };
 
-}
+} // namespace eventbus
 
-}
+} // namespace engine
 
 #endif // OOP_ARCADE_2019_AEVENT_HPP
