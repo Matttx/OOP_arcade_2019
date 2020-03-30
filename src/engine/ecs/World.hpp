@@ -61,7 +61,7 @@ class World {
   public:
     void addToGroup(Entity& entity, const std::string& name);
     bool hasGroup(Entity& entity, const std::string& name) const;
-    const std::vector<std::reference_wrapper<Entity>>& getGroup(
+    std::vector<std::reference_wrapper<Entity>>& getGroup(
         const std::string& name) const;
     void removeFromGroup(Entity& entity, const std::string& name);
 
