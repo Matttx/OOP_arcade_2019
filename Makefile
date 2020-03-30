@@ -24,6 +24,8 @@ LIB_SFML_DIR		=		src/graphical/sfml
 CC					=		g++
 RM					=		rm -rf
 
+LDLIBS				=		-ldl
+
 MAIN_SRC			=		main.cpp
 
 PROJ_SRC			=		engine/component/AAI.cpp			\
