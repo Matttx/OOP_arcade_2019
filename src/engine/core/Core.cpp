@@ -29,10 +29,8 @@ void engine::core::Core::loadGames()
 
     for (; ent != nullptr; ent = readdir(directory)) {
         const std::string path = "./games/" + std::string(ent->d_name);
-        DynamicLibrary<game::IGame> dynamicLibrary(path);
 
-        this->_graphicals.emplace(
-            dynamicLibrary.get().getName(), dynamicLibrary);
+        this->_games.emplace(ent->d_name, path);
     }
 
     closedir(directory);
@@ -49,10 +47,8 @@ void engine::core::Core::loadGraphics()
 
     for (; ent != nullptr; ent = readdir(directory)) {
         const std::string path = "./lib/" + std::string(ent->d_name);
-        DynamicLibrary<graphical::IGraphical> dynamicLibrary(path);
 
-        this->_graphicals.emplace(
-            dynamicLibrary.get().getName(), dynamicLibrary);
+        this->_graphicals.emplace(ent->d_name, path);
     }
 
     closedir(directory);

@@ -8,14 +8,8 @@
 #ifndef OOP_ARCADE_2019_CORE_HPP
 #define OOP_ARCADE_2019_CORE_HPP
 
-namespace game {
-class IGame;
-}
-
-namespace graphical {
-class IGraphical;
-}
-
+#include "../../game/IGame.hpp"
+#include "../../graphical/IGraphical.hpp"
 #include "../ecs/Universe.hpp"
 #include "DynamicLibrary.hpp"
 
