@@ -9,6 +9,11 @@
 #define OOP_ARCADE_2019_IGRAPHICAL_HPP
 
 #include <string>
+#include "../engine/eventbus/EventBus.hpp"
+#include "../engine/component/AAudio.hpp"
+#include "../engine/component/ARender.hpp"
+#include "../engine/system/AAudio.hpp"
+#include "../engine/system/ARender.hpp"
 
 enum LIBTYPE {
     TEXT,
