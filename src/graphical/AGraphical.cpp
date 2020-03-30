@@ -9,18 +9,18 @@
 
 #include <utility>
 
-AGraphical::AGraphical(
+graphical::AGraphical::AGraphical(
     const std::string& name, LIBTYPE type, engine::eventbus::EventBus& eventBus)
     : _name(name), _type(type), _eventBus(eventBus)
 {
 }
 
-std::string AGraphical::getName() const
+std::string graphical::AGraphical::getName() const
 {
     return this->_name;
 }
 
-LIBTYPE AGraphical::getType() const
+LIBTYPE graphical::AGraphical::getType() const
 {
     return this->_type;
 }

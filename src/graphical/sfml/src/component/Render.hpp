@@ -18,8 +18,8 @@ namespace sfml {
 namespace component {
 class Render : public engine::component::ARender {
   public:
-    Render(engine::ecs::Entity &entity, std::vector<std::string> &paths);
-    virtual ~Render() = 0;
+    Render(engine::ecs::Entity &entity, const std::vector<std::string> &paths);
+    ~Render() override = default;
     sf::Texture texture;
     sf::Sprite sprite;
     sf::RenderTexture renderTexture;

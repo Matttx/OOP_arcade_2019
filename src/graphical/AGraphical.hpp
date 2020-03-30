@@ -12,6 +12,7 @@
 
 #include "IGraphical.hpp"
 
+namespace graphical {
 class AGraphical : public IGraphical {
   public:
     AGraphical(const std::string& name, LIBTYPE type,
@@ -25,14 +26,14 @@ class AGraphical : public IGraphical {
     std::string getName() const override;
     LIBTYPE getType() const override;
 
-    engine::component::AAudio createAudio(
+    engine::component::AAudio& createAudio(engine::ecs::Entity& entity,
         const std::vector<std::string>& paths) override = 0;
-    engine::component::ARender createRender(
+    engine::component::ARender& createRender(engine::ecs::Entity& entity,
         const std::vector<std::string>& paths) override = 0;
 
-    engine::system::AAudio createAudioSystem(
+    engine::system::AAudio& createAudioSystem(
         engine::ecs::World& world) override = 0;
-    engine::system::ARender createRenderSystem(
+    engine::system::ARender& createRenderSystem(
         engine::ecs::World& world) override = 0;
 
   private:
@@ -40,5 +41,6 @@ class AGraphical : public IGraphical {
     LIBTYPE _type;
     engine::eventbus::EventBus _eventBus;
 };
+} // namespace graphical
 
 #endif // OOP_ARCADE_2019_AGRAPHICAL_HPP

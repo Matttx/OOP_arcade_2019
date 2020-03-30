@@ -8,10 +8,15 @@
 #include "Graphical.hpp"
 
 #include "../../AGraphical.hpp"
+#include "component/Audio.hpp"
+#include "component/Render.hpp"
+#include "system/Audio.hpp"
+#include "system/Render.hpp"
 
 sfml::Graphical::Graphical(engine::eventbus::EventBus& eventBus)
-    : _eventBus(eventBus)
+    : graphical::AGraphical("sfml", graphical::LIBTYPE::GRAPHIC, eventBus)
 {
+    _window = nullptr;
 }
 
 sfml::Graphical::~Graphical()
@@ -26,6 +31,7 @@ extern "C" sfml::Graphical* createObject(engine::eventbus::EventBus& eventBus)
 
 void sfml::Graphical::init()
 {
+    _window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Arcade");
 }
 
 void sfml::Graphical::dispatchEvent()
@@ -34,32 +40,29 @@ void sfml::Graphical::dispatchEvent()
 
 void sfml::Graphical::destroy()
 {
+    delete _window;
 }
 
-engine::component::AAudio sfml::Graphical::createAudio(
-    ecs::Entity& entity, const std::vector<std::string>& paths)
+engine::component::AAudio& sfml::Graphical::createAudio(
+    engine::ecs::Entity& entity, const std::vector<std::string>& paths)
 {
-    _audios.emplace_back(entity, paths);
-    return _audios.back();
+    return *(new sfml::component::Audio(entity, paths));
 }
 
-engine::component::ARender sfml::Graphical::createRender(
-    ecs::Entity& entity, const std::vector<std::string>& paths)
+engine::component::ARender& sfml::Graphical::createRender(
+    engine::ecs::Entity& entity, const std::vector<std::string>& paths)
 {
-    _renders.emplace_back(entity, paths);
-    return _renders.back();
+    return *(new sfml::component::Render(entity, paths));
 }
 
-engine::system::AAudio sfml::Graphical::createAudioSystem(
+engine::system::AAudio& sfml::Graphical::createAudioSystem(
     engine::ecs::World& world)
 {
-    _sysAudios.emplace_back(world);
-    return _sysAudios.back();
+    return *(new sfml::system::Audio(world));
 }
 
-engine::system::ARender sfml::Graphical::createRenderSystem(
+engine::system::ARender& sfml::Graphical::createRenderSystem(
     engine::ecs::World& world)
 {
-    _sysRenders.emplace_back(world);
-    return _sysRenders.back();
+    return *(new sfml::system::Render(world, *_window));
 }

@@ -8,7 +8,7 @@
 #include "Render.hpp"
 
 sfml::component::Render::Render(
-    engine::ecs::Entity &entity, std::vector<std::string> &paths)
+    engine::ecs::Entity &entity, const std::vector<std::string> &paths)
     : engine::component::ARender(entity, paths)
 {
     texture.loadFromFile(paths[1]);

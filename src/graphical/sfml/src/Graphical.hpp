@@ -11,18 +11,19 @@
 #include <string>
 #include <vector>
 
-#include "../../AGraphical.hpp"
 #include "../../../engine/eventbus/EventBus.hpp"
-#include "component/Render.hpp"
+#include "../../../engine/system/AAudio.hpp"
+#include "../../AGraphical.hpp"
 #include "component/Audio.hpp"
+#include "component/Render.hpp"
 #include "system/Render.hpp"
 
 namespace sfml {
-class Graphical : public AGraphical {
+class Graphical : public graphical::AGraphical {
   public:
     explicit Graphical(engine::eventbus::EventBus &eventBus);
 
-    ~Graphical();
+    ~Graphical() override;
 
     void init() override;
 
@@ -30,23 +31,20 @@ class Graphical : public AGraphical {
 
     void destroy() override;
 
-    engine::component::AAudio createAudio(engine::ecs::Entity &entity,
+    engine::component::AAudio &createAudio(engine::ecs::Entity &entity,
         const std::vector<std::string> &paths) override;
 
-    engine::component::ARender createRender(engine::ecs::Entity &entity,
+    engine::component::ARender &createRender(engine::ecs::Entity &entity,
         const std::vector<std::string> &paths) override;
 
-    engine::system::AAudio createAudioSystem(
+    engine::system::AAudio &createAudioSystem(
         engine::ecs::World &world) override;
 
-    engine::system::ARender createRenderSystem(
+    engine::system::ARender &createRenderSystem(
         engine::ecs::World &world) override;
 
   private:
-    std::vector<sfml::component::Audio> _audios;
-    std::vector<sfml::component::Render> _renders;
-    sfml::system::Audio _sysAudios;
-    sfml::system::Render _sysRenders;
+    sf::RenderWindow *_window;
 };
 } // namespace sfml
 

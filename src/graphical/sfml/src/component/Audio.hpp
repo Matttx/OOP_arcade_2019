@@ -10,18 +10,19 @@
 
 #include <string>
 #include <vector>
+#include <SFML/Audio.hpp>
 
-#include "AAudio.hpp"
-#include "../../../../engine/ecs/Entity.hpp"
 #include "../../../../engine/component/AAudio.hpp"
+#include "../../../../engine/ecs/Entity.hpp"
 
 namespace sfml {
 namespace component {
 class Audio : public engine::component::AAudio {
   public:
-    Audio(engine::ecs::Entity &entity, std::vector<std::string> &paths);
+    Audio(engine::ecs::Entity &entity, const std::vector<std::string> &paths);
+    sf::Music music;
 };
-} // namespace system
+} // namespace component
 } // namespace sfml
 
 #endif // OOP_ARCADE_2019_AUDIO_HPP
