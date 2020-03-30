@@ -12,14 +12,17 @@
 #include <vector>
 
 #include "../../AGraphical.hpp"
+#include "../../../engine/eventbus/EventBus.hpp"
+#include "component/Render.hpp"
+#include "component/Audio.hpp"
+#include "system/Render.hpp"
 
 namespace sfml {
-
 class Graphical : public AGraphical {
   public:
     explicit Graphical(engine::eventbus::EventBus &eventBus);
 
-    ~Graphical() override;
+    ~Graphical();
 
     void init() override;
 
@@ -42,10 +45,9 @@ class Graphical : public AGraphical {
   private:
     std::vector<sfml::component::Audio> _audios;
     std::vector<sfml::component::Render> _renders;
-    std::vector<sfml::system::Audio> _sysAudios;
-    std::vector<sfml::system::Render> _sysRenders;
+    sfml::system::Audio _sysAudios;
+    sfml::system::Render _sysRenders;
 };
-
 } // namespace sfml
 
 #endif // OOP_ARCADE_2019_GRAPHICAL_HPP

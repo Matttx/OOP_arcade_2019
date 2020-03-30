@@ -12,7 +12,3 @@ sfml::component::Audio::Audio(
     : engine::component::AAudio(entity, paths)
 {
 }
-
-sfml::component::Audio::~Audio()
-{
-}

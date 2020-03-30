@@ -10,11 +10,8 @@
 
 #include <string>
 
-enum LIBTYPE {
-    TEXT,
-    GRAPHIC,
-    DEBUG
-};
+
+enum LIBTYPE { TEXT, GRAPHIC, DEBUG };
 
 class IGraphical {
     virtual ~IGraphical() = 0;

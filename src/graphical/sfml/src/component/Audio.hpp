@@ -12,19 +12,16 @@
 #include <vector>
 
 #include "AAudio.hpp"
+#include "../../../../engine/ecs/Entity.hpp"
+#include "../../../../engine/component/AAudio.hpp"
 
 namespace sfml {
-
 namespace component {
-
 class Audio : public engine::component::AAudio {
   public:
     Audio(engine::ecs::Entity &entity, std::vector<std::string> &paths);
-    ~Audio() override;
 };
-
 } // namespace system
-
 } // namespace sfml
 
 #endif // OOP_ARCADE_2019_AUDIO_HPP

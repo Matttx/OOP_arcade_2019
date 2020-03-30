@@ -5,8 +5,8 @@
 ** Render.hpp
 */
 
-#ifndef OOP_ARCADE_2019_RENDER_HPP
-#define OOP_ARCADE_2019_RENDER_HPP
+#ifndef OOP_ARCADE_2019_COMPONENT_RENDER_HPP
+#define OOP_ARCADE_2019_COMPONENT_RENDER_HPP
 
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -15,23 +15,16 @@
 #include "ARender.hpp"
 
 namespace sfml {
-
 namespace component {
-
 class Render : public engine::component::ARender {
   public:
     Render(engine::ecs::Entity &entity, std::vector<std::string> &paths);
-    ~Render() override = 0;
-
-  private:
-    sf::Texture _texture;
-    sf::Sprite _sprite;
-    sf::Text _text;
-    sf::Font _font;
+    virtual ~Render() = 0;
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::RenderTexture renderTexture;
 };
-
 } // namespace component
-
 } // namespace sfml
 
 #endif // OOP_ARCADE_2019_RENDER_HPP

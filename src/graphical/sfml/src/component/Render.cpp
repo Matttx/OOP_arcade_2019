@@ -11,10 +11,6 @@ sfml::component::Render::Render(
     engine::ecs::Entity &entity, std::vector<std::string> &paths)
     : engine::component::ARender(entity, paths)
 {
-    _texture.loadFromFile(paths[1]);
-    _sprite.setTexture(_texture);
-}
-
-sfml::component::Render::~Render()
-{
+    texture.loadFromFile(paths[1]);
+    sprite.setTexture(texture);
 }
