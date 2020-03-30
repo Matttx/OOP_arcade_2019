@@ -38,6 +38,7 @@ void sfml::system::Animations::update()
             sfmlRender.srcRect.left = 0;
         } else {
             sfmlRender.srcRect.left += sfmlRender.srcRect.width;
+            compAnimation.currentFrame += 1;
         }
     }
 }
