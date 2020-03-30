@@ -8,9 +8,9 @@
 #ifndef OOP_ARCADE_2019_AUDIO_HPP
 #define OOP_ARCADE_2019_AUDIO_HPP
 
+#include <SFML/Audio.hpp>
 #include <string>
 #include <vector>
-#include <SFML/Audio.hpp>
 
 #include "../../../../engine/component/AAudio.hpp"
 #include "../../../../engine/ecs/Entity.hpp"

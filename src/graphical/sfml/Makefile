@@ -28,6 +28,7 @@ PROJ_SRC			=		Graphical.cpp				\
 							component/Render.cpp		\
 							system/Render.cpp			\
 							system/Audio.cpp			\
+							system/Animations.cpp		\
 
 TEST_SRC			=
 

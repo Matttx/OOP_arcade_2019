@@ -23,6 +23,8 @@ class Render : public engine::component::ARender {
     sf::Texture texture;
     sf::Sprite sprite;
     sf::RenderTexture renderTexture;
+    sf::IntRect srcRect;
+    sf::IntRect destRect;
 };
 } // namespace component
 } // namespace sfml
