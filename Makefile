@@ -36,7 +36,7 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/component/Size.cpp			\
 							engine/component/Transform.cpp		\
 							engine/core/Core.cpp				\
-							engine/core/DLManager.cpp			\
+							engine/core/DynamicLibrary.cpp		\
 							engine/ecs/AComponent.cpp			\
 							engine/ecs/ASystem.cpp				\
 							engine/ecs/Entity.cpp				\
