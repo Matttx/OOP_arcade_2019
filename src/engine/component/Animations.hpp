@@ -22,6 +22,8 @@ namespace component {
 class Animations : public ecs::AComponent {
   public:
     const std::map<std::string, type::Animation> list;
+    std::string currentAnimation;
+    int currentFrame;
 
   public:
     Animations(ecs::Entity& entity,
