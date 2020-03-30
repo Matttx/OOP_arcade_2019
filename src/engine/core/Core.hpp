@@ -29,7 +29,7 @@ class Core {
     ~Core();
 
   public:
-    const ecs::Universe& getUniverse() const;
+    ecs::Universe& getUniverse() const;
 
   public:
     void loadGames();

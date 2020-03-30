@@ -13,9 +13,9 @@ engine::core::Core::Core() = default;
 
 engine::core::Core::~Core() = default;
 
-const engine::ecs::Universe& engine::core::Core::getUniverse() const
+engine::ecs::Universe& engine::core::Core::getUniverse() const
 {
-    return this->_universe;
+    return const_cast<ecs::Universe&>(this->_universe);
 }
 
 void engine::core::Core::loadGames()
