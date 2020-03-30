@@ -22,9 +22,10 @@ void sfml::system::Animations::init()
 
 void sfml::system::Animations::update()
 {
-    auto entities = getWorld()
-                        .getEntities<engine::component::ARender,
-                            engine::component::Animations>();
+    auto entities =
+        getWorld()
+            .getEntities<engine::component::ARender,
+                engine::component::Animations>();
     for (auto& entity : entities) {
         auto& compAnimation =
             entity.get().getComponent<engine::component::Animations>();
@@ -32,7 +33,8 @@ void sfml::system::Animations::update()
             entity.get().getComponent<engine::component::ARender>();
         auto& sfmlRender = dynamic_cast<sfml::component::Render&>(compSprite);
         auto& currentAnimation =
-            compAnimation.list.find[compAnimation.currentAnimation];
+            compAnimation.list.at(compAnimation.currentAnimation);
+        sfmlRender.srcRect.top = currentAnimation.row * (sfmlRender.texture.getSize().y / compAnimation.list.size());
         if (compAnimation.currentFrame == currentAnimation.frames) {
             compAnimation.currentFrame = 0;
             sfmlRender.srcRect.left = 0;
