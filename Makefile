@@ -56,6 +56,7 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/system/Movement.cpp			\
 							engine/system/Physics.cpp			\
 							graphical/AGraphical.cpp			\
+							graphical/IGraphical.cpp			\
 
 TEST_SRC			=
 

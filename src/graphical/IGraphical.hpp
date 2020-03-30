@@ -9,37 +9,43 @@
 #define OOP_ARCADE_2019_IGRAPHICAL_HPP
 
 #include <string>
-#include "../engine/eventbus/EventBus.hpp"
+
 #include "../engine/component/AAudio.hpp"
 #include "../engine/component/ARender.hpp"
+#include "../engine/eventbus/EventBus.hpp"
 #include "../engine/system/AAudio.hpp"
 #include "../engine/system/ARender.hpp"
 
-enum LIBTYPE {
-    TEXT,
-    GRAPHIC,
-    DEBUG
-};
+enum LIBTYPE { TEXT, GRAPHIC, DEBUG };
+
+namespace graphical {
 
 class IGraphical {
+  public:
     virtual ~IGraphical() = 0;
 
+  public:
     virtual void init() = 0;
     virtual void dispatchEvent() = 0;
     virtual void destroy() = 0;
 
+  public:
     virtual std::string getName() const = 0;
     virtual LIBTYPE getType() const = 0;
 
-    virtual engine::component::AAudio createAudio(
+  public:
+    virtual engine::component::AAudio& createAudio(
         const std::vector<std::string>& paths) = 0;
-    virtual engine::component::ARender createRender(
+    virtual engine::component::ARender& createRender(
         const std::vector<std::string>& paths) = 0;
 
-    virtual engine::system::AAudio createAudioSystem(
+  public:
+    virtual engine::system::AAudio& createAudioSystem(
         engine::ecs::World& world) = 0;
-    virtual engine::system::ARender createRenderSystem(
+    virtual engine::system::ARender& createRenderSystem(
         engine::ecs::World& world) = 0;
 };
+
+} // namespace graphical
 
 #endif // OOP_ARCADE_2019_IGRAPHICAL_HPP
