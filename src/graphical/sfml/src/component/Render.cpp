@@ -7,11 +7,13 @@
 
 #include "Render.hpp"
 
+#include "../../../IGraphical.hpp"
+
 sfml::component::Render::Render(
     engine::ecs::Entity &entity, const std::vector<std::string> &paths)
     : engine::component::ARender(entity, paths)
 {
-    texture.loadFromFile(paths[1]);
+    texture.loadFromFile(paths[LIBTYPE::GRAPHIC]);
     sprite.setTexture(texture);
     srcRect.width = texture.getSize().x;
     srcRect.height = texture.getSize().y;
