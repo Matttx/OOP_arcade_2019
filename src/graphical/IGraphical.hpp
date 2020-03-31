@@ -16,9 +16,9 @@
 #include "../engine/system/AAudio.hpp"
 #include "../engine/system/ARender.hpp"
 
-namespace graphical {
-
 enum LIBTYPE { TEXT, GRAPHIC, DEBUG };
+
+namespace graphical {
 
 class IGraphical {
   public:

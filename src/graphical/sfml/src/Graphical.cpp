@@ -14,7 +14,7 @@
 #include "system/Render.hpp"
 
 sfml::Graphical::Graphical(engine::eventbus::EventBus& eventBus)
-    : graphical::AGraphical("sfml", graphical::LIBTYPE::GRAPHIC, eventBus)
+    : graphical::AGraphical("sfml", LIBTYPE::GRAPHIC, eventBus)
 {
     _window = nullptr;
 }

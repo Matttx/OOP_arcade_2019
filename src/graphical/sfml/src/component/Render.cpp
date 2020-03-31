@@ -7,8 +7,6 @@
 
 #include "Render.hpp"
 
-#include <Size.hpp>
-
 sfml::component::Render::Render(
     engine::ecs::Entity &entity, const std::vector<std::string> &paths)
     : engine::component::ARender(entity, paths)

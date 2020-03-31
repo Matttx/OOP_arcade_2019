@@ -20,6 +20,7 @@ namespace component {
 class Audio : public engine::component::AAudio {
   public:
     Audio(engine::ecs::Entity &entity, const std::vector<std::string> &paths);
+    ~Audio() override = default;
     sf::Music music;
 };
 } // namespace component

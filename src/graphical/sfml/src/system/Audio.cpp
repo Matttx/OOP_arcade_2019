@@ -30,6 +30,7 @@ void sfml::system::Audio::render()
         auto& component =
             entity.get().getComponent<engine::component::AAudio>();
         auto& sfmlAudio = dynamic_cast<sfml::component::Audio&>(component);
-        sfmlAudio.music.play();
+        if (sfmlAudio.music.getStatus() != sf::Music::Status::Playing)
+            sfmlAudio.music.play();
     }
 }

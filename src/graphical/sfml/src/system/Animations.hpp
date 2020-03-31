@@ -14,7 +14,8 @@ namespace sfml {
 namespace system {
 class Animations : public engine::system::AAnimations {
   public:
-    Animations(engine::ecs::World& world);
+    explicit Animations(engine::ecs::World& world);
+    ~Animations() override = default;
     void init() override;
     void update() override;
     void render() override;

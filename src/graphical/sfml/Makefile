@@ -32,8 +32,8 @@ PROJ_SRC			=		Graphical.cpp				\
 
 TEST_SRC			=
 
-CFLAGS				+=		-I $(INCL_DIR) -I ../../engine/component/
-CFLAGS				+=		-W -Wall -Wextra -Werror
+CFLAGS				+=		-I $(INCL_DIR)
+CFLAGS				+=			-W -Wall -Wextra -Werror
 
 PROJ_OBJ			=		$(PROJ_SRC:%.cpp=$(OBJ_DIR)/%.o)
 
