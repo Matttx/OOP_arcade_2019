@@ -7,8 +7,8 @@
 
 #include "Animations.hpp"
 
-#include <ARender.hpp>
-#include <Animations.hpp>
+#include "../../../../engine/component/ARender.hpp"
+#include "../../../../engine/system/AAnimations.hpp"
 
 #include "../component/Render.hpp"
 sfml::system::Animations::Animations(engine::ecs::World& world)
