@@ -10,7 +10,6 @@
 
 namespace engine {
 namespace ecs {
-class AComponent;
 class World;
 } // namespace ecs
 } // namespace engine
@@ -22,7 +21,6 @@ class World;
 #include <vector>
 
 #include "AComponent.hpp"
-#include "World.hpp"
 
 namespace engine {
 
