@@ -9,7 +9,9 @@
 
 #include <dirent.h>
 
-engine::core::Core::Core() = default;
+engine::core::Core::Core() : _universe(*this)
+{
+}
 
 engine::core::Core::~Core() = default;
 
