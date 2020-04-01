@@ -9,7 +9,6 @@
 #define OOP_ARCADE_2019_COMPONENT_MOTION_HPP
 
 #include "../ecs/AComponent.hpp"
-#include "../ecs/Entity.hpp"
 #include "../type/Vector2D.hpp"
 
 namespace engine {
@@ -24,7 +23,7 @@ class Motion : public ecs::AComponent {
   public:
     Motion(ecs::Entity& entity, type::Vector2D velocity,
         type::Vector2D acceleration);
-    ~Motion() override = 0;
+    ~Motion() override;
 };
 
 } // namespace component

@@ -23,12 +23,17 @@ RM					=		rm -rf
 
 LDLIBS				+=		-lsfml-audio -lsfml-graphics -lsfml-system -lsfml-window
 
-PROJ_SRC			=		src.cpp			\
+PROJ_SRC			=		Graphical.cpp				\
+							component/Audio.cpp			\
+							component/Render.cpp		\
+							system/Render.cpp			\
+							system/Audio.cpp			\
+							system/Animations.cpp		\
 
 TEST_SRC			=
 
 CFLAGS				+=		-I $(INCL_DIR)
-CFLAGS				+=		-W -Wall -Wextra -Werror
+CFLAGS				+=			-W -Wall -Wextra -Werror
 
 PROJ_OBJ			=		$(PROJ_SRC:%.cpp=$(OBJ_DIR)/%.o)
 

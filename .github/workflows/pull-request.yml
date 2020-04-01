@@ -9,29 +9,29 @@ jobs:
     container: cyberryteam/epitech-docker:fedora
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Build
-      run: make
+      - name: Build
+        run: make
 
-    - name: Functional tests
-      run: make tests_sh
+      - name: Functional tests
+        run: make tests_sh
 
-    - name: Unit tests
-      run: make tests_run
+      - name: Unit tests
+        run: make tests_run
 
   ubuntu:
     runs-on: ubuntu-latest
     container: cyberryteam/epitech-docker:ubuntu
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Build
-      run: make
+      - name: Build
+        run: make
 
-    - name: Functional tests
-      run: make tests_sh
+      - name: Functional tests
+        run: make tests_sh
 
-    - name: Unit tests
-      run: make tests_run
+      - name: Unit tests
+        run: make tests_run

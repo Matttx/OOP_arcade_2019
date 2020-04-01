@@ -9,7 +9,6 @@
 #define OOP_ARCADE_2019_SYSTEM_PHYSICS_HPP
 
 #include "../ecs/ASystem.hpp"
-#include "../ecs/World.hpp"
 
 namespace engine {
 
@@ -18,7 +17,7 @@ namespace system {
 class Physics : public ecs::ASystem {
   public:
     explicit Physics(ecs::World& world);
-    ~Physics() override = 0;
+    ~Physics() override;
 
   public:
     void init() override;
