@@ -23,7 +23,7 @@ class Transform : public ecs::AComponent {
 
   public:
     Transform(ecs::Entity& entity, type::Vector2D position, int layer);
-    ~Transform() override = 0;
+    ~Transform() override;
 };
 
 } // namespace component
