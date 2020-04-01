@@ -21,7 +21,7 @@ MKDIR				=		mkdir -p
 MV					=		mv
 RM					=		rm -rf
 
-LDLIBS				+=		-lSDL2 -lSDL2_image
+LDLIBS				+=		-lSDL2 -lSDL2_image -lSDL2_mixer
 
 PROJ_SRC			=		Graphical.cpp				\
  							component/Audio.cpp			\

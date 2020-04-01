@@ -21,8 +21,8 @@ namespace component {
 
 class Render : public engine::component::ARender {
     public:
-        Render(engine::ecs::Entity& entity, const std::vector<std::string>& paths);
-        ~Render() override = default;
+        Render(engine::ecs::Entity& entity, const std::vector<std::string>& paths, SDL_Window *window);
+        ~Render() override;
         SDL_Surface *sprite;
         SDL_Texture *texture;
         SDL_Renderer *renderer;

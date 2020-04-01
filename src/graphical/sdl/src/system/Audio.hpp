@@ -5,22 +5,21 @@
 ** Audio
 */
 
-#ifndef AUDIO_HPP_
-#define AUDIO_HPP_
+#ifndef SYSTEM_AUDIO_HPP_
+#define SYSTEM_AUDIO_HPP_
 
 #include "../../../../engine/system/AAudio.hpp"
 
 namespace sdl {
 namespace system {
 
-class Audio : engine::system::AAudio {
+class Audio : public engine::system::AAudio {
     public:
-        Audio(engine::ecs::World& world);
-        ~Audio();
+        explicit Audio(engine::ecs::World& world);
+        ~Audio() override = default;
         void init() override;
         void update() override;
         void render() override;
-
 };
 
 } // Namespace system

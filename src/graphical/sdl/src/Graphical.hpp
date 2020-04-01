@@ -21,7 +21,6 @@
 #include "system/Render.hpp"
 
 namespace sdl {
-
 class Graphical : public graphical::AGraphical {
     public:
         Graphical(engine::eventbus::EventBus& eventBus);

@@ -30,9 +30,6 @@ void update()
         auto& compAnimation = entity.get().getComponent<engine::component::Animations>();
         auto& compSprite = entity.get().getComponent<engine::component::ARender>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(compSprite);
-        
-        TODO : Voir à quoi correspond le srcRect pour changer le code suivant
-
         auto& currentAnimation = compAnimation.list.at(compAnimation.currentAnimation);
         sdlRender.srcRect.top = currentAnimation.row * (sfmlRender.texture.getSize().y / compAnimation.list.size());
         if (compAnimation.currentFrame == currentAnimation.frames) {

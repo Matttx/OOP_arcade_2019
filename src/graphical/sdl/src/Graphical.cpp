@@ -5,6 +5,10 @@
 ** Graphical
 */
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
+
 #include "Graphical.hpp"
 
 #include "../../../engine/event/Input.hpp"
@@ -29,12 +33,14 @@ void sdl::Graphical::init()
 {
     SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
     IMG_Init(IMG_INIT_PNG);
-    _window = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, 0);
+    Mix_Init(MIX_INIT_MP3);
+    _window = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_RESIZABLE);
 }
 
 void sdl::Graphical::dispatchEvent()
 {
     SDL_Event e;
+    SDL_PollEvent(&e);
 
     for (auto& i : SDLKEYCODE) {
         if (e.key.keysym.sym == (i.first)) {
@@ -48,6 +54,8 @@ void sdl::Graphical::dispatchEvent()
 void sdl::Graphical::destroy()
 {
     SDL_DestroyWindow(_window);
+    Mix_Quit();
+    IMG_Quit();
     SDL_Quit();
 }
 
@@ -58,7 +66,7 @@ engine::component::AAudio &sdl::Graphical::createAudio(engine::ecs::Entity &enti
 
 engine::component::ARender &sdl::Graphical::createRender(engine::ecs::Entity &entity, const std::vector<std::string> &paths)
 {
-    return *(new sdl::component::Render(entity, paths));
+    return *(new sdl::component::Render(entity, paths, _window));
 }
 
 engine::system::AAudio &sdl::Graphical::createAudioSystem(engine::ecs::World &world)

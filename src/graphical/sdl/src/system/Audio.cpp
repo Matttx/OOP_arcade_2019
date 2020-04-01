@@ -5,9 +5,12 @@
 ** Audio
 */
 
+#include <SDL2/SDL_ixer.h>
+
 #include "Audio.hpp"
 
 #include "../../../../engine/component/AAudio.hpp"
+#include "../../../../engine/ecs/World.hpp"
 #include "../component/Audio.hpp"
 
 using namespace sdl;
@@ -15,6 +18,11 @@ using namespace system;
 
 Audio::Audio(engine::ecs::World& world) : AAudio(world)
 {
+}
+
+Audio::~Audio()
+{
+    Mix_CloseAudio();
 }
 
 void Audio::init()
@@ -31,7 +39,7 @@ void Audio::render()
     for (const auto& entity : entities) {
         auto& component = entity.get().getComponent<engine::component::AAudio>();
         auto& sdlAudio = dynamic_cast<sdl::component::Audio&>(component);
-        TODO : chercher le status musique playing et la fonction qui play la musique
-        if (sdlAudio.music.getStatus() != STATUS MUSIQUE PLAYED EN SDL)
-            sdlAudio.music.FONCTION QUI PLAY LA MUSIQUE();
+        if (Mix_PlayingMusic() != 1)
+            Mix_PlayMusic(sdlAudio.music, 1)
+    }
 }

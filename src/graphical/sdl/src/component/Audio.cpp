@@ -13,5 +13,5 @@ using namespace component;
 
 Audio::Audio(engine::ecs::Entity& entity, const std::vector<std::string>& paths) : engine::component::AAudio(entity, paths)
 {
-    TODO : Regarder l'audio en SDL (ici open music form file)
+    music = Mix_LoadMUS(paths[LIBTYPE::GRAPHIC].c_str());
 }

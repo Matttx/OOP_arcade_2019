@@ -5,7 +5,14 @@
 ** Render
 */
 
+#include <algorithm>
+
 #include "Render.hpp"
+
+#include "../../../../engine/component/Transform.hpp"
+#include "../../../../engine/ecs/World.hpp"
+
+#include "../component/Render.hpp"
 
 using namespace sdl;
 using namespace system;
@@ -25,10 +32,8 @@ void Render::update()
         auto& component = entity.get().getComponent<engine::component::ARender>();
         auto& transform = entity.get().getComponent<engine::component::Transform>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
-
-        TODO : voir a quoi correspond le transform (si propre sfml ou non)
-
-        sdlRender.sprite.setPosition(static_cast<float>(transform.position.x), static_cast<float>(transform.position.y));
+        sdlRender.dstRect->x = static_cast<float>(transform.position.x); 
+        sdlRender.dstRect->y = static_cast<float>(transform.position.y);
     }
 }
 
@@ -41,6 +46,7 @@ void Render::render()
     for (const auto& entity : entities) {
         auto& component = entity.get().getComponent<sdl::component::Render>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
-        _window.(sdlRender.sprite);
+        SDL_RenderCopy(sdlRender.renderer, sdlRender.texture, sdlRender.srcRect, sdlRender.dstRect);
+        SDL_RenderPresent(sdlRender.renderer);
     }
 }

@@ -5,8 +5,8 @@
 ** Render
 */
 
-#ifndef RENDER_HPP_
-#define RENDER_HPP_
+#ifndef SYSTEM_RENDER_HPP_
+#define SYSTEM_RENDER_HPP_
 
 #include <SDL2/SDL.h>
 
