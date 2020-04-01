@@ -10,6 +10,7 @@
 #include "../../../../engine/component/ARender.hpp"
 #include "../../../../engine/system/AAnimations.hpp"
 #include "../../../../engine/component/Animations.hpp"
+#include "../../../../engine/ecs/World.hpp"
 
 #include "../component/Render.hpp"
 sfml::system::Animations::Animations(engine::ecs::World& world)

@@ -8,6 +8,7 @@
 #include "Render.hpp"
 
 #include "../../../../engine/component/Transform.hpp"
+#include "../../../../engine/ecs/World.hpp"
 
 #include "../component/Render.hpp"
 
