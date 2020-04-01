@@ -21,6 +21,8 @@ class Universe;
 #include <typeinfo>
 #include <vector>
 
+#include "../system/AAudio.hpp"
+#include "../system/ARender.hpp"
 #include "ASystem.hpp"
 #include "Entity.hpp"
 
@@ -128,6 +130,12 @@ class World {
   private:
     std::map<std::type_index, std::reference_wrapper<ASystem>> _systems;
 };
+
+template<>
+system::AAudio& World::addSystem<system::AAudio>();
+
+template<>
+system::ARender& World::addSystem<system::ARender>();
 
 } // namespace ecs
 
