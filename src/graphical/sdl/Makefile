@@ -21,9 +21,14 @@ MKDIR				=		mkdir -p
 MV					=		mv
 RM					=		rm -rf
 
-LDLIBS				+=		-lSDL2
+LDLIBS				+=		-lSDL2 -lSDL2_image
 
-PROJ_SRC			=		src.cpp			\
+PROJ_SRC			=		Graphical.cpp				\
+ 							component/Audio.cpp			\
+ 							component/Render.cpp		\
+ 							system/Render.cpp			\
+ 							system/Audio.cpp			\
+ 							system/Animations.cpp		\
 
 TEST_SRC			=
 
