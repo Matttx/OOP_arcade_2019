@@ -22,6 +22,7 @@ class World;
 
 #include "../component/AAudio.hpp"
 #include "../component/ARender.hpp"
+#include "../util/Error.hpp"
 #include "AComponent.hpp"
 
 namespace engine {
@@ -43,7 +44,8 @@ class Entity {
         std::type_index id = typeid(T);
 
         if (this->_components.count(id))
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::Entity::addComponent()",
+                "Already has this type of component");
 
         auto* component = new T(*this, args...);
 
@@ -70,7 +72,8 @@ class Entity {
         std::type_index id = typeid(T);
 
         if (this->_components.count(id) == 0)
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::Entity::getComponent()",
+                "Doesn't have this type of component");
 
         AComponent& component = this->_components.at(id).get();
 
@@ -83,7 +86,8 @@ class Entity {
         std::type_index id = typeid(T);
 
         if (this->_components.count(id) == 0)
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::Entity::getComponent()",
+                "Doesn't have this type of component");
 
         delete &this->_components.at(id).get();
 

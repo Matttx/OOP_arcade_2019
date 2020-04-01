@@ -34,7 +34,8 @@ engine::component::AAudio&
     std::type_index id = typeid(component::AAudio);
 
     if (this->_components.count(id))
-        throw std::exception(); // TODO: Custom Error class
+        throw util::Error("engine::ecs::Entity::addComponent()",
+            "Already has this type of component");
 
     auto& graphical =
         this->getWorld().getUniverse().getCore().getCurrentGraphical();
@@ -53,7 +54,8 @@ engine::component::ARender&
     std::type_index id = typeid(component::ARender);
 
     if (this->_components.count(id))
-        throw std::exception(); // TODO: Custom Error class
+        throw util::Error("engine::ecs::Entity::addComponent()",
+            "Already has this type of component");
 
     auto& graphical =
         this->getWorld().getUniverse().getCore().getCurrentGraphical();
