@@ -14,8 +14,6 @@ class Entity;
 } // namespace ecs
 } // namespace engine
 
-#include "Entity.hpp"
-
 namespace engine {
 
 namespace ecs {

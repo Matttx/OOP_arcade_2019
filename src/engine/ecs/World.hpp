@@ -10,8 +10,6 @@
 
 namespace engine {
 namespace ecs {
-class ASystem;
-class Entity;
 class Universe;
 } // namespace ecs
 } // namespace engine
@@ -25,7 +23,6 @@ class Universe;
 
 #include "ASystem.hpp"
 #include "Entity.hpp"
-#include "Universe.hpp"
 
 namespace engine {
 
@@ -53,7 +50,9 @@ class World {
     {
         std::vector<std::reference_wrapper<Entity>> entities;
 
-        // TODO: To define
+        for (const auto& _entity : _entities)
+            if (_entity.get().hasComponents<TArgs...>())
+                entities.emplace_back(_entity.get());
 
         return entities;
     }
@@ -61,7 +60,7 @@ class World {
   public:
     void addToGroup(Entity& entity, const std::string& name);
     bool hasGroup(Entity& entity, const std::string& name) const;
-    const std::vector<std::reference_wrapper<Entity>>& getGroup(
+    std::vector<std::reference_wrapper<Entity>>& getGroup(
         const std::string& name) const;
     void removeFromGroup(Entity& entity, const std::string& name);
 

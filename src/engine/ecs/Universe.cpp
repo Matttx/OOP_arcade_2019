@@ -7,7 +7,7 @@
 
 #include "Universe.hpp"
 
-engine::ecs::Universe::Universe() = default;
+engine::ecs::Universe::Universe(core::Core& core) : _core(core) {}
 
 engine::ecs::Universe::~Universe()
 {
@@ -15,9 +15,14 @@ engine::ecs::Universe::~Universe()
         delete &_world.second.get();
 }
 
-engine::eventbus::EventBus engine::ecs::Universe::getEventBus() const
+engine::core::Core& engine::ecs::Universe::getCore() const
 {
-    return this->_eventBus;
+    return this->_core;
+}
+
+engine::eventbus::EventBus& engine::ecs::Universe::getEventBus() const
+{
+    return const_cast<eventbus::EventBus&>(this->_eventBus);
 }
 
 void engine::ecs::Universe::init()
