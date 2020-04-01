@@ -9,7 +9,6 @@
 #define OOP_ARCADE_2019_COMPONENT_MOTION_HPP
 
 #include "../ecs/AComponent.hpp"
-#include "../ecs/Entity.hpp"
 #include "../type/Vector2D.hpp"
 
 namespace engine {
