@@ -35,9 +35,9 @@ class IGraphical {
 
   public:
     virtual engine::component::AAudio& createAudio(
-        const std::vector<std::string>& paths) = 0;
+        engine::ecs::Entity& entity, const std::vector<std::string>& paths) = 0;
     virtual engine::component::ARender& createRender(
-        const std::vector<std::string>& paths) = 0;
+        engine::ecs::Entity& entity, const std::vector<std::string>& paths) = 0;
 
   public:
     virtual engine::system::AAudio& createAudioSystem(
