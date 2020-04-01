@@ -12,7 +12,6 @@
 #include <string>
 
 #include "../ecs/AComponent.hpp"
-#include "../ecs/Entity.hpp"
 #include "../type/Animation.hpp"
 
 namespace engine {
