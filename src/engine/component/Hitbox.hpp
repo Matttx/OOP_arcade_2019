@@ -9,7 +9,6 @@
 #define OOP_ARCADE_2019_COMPONENT_HITBOX_HPP
 
 #include "../ecs/AComponent.hpp"
-#include "../ecs/Entity.hpp"
 
 namespace engine {
 
@@ -22,7 +21,7 @@ class Hitbox : public ecs::AComponent {
 
   public:
     Hitbox(engine::ecs::Entity& entity, int width, int height);
-    ~Hitbox() override = 0;
+    ~Hitbox() override;
 };
 
 } // namespace component
