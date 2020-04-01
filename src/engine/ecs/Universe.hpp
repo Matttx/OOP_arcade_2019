@@ -8,12 +8,6 @@
 #ifndef OOP_ARCADE_2019_ECS_UNIVERSE_HPP
 #define OOP_ARCADE_2019_ECS_UNIVERSE_HPP
 
-namespace engine {
-namespace ecs {
-class World;
-} // namespace ecs
-} // namespace engine
-
 #include <functional>
 #include <map>
 
