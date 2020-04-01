@@ -73,7 +73,8 @@ class World {
         std::type_index id = typeid(T);
 
         if (this->_systems.count(id))
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::World::addSystem()",
+                "Already has this type of system");
 
         auto* system = new T(*this, args...);
 
@@ -100,7 +101,8 @@ class World {
         std::type_index id = typeid(T);
 
         if (this->_systems.count(id) == 0)
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::World::getSystem()",
+                "Doesn't have this type of system");
 
         ASystem& system = this->_systems.at(id).get();
 
@@ -113,7 +115,8 @@ class World {
         std::type_index id = typeid(T);
 
         if (this->_systems.count(id) == 0)
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::World::removeSystem()",
+                "Doesn't have this type of system");
 
         delete &this->_systems.at(id).get();
 
