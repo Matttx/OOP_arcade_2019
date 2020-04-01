@@ -24,7 +24,7 @@ LIB_SFML_DIR		=		src/graphical/sfml
 CC					=		g++
 RM					=		rm -rf
 
-LDLIBS				=		-ldl
+LDLIBS				=		-ldl -rdynamic
 
 MAIN_SRC			=		main.cpp
 
