@@ -30,9 +30,9 @@ class AGraphical : public IGraphical {
     LIBTYPE getType() const override;
 
   public:
-    engine::component::AAudio& createAudio(
+    engine::component::AAudio& createAudio(engine::ecs::Entity& entity,
         const std::vector<std::string>& paths) override = 0;
-    engine::component::ARender& createRender(
+    engine::component::ARender& createRender(engine::ecs::Entity& entity,
         const std::vector<std::string>& paths) override = 0;
 
   public:
@@ -47,6 +47,6 @@ class AGraphical : public IGraphical {
     engine::eventbus::EventBus _eventBus;
 };
 
-}
+} // namespace graphical
 
 #endif // OOP_ARCADE_2019_AGRAPHICAL_HPP
