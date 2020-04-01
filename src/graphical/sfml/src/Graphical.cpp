@@ -25,7 +25,7 @@ sfml::Graphical::~Graphical()
     destroy();
 }
 
-extern "C" sfml::Graphical* createObject(engine::eventbus::EventBus& eventBus)
+extern "C" sfml::Graphical* create(engine::eventbus::EventBus& eventBus)
 {
     return new sfml::Graphical(eventBus);
 }
