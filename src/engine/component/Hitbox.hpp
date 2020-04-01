@@ -22,7 +22,7 @@ class Hitbox : public ecs::AComponent {
 
   public:
     Hitbox(engine::ecs::Entity& entity, int width, int height);
-    ~Hitbox() override = 0;
+    ~Hitbox() override;
 };
 
 } // namespace component

@@ -28,7 +28,7 @@ class Animations : public ecs::AComponent {
   public:
     Animations(ecs::Entity& entity,
         const std::map<std::string, type::Animation>& list);
-    ~Animations() override = 0;
+    ~Animations() override;
 };
 
 } // namespace component

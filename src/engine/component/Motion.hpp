@@ -24,7 +24,7 @@ class Motion : public ecs::AComponent {
   public:
     Motion(ecs::Entity& entity, type::Vector2D velocity,
         type::Vector2D acceleration);
-    ~Motion() override = 0;
+    ~Motion() override;
 };
 
 } // namespace component
