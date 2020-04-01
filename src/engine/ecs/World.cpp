@@ -9,6 +9,10 @@
 
 #include <algorithm>
 
+#include "../system/AAudio.hpp"
+#include "../system/ARender.hpp"
+#include "../core/Core.hpp"
+
 engine::ecs::World::World(engine::ecs::Universe& universe) : _universe(universe)
 {
 }
@@ -124,4 +128,40 @@ void engine::ecs::World::removeFromGroup(
         });
 
     this->_groups.at(name).erase(it);
+}
+
+template<>
+engine::system::AAudio&
+engine::ecs::World::addSystem<engine::system::AAudio>()
+{
+    std::type_index id = typeid(system::AAudio);
+
+    if (this->_systems.count(id))
+        throw std::exception(); // TODO: Custom Error class
+
+    auto& graphical =
+        this->getUniverse().getCore().getCurrentGraphical();
+    auto& system = graphical.createAudioSystem(*this);
+
+    this->_systems.emplace(id, system);
+
+    return system;
+}
+
+template<>
+engine::system::ARender&
+    engine::ecs::World::addSystem<engine::system::ARender>()
+{
+    std::type_index id = typeid(system::ARender);
+
+    if (this->_systems.count(id))
+        throw std::exception(); // TODO: Custom Error class
+
+    auto& graphical =
+        this->getUniverse().getCore().getCurrentGraphical();
+    auto& system = graphical.createRenderSystem(*this);
+
+    this->_systems.emplace(id, system);
+
+    return system;
 }
