@@ -58,6 +58,7 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/system/AUser.cpp				\
 							engine/system/Movement.cpp			\
 							engine/system/Physics.cpp			\
+							engine/util/Error.cpp				\
 							game/AGame.cpp						\
 							game/IGame.cpp						\
 							graphical/AGraphical.cpp			\
