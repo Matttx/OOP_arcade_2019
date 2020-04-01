@@ -9,7 +9,6 @@
 #define OOP_ARCADE_2019_SYSTEM_MOVEMENT_HPP
 
 #include "../ecs/ASystem.hpp"
-#include "../ecs/World.hpp"
 
 namespace engine {
 
@@ -18,7 +17,7 @@ namespace system {
 class Movement : public ecs::ASystem {
   public:
     explicit Movement(ecs::World& world);
-    ~Movement() override = 0;
+    ~Movement() override;
 
   public:
     void init() override;
