@@ -8,6 +8,7 @@
 #include "Audio.hpp"
 
 #include "../../../../engine/component/AAudio.hpp"
+#include "../../../../engine/ecs/World.hpp"
 
 #include "../component/Audio.hpp"
 
