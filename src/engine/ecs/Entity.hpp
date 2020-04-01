@@ -20,6 +20,8 @@ class World;
 #include <typeinfo>
 #include <vector>
 
+#include "../component/AAudio.hpp"
+#include "../component/ARender.hpp"
 #include "AComponent.hpp"
 
 namespace engine {
@@ -94,6 +96,14 @@ class Entity {
   private:
     std::map<std::type_index, std::reference_wrapper<AComponent>> _components;
 };
+
+template<>
+component::AAudio& Entity::addComponent<component::AAudio>(
+    const std::vector<std::string>& paths);
+
+template<>
+component::ARender& Entity::addComponent<component::ARender>(
+    const std::vector<std::string>& paths);
 
 } // namespace ecs
 
