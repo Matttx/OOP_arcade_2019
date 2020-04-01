@@ -40,7 +40,7 @@ void sfml::Graphical::dispatchEvent()
     for (auto& i : KEYCORRESPONDENCE) {
         if (sf::Keyboard::isKeyPressed(i.first)) {
             auto input = new engine::event::Input(i.second);
-            _eventBus.publish(input->code);
+            _eventBus.publish(*input);
             delete input;
         }
     }
