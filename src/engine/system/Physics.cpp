@@ -11,6 +11,7 @@
 
 #include "../component/Hitbox.hpp"
 #include "../component/Transform.hpp"
+#include "../ecs/Universe.hpp"
 #include "../event/Collision.hpp"
 
 static bool isCollide(engine::component::Hitbox& hitbox1,
@@ -24,13 +25,10 @@ static bool isCollide(engine::component::Hitbox& hitbox1,
         (transform1.position.y <= transform2.position.y + hitbox2.height))
         return true;
 
-    if ((transform2.position.x >= transform1.position.x) &&
+    return (transform2.position.x >= transform1.position.x) &&
         (transform2.position.x <= transform1.position.x + hitbox1.width) &&
         (transform2.position.y >= transform1.position.y) &&
-        (transform2.position.y <= transform1.position.y + hitbox1.height))
-        return true;
-
-    return false;
+        (transform2.position.y <= transform1.position.y + hitbox1.height);
 }
 
 engine::system::Physics::Physics(engine::ecs::World& world) : ASystem(world)

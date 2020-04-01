@@ -24,6 +24,8 @@ LIB_SFML_DIR		=		src/graphical/sfml
 CC					=		g++
 RM					=		rm -rf
 
+LDLIBS				=		-ldl
+
 MAIN_SRC			=		main.cpp
 
 PROJ_SRC			=		engine/component/AAI.cpp			\
@@ -36,6 +38,7 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/component/Size.cpp			\
 							engine/component/Transform.cpp		\
 							engine/core/Core.cpp				\
+							engine/core/DynamicLibrary.cpp		\
 							engine/ecs/AComponent.cpp			\
 							engine/ecs/ASystem.cpp				\
 							engine/ecs/Entity.cpp				\
@@ -55,6 +58,8 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/system/AUser.cpp				\
 							engine/system/Movement.cpp			\
 							engine/system/Physics.cpp			\
+							game/AGame.cpp						\
+							game/IGame.cpp						\
 							graphical/AGraphical.cpp			\
 							graphical/IGraphical.cpp			\
 

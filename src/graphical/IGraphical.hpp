@@ -34,10 +34,10 @@ class IGraphical {
     virtual LIBTYPE getType() const = 0;
 
   public:
-    virtual engine::component::AAudio& createAudio(engine::ecs::Entity &entity,
-        const std::vector<std::string>& paths) = 0;
-    virtual engine::component::ARender& createRender(engine::ecs::Entity &entity,
-        const std::vector<std::string>& paths) = 0;
+    virtual engine::component::AAudio& createAudio(
+        engine::ecs::Entity& entity, const std::vector<std::string>& paths) = 0;
+    virtual engine::component::ARender& createRender(
+        engine::ecs::Entity& entity, const std::vector<std::string>& paths) = 0;
 
   public:
     virtual engine::system::AAudio& createAudioSystem(

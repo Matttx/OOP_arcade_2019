@@ -14,8 +14,6 @@ class World;
 } // namespace ecs
 } // namespace engine
 
-#include "World.hpp"
-
 namespace engine {
 
 namespace ecs {

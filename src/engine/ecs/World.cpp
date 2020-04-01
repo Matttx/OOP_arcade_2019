@@ -98,13 +98,15 @@ bool engine::ecs::World::hasGroup(
     return (it != this->_groups.at(name).end());
 }
 
-const std::vector<std::reference_wrapper<engine::ecs::Entity>>&
+std::vector<std::reference_wrapper<engine::ecs::Entity>>&
     engine::ecs::World::getGroup(const std::string& name) const
 {
     if (this->_groups.count(name) == 0)
         throw std::exception(); // TODO: Custom Error class
 
-    return this->_groups.at(name);
+    return const_cast<
+        std::vector<std::reference_wrapper<engine::ecs::Entity>>&>(
+        this->_groups.at(name));
 }
 
 void engine::ecs::World::removeFromGroup(
