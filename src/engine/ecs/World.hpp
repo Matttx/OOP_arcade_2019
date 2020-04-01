@@ -76,6 +76,8 @@ class World {
         auto* system = new T(*this, args...);
 
         this->_systems.emplace(id, *system);
+
+        return *system;
     }
 
     template<typename T = void, typename... TArgs>
@@ -100,7 +102,7 @@ class World {
 
         ASystem& system = this->_systems.at(id).get();
 
-        return static_cast<T&>(system);
+        return dynamic_cast<T&>(system);
     }
 
     template<typename T>

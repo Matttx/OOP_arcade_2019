@@ -46,6 +46,8 @@ class Entity {
         auto* component = new T(*this, args...);
 
         this->_components.emplace(id, *component);
+
+        return *component;
     }
 
     template<typename T = void, typename... TArgs>
@@ -70,7 +72,7 @@ class Entity {
 
         AComponent& component = this->_components.at(id).get();
 
-        return static_cast<T&>(component);
+        return dynamic_cast<T&>(component);
     }
 
     template<typename T>
