@@ -12,7 +12,6 @@
 #include <string>
 
 #include "../ecs/AComponent.hpp"
-#include "../ecs/Entity.hpp"
 #include "../type/Animation.hpp"
 
 namespace engine {
@@ -28,7 +27,7 @@ class Animations : public ecs::AComponent {
   public:
     Animations(ecs::Entity& entity,
         const std::map<std::string, type::Animation>& list);
-    ~Animations() override = 0;
+    ~Animations() override;
 };
 
 } // namespace component

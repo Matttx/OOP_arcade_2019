@@ -9,7 +9,6 @@
 #define OOP_ARCADE_2019_COMPONENT_SIZE_HPP
 
 #include "../ecs/AComponent.hpp"
-#include "../ecs/Entity.hpp"
 
 namespace engine {
 
@@ -22,7 +21,7 @@ class Size : public ecs::AComponent {
 
   public:
     Size(ecs::Entity& entity, int width, int height);
-    ~Size() override = 0;
+    ~Size() override;
 };
 
 } // namespace component
