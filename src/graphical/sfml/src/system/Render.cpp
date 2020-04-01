@@ -39,7 +39,10 @@ void sfml::system::Render::update()
 
 void sfml::system::Render::render()
 {
-    auto entities = getWorld().getEntities<engine::component::ARender>();
+    auto entities = getWorld().getEntities<engine::component::ARender, engine::component::Transform>();
+    std::sort(entities.begin(), entities.end(), [](const engine::ecs::Entity& lhs, const engine::ecs::Entity& rhs) {
+        return lhs.getComponent<engine::component::Transform>().layer < rhs.getComponent<engine::component::Transform>().layer;
+    });
     for (const auto& entity : entities) {
         auto& component = entity.get().getComponent<sfml::component::Render>();
         auto& sfmlRender = dynamic_cast<sfml::component::Render&>(component);

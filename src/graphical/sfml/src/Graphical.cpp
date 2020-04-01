@@ -37,16 +37,12 @@ void sfml::Graphical::init()
 
 void sfml::Graphical::dispatchEvent()
 {
-    std::vector<sf::Keyboard::Key> sfmlKeyCode;
-    for (int first = sf::Keyboard::Unknown; first != sf::Keyboard::KeyCount; first++)
-        sfmlKeyCode.push_back(static_cast<sf::Keyboard::Key>(first));
-    std::vector<engine::event::Input::KEYCODE> keycode;
-    for (int first = engine::event::Input::KEYCODE::KEY_UNKNOWN; first != engine::event::Input::KEYCODE::KEY_KEYCOUNT; first++)
-        keycode.push_back(
-            static_cast<engine::event::Input::KEYCODE>(first));
-    for (unsigned long i = 0; i < sfmlKeyCode.size(); i++) {
-        if (sf::Keyboard::isKeyPressed(sfmlKeyCode[i]))
-            _eventBus.publish(*new engine::event::Input(keycode[i]));
+    for (auto& i : KEYCORRESPONDENCE) {
+        if (sf::Keyboard::isKeyPressed(i.first)) {
+            auto input = new engine::event::Input(i.second);
+            _eventBus.publish(input->code);
+            delete input;
+        }
     }
 }
 
