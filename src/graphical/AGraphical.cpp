@@ -13,6 +13,8 @@ graphical::AGraphical::AGraphical(
 {
 }
 
+graphical::AGraphical::~AGraphical() = default;
+
 std::string graphical::AGraphical::getName() const
 {
     return this->_name;
