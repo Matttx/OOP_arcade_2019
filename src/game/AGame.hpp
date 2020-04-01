@@ -14,11 +14,12 @@ namespace game {
 
 class AGame : public IGame {
   public:
-    explicit AGame(const std::string& name);
+    explicit AGame(const std::string& name, engine::ecs::Universe& universe);
     ~AGame() override = 0;
 
   public:
-    std::string getName() override;
+    std::string getName() const override;
+    engine::ecs::Universe& getUniverse() const override;
 
   public:
     void init() override = 0;
@@ -26,6 +27,7 @@ class AGame : public IGame {
 
   private:
     std::string _name;
+    engine::ecs::Universe &_universe;
 };
 
 } // namespace game
