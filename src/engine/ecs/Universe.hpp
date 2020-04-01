@@ -8,6 +8,12 @@
 #ifndef OOP_ARCADE_2019_ECS_UNIVERSE_HPP
 #define OOP_ARCADE_2019_ECS_UNIVERSE_HPP
 
+namespace engine {
+namespace core {
+class Core;
+} // namespace core
+} // namespace engine
+
 #include <functional>
 #include <map>
 
@@ -20,11 +26,12 @@ namespace ecs {
 
 class Universe {
   public:
-    Universe();
+    explicit Universe(core::Core& core);
     ~Universe();
 
   public:
-    eventbus::EventBus getEventBus() const;
+    core::Core& getCore() const;
+    eventbus::EventBus& getEventBus() const;
 
   public:
     void init();
@@ -40,6 +47,7 @@ class Universe {
     void deleteWorld(const std::string& name);
 
   private:
+    core::Core &_core;
     eventbus::EventBus _eventBus;
     std::map<std::string, std::reference_wrapper<World>> _worlds;
     std::string _current;
