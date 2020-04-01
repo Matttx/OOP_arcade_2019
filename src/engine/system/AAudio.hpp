@@ -9,7 +9,6 @@
 #define OOP_ARCADE_2019_SYSTEM_AAUDIO_HPP
 
 #include "../ecs/ASystem.hpp"
-#include "../ecs/World.hpp"
 
 namespace engine {
 
