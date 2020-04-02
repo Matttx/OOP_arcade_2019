@@ -65,6 +65,7 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							graphical/IGraphical.cpp			\
 
 TEST_SRC			=		test_Universe.cpp					\
+							test_World.cpp						\
 
 
 CFLAGS				+=		-I $(INCL_DIR)
