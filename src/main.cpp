@@ -5,6 +5,8 @@
 ** main.cpp
 */
 
+#include <unistd.h>
+
 #include "engine/core/Core.hpp"
 
 int main()
@@ -24,8 +26,11 @@ int main()
 
     universe.init();
 
-    while (true) {
+    for (int i = 0; i >= 0; ++i) {
+        core.getCurrentGraphical().dispatchEvent();
         universe.update();
         universe.render();
+
+        usleep(16666);
     }
 }

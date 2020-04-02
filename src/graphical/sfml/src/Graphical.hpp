@@ -47,7 +47,6 @@ class Graphical : public graphical::AGraphical {
 
   private:
     sf::RenderWindow *_window;
-    engine::eventbus::EventBus &_eventBus;
 };
 } // namespace sfml
 

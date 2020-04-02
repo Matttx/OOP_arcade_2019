@@ -6,3 +6,12 @@
 */
 
 #include "User.hpp"
+
+game::emulator::component::User::User(engine::ecs::Entity& entity)
+    : AUser(entity)
+{
+}
+
+game::emulator::component::User::~User()
+{
+}

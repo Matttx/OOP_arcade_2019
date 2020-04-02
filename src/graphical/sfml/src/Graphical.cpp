@@ -15,7 +15,7 @@
 #include "system/Render.hpp"
 
 sfml::Graphical::Graphical(engine::eventbus::EventBus& eventBus)
-    : graphical::AGraphical("sfml", LIBTYPE::GRAPHIC, eventBus), _eventBus(eventBus)
+    : graphical::AGraphical("sfml", LIBTYPE::GRAPHIC, eventBus)
 {
     _window = nullptr;
 }
@@ -25,9 +25,9 @@ sfml::Graphical::~Graphical()
     destroy();
 }
 
-extern "C" sfml::Graphical* create(engine::eventbus::EventBus& eventBus)
+extern "C" sfml::Graphical* create(engine::eventbus::EventBus* eventBus)
 {
-    return new sfml::Graphical(eventBus);
+    return new sfml::Graphical(*eventBus);
 }
 
 void sfml::Graphical::init()
@@ -37,11 +37,17 @@ void sfml::Graphical::init()
 
 void sfml::Graphical::dispatchEvent()
 {
-    for (auto& i : KEYCORRESPONDENCE) {
-        if (sf::Keyboard::isKeyPressed(i.first)) {
-            auto input = new engine::event::Input(i.second);
-            _eventBus.publish(*input);
-            delete input;
+    sf::Event event {};
+
+    while (_window->pollEvent(event)) {
+        if (event.type == sf::Event::KeyPressed) {
+            for (auto& i : KEYCORRESPONDENCE) {
+                if (sf::Keyboard::isKeyPressed(i.first)) {
+                    auto input = new engine::event::Input(i.second);
+                    getEventBus().publish(*input);
+                    delete input;
+                }
+            }
         }
     }
 }
