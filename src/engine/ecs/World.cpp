@@ -81,8 +81,7 @@ void engine::ecs::World::addToGroup(
     engine::ecs::Entity& entity, const std::string& name)
 {
     if (this->_groups.count(name) == 0)
-        throw util::Error("engine::ecs::World::addToGroup()",
-            "The group '" + name + "' doesn't exist");
+        this->_groups[name] = {};
 
     if (this->hasGroup(entity, name))
         throw util::Error("engine::ecs::World::addToGroup()",
@@ -135,6 +134,9 @@ void engine::ecs::World::removeFromGroup(
             "The entity is not in the group '" + name + "'");
 
     this->_groups.at(name).erase(it);
+
+    if (this->_groups.at(name).empty())
+        this->_groups.erase(name);
 }
 
 template<>

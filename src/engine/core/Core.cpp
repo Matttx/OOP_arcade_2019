@@ -31,17 +31,16 @@ void engine::core::Core::loadGames()
         throw util::Error(
             "engine::core::Core::loadGames()", "Games directory doesn't exist");
 
-    for (int i = 0; i < 2; i++)
-        readdir(directory);
-
     dirent* ent = readdir(directory);
 
     for (; ent != nullptr; ent = readdir(directory)) {
-        const std::string path = "./games/" + std::string(ent->d_name);
+        if (ent->d_name[0] != '.') {
+            const std::string path = "./games/" + std::string(ent->d_name);
 
-        auto* dynamicLibrary = new DynamicLibrary<game::IGame>(path);
+            auto* dynamicLibrary = new DynamicLibrary<game::IGame>(path);
 
-        this->_games.emplace(ent->d_name, *dynamicLibrary);
+            this->_games.emplace(ent->d_name, *dynamicLibrary);
+        }
     }
 
     closedir(directory);
@@ -55,18 +54,17 @@ void engine::core::Core::loadGraphics()
         throw util::Error("engine::core::Core::loadGraphics()",
             "Graphicals directory doesn't exist");
 
-    for (int i = 0; i < 2; i++)
-        readdir(directory);
-
     dirent* ent = readdir(directory);
 
     for (; ent != nullptr; ent = readdir(directory)) {
-        const std::string path = "./lib/" + std::string(ent->d_name);
+        if (ent->d_name[0] != '.') {
+            const std::string path = "./lib/" + std::string(ent->d_name);
 
-        auto* dynamicLibrary = new DynamicLibrary<graphical::IGraphical>(
-            path, this->getUniverse().getEventBus());
+            auto* dynamicLibrary = new DynamicLibrary<graphical::IGraphical>(
+                path, this->getUniverse().getEventBus());
 
-        this->_graphicals.emplace(ent->d_name, *dynamicLibrary);
+            this->_graphicals.emplace(ent->d_name, *dynamicLibrary);
+        }
     }
 
     closedir(directory);
