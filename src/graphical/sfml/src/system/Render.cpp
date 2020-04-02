@@ -44,9 +44,14 @@ void sfml::system::Render::render()
     std::sort(entities.begin(), entities.end(), [](const engine::ecs::Entity& lhs, const engine::ecs::Entity& rhs) {
         return lhs.getComponent<engine::component::Transform>().layer < rhs.getComponent<engine::component::Transform>().layer;
     });
+
+    _window.clear();
+
     for (const auto& entity : entities) {
-        auto& component = entity.get().getComponent<sfml::component::Render>();
+        auto& component = entity.get().getComponent<engine::component::ARender>();
         auto& sfmlRender = dynamic_cast<sfml::component::Render&>(component);
         _window.draw(sfmlRender.sprite);
     }
+
+    _window.display();
 }
