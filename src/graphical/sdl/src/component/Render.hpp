@@ -21,11 +21,10 @@ namespace component {
 
 class Render : public engine::component::ARender {
     public:
-        Render(engine::ecs::Entity& entity, const std::vector<std::string>& paths, SDL_Window *window);
+        Render(engine::ecs::Entity& entity, const std::vector<std::string>& paths, SDL_Renderer *renderer);
         ~Render() override;
         SDL_Surface *sprite;
         SDL_Texture *texture;
-        SDL_Renderer *renderer;
         SDL_Rect *srcRect;
         SDL_Rect *dstRect;
     protected:
