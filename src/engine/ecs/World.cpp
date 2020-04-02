@@ -60,7 +60,7 @@ engine::ecs::Entity& engine::ecs::World::createEntity()
 void engine::ecs::World::deleteEntity(engine::ecs::Entity& entity)
 {
     auto it = std::find_if(this->_entities.begin(), this->_entities.end(),
-        [entity](const auto& wrapper) {
+        [&entity](const auto& wrapper) {
             return (&wrapper.get() == &entity);
         });
 
@@ -99,7 +99,7 @@ bool engine::ecs::World::hasGroup(
             "The group '" + name + "' doesn't exist");
 
     auto it = std::find_if(this->_groups.at(name).begin(),
-        this->_groups.at(name).end(), [entity](const auto& wrapper) {
+        this->_groups.at(name).end(), [&entity](const auto& wrapper) {
             return (&wrapper.get() == &entity);
         });
 
@@ -125,14 +125,14 @@ void engine::ecs::World::removeFromGroup(
         throw util::Error("engine::ecs::World::removeFromGroup()",
             "The group '" + name + "' doesn't exist");
 
-    if (!this->hasGroup(entity, name))
-        throw util::Error("engine::ecs::World::removeFromGroup()",
-            "The entity is not in the group '" + name + "'");
-
     auto it = std::find_if(this->_groups.at(name).begin(),
-        this->_groups.at(name).end(), [entity](const auto& wrapper) {
+        this->_groups.at(name).end(), [&entity](const auto& wrapper) {
             return (&wrapper.get() == &entity);
         });
+
+    if (it == this->_groups.at(name).end())
+        throw util::Error("engine::ecs::World::removeFromGroup()",
+            "The entity is not in the group '" + name + "'");
 
     this->_groups.at(name).erase(it);
 }
