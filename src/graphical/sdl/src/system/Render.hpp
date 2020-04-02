@@ -17,14 +17,14 @@ namespace system {
 
 class Render : public engine::system::ARender {
     public:
-        Render(engine::ecs::World& world, SDL_Window& window);
+        Render(engine::ecs::World& world, SDL_Renderer& renderer);
         ~Render() override = default;
 
         void init() override;
         void update() override;
         void render() override;
     private:
-        SDL_Window &_window;
+        SDL_Renderer &_renderer;
 };
 
 } // Namespace system

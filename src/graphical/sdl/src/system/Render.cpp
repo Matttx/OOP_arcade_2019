@@ -17,7 +17,7 @@
 using namespace sdl;
 using namespace system;
 
-Render::Render(engine::ecs::World& world, SDL_Window& window) : ARender(world), _window(window)
+Render::Render(engine::ecs::World& world, SDL_Renderer& renderer) : ARender(world), _renderer(renderer)
 {
 }
 
@@ -43,10 +43,11 @@ void Render::render()
     std::sort(entities.begin(), entities.end(), [](const engine::ecs::Entity& lhs, const engine::ecs::Entity& rhs) {
         return lhs.getComponent<engine::component::Transform>().layer < rhs.getComponent<engine::component::Transform>().layer;
     });
+    SDL_RenderClear(&_renderer);
     for (const auto& entity : entities) {
         auto& component = entity.get().getComponent<sdl::component::Render>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
-        SDL_RenderCopy(sdlRender.renderer, sdlRender.texture, sdlRender.srcRect, sdlRender.dstRect);
-        SDL_RenderPresent(sdlRender.renderer);
+        SDL_RenderCopy(&_renderer, sdlRender.texture, sdlRender.srcRect, sdlRender.dstRect);
     }
+    SDL_RenderPresent(&_renderer);
 }
