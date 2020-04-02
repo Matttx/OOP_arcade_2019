@@ -9,6 +9,7 @@
 #define OOP_ARCADE_2019_CORE_HPP
 
 #include "../../game/IGame.hpp"
+#include "../../game/emulator/Game.hpp"
 #include "../../graphical/IGraphical.hpp"
 #include "../ecs/Universe.hpp"
 #include "DynamicLibrary.hpp"
@@ -42,11 +43,12 @@ class Core {
     void setCurrentGraphical(const std::string& name);
 
   private:
-    ecs::Universe _universe;
     std::string _currentGame;
     std::map<std::string, DynamicLibrary<game::IGame>> _games;
     std::string _currentGraphical;
     std::map<std::string, DynamicLibrary<graphical::IGraphical>> _graphicals;
+    ecs::Universe _universe;
+    game::emulator::Game _emulator;
 };
 
 } // namespace core

@@ -5,7 +5,27 @@
 ** main.cpp
 */
 
+#include "engine/core/Core.hpp"
+
 int main()
 {
-    return 0;
+    engine::core::Core core;
+
+    core.loadGames();
+    core.loadGraphics();
+
+    core.setCurrentGraphical("lib_arcade_sfml.so");
+    core.setCurrentGame("emulator");
+
+    core.getCurrentGraphical().init();
+    core.getCurrentGame().init();
+
+    auto &universe = core.getUniverse();
+
+    universe.init();
+
+    while (true) {
+        universe.update();
+        universe.render();
+    }
 }

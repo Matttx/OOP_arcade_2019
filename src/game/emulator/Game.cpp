@@ -30,27 +30,29 @@ void game::emulator::Game::init()
     const std::vector<std::string> backgroundPaths = {
         "./assets/emulator/background.txt", "./assets/emulator/background.png",
         "./assets/emulator/background.debug"};
-    const std::vector<std::string> gameFramePaths = {
-        "./assets/emulator/game_frame.txt", "./assets/emulator/game_frame.png",
-        "./assets/emulator/game_frame.debug"};
-    const std::vector<std::string> graphicalFramePaths = {
-        "./assets/emulator/graphical_frame.txt",
-        "./assets/emulator/graphical_frame.png",
-        "./assets/emulator/graphical_frame.debug"};
+    const std::vector<std::string> framePaths = {"./assets/emulator/frame.txt",
+        "./assets/emulator/frame.png", "./assets/emulator/frame.debug"};
+    const std::vector<std::string> buttonPaths = {
+        "./assets/emulator/button.txt", "./assets/emulator/button.png",
+        "./assets/emulator/button.debug"};
+    const std::vector<std::string> selectorPaths = {
+        "./assets/emulator/selector.txt", "./assets/emulator/selector.png",
+        "./assets/emulator/selector.debug"};
 
     background.addComponent<engine::component::ARender>(backgroundPaths);
     background.addComponent<engine::component::Transform>(
         engine::type::Vector2D {0, 0}, 0);
     background.addComponent<engine::component::Size>(1920, 1080);
-    gameFrame.addComponent<engine::component::ARender>(gameFramePaths);
+    gameFrame.addComponent<engine::component::ARender>(framePaths);
     gameFrame.addComponent<engine::component::Transform>(
-        engine::type::Vector2D {50, 50}, 10);
-    gameFrame.addComponent<engine::component::Size>(800, 500);
-    graphicalFrame.addComponent<engine::component::ARender>(
-        graphicalFramePaths);
+        engine::type::Vector2D {100, (1080 - 800) / 2}, 10);
+    gameFrame.addComponent<engine::component::Size>(800, 800);
+    graphicalFrame.addComponent<engine::component::ARender>(framePaths);
     graphicalFrame.addComponent<engine::component::Transform>(
-        engine::type::Vector2D {1920 - 800 - 50, 50}, 10);
-    graphicalFrame.addComponent<engine::component::Size>(800, 500);
+        engine::type::Vector2D {1920 - 800 - 50, (1080 - 800) / 2}, 10);
+    graphicalFrame.addComponent<engine::component::Size>(800, 800);
+
+    universe.setCurrentWorld("main");
 }
 
 void game::emulator::Game::destroy()

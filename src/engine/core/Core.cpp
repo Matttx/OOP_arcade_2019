@@ -12,7 +12,7 @@
 #include "../../game/IGame.hpp"
 #include "../../graphical/IGraphical.hpp"
 
-engine::core::Core::Core() : _universe(*this)
+engine::core::Core::Core() : _universe(*this), _emulator(_universe)
 {
 }
 
@@ -74,11 +74,17 @@ void engine::core::Core::loadGraphics()
 
 bool engine::core::Core::hasGame(const std::string& name) const
 {
+    if (name == "emulator")
+        return true;
+
     return this->_games.count(name);
 }
 
 game::IGame& engine::core::Core::getGame(const std::string& name) const
 {
+    if (name == "emulator")
+        return const_cast<game::emulator::Game&>(this->_emulator);
+
     if (this->_games.count(name) == 0)
         throw util::Error("engine::core::Core::getGame()",
             "The game '" + name + "' doesn't exist");
@@ -88,6 +94,9 @@ game::IGame& engine::core::Core::getGame(const std::string& name) const
 
 game::IGame& engine::core::Core::getCurrentGame() const
 {
+    if (this->_currentGame == "emulator")
+        return const_cast<game::emulator::Game&>(this->_emulator);
+
     if (this->_games.count(this->_currentGame) == 0)
         throw util::Error("engine::core::Core::getCurrentGame()",
             "The game '" + this->_currentGame + "' doesn't exist");
@@ -97,6 +106,12 @@ game::IGame& engine::core::Core::getCurrentGame() const
 
 void engine::core::Core::setCurrentGame(const std::string& name)
 {
+    if (name == "emulator") {
+        this->_currentGame = "emulator";
+
+        return;
+    }
+
     if (this->_games.count(name) == 0)
         throw util::Error("engine::core::Core::setCurrentGame()",
             "The game '" + name + "' doesn't exist");
