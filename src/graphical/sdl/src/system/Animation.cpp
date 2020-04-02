@@ -10,19 +10,21 @@
 #include "../../../../engine/component/ARender.hpp"
 #include "../../../../engine/system/AAnimations.hpp"
 #include "../../../../engine/component/Animations.hpp"
+#include "../../../../engine/ecs/World.hpp"
+#include "../component/Render.hpp"
 
 using namespace sdl;
 using namespace system;
 
-Animation::Animation(engine::ecs::World& world) : : AAnimations(world),
+Animation::Animation(engine::ecs::World& world) : AAnimations(world)
 {
 }
 
-void init()
+void Animation::init()
 {
 }
 
-void update()
+void Animation::update()
 {
     auto entities = getWorld().getEntities<engine::component::ARender, engine::component::Animations>();
 
@@ -31,17 +33,19 @@ void update()
         auto& compSprite = entity.get().getComponent<engine::component::ARender>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(compSprite);
         auto& currentAnimation = compAnimation.list.at(compAnimation.currentAnimation);
-        sdlRender.srcRect.top = currentAnimation.row * (sfmlRender.texture.getSize().y / compAnimation.list.size());
+        SDL_QueryTexture(sdlRender.texture, NULL, NULL, &sdlRender.srcRect->w, &sdlRender.srcRect->h);
+        int y = sdlRender.srcRect->w;
+        sdlRender.srcRect->y = currentAnimation.row * (y / compAnimation.list.size());
         if (compAnimation.currentFrame == currentAnimation.frames) {
             compAnimation.currentFrame = 0;
-            sdlRender.srcRect.left = 0;
+            sdlRender.srcRect->x = 0;
         } else {
-            sdlRender.srcRect.left += sfmlRender.srcRect.width;
+            sdlRender.srcRect->x += sdlRender.srcRect->w;
             compAnimation.currentFrame += 1;
         }
     }
 }
 
-void render()
+void Animation::render()
 {
 }
