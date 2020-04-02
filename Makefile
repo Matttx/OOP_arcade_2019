@@ -67,7 +67,8 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							graphical/AGraphical.cpp			\
 							graphical/IGraphical.cpp			\
 
-TEST_SRC			=
+TEST_SRC			=		test_Universe.cpp					\
+
 
 CFLAGS				+=		-I $(INCL_DIR)
 CFLAGS				+=		-W -Wall -Wextra -Werror
