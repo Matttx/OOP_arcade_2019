@@ -7,7 +7,6 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <SDL2/SDL_mixer.h>
 
 #include "Graphical.hpp"
 
@@ -22,6 +21,7 @@
 sdl::Graphical::Graphical(engine::eventbus::EventBus& eventBus) : graphical::AGraphical("sdl", LIBTYPE::GRAPHIC, eventBus), _eventBus(eventBus)
 {
     _window = nullptr;
+    renderer = nullptr;
 }
 
 sdl::Graphical::~Graphical()
@@ -29,12 +29,17 @@ sdl::Graphical::~Graphical()
     destroy();
 }
 
+extern "C" sdl::Graphical* create(engine::eventbus::EventBus& eventBus)
+ {
+     return new sdl::Graphical(eventBus);
+ }
+
 void sdl::Graphical::init()
 {
     SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
     IMG_Init(IMG_INIT_PNG);
-    Mix_Init(MIX_INIT_MP3);
     _window = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_RESIZABLE);
+    renderer = SDL_CreateRenderer(_window, -1, 0);
 }
 
 void sdl::Graphical::dispatchEvent()
@@ -53,8 +58,8 @@ void sdl::Graphical::dispatchEvent()
 
 void sdl::Graphical::destroy()
 {
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(_window);
-    Mix_Quit();
     IMG_Quit();
     SDL_Quit();
 }
@@ -66,7 +71,7 @@ engine::component::AAudio &sdl::Graphical::createAudio(engine::ecs::Entity &enti
 
 engine::component::ARender &sdl::Graphical::createRender(engine::ecs::Entity &entity, const std::vector<std::string> &paths)
 {
-    return *(new sdl::component::Render(entity, paths, _window));
+    return *(new sdl::component::Render(entity, paths, renderer));
 }
 
 engine::system::AAudio &sdl::Graphical::createAudioSystem(engine::ecs::World &world)
@@ -76,5 +81,5 @@ engine::system::AAudio &sdl::Graphical::createAudioSystem(engine::ecs::World &wo
 
 engine::system::ARender &sdl::Graphical::createRenderSystem(engine::ecs::World &world)
 {
-    return *(new sdl::system::Render(world, *_window));
+    return *(new sdl::system::Render(world, *renderer));
 }

@@ -37,6 +37,7 @@ class Graphical : public graphical::AGraphical {
 
     private:
         SDL_Window *_window;
+        SDL_Renderer *renderer;
         engine::eventbus::EventBus& _eventBus;
 };
 
@@ -99,7 +100,6 @@ static const std::map<SDL_Keycode, engine::event::Input::KEYCODE> SDLKEYCODE =
     {SDLK_QUOTE, engine::event::Input::KEY_QUOTE},
     {SDLK_SLASH, engine::event::Input::KEY_SLASH},
     {SDLK_BACKSLASH, engine::event::Input::KEY_BACKSLASH},
-    //{sf::Keyboard::Tilde, engine::event::Input::KEY_TILDE},
     {SDLK_EQUALS, engine::event::Input::KEY_EQUAL},
     {SDLK_BACKSLASH, engine::event::Input::KEY_HYPHEN},
     {SDLK_SPACE, engine::event::Input::KEY_SPACE},
@@ -146,7 +146,6 @@ static const std::map<SDL_Keycode, engine::event::Input::KEYCODE> SDLKEYCODE =
     {SDLK_F14, engine::event::Input::KEY_F14},
     {SDLK_F15, engine::event::Input::KEY_F15},
     {SDLK_PAUSE, engine::event::Input::KEY_PAUSE}
-    //{sf::Keyboard::KeyCount, engine::event::Input::KEY_KEYCOUNT}
 };
 
 #endif /* !GRAPHICAL_HPP_ */
