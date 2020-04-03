@@ -45,7 +45,7 @@ void Render::render()
     });
     SDL_RenderClear(&_renderer);
     for (const auto& entity : entities) {
-        auto& component = entity.get().getComponent<sdl::component::Render>();
+        auto& component = entity.get().getComponent<engine::component::ARender>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
         SDL_RenderCopy(&_renderer, sdlRender.texture, sdlRender.srcRect, sdlRender.dstRect);
     }
