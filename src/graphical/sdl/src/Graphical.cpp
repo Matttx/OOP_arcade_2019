@@ -19,6 +19,7 @@
 
 
 sdl::Graphical::Graphical(engine::eventbus::EventBus& eventBus) : graphical::AGraphical("sdl", LIBTYPE::GRAPHIC, eventBus)
+}
     _window = nullptr;
     renderer = nullptr;
 }
