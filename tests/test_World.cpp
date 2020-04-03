@@ -95,13 +95,7 @@ Test(World, World_hasGroup_false)
     auto& universe = core.getUniverse();
     auto& world = universe.createWorld("world");
     auto& entity = world.createEntity();
-    world.addToGroup(entity, "Group");
-    try {
-        world.hasGroup(entity, "false");
-        cr_assert_eq(true, false);
-    } catch (engine::util::Error& e) {
-        cr_assert_eq(true, true);
-    }
+    cr_assert_eq(world.hasGroup(entity, "false"), false);
 }
 
 Test(World, World_getGroup_true)
@@ -143,10 +137,9 @@ Test(World, World_removeFromGroup_true)
     world.addToGroup(entity, "Group");
     try {
         world.removeFromGroup(entity, "Group");
-        world.hasGroup(entity, "Group");
-        cr_assert_eq(true, false);
+        cr_assert_eq(world.hasGroup(entity, "Group"), false);
     } catch (engine::util::Error& e) {
-        cr_assert_eq(true, true);
+        cr_assert_eq(true, false);
     }
 }
 
@@ -171,6 +164,20 @@ Test(World, World_addSystem)
     auto& universe = core.getUniverse();
     auto& world = universe.createWorld("world");
     world.addSystem<System>();
+}
+
+Test(World, World_addSystem_Catch_Error)
+{
+    engine::core::Core core;
+    auto& universe = core.getUniverse();
+    auto& world = universe.createWorld("world");
+    world.addSystem<System>();
+    try {
+        world.addSystem<System>();
+        cr_assert_eq(true, false);
+    } catch (engine::util::Error& e) {
+        cr_assert_eq(true, true);
+    }
 }
 
 Test(World, World_hasSystem_true)
@@ -217,7 +224,7 @@ Test(World, World_getSystem_false)
     }
 }
 
-Test(World, Wrold_removeSystem_true)
+Test(World, World_removeSystem_true)
 {
     engine::core::Core core;
     auto& universe = core.getUniverse();
@@ -231,7 +238,7 @@ Test(World, Wrold_removeSystem_true)
     }
 }
 
-Test(World, Wrold_removeSystem_false)
+Test(World, World_removeSystem_false)
 {
     engine::core::Core core;
     auto& universe = core.getUniverse();
