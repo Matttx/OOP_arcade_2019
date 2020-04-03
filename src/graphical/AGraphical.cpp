@@ -24,3 +24,8 @@ LIBTYPE graphical::AGraphical::getType() const
 {
     return this->_type;
 }
+
+engine::eventbus::EventBus& graphical::AGraphical::getEventBus() const
+{
+    return this->_eventBus;
+}
