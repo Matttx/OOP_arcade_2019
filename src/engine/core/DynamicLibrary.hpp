@@ -48,7 +48,7 @@ class DynamicLibrary {
 
     ~DynamicLibrary()
     {
-        if (_instance == nullptr)
+        if (_instance)
             delete _instance;
 
         if (_handler)
@@ -59,7 +59,8 @@ class DynamicLibrary {
     T& get() const
     {
         if (_instance == nullptr)
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error(
+                "engine::core::DynamicLibrary::get()", "Bad instance");
 
         return *_instance;
     }

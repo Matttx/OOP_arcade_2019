@@ -215,3 +215,21 @@ void engine::core::Core::updateGraphicalSystem()
         .removeSystem<engine::system::ARender>();
     this->getUniverse().getCurrentWorld().addSystem<engine::system::ARender>();
 }
+
+std::map<std::string, std::string> engine::core::Core::getGames() const
+{
+    std::map<std::string, std::string> map;
+    for (const auto& game : _games) {
+        map.emplace(game.first, game.second.get().getName());
+    }
+    return map;
+}
+
+std::map<std::string, std::string> engine::core::Core::getGraphicals() const
+{
+    std::map<std::string, std::string> map;
+    for (const auto& graphical : _graphicals) {
+        map.emplace(graphical.first, graphical.second.get().getName());
+    }
+    return map;
+}

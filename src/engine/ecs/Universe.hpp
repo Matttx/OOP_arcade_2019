@@ -44,6 +44,7 @@ class Universe {
     bool hasCurrentWorld() const;
     World& getWorld(const std::string& name) const;
     World& getCurrentWorld() const;
+    std::vector<std::string> getWorldNames() const;
     void setCurrentWorld(const std::string& name);
     void deleteWorld(const std::string& name);
 

@@ -22,7 +22,10 @@ class Audio : public engine::component::AAudio {
     public:
         Audio(engine::ecs::Entity& entity, const std::vector<std::string>& paths);
         ~Audio() override;
-    protected:
+        SDL_AudioSpec wavSpec;
+        Uint32 wavLength;
+        Uint8 *wavBuffer;
+        SDL_AudioDeviceID deviceId;
     private:
 };
 
