@@ -5,8 +5,6 @@
 ** Audio
 */
 
-#include <SDL2/SDL_ixer.h>
-
 #include "Audio.hpp"
 
 #include "../../../../engine/component/AAudio.hpp"
@@ -20,10 +18,9 @@ Audio::Audio(engine::ecs::World& world) : AAudio(world)
 {
 }
 
-Audio::~Audio()
-{
-    Mix_CloseAudio();
-}
+//Audio::~Audio()
+//{
+//}
 
 void Audio::init()
 {
@@ -35,11 +32,9 @@ void Audio::update()
 
 void Audio::render()
 {
-    auto entities = getWorld().getEntities<engine::component::AAudio>();
-    for (const auto& entity : entities) {
-        auto& component = entity.get().getComponent<engine::component::AAudio>();
-        auto& sdlAudio = dynamic_cast<sdl::component::Audio&>(component);
-        if (Mix_PlayingMusic() != 1)
-            Mix_PlayMusic(sdlAudio.music, 1)
-    }
+    //auto entities = getWorld().getEntities<engine::component::AAudio>();
+    //for (const auto& entity : entities) {
+    //    auto& component = entity.get().getComponent<engine::component::AAudio>();
+    //    auto& sdlAudio = dynamic_cast<sdl::component::Audio&>(component);
+    //}
 }
