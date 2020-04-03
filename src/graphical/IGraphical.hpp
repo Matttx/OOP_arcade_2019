@@ -32,6 +32,7 @@ class IGraphical {
   public:
     virtual std::string getName() const = 0;
     virtual LIBTYPE getType() const = 0;
+    virtual engine::eventbus::EventBus& getEventBus() const = 0;
 
   public:
     virtual engine::component::AAudio& createAudio(

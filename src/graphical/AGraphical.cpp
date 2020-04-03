@@ -13,6 +13,8 @@ graphical::AGraphical::AGraphical(
 {
 }
 
+graphical::AGraphical::~AGraphical() = default;
+
 std::string graphical::AGraphical::getName() const
 {
     return this->_name;
@@ -21,4 +23,9 @@ std::string graphical::AGraphical::getName() const
 LIBTYPE graphical::AGraphical::getType() const
 {
     return this->_type;
+}
+
+engine::eventbus::EventBus& graphical::AGraphical::getEventBus() const
+{
+    return this->_eventBus;
 }

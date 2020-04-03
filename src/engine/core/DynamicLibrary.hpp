@@ -13,6 +13,8 @@
 #include <stdexcept>
 #include <string>
 
+#include "../util/Error.hpp"
+
 namespace engine {
 
 namespace core {
@@ -28,12 +30,12 @@ class DynamicLibrary {
         _handler = dlopen(path.c_str(), RTLD_LAZY);
 
         if (!_handler)
-            throw std::runtime_error(dlerror()); // TODO: Custom Error class
+            throw util::Error("engine::core::DynamicLibrary()", dlerror());
 
         auto creator = reinterpret_cast<Creator>(dlsym(_handler, "create"));
 
         if (!creator)
-            throw std::runtime_error(dlerror()); // TODO: Custom Error class
+            throw util::Error("engine::core::DynamicLibrary()", dlerror());
 
         _instance = creator(args...);
     }
