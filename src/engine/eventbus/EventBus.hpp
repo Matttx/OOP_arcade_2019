@@ -41,7 +41,7 @@ class EventBus {
 
         void call(AEvent& event) override
         {
-            this->_subscriber->*this->_callback(static_cast<E&>(event));
+            (this->_subscriber.*this->_callback)(static_cast<E&>(event));
         }
 
       private:
