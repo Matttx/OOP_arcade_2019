@@ -27,14 +27,15 @@ void Animation::init()
 void Animation::update()
 {
     auto entities = getWorld().getEntities<engine::component::ARender, engine::component::Animations>();
+    int x = 0;
+    int y = 0;
 
     for (auto& entity : entities) {
         auto& compAnimation = entity.get().getComponent<engine::component::Animations>();
         auto& compSprite = entity.get().getComponent<engine::component::ARender>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(compSprite);
         auto& currentAnimation = compAnimation.list.at(compAnimation.currentAnimation);
-        SDL_QueryTexture(sdlRender.texture, NULL, NULL, &sdlRender.srcRect->w, &sdlRender.srcRect->h);
-        int y = sdlRender.srcRect->w;
+        SDL_QueryTexture(sdlRender.texture, nullptr, nullptr, &x, &y);
         sdlRender.srcRect->y = currentAnimation.row * (y / compAnimation.list.size());
         if (compAnimation.currentFrame == currentAnimation.frames) {
             compAnimation.currentFrame = 0;
