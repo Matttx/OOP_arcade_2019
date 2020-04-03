@@ -40,16 +40,28 @@ class DynamicLibrary {
         _instance = creator(args...);
     }
 
+    explicit DynamicLibrary(T* instance)
+    {
+        _instance = instance;
+        _handler = nullptr;
+    }
+
     ~DynamicLibrary()
     {
-        delete _instance;
+        if (_instance == nullptr)
+            delete _instance;
 
-        dlclose(_handler);
+        if (_handler == nullptr)
+            dlclose(_handler);
     }
 
   public:
     T& get() const
     {
+        if (_instance == nullptr)
+            throw util::Error(
+                "engine::core::DynamicLibrary::get()", "Bad instance");
+
         return *_instance;
     }
 
