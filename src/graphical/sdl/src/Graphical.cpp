@@ -18,8 +18,7 @@
 #include "system/Render.hpp"
 
 
-sdl::Graphical::Graphical(engine::eventbus::EventBus& eventBus) : graphical::AGraphical("sdl", LIBTYPE::GRAPHIC, eventBus), _eventBus(eventBus)
-{
+sdl::Graphical::Graphical(engine::eventbus::EventBus* eventBus) : graphical::AGraphical("sdl", LIBTYPE::GRAPHIC, eventBus)
     _window = nullptr;
     renderer = nullptr;
 }
@@ -31,7 +30,7 @@ sdl::Graphical::~Graphical()
 
 extern "C" sdl::Graphical* create(engine::eventbus::EventBus& eventBus)
  {
-     return new sdl::Graphical(eventBus);
+     return new sdl::Graphical(*eventBus);
  }
 
 void sdl::Graphical::init()

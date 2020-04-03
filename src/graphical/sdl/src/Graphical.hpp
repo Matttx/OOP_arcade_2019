@@ -23,7 +23,7 @@
 namespace sdl {
 class Graphical : public graphical::AGraphical {
     public:
-        Graphical(engine::eventbus::EventBus& eventBus);
+        Graphical(engine::eventbus::EventBus* eventBus);
         ~Graphical() override;
 
         void init() override;
@@ -38,7 +38,6 @@ class Graphical : public graphical::AGraphical {
     private:
         SDL_Window *_window;
         SDL_Renderer *renderer;
-        engine::eventbus::EventBus& _eventBus;
 };
 
 } // Namespace sdl
