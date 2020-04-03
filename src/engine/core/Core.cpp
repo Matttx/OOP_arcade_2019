@@ -210,3 +210,18 @@ void engine::core::Core::updateGraphicalSystem()
         .removeSystem<engine::system::ARender>();
     this->getUniverse().getCurrentWorld().addSystem<engine::system::ARender>();
 }
+
+std::map<std::string, engine::core::DynamicLibrary<game::IGame>>&
+    engine::core::Core::getGames() const
+{
+    return const_cast<
+        std::map<std::string, engine::core::DynamicLibrary<game::IGame>>&>(
+        _games);
+}
+std::map<std::string, engine::core::DynamicLibrary<graphical::IGraphical>>&
+    engine::core::Core::getGraphicals() const
+{
+    return const_cast<
+        std::map<std::string, engine::core::DynamicLibrary<graphical::IGraphical>>&>(
+        _graphicals);
+}
