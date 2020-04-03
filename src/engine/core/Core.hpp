@@ -35,7 +35,7 @@ class Core {
     game::IGame& getGame(const std::string& name) const;
     game::IGame& getCurrentGame() const;
     void setCurrentGame(const std::string& name);
-    std::map<std::string, DynamicLibrary<game::IGame>>& getGames() const;
+    std::map<std::string, std::string> getGames() const;
 
   public:
     bool hasGraphical(const std::string& name) const;
@@ -43,7 +43,7 @@ class Core {
     graphical::IGraphical& getGraphical(const std::string& name) const;
     graphical::IGraphical& getCurrentGraphical() const;
     void setCurrentGraphical(const std::string& name);
-    std::map<std::string, DynamicLibrary<graphical::IGraphical>>& getGraphicals() const;
+    std::map<std::string, std::string> getGraphicals() const;
 
 
   private:
