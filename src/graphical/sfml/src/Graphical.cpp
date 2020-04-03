@@ -15,7 +15,7 @@
 #include "system/Render.hpp"
 
 sfml::Graphical::Graphical(engine::eventbus::EventBus& eventBus)
-    : graphical::AGraphical("sfml", LIBTYPE::GRAPHIC, eventBus), _eventBus(eventBus)
+    : graphical::AGraphical("sfml", LIBTYPE::GRAPHIC, eventBus)
 {
     _window = nullptr;
 }
@@ -37,7 +37,7 @@ void sfml::Graphical::init()
 
 void sfml::Graphical::dispatchEvent()
 {
-    sf::Event event;
+    sf::Event event {};
     while (_window->pollEvent(event)) {
         for (auto& i : KEYCORRESPONDENCE) {
             if (event.type == sf::Keyboard::isKeyPressed(i.first)) {
