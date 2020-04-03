@@ -32,7 +32,8 @@ extern "C" sfml::Graphical* create(engine::eventbus::EventBus* eventBus)
 
 void sfml::Graphical::init()
 {
-    _window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Arcade");
+    if (_window == nullptr)
+        _window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Arcade");
 }
 
 void sfml::Graphical::dispatchEvent()

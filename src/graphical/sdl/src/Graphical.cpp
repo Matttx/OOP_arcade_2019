@@ -36,10 +36,13 @@ extern "C" sdl::Graphical* create(engine::eventbus::EventBus* eventBus)
 
 void sdl::Graphical::init()
 {
-    SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
-    IMG_Init(IMG_INIT_PNG);
-    _window = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_RESIZABLE);
-    _renderer = SDL_CreateRenderer(_window, -1, 0);
+    if (_window == nullptr) {
+        SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+        IMG_Init(IMG_INIT_PNG);
+        _window = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED,
+            SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_RESIZABLE);
+        _renderer = SDL_CreateRenderer(_window, -1, 0);
+    }
 }
 
 void sdl::Graphical::dispatchEvent()
@@ -64,6 +67,9 @@ void sdl::Graphical::destroy()
     SDL_DestroyWindow(_window);
     IMG_Quit();
     SDL_Quit();
+
+    _renderer = nullptr;
+    _window = nullptr;
 }
 
 engine::component::AAudio &sdl::Graphical::createAudio(engine::ecs::Entity &entity, const std::vector<std::string> &paths)
