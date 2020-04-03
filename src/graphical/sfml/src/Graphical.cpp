@@ -37,11 +37,14 @@ void sfml::Graphical::init()
 
 void sfml::Graphical::dispatchEvent()
 {
-    for (auto& i : KEYCORRESPONDENCE) {
-        if (sf::Keyboard::isKeyPressed(i.first)) {
-            auto input = new engine::event::Input(i.second);
-            _eventBus.publish(*input);
-            delete input;
+    sf::Event event;
+    while (_window->pollEvent(event)) {
+        for (auto& i : KEYCORRESPONDENCE) {
+            if (event.type == sf::Keyboard::isKeyPressed(i.first)) {
+                auto input = new engine::event::Input(i.second);
+                getEventBus().publish(*input);
+                delete input;
+            }
         }
     }
 }
