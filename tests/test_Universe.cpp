@@ -20,7 +20,7 @@ Test(Universe, Universe_getCore)
 {
     engine::core::Core core;
     auto& universe = core.getUniverse();
-    universe.getCore();
+    cr_assert_eq(&universe.getCore(), &core);
 }
 
 Test(Universe, Universe_getEventBus)
