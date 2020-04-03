@@ -12,7 +12,6 @@
 #include <vector>
 
 #include "../ecs/AComponent.hpp"
-#include "../ecs/Entity.hpp"
 
 namespace engine {
 

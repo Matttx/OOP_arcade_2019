@@ -9,7 +9,6 @@
 #define OOP_ARCADE_2019_COMPONENT_TRANSFORM_HPP
 
 #include "../ecs/AComponent.hpp"
-#include "../ecs/Entity.hpp"
 #include "../type/Vector2D.hpp"
 
 namespace engine {
@@ -23,7 +22,7 @@ class Transform : public ecs::AComponent {
 
   public:
     Transform(ecs::Entity& entity, type::Vector2D position, int layer);
-    ~Transform() override = 0;
+    ~Transform() override;
 };
 
 } // namespace component

@@ -31,6 +31,7 @@ class Core {
 
   public:
     bool hasGame(const std::string& name) const;
+    bool hasGameGraphical() const;
     game::IGame& getGame(const std::string& name) const;
     game::IGame& getCurrentGame() const;
     void setCurrentGame(const std::string& name);
@@ -38,6 +39,7 @@ class Core {
 
   public:
     bool hasGraphical(const std::string& name) const;
+    bool hasCurrentGraphical() const;
     graphical::IGraphical& getGraphical(const std::string& name) const;
     graphical::IGraphical& getCurrentGraphical() const;
     void setCurrentGraphical(const std::string& name);
@@ -45,11 +47,15 @@ class Core {
 
 
   private:
-    ecs::Universe _universe;
     std::string _currentGame;
     std::map<std::string, DynamicLibrary<game::IGame>> _games;
     std::string _currentGraphical;
     std::map<std::string, DynamicLibrary<graphical::IGraphical>> _graphicals;
+    ecs::Universe _universe;
+
+  private:
+    void updateGraphicalComponent();
+    void updateGraphicalSystem();
 };
 
 } // namespace core

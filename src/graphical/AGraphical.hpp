@@ -28,6 +28,7 @@ class AGraphical : public IGraphical {
   public:
     std::string getName() const override;
     LIBTYPE getType() const override;
+    engine::eventbus::EventBus& getEventBus() const override;
 
   public:
     engine::component::AAudio& createAudio(engine::ecs::Entity& entity,
@@ -44,7 +45,7 @@ class AGraphical : public IGraphical {
   private:
     std::string _name;
     LIBTYPE _type;
-    engine::eventbus::EventBus _eventBus;
+    engine::eventbus::EventBus& _eventBus;
 };
 
 } // namespace graphical
