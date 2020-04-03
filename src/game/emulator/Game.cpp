@@ -93,7 +93,7 @@ void game::emulator::Game::init()
     });
     graphicalBtn1.addComponent<engine::component::ARender>(buttonPaths);
     graphicalBtn1.addComponent<engine::component::Transform>(
-        engine::type::Vector2D {1200, 200}, 20);
+        engine::type::Vector2D {1170, 200}, 20);
     graphicalBtn1.addComponent<engine::component::Size>(600, 150);
 
     graphicalBtn2.addComponent<game::emulator::component::Action>([](engine::ecs::Universe& universe) {
@@ -102,7 +102,7 @@ void game::emulator::Game::init()
     });
     graphicalBtn2.addComponent<engine::component::ARender>(buttonPaths);
     graphicalBtn2.addComponent<engine::component::Transform>(
-        engine::type::Vector2D {1200, 400}, 20);
+        engine::type::Vector2D {1170, 400}, 20);
     graphicalBtn2.addComponent<engine::component::Size>(600, 150);
 
     graphicalBtn3.addComponent<game::emulator::component::Action>([](engine::ecs::Universe& universe) {
@@ -111,7 +111,7 @@ void game::emulator::Game::init()
     });
     graphicalBtn3.addComponent<engine::component::ARender>(buttonPaths);
     graphicalBtn3.addComponent<engine::component::Transform>(
-        engine::type::Vector2D {1200, 600}, 20);
+        engine::type::Vector2D {1170, 600}, 20);
     graphicalBtn3.addComponent<engine::component::Size>(600, 150);
 
     selector.addComponent<game::emulator::component::User>();
