@@ -23,7 +23,7 @@
 namespace sdl {
 class Graphical : public graphical::AGraphical {
     public:
-        Graphical(engine::eventbus::EventBus* eventBus);
+        Graphical(engine::eventbus::EventBus& eventBus);
         ~Graphical() override;
 
         void init() override;
