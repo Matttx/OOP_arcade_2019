@@ -12,7 +12,7 @@
 #include "../src/engine/core/Core.hpp"
 #include "../src/engine/ecs/World.hpp"
 
-#include "mock_render.hpp"
+#include "mock_system.hpp"
 
 Test(World, World_constructor)
 {
@@ -159,6 +159,85 @@ Test(World, World_removeFromGroup_false)
     world.addToGroup(entity, "Group");
     try {
         world.removeFromGroup(entity, "false");
+        cr_assert_eq(true, false);
+    } catch (engine::util::Error& e) {
+        cr_assert_eq(true, true);
+    }
+}
+
+Test(World, World_addSystem)
+{
+    engine::core::Core core;
+    auto& universe = core.getUniverse();
+    auto& world = universe.createWorld("world");
+    world.addSystem<System>();
+}
+
+Test(World, World_hasSystem_true)
+{
+    engine::core::Core core;
+    auto& universe = core.getUniverse();
+    auto& world = universe.createWorld("world");
+    world.addSystem<System>();
+    cr_assert_eq(world.hasSystems<System>(), true);
+}
+
+Test(World, World_hasSystem_false)
+{
+    engine::core::Core core;
+    auto& universe = core.getUniverse();
+    auto& world = universe.createWorld("world");
+    cr_assert_eq(world.hasSystems<System>(), false);
+}
+
+Test(World, World_getSystem_true)
+{
+    engine::core::Core core;
+    auto& universe = core.getUniverse();
+    auto& world = universe.createWorld("world");
+    world.addSystem<System>();
+    try {
+        world.getSystem<System>();
+        cr_assert_eq(true, true);
+    } catch (engine::util::Error& e) {
+        cr_assert_eq(true, false);
+    }
+}
+
+Test(World, World_getSystem_false)
+{
+    engine::core::Core core;
+    auto& universe = core.getUniverse();
+    auto& world = universe.createWorld("world");
+    try {
+        world.getSystem<System>();
+        cr_assert_eq(true, false);
+    } catch (engine::util::Error& e) {
+        cr_assert_eq(true, true);
+    }
+}
+
+Test(World, Wrold_removeSystem_true)
+{
+    engine::core::Core core;
+    auto& universe = core.getUniverse();
+    auto& world = universe.createWorld("world");
+    world.addSystem<System>();
+    try {
+        world.removeSystem<System>();
+        cr_assert_eq(true, true);
+    } catch (engine::util::Error& e) {
+        cr_assert_eq(true, false);
+    }
+}
+
+Test(World, Wrold_removeSystem_false)
+{
+    engine::core::Core core;
+    auto& universe = core.getUniverse();
+    auto& world = universe.createWorld("world");
+    try {
+        world.removeSystem<System>();
         cr_assert_eq(true, false);
     } catch (engine::util::Error& e) {
         cr_assert_eq(true, true);
