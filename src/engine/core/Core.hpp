@@ -9,7 +9,6 @@
 #define OOP_ARCADE_2019_CORE_HPP
 
 #include "../../game/IGame.hpp"
-#include "../../game/emulator/Game.hpp"
 #include "../../graphical/IGraphical.hpp"
 #include "../ecs/Universe.hpp"
 #include "DynamicLibrary.hpp"
@@ -50,7 +49,6 @@ class Core {
     std::string _currentGraphical;
     std::map<std::string, DynamicLibrary<graphical::IGraphical>> _graphicals;
     ecs::Universe _universe;
-    game::emulator::Game _emulator;
 
   private:
     void updateGraphicalComponent();

@@ -9,6 +9,7 @@
 
 #include "../../engine/component/Size.hpp"
 #include "../../engine/component/Transform.hpp"
+#include "component/Action.hpp"
 #include "component/User.hpp"
 #include "system/User.hpp"
 
@@ -68,26 +69,46 @@ void game::emulator::Game::init()
         engine::type::Vector2D {1920 - 800 - 50, (1080 - 800) / 2}, 10);
     graphicalFrame.addComponent<engine::component::Size>(800, 800);
 
+    gameBtn1.addComponent<game::emulator::component::Action>([](engine::ecs::Universe& universe) {
+      (void) universe;
+      std::cout << "gameBtn1 callback!" << std::endl;
+    });
     gameBtn1.addComponent<engine::component::ARender>(buttonPaths);
     gameBtn1.addComponent<engine::component::Transform>(
         engine::type::Vector2D {200, 200}, 20);
     gameBtn1.addComponent<engine::component::Size>(600, 150);
 
+    gameBtn2.addComponent<game::emulator::component::Action>([](engine::ecs::Universe& universe) {
+      (void) universe;
+      std::cout << "gameBtn2 callback!" << std::endl;
+    });
     gameBtn2.addComponent<engine::component::ARender>(buttonPaths);
     gameBtn2.addComponent<engine::component::Transform>(
         engine::type::Vector2D {200, 400}, 20);
     gameBtn2.addComponent<engine::component::Size>(600, 150);
 
+    graphicalBtn1.addComponent<game::emulator::component::Action>([](engine::ecs::Universe& universe) {
+      (void) universe;
+      std::cout << "graphicalBtn1 callback!" << std::endl;
+    });
     graphicalBtn1.addComponent<engine::component::ARender>(buttonPaths);
     graphicalBtn1.addComponent<engine::component::Transform>(
         engine::type::Vector2D {1200, 200}, 20);
     graphicalBtn1.addComponent<engine::component::Size>(600, 150);
 
+    graphicalBtn2.addComponent<game::emulator::component::Action>([](engine::ecs::Universe& universe) {
+      (void) universe;
+      std::cout << "graphicalBtn2 callback!" << std::endl;
+    });
     graphicalBtn2.addComponent<engine::component::ARender>(buttonPaths);
     graphicalBtn2.addComponent<engine::component::Transform>(
         engine::type::Vector2D {1200, 400}, 20);
     graphicalBtn2.addComponent<engine::component::Size>(600, 150);
 
+    graphicalBtn3.addComponent<game::emulator::component::Action>([](engine::ecs::Universe& universe) {
+      (void) universe;
+      std::cout << "graphicalBtn3 callback!" << std::endl;
+    });
     graphicalBtn3.addComponent<engine::component::ARender>(buttonPaths);
     graphicalBtn3.addComponent<engine::component::Transform>(
         engine::type::Vector2D {1200, 600}, 20);

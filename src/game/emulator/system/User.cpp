@@ -10,9 +10,10 @@
 #include "../../../engine/component/Size.hpp"
 #include "../../../engine/component/Transform.hpp"
 #include "../../../engine/ecs/Universe.hpp"
+#include "../component/Action.hpp"
 #include "../component/User.hpp"
 
-game::emulator::system::User::User(engine::ecs::World& world) : AUser(world)
+game::emulator::system::User::User(engine::ecs::World &world) : AUser(world)
 {
 }
 
@@ -29,20 +30,25 @@ void game::emulator::system::User::init()
 
 void game::emulator::system::User::update()
 {
-    auto entities = this->getWorld().getEntities<game::emulator::component::User>();
+    auto entities =
+        this->getWorld().getEntities<game::emulator::component::User>();
     auto &games = this->getWorld().getGroup("games");
     auto &graphicals = this->getWorld().getGroup("graphicals");
 
-    for (const auto& entity : entities) {
-        auto &user = entity.get().getComponent<game::emulator::component::User>();
-        auto &transform = entity.get().getComponent<engine::component::Transform>();
+    for (const auto &entity : entities) {
+        auto &user =
+            entity.get().getComponent<game::emulator::component::User>();
+        auto &transform =
+            entity.get().getComponent<engine::component::Transform>();
         auto &size = entity.get().getComponent<engine::component::Size>();
 
         if (user.step == component::User::CHOOSE_GAME) {
-            if ((unsigned long) user.buttonIndex < games.size()) {
+            if ((unsigned long)user.buttonIndex < games.size()) {
                 auto &button = games[user.buttonIndex].get();
-                auto &buttonTransform = button.getComponent<engine::component::Transform>();
-                auto &buttonSize = button.getComponent<engine::component::Size>();
+                auto &buttonTransform =
+                    button.getComponent<engine::component::Transform>();
+                auto &buttonSize =
+                    button.getComponent<engine::component::Size>();
                 int deltaX = (buttonSize.width - size.width) / 2;
                 int deltaY = (buttonSize.height - size.height) / 2;
 
@@ -50,10 +56,12 @@ void game::emulator::system::User::update()
                 transform.position.y = buttonTransform.position.y + deltaY;
             }
         } else {
-            if ((unsigned long) user.buttonIndex < graphicals.size()) {
+            if ((unsigned long)user.buttonIndex < graphicals.size()) {
                 auto &button = graphicals[user.buttonIndex].get();
-                auto &buttonTransform = button.getComponent<engine::component::Transform>();
-                auto &buttonSize = button.getComponent<engine::component::Size>();
+                auto &buttonTransform =
+                    button.getComponent<engine::component::Transform>();
+                auto &buttonSize =
+                    button.getComponent<engine::component::Size>();
                 int deltaX = (buttonSize.width - size.width) / 2;
                 int deltaY = (buttonSize.height - size.height) / 2;
 
@@ -68,14 +76,16 @@ void game::emulator::system::User::render()
 {
 }
 
-void game::emulator::system::User::inputHandler(engine::event::Input& input)
+void game::emulator::system::User::inputHandler(engine::event::Input &input)
 {
-    auto entities = this->getWorld().getEntities<game::emulator::component::User>();
+    auto entities =
+        this->getWorld().getEntities<game::emulator::component::User>();
     auto &games = this->getWorld().getGroup("games");
     auto &graphicals = this->getWorld().getGroup("graphicals");
 
-    for (const auto& entity : entities) {
-        auto &user = entity.get().getComponent<game::emulator::component::User>();
+    for (const auto &entity : entities) {
+        auto &user =
+            entity.get().getComponent<game::emulator::component::User>();
 
         if (input.code == engine::event::Input::KEY_UP)
             user.buttonIndex = user.buttonIndex - 1;
@@ -84,21 +94,37 @@ void game::emulator::system::User::inputHandler(engine::event::Input& input)
 
         if (user.step == component::User::CHOOSE_GAME) {
             if (user.buttonIndex < 0)
-                user.buttonIndex = (int) games.size() - 1;
+                user.buttonIndex = (int)games.size() - 1;
             user.buttonIndex %= games.size();
 
             if (input.code == engine::event::Input::KEY_ENTER) {
+                auto &action =
+                    games.at(user.buttonIndex)
+                        .get()
+                        .getComponent<game::emulator::component::Action>();
+
                 user.step = component::User::CHOOSE_GRAPHICAL;
                 user.buttonIndex = 0;
+
+                action.callback(this->getWorld().getUniverse());
             }
         } else {
             if (user.buttonIndex < 0)
-                user.buttonIndex = (int) graphicals.size() - 1;
+                user.buttonIndex = (int)graphicals.size() - 1;
             user.buttonIndex %= graphicals.size();
 
             if (input.code == engine::event::Input::KEY_BACKSPACE) {
                 user.step = component::User::CHOOSE_GAME;
                 user.buttonIndex = 0;
+            }
+
+            if (input.code == engine::event::Input::KEY_ENTER) {
+                auto &action =
+                    graphicals.at(user.buttonIndex)
+                        .get()
+                        .getComponent<game::emulator::component::Action>();
+
+                action.callback(this->getWorld().getUniverse());
             }
         }
     }

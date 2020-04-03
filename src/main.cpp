@@ -19,9 +19,6 @@ int main()
     core.setCurrentGraphical("lib_arcade_sfml.so");
     core.setCurrentGame("emulator");
 
-    core.getCurrentGraphical().init();
-    core.getCurrentGame().init();
-
     auto &universe = core.getUniverse();
 
     universe.init();
