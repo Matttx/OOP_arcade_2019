@@ -21,7 +21,7 @@
 sdl::Graphical::Graphical(engine::eventbus::EventBus& eventBus) : graphical::AGraphical("sdl", LIBTYPE::GRAPHIC, eventBus)
 {
     _window = nullptr;
-    renderer = nullptr;
+    _renderer = nullptr;
 }
 
 sdl::Graphical::~Graphical()
@@ -39,7 +39,7 @@ void sdl::Graphical::init()
     SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
     IMG_Init(IMG_INIT_PNG);
     _window = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_RESIZABLE);
-    renderer = SDL_CreateRenderer(_window, -1, 0);
+    _renderer = SDL_CreateRenderer(_window, -1, 0);
 }
 
 void sdl::Graphical::dispatchEvent()
@@ -60,7 +60,7 @@ void sdl::Graphical::dispatchEvent()
 
 void sdl::Graphical::destroy()
 {
-    SDL_DestroyRenderer(renderer);
+    SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
     IMG_Quit();
     SDL_Quit();
@@ -73,7 +73,7 @@ engine::component::AAudio &sdl::Graphical::createAudio(engine::ecs::Entity &enti
 
 engine::component::ARender &sdl::Graphical::createRender(engine::ecs::Entity &entity, const std::vector<std::string> &paths)
 {
-    return *(new sdl::component::Render(entity, paths, renderer));
+    return *(new sdl::component::Render(entity, paths, _renderer));
 }
 
 engine::system::AAudio &sdl::Graphical::createAudioSystem(engine::ecs::World &world)
@@ -83,5 +83,5 @@ engine::system::AAudio &sdl::Graphical::createAudioSystem(engine::ecs::World &wo
 
 engine::system::ARender &sdl::Graphical::createRenderSystem(engine::ecs::World &world)
 {
-    return *(new sdl::system::Render(world, *renderer));
+    return *(new sdl::system::Render(world, *_renderer));
 }

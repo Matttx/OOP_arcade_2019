@@ -37,7 +37,7 @@ class Graphical : public graphical::AGraphical {
 
     private:
         SDL_Window *_window;
-        SDL_Renderer *renderer;
+        SDL_Renderer *_renderer;
 };
 
 } // Namespace sdl

@@ -38,7 +38,7 @@ void sfml::Graphical::init()
 void sfml::Graphical::dispatchEvent()
 {
     sf::Event event {};
-    while (_window->pollEvent(event)) {
+    while (_window && _window->pollEvent(event)) {
         if (event.type == sf::Event::KeyPressed) {
             for (auto& i : KEYCORRESPONDENCE) {
                 if (sf::Keyboard::isKeyPressed(i.first)) {
@@ -54,6 +54,8 @@ void sfml::Graphical::dispatchEvent()
 void sfml::Graphical::destroy()
 {
     delete _window;
+
+    _window = nullptr;
 }
 
 engine::component::AAudio& sfml::Graphical::createAudio(

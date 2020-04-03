@@ -32,8 +32,8 @@ void Render::update()
         auto& component = entity.get().getComponent<engine::component::ARender>();
         auto& transform = entity.get().getComponent<engine::component::Transform>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
-        sdlRender.dstRect->x = static_cast<float>(transform.position.x); 
-        sdlRender.dstRect->y = static_cast<float>(transform.position.y);
+        sdlRender.dstRect.x = static_cast<float>(transform.position.x);
+        sdlRender.dstRect.y = static_cast<float>(transform.position.y);
     }
 }
 
@@ -47,7 +47,7 @@ void Render::render()
     for (const auto& entity : entities) {
         auto& component = entity.get().getComponent<engine::component::ARender>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
-        SDL_RenderCopy(&_renderer, sdlRender.texture, sdlRender.srcRect, sdlRender.dstRect);
+        SDL_RenderCopy(&_renderer, sdlRender.texture, &sdlRender.srcRect, &sdlRender.dstRect);
     }
     SDL_RenderPresent(&_renderer);
 }

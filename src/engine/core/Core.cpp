@@ -205,15 +205,23 @@ void engine::core::Core::updateGraphicalComponent()
 
 void engine::core::Core::updateGraphicalSystem()
 {
-    this->getUniverse()
-        .getCurrentWorld()
-        .removeSystem<engine::system::AAudio>();
-    this->getUniverse().getCurrentWorld().addSystem<engine::system::AAudio>();
+    if (this->getUniverse().getCurrentWorld().hasSystems<engine::system::AAudio>()) {
+        this->getUniverse()
+            .getCurrentWorld()
+            .removeSystem<engine::system::AAudio>();
+        this->getUniverse()
+            .getCurrentWorld()
+            .addSystem<engine::system::AAudio>();
+    }
 
-    this->getUniverse()
-        .getCurrentWorld()
-        .removeSystem<engine::system::ARender>();
-    this->getUniverse().getCurrentWorld().addSystem<engine::system::ARender>();
+    if (this->getUniverse().getCurrentWorld().hasSystems<engine::system::ARender>()) {
+        this->getUniverse()
+            .getCurrentWorld()
+            .removeSystem<engine::system::ARender>();
+        this->getUniverse()
+            .getCurrentWorld()
+            .addSystem<engine::system::ARender>();
+    }
 }
 
 std::map<std::string, std::string> engine::core::Core::getGames() const
