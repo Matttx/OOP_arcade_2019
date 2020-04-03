@@ -26,7 +26,7 @@ Test(World, World_getUniverse)
     engine::core::Core core;
     auto& universe = core.getUniverse();
     auto& world = universe.createWorld("world");
-    world.getUniverse();
+    cr_assert_eq(&world.getUniverse(), &universe);
 }
 
 Test(World, World_init)

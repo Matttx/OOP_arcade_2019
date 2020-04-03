@@ -32,5 +32,5 @@ Test(AComponent, AComponent_getEntity)
     auto& entity = world.createEntity();
     entity.addComponent<Component>();
     auto& comp = entity.getComponent<Component>();
-    comp.getEntity();
+    cr_assert_eq(&comp.getEntity(), &entity);
 }

@@ -29,5 +29,5 @@ Test(AComponent, ASystem_getWorld)
     auto& world = universe.createWorld("world");
     world.addSystem<System>();
     auto& system = world.getSystem<System>();
-    system.getWorld();
+    cr_assert_eq(&system.getWorld(), &world);
 }

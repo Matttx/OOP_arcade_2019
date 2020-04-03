@@ -30,7 +30,7 @@ Test(Entity, Entity_getWorld)
     auto& universe = core.getUniverse();
     auto& world = universe.createWorld("world");
     auto& entity = world.createEntity();
-    entity.getWorld();
+    cr_assert_eq(&entity.getWorld(), &world);
 }
 
 Test(Entity, Entity_addComponent_true)
