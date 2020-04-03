@@ -68,6 +68,11 @@ bool engine::ecs::Universe::hasWorld(const std::string& name) const
     return this->_worlds.count(name);
 }
 
+bool engine::ecs::Universe::hasCurrentWorld() const
+{
+    return this->_worlds.count(this->_current);
+}
+
 engine::ecs::World& engine::ecs::Universe::getWorld(
     const std::string& name) const
 {
