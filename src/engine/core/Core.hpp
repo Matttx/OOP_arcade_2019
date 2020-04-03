@@ -42,11 +42,11 @@ class Core {
     void setCurrentGraphical(const std::string& name);
 
   private:
-    ecs::Universe _universe;
     std::string _currentGame;
     std::map<std::string, DynamicLibrary<game::IGame>> _games;
     std::string _currentGraphical;
     std::map<std::string, DynamicLibrary<graphical::IGraphical>> _graphicals;
+    ecs::Universe _universe;
 };
 
 } // namespace core

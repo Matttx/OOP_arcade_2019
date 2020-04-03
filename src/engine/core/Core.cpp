@@ -9,6 +9,9 @@
 
 #include <dirent.h>
 
+#include "../../game/IGame.hpp"
+#include "../../graphical/IGraphical.hpp"
+
 engine::core::Core::Core() : _universe(*this)
 {
 }
@@ -31,9 +34,14 @@ void engine::core::Core::loadGames()
     dirent* ent = readdir(directory);
 
     for (; ent != nullptr; ent = readdir(directory)) {
-        const std::string path = "./games/" + std::string(ent->d_name);
+        if (ent->d_name[0] != '.') {
+            const std::string path = "./games/" + std::string(ent->d_name);
 
-        this->_games.emplace(ent->d_name, path);
+            auto* dynamicLibrary =
+                new DynamicLibrary<game::IGame>(path, &this->getUniverse());
+
+            this->_games.emplace(ent->d_name, *dynamicLibrary);
+        }
     }
 
     closedir(directory);
@@ -50,9 +58,14 @@ void engine::core::Core::loadGraphics()
     dirent* ent = readdir(directory);
 
     for (; ent != nullptr; ent = readdir(directory)) {
-        const std::string path = "./lib/" + std::string(ent->d_name);
+        if (ent->d_name[0] != '.') {
+            const std::string path = "./lib/" + std::string(ent->d_name);
 
-        this->_graphicals.emplace(ent->d_name, path);
+            auto* dynamicLibrary = new DynamicLibrary<graphical::IGraphical>(
+                path, &this->getUniverse().getEventBus());
+
+            this->_graphicals.emplace(ent->d_name, *dynamicLibrary);
+        }
     }
 
     closedir(directory);

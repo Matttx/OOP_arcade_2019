@@ -24,7 +24,7 @@ LIB_SFML_DIR		=		src/graphical/sfml
 CC					=		g++
 RM					=		rm -rf
 
-LDLIBS				=		-ldl
+LDLIBS				=		-ldl -rdynamic
 
 MAIN_SRC			=		main.cpp
 
@@ -64,7 +64,8 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							graphical/AGraphical.cpp			\
 							graphical/IGraphical.cpp			\
 
-TEST_SRC			=
+TEST_SRC			=		test_Universe.cpp					\
+
 
 CFLAGS				+=		-I $(INCL_DIR)
 CFLAGS				+=		-W -Wall -Wextra -Werror
