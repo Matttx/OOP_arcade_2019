@@ -37,7 +37,8 @@ void engine::core::Core::loadGames()
         if (ent->d_name[0] != '.') {
             const std::string path = "./games/" + std::string(ent->d_name);
 
-            auto* dynamicLibrary = new DynamicLibrary<game::IGame>(path);
+            auto* dynamicLibrary =
+                new DynamicLibrary<game::IGame>(path, &this->getUniverse());
 
             this->_games.emplace(ent->d_name, *dynamicLibrary);
         }
@@ -61,7 +62,7 @@ void engine::core::Core::loadGraphics()
             const std::string path = "./lib/" + std::string(ent->d_name);
 
             auto* dynamicLibrary = new DynamicLibrary<graphical::IGraphical>(
-                path, this->getUniverse().getEventBus());
+                path, &this->getUniverse().getEventBus());
 
             this->_graphicals.emplace(ent->d_name, *dynamicLibrary);
         }
