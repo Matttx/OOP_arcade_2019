@@ -38,7 +38,6 @@ void sfml::Graphical::init()
 void sfml::Graphical::dispatchEvent()
 {
     sf::Event event {};
-
     while (_window->pollEvent(event)) {
         if (event.type == sf::Event::KeyPressed) {
             for (auto& i : KEYCORRESPONDENCE) {

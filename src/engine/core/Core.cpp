@@ -37,7 +37,8 @@ void engine::core::Core::loadGames()
         if (ent->d_name[0] != '.') {
             const std::string path = "./games/" + std::string(ent->d_name);
 
-            auto* dynamicLibrary = new DynamicLibrary<game::IGame>(path);
+            auto* dynamicLibrary =
+                new DynamicLibrary<game::IGame>(path, &this->getUniverse());
 
             this->_games.emplace(ent->d_name, *dynamicLibrary);
         }

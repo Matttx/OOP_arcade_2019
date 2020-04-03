@@ -45,7 +45,7 @@ class AGraphical : public IGraphical {
   private:
     std::string _name;
     LIBTYPE _type;
-    engine::eventbus::EventBus &_eventBus;
+    engine::eventbus::EventBus& _eventBus;
 };
 
 } // namespace graphical
