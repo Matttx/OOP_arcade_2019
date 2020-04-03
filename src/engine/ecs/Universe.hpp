@@ -41,6 +41,7 @@ class Universe {
   public:
     World& createWorld(const std::string& name);
     bool hasWorld(const std::string& name) const;
+    bool hasCurrentWorld() const;
     World& getWorld(const std::string& name) const;
     World& getCurrentWorld() const;
     void setCurrentWorld(const std::string& name);
