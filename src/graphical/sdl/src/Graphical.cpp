@@ -45,13 +45,13 @@ void sdl::Graphical::init()
 void sdl::Graphical::dispatchEvent()
 {
     SDL_Event e;
-    SDL_PollEvent(&e);
-
-    for (auto& i : SDLKEYCODE) {
-        if (e.key.keysym.sym == (i.first)) {
-            auto input = new engine::event::Input(i.second);
-            _eventBus.publish(*input);
-            delete input;
+    while(SDL_PollEvent(&e)) {
+        for (auto& i : SDLKEYCODE) {
+            if (e.key.keysym.sym == (i.first)) {
+                auto input = new engine::event::Input(i.second);
+                _eventBus.publish(*input);
+                delete input;
+            }
         }
     }
 }
