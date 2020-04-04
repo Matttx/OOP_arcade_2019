@@ -10,6 +10,8 @@
 
 #include "../../game/IGame.hpp"
 #include "../../graphical/IGraphical.hpp"
+#include "../save/Component.hpp"
+#include "../save/System.hpp"
 #include "../ecs/Universe.hpp"
 #include "DynamicLibrary.hpp"
 
@@ -36,6 +38,7 @@ class Core {
     game::IGame& getCurrentGame() const;
     void setCurrentGame(const std::string& name);
     std::map<std::string, std::string> getGames() const;
+    void switchGame();
 
   public:
     bool hasGraphical(const std::string& name) const;
@@ -44,18 +47,25 @@ class Core {
     graphical::IGraphical& getCurrentGraphical() const;
     void setCurrentGraphical(const std::string& name);
     std::map<std::string, std::string> getGraphicals() const;
+    void switchGraphical();
 
 
   private:
     std::string _currentGame;
+    std::string _nextGame;
     std::map<std::string, DynamicLibrary<game::IGame>> _games;
     std::string _currentGraphical;
+    std::string _nextGraphical;
     std::map<std::string, DynamicLibrary<graphical::IGraphical>> _graphicals;
     ecs::Universe _universe;
 
   private:
-    void updateGraphicalComponent();
-    void updateGraphicalSystem();
+    std::vector<save::component::AAudio> saveAAudioComponents();
+    std::vector<save::component::ARender> saveARenderComponents();
+    std::vector<save::component::AText> saveATextComponents();
+    std::vector<save::system::AAnimations> saveAAnimationsSystems();
+    std::vector<save::system::AAudio> saveAAudioSystems();
+    std::vector<save::system::ARender> saveARenderSystems();
 };
 
 } // namespace core
