@@ -184,6 +184,8 @@ void engine::core::Core::switchGraphical()
 
     auto aAudioComponentSaves = this->saveAAudioComponents();
     auto aRenderComponentSaves = this->saveARenderComponents();
+    auto aTextComponentSaves = this->saveATextComponents();
+    auto aAnimationsSystemSaves = this->saveAAnimationsSystems();
     auto aAudioSystemSaves = this->saveAAudioSystems();
     auto aRenderSystemSaves = this->saveARenderSystems();
 
@@ -192,6 +194,12 @@ void engine::core::Core::switchGraphical()
 
     for (auto& aRenderComponentSave : aRenderComponentSaves)
         aRenderComponentSave.removeFromEntity();
+
+    for (auto& aTextComponentSave : aTextComponentSaves)
+        aTextComponentSave.removeFromEntity();
+
+    for (auto& aAnimationsSystemSave : aAnimationsSystemSaves)
+        aAnimationsSystemSave.removeFromWorld();
 
     for (auto& aAudioSystemSave : aAudioSystemSaves)
         aAudioSystemSave.removeFromWorld();
@@ -211,6 +219,12 @@ void engine::core::Core::switchGraphical()
 
     for (auto& aRenderComponentSave : aRenderComponentSaves)
         aRenderComponentSave.addToEntity();
+
+    for (auto& aTextComponentSave : aTextComponentSaves)
+        aTextComponentSave.addToEntity();
+
+    for (auto& aAnimationsSystemSave : aAnimationsSystemSaves)
+        aAnimationsSystemSave.addToWorld();
 
     for (auto& aAudioSystemSave : aAudioSystemSaves)
         aAudioSystemSave.addToWorld();
@@ -259,6 +273,46 @@ engine::core::Core::saveARenderComponents()
                 entity.get().getComponent<engine::component::ARender>();
 
             saves.emplace_back(entity.get(), render.paths);
+        }
+    }
+
+    return saves;
+}
+
+std::vector<engine::save::component::AText> engine::core::Core::saveATextComponents()
+{
+    std::vector<save::component::AText> saves;
+
+    auto worldNames = this->getUniverse().getWorldNames();
+
+    for (const auto& worldName : worldNames) {
+        auto entities = this->getUniverse()
+            .getWorld(worldName)
+            .getEntities<engine::component::AText>();
+
+        for (const auto& entity : entities) {
+            auto& text =
+                entity.get().getComponent<engine::component::AText>();
+
+            saves.emplace_back(entity.get(), text.text, text.paths);
+        }
+    }
+
+    return saves;
+}
+
+std::vector<engine::save::system::AAnimations>
+engine::core::Core::saveAAnimationsSystems()
+{
+    std::vector<save::system::AAnimations> saves;
+
+    auto worldNames = this->getUniverse().getWorldNames();
+
+    for (const auto& worldName : worldNames) {
+        if (this->getUniverse()
+            .getWorld(worldName)
+            .hasSystems<engine::system::AAnimations>()) {
+            saves.emplace_back(this->getUniverse().getCurrentWorld());
         }
     }
 
