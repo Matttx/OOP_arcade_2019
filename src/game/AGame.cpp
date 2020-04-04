@@ -7,13 +7,18 @@
 
 #include "AGame.hpp"
 
-game::AGame::AGame(const std::string& name) : _name(name)
+game::AGame::AGame(const std::string& name, engine::ecs::Universe& universe) : _name(name), _universe(universe)
 {
 }
 
 game::AGame::~AGame() = default;
 
-std::string game::AGame::getName()
+std::string game::AGame::getName() const
 {
     return this->_name;
+}
+
+engine::ecs::Universe& game::AGame::getUniverse() const
+{
+    return this->_universe;
 }
