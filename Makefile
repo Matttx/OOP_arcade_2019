@@ -51,6 +51,8 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/eventbus/AEvent.cpp			\
 							engine/eventbus/EventBus.cpp		\
 							engine/eventbus/IEvent.cpp			\
+							engine/save/Component.cpp			\
+							engine/save/System.cpp				\
 							engine/system/AAI.cpp				\
 							engine/system/AAnimations.cpp		\
 							engine/system/AAudio.cpp			\
@@ -76,7 +78,7 @@ TEST_SRC			=		test_Universe.cpp					\
 
 
 CFLAGS				+=		-I $(INCL_DIR)
-CFLAGS				+=		-W -Wall -Wextra -Werror
+CFLAGS				+=		-W -Wall -Wextra -Werror -std=c++17
 
 MAIN_OBJ			=		$(MAIN_SRC:%.cpp=$(OBJ_DIR)/%.o)
 

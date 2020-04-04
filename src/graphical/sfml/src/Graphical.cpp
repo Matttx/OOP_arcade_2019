@@ -17,12 +17,11 @@
 sfml::Graphical::Graphical(engine::eventbus::EventBus& eventBus)
     : graphical::AGraphical("sfml", LIBTYPE::GRAPHIC, eventBus)
 {
-    _window = nullptr;
 }
 
 sfml::Graphical::~Graphical()
 {
-    destroy();
+    delete _window;
 }
 
 extern "C" sfml::Graphical* create(engine::eventbus::EventBus* eventBus)
@@ -32,22 +31,19 @@ extern "C" sfml::Graphical* create(engine::eventbus::EventBus* eventBus)
 
 void sfml::Graphical::init()
 {
-    if (_window == nullptr)
-        _window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Arcade");
+    _window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Arcade");
 }
 
 void sfml::Graphical::dispatchEvent()
 {
     sf::Event event {};
-    while (_window && _window->pollEvent(event)) {
+    while (_window->pollEvent(event)) {
         if (event.type == sf::Event::KeyPressed) {
-            for (auto& i : KEYCORRESPONDENCE) {
-                if (sf::Keyboard::isKeyPressed(i.first)) {
-                    auto input = new engine::event::Input(i.second);
-                    getEventBus().publish(*input);
-                    delete input;
-                }
-            }
+            auto input = new engine::event::Input(KEYCORRESPONDENCE.at(event.key.code));
+
+            getEventBus().publish(*input);
+
+            delete input;
         }
     }
 }
