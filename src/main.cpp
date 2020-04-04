@@ -17,8 +17,10 @@ int main()
     core.loadGraphics();
 
     core.setCurrentGraphical("lib_arcade_sdl.so");
-    core.switchGraphical();
     core.setCurrentGame("emulator");
+
+    core.switchGraphical();
+    core.switchGame();
 
     auto &universe = core.getUniverse();
 
@@ -26,6 +28,7 @@ int main()
 
     for (int i = 0; i >= 0; ++i) {
         core.switchGraphical();
+        core.switchGame();
         core.getCurrentGraphical().dispatchEvent();
         universe.update();
         universe.render();
