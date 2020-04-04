@@ -25,14 +25,13 @@ class Render : public engine::component::ARender {
         ~Render() override;
         SDL_Surface *sprite;
         SDL_Texture *texture;
-        SDL_Rect *srcRect;
-        SDL_Rect *dstRect;
+        SDL_Rect srcRect;
+        SDL_Rect dstRect;
     protected:
     private:
 };
 
 } // Namespace component
-
 } // Namespace sdl
 
 #endif /* !RENDER_HPP_ */

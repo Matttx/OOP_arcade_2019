@@ -22,6 +22,7 @@ class World;
 
 #include "../component/AAudio.hpp"
 #include "../component/ARender.hpp"
+#include "../component/AText.hpp"
 #include "../util/Error.hpp"
 #include "AComponent.hpp"
 
@@ -108,6 +109,11 @@ component::AAudio& Entity::addComponent<component::AAudio>(
 template<>
 component::ARender& Entity::addComponent<component::ARender>(
     const std::vector<std::string>& paths);
+
+template<>
+engine::component::AText&
+    engine::ecs::Entity::addComponent<engine::component::AText>(
+        const std::string& text, const std::vector<std::string>& paths);
 
 } // namespace ecs
 

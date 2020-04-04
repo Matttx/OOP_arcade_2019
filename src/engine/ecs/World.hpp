@@ -21,6 +21,7 @@ class Universe;
 #include <typeinfo>
 #include <vector>
 
+#include "../system/AAnimations.hpp"
 #include "../system/AAudio.hpp"
 #include "../system/ARender.hpp"
 #include "ASystem.hpp"
@@ -133,6 +134,10 @@ class World {
   private:
     std::map<std::type_index, std::reference_wrapper<ASystem>> _systems;
 };
+
+template<>
+engine::system::AAnimations&
+    engine::ecs::World::addSystem<engine::system::AAnimations>();
 
 template<>
 system::AAudio& World::addSystem<system::AAudio>();
