@@ -51,6 +51,8 @@ namespace component {
 
 using AAudio = Component<engine::component::AAudio, std::vector<std::string>>;
 using ARender = Component<engine::component::ARender, std::vector<std::string>>;
+using AText =
+    Component<engine::component::AText, std::string, std::vector<std::string>>;
 
 } // namespace component
 
@@ -59,6 +61,9 @@ void component::AAudio::addToEntity();
 
 template<>
 void component::ARender::addToEntity();
+
+template<>
+void engine::save::component::AText::addToEntity();
 
 } // namespace save
 

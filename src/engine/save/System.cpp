@@ -8,6 +8,16 @@
 #include "System.hpp"
 
 template<>
+void engine::save::system::AAnimations::addToWorld()
+{
+    std::apply(
+        [this]() {
+            this->_world.template addSystem<engine::system::AAnimations>();
+        },
+        _args);
+}
+
+template<>
 void engine::save::system::AAudio::addToWorld()
 {
     std::apply(

@@ -2,29 +2,29 @@
 ** EPITECH PROJECT, 2020
 ** OOP_arcade_2019
 ** File description:
-** Animation
+** Animations
 */
 
-#include "Animation.hpp"
+#include "Animations.hpp"
 
 #include "../../../../engine/component/ARender.hpp"
-#include "../../../../engine/system/AAnimations.hpp"
 #include "../../../../engine/component/Animations.hpp"
 #include "../../../../engine/ecs/World.hpp"
+#include "../../../../engine/system/AAnimations.hpp"
 #include "../component/Render.hpp"
 
 using namespace sdl;
 using namespace system;
 
-Animation::Animation(engine::ecs::World& world) : AAnimations(world)
+Animations::Animations(engine::ecs::World& world) : AAnimations(world)
 {
 }
 
-void Animation::init()
+void Animations::init()
 {
 }
 
-void Animation::update()
+void Animations::update()
 {
     auto entities = getWorld().getEntities<engine::component::ARender, engine::component::Animations>();
     int x = 0;
@@ -36,17 +36,17 @@ void Animation::update()
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(compSprite);
         auto& currentAnimation = compAnimation.list.at(compAnimation.currentAnimation);
         SDL_QueryTexture(sdlRender.texture, nullptr, nullptr, &x, &y);
-        sdlRender.srcRect->y = currentAnimation.row * (y / compAnimation.list.size());
+        sdlRender.srcRect.y = currentAnimation.row * (y / compAnimation.list.size());
         if (compAnimation.currentFrame == currentAnimation.frames) {
             compAnimation.currentFrame = 0;
-            sdlRender.srcRect->x = 0;
+            sdlRender.srcRect.x = 0;
         } else {
-            sdlRender.srcRect->x += sdlRender.srcRect->w;
+            sdlRender.srcRect.x += sdlRender.srcRect.w;
             compAnimation.currentFrame += 1;
         }
     }
 }
 
-void Animation::render()
+void Animations::render()
 {
 }

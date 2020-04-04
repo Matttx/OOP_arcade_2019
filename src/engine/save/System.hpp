@@ -49,10 +49,14 @@ class System {
 
 namespace system {
 
+using AAnimations = System<engine::system::AAnimations>;
 using AAudio = System<engine::system::AAudio>;
 using ARender = System<engine::system::ARender>;
 
 } // namespace system
+
+template<>
+void system::AAnimations::addToWorld();
 
 template<>
 void system::AAudio::addToWorld();
