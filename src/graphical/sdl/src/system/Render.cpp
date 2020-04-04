@@ -44,8 +44,8 @@ void Render::update()
             auto& transform =
                 entity.get().getComponent<engine::component::Transform>();
             auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
-            sdlRender.dstRect->x = transform.position.x;
-            sdlRender.dstRect->y = transform.position.y;
+            sdlRender.dstRect.x = transform.position.x;
+            sdlRender.dstRect.y = transform.position.y;
         }
     }
 }
@@ -69,8 +69,8 @@ void Render::render()
             auto& component =
                 entity.get().getComponent<engine::component::ARender>();
             auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
-            SDL_RenderCopy(&_renderer, sdlRender.texture, sdlRender.srcRect,
-                sdlRender.dstRect);
+            SDL_RenderCopy(&_renderer, sdlRender.texture, &sdlRender.srcRect,
+                &sdlRender.dstRect);
         }
     }
 

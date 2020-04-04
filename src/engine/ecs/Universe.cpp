@@ -92,6 +92,16 @@ engine::ecs::World& engine::ecs::Universe::getCurrentWorld() const
     return this->_worlds.at(this->_current).get();
 }
 
+std::vector<std::string> engine::ecs::Universe::getWorldNames() const
+{
+    std::vector<std::string> names {};
+
+    for (const auto& _world : _worlds)
+        names.push_back(_world.first);
+
+    return names;
+}
+
 void engine::ecs::Universe::setCurrentWorld(const std::string& name)
 {
     if (this->_worlds.count(name) == 0)
