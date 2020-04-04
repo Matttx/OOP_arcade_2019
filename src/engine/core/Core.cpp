@@ -105,17 +105,29 @@ void engine::core::Core::setCurrentGame(const std::string& name)
         throw util::Error("engine::core::Core::setCurrentGame()",
             "The game '" + name + "' doesn't exist");
 
-    if (name == this->_currentGame)
+    this->_nextGame = name;
+}
+
+std::map<std::string, std::string> engine::core::Core::getGames() const
+{
+    std::map<std::string, std::string> map;
+    for (const auto& game : _games) {
+        map.emplace(game.first, game.second.get().getName());
+    }
+    return map;
+}
+
+void engine::core::Core::switchGame()
+{
+    if (this->_currentGame == this->_nextGame)
         return;
 
-    auto previousGame = this->_currentGame;
+    if (this->_games.count(this->_currentGame))
+        this->_games.at(this->_currentGame).get().destroy();
 
-    this->_currentGame = name;
+    this->_currentGame = this->_nextGame;
 
     this->_games.at(this->_currentGame).get().init();
-
-    if (this->_games.count(previousGame))
-        this->_games.at(previousGame).get().destroy();
 }
 
 bool engine::core::Core::hasGraphical(const std::string& name) const
@@ -153,71 +165,7 @@ void engine::core::Core::setCurrentGraphical(const std::string& name)
         throw util::Error("engine::core::Core::setCurrentGraphical()",
             "The graphical '" + name + "' doesn't exist");
 
-    if (name == this->_currentGraphical)
-        return;
-
-    auto previousGraphical = this->_currentGraphical;
-
-    this->_currentGraphical = name;
-
-    this->_graphicals.at(this->_currentGraphical).get().init();
-
-    if (this->getUniverse().hasCurrentWorld()) {
-        this->updateGraphicalComponent();
-        this->updateGraphicalSystem();
-    }
-
-    if (this->_graphicals.count(previousGraphical))
-        this->_graphicals.at(previousGraphical).get().destroy();
-}
-
-void engine::core::Core::updateGraphicalComponent()
-{
-    auto entities = this->getUniverse()
-                        .getCurrentWorld()
-                        .getEntities<engine::component::AAudio>();
-
-    for (const auto& entity : entities) {
-        auto& audio = entity.get().getComponent<engine::component::AAudio>();
-        const auto paths = audio.paths;
-
-        entity.get().removeComponent<engine::component::AAudio>();
-        entity.get().addComponent<engine::component::AAudio>(paths);
-    }
-
-    entities = this->getUniverse()
-                   .getCurrentWorld()
-                   .getEntities<engine::component::ARender>();
-
-    for (const auto& entity : entities) {
-        auto& render = entity.get().getComponent<engine::component::ARender>();
-        const auto paths = render.paths;
-
-        entity.get().removeComponent<engine::component::ARender>();
-        entity.get().addComponent<engine::component::ARender>(paths);
-    }
-}
-
-void engine::core::Core::updateGraphicalSystem()
-{
-    this->getUniverse()
-        .getCurrentWorld()
-        .removeSystem<engine::system::AAudio>();
-    this->getUniverse().getCurrentWorld().addSystem<engine::system::AAudio>();
-
-    this->getUniverse()
-        .getCurrentWorld()
-        .removeSystem<engine::system::ARender>();
-    this->getUniverse().getCurrentWorld().addSystem<engine::system::ARender>();
-}
-
-std::map<std::string, std::string> engine::core::Core::getGames() const
-{
-    std::map<std::string, std::string> map;
-    for (const auto& game : _games) {
-        map.emplace(game.first, game.second.get().getName());
-    }
-    return map;
+    this->_nextGraphical = name;
 }
 
 std::map<std::string, std::string> engine::core::Core::getGraphicals() const
@@ -227,4 +175,128 @@ std::map<std::string, std::string> engine::core::Core::getGraphicals() const
         map.emplace(graphical.first, graphical.second.get().getName());
     }
     return map;
+}
+
+void engine::core::Core::switchGraphical()
+{
+    if (this->_currentGraphical == this->_nextGraphical)
+        return;
+
+    auto aAudioComponentSaves = this->saveAAudioComponents();
+    auto aRenderComponentSaves = this->saveARenderComponents();
+    auto aAudioSystemSaves = this->saveAAudioSystems();
+    auto aRenderSystemSaves = this->saveARenderSystems();
+
+    for (auto& aAudioComponentSave : aAudioComponentSaves)
+        aAudioComponentSave.removeFromEntity();
+
+    for (auto& aRenderComponentSave : aRenderComponentSaves)
+        aRenderComponentSave.removeFromEntity();
+
+    for (auto& aAudioSystemSave : aAudioSystemSaves)
+        aAudioSystemSave.removeFromWorld();
+
+    for (auto& aRenderSystemSave : aRenderSystemSaves)
+        aRenderSystemSave.removeFromWorld();
+
+    if (this->_graphicals.count(this->_currentGraphical))
+        this->_graphicals.at(this->_currentGraphical).get().destroy();
+
+    this->_currentGraphical = this->_nextGraphical;
+
+    this->_graphicals.at(this->_currentGraphical).get().init();
+
+    for (auto& aAudioComponentSave : aAudioComponentSaves)
+        aAudioComponentSave.addToEntity();
+
+    for (auto& aRenderComponentSave : aRenderComponentSaves)
+        aRenderComponentSave.addToEntity();
+
+    for (auto& aAudioSystemSave : aAudioSystemSaves)
+        aAudioSystemSave.addToWorld();
+
+    for (auto& aRenderSystemSave : aRenderSystemSaves)
+        aRenderSystemSave.addToWorld();
+}
+
+std::vector<engine::save::component::AAudio>
+engine::core::Core::saveAAudioComponents()
+{
+    std::vector<save::component::AAudio> saves;
+
+    auto worldNames = this->getUniverse().getWorldNames();
+
+    for (const auto& worldName : worldNames) {
+        auto entities = this->getUniverse()
+            .getWorld(worldName)
+            .getEntities<engine::component::AAudio>();
+
+        for (const auto& entity : entities) {
+            auto& audio =
+                entity.get().getComponent<engine::component::AAudio>();
+
+            saves.emplace_back(entity.get(), audio.paths);
+        }
+    }
+
+    return saves;
+}
+
+std::vector<engine::save::component::ARender>
+engine::core::Core::saveARenderComponents()
+{
+    std::vector<save::component::ARender> saves;
+
+    auto worldNames = this->getUniverse().getWorldNames();
+
+    for (const auto& worldName : worldNames) {
+        auto entities = this->getUniverse()
+            .getWorld(worldName)
+            .getEntities<engine::component::ARender>();
+
+        for (const auto& entity : entities) {
+            auto& render =
+                entity.get().getComponent<engine::component::ARender>();
+
+            saves.emplace_back(entity.get(), render.paths);
+        }
+    }
+
+    return saves;
+}
+
+std::vector<engine::save::system::AAudio>
+engine::core::Core::saveAAudioSystems()
+{
+    std::vector<save::system::AAudio> saves;
+
+    auto worldNames = this->getUniverse().getWorldNames();
+
+    for (const auto& worldName : worldNames) {
+        if (this->getUniverse()
+            .getWorld(worldName)
+            .hasSystems<engine::system::AAudio>()) {
+            saves.emplace_back(this->getUniverse().getCurrentWorld());
+        }
+    }
+
+    return saves;
+}
+
+std::vector<engine::save::system::ARender>
+engine::core::Core::saveARenderSystems()
+{
+    std::vector<save::system::ARender> saves;
+
+    auto worldNames = this->getUniverse().getWorldNames();
+
+    for (const auto& worldName : worldNames) {
+        if (this->getUniverse()
+            .getWorld(worldName)
+            .hasSystems<engine::system::ARender>()) {
+            saves.emplace_back(this->getUniverse().getCurrentWorld());
+        }
+    }
+
+    return saves;
 }

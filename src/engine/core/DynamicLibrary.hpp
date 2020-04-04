@@ -48,10 +48,10 @@ class DynamicLibrary {
 
     ~DynamicLibrary()
     {
-        if (_instance == nullptr)
+        if (_instance)
             delete _instance;
 
-        if (_handler == nullptr)
+        if (_handler)
             dlclose(_handler);
     }
 
