@@ -11,6 +11,7 @@
 #include "../../AGraphical.hpp"
 #include "component/Audio.hpp"
 #include "component/Render.hpp"
+#include "component/Text.hpp"
 #include "system/Audio.hpp"
 #include "system/Render.hpp"
 
