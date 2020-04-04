@@ -68,6 +68,12 @@ engine::component::ARender& sfml::Graphical::createRender(
     return *(new sfml::component::Render(entity, paths));
 }
 
+engine::component::AText& sfml::Graphical::createText(
+    engine::ecs::Entity &entity, const std::string &text, const std::vector<std::string> &paths)
+{
+    return *(new sfml::component::Text(entity, text, paths));
+}
+
 engine::system::AAudio& sfml::Graphical::createAudioSystem(
     engine::ecs::World& world)
 {

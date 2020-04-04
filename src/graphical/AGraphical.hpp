@@ -35,6 +35,8 @@ class AGraphical : public IGraphical {
         const std::vector<std::string>& paths) override = 0;
     engine::component::ARender& createRender(engine::ecs::Entity& entity,
         const std::vector<std::string>& paths) override = 0;
+    engine::component::AText& createText(engine::ecs::Entity& entity,
+        const std::string& text, const std::vector<std::string>& paths) override = 0;
 
   public:
     engine::system::AAudio& createAudioSystem(
