@@ -28,3 +28,14 @@ void engine::save::component::ARender::addToEntity()
         },
         _args);
 }
+
+template<>
+void engine::save::component::AText::addToEntity()
+{
+    std::apply(
+        [this](const std::string& text, const std::vector<std::string>& paths) {
+            this->_entity.template addComponent<engine::component::AText>(
+                text, paths);
+        },
+        _args);
+}
