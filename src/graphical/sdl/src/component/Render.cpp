@@ -15,13 +15,17 @@ using namespace component;
 Render::Render(engine::ecs::Entity& entity, const std::vector<std::string>& paths, SDL_Renderer* renderer) : engine::component::ARender(entity, paths)
 {
     sprite = IMG_Load(paths[LIBTYPE::GRAPHIC].c_str());
+    if (sprite == nullptr)
+        SDL_Log("IMG_Load: %s", SDL_GetError());
     texture = SDL_CreateTextureFromSurface(renderer, sprite);
-    srcRect.x = 0;
-    srcRect.y = 0;
-    dstRect.x = 0;
-    dstRect.y = 0;
-    SDL_QueryTexture(texture, NULL, NULL, &srcRect.w, &srcRect.h);
-    SDL_QueryTexture(texture, NULL, NULL, &dstRect.w, &dstRect.h);
+    if (texture == nullptr)
+        SDL_Log("SDL_CreateTextureFromSurface: %s", SDL_GetError());
+    srcRect = {0, 0, 0, 0};
+    dstRect = {0, 0, 0, 0};
+    if (SDL_QueryTexture(texture, nullptr, nullptr, &srcRect.w, &srcRect.h) == -1)
+        SDL_Log("SDL_QueryTexture #1: %s", SDL_GetError());
+    if (SDL_QueryTexture(texture, nullptr, nullptr, &dstRect.w, &dstRect.h) == -1)
+        SDL_Log("SDL_QueryTexture #2: %s", SDL_GetError());
 }
 
 Render::~Render()

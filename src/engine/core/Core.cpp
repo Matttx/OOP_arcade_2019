@@ -158,10 +158,10 @@ void engine::core::Core::setCurrentGraphical(const std::string& name)
         throw util::Error("engine::core::Core::setCurrentGraphical()",
             "The graphical '" + name + "' doesn't exist");
 
-    if (name == this->_currentGraphical)
-        return;
-
     auto previousGraphical = this->_currentGraphical;
+
+    if (this->_graphicals.count(previousGraphical))
+        this->_graphicals.at(previousGraphical).get().destroy();
 
     this->_currentGraphical = name;
 
@@ -171,9 +171,6 @@ void engine::core::Core::setCurrentGraphical(const std::string& name)
         this->updateGraphicalComponent();
         this->updateGraphicalSystem();
     }
-
-    if (this->_graphicals.count(previousGraphical))
-        this->_graphicals.at(previousGraphical).get().destroy();
 }
 
 void engine::core::Core::updateGraphicalComponent()

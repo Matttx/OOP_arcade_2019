@@ -32,8 +32,8 @@ void Render::update()
         auto& component = entity.get().getComponent<engine::component::ARender>();
         auto& transform = entity.get().getComponent<engine::component::Transform>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
-        sdlRender.dstRect.x = static_cast<float>(transform.position.x);
-        sdlRender.dstRect.y = static_cast<float>(transform.position.y);
+        sdlRender.dstRect.x = transform.position.x;
+        sdlRender.dstRect.y = transform.position.y;
     }
 }
 
@@ -43,11 +43,13 @@ void Render::render()
     std::sort(entities.begin(), entities.end(), [](const engine::ecs::Entity& lhs, const engine::ecs::Entity& rhs) {
         return lhs.getComponent<engine::component::Transform>().layer < rhs.getComponent<engine::component::Transform>().layer;
     });
-    SDL_RenderClear(&_renderer);
+    if (SDL_RenderClear(&_renderer) == -1)
+        SDL_Log("SDL_CreateRenderer: %s", SDL_GetError());
     for (const auto& entity : entities) {
         auto& component = entity.get().getComponent<engine::component::ARender>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
-        SDL_RenderCopy(&_renderer, sdlRender.texture, &sdlRender.srcRect, &sdlRender.dstRect);
+        if (SDL_RenderCopy(&_renderer, sdlRender.texture, &sdlRender.srcRect, &sdlRender.dstRect) == -1)
+            SDL_Log("SDL_CreateRenderer: %s", SDL_GetError());
     }
     SDL_RenderPresent(&_renderer);
 }

@@ -37,11 +37,17 @@ extern "C" sdl::Graphical* create(engine::eventbus::EventBus* eventBus)
 void sdl::Graphical::init()
 {
     if (_window == nullptr) {
-        SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
-        IMG_Init(IMG_INIT_PNG);
+        if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
+            SDL_Log("SDL_Init: %s", SDL_GetError());
+        if (IMG_Init(IMG_INIT_PNG) == 0)
+            SDL_Log("IMG_Init: %s", SDL_GetError());
         _window = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED,
             SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_RESIZABLE);
+        if (!_window)
+            SDL_Log("SDL_CreateWindow: %s", SDL_GetError());
         _renderer = SDL_CreateRenderer(_window, -1, 0);
+        if (!_renderer)
+            SDL_Log("SDL_CreateRenderer: %s", SDL_GetError());
     }
 }
 
