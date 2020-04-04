@@ -7,8 +7,6 @@
 
 #include "Entity.hpp"
 
-#include "../component/AAudio.hpp"
-#include "../component/ARender.hpp"
 #include "../core/Core.hpp"
 
 engine::ecs::Entity::Entity(engine::ecs::World& world) : _world(world)
@@ -60,6 +58,26 @@ engine::component::ARender&
     auto& graphical =
         this->getWorld().getUniverse().getCore().getCurrentGraphical();
     auto& component = graphical.createRender(*this, paths);
+
+    this->_components.emplace(id, component);
+
+    return component;
+}
+
+template<>
+engine::component::AText&
+    engine::ecs::Entity::addComponent<engine::component::AText>(
+        const std::string& text, const std::vector<std::string>& paths)
+{
+    std::type_index id = typeid(component::AText);
+
+    if (this->_components.count(id))
+        throw util::Error("engine::ecs::Entity::addComponent()",
+            "Already has this type of component");
+
+    auto& graphical =
+        this->getWorld().getUniverse().getCore().getCurrentGraphical();
+    auto& component = graphical.createText(*this, text, paths);
 
     this->_components.emplace(id, component);
 
