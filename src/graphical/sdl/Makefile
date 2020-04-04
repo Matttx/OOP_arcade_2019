@@ -26,9 +26,10 @@ LDLIBS				+=		-lSDL2 -lSDL2_image
 PROJ_SRC			=		Graphical.cpp				\
  							component/Audio.cpp			\
  							component/Render.cpp		\
+ 							component/Text.cpp			\
  							system/Render.cpp			\
  							system/Audio.cpp			\
- 							system/Animation.cpp		\
+ 							system/Animations.cpp		\
 
 TEST_SRC			=
 

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** OOP_arcade_2019
 ** File description:
-** Animation
+** Animations
 */
 
 #ifndef ANIMATION_HPP_
@@ -14,10 +14,10 @@
 namespace sdl {
 namespace system {
 
-class Animation : public engine::system::AAnimations {
+class Animations : public engine::system::AAnimations {
     public:
-        Animation(engine::ecs::World& world);
-        ~Animation() override = default;
+      Animations(engine::ecs::World& world);
+        ~Animations() override = default;
 
         void init() override;
         void update() override;

@@ -11,6 +11,8 @@
 #include "../../AGraphical.hpp"
 #include "component/Audio.hpp"
 #include "component/Render.hpp"
+#include "component/Text.hpp"
+#include "system/Animations.hpp"
 #include "system/Audio.hpp"
 #include "system/Render.hpp"
 
@@ -65,6 +67,18 @@ engine::component::ARender& sfml::Graphical::createRender(
     engine::ecs::Entity& entity, const std::vector<std::string>& paths)
 {
     return *(new sfml::component::Render(entity, paths));
+}
+
+engine::component::AText& sfml::Graphical::createText(
+    engine::ecs::Entity &entity, const std::string &text, const std::vector<std::string> &paths)
+{
+    return *(new sfml::component::Text(entity, text, paths));
+}
+
+engine::system::AAnimations& sfml::Graphical::createAnimationsSystem(
+    engine::ecs::World& world)
+{
+    return *(new sfml::system::Animations(world));
 }
 
 engine::system::AAudio& sfml::Graphical::createAudioSystem(

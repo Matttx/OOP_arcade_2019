@@ -62,6 +62,8 @@ class Core {
   private:
     std::vector<save::component::AAudio> saveAAudioComponents();
     std::vector<save::component::ARender> saveARenderComponents();
+    std::vector<save::component::AText> saveATextComponents();
+    std::vector<save::system::AAnimations> saveAAnimationsSystems();
     std::vector<save::system::AAudio> saveAAudioSystems();
     std::vector<save::system::ARender> saveARenderSystems();
 };
