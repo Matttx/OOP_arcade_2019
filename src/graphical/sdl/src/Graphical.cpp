@@ -15,6 +15,7 @@
 #include "component/Audio.hpp"
 #include "component/Render.hpp"
 #include "component/Text.hpp"
+#include "system/Animations.hpp"
 #include "system/Audio.hpp"
 #include "system/Render.hpp"
 
@@ -80,6 +81,12 @@ engine::component::ARender &sdl::Graphical::createRender(engine::ecs::Entity &en
 engine::component::AText &sdl::Graphical::createText(engine::ecs::Entity &entity, const std::string &text, const std::vector<std::string> &paths)
 {
     return *(new sdl::component::Text(entity, text, paths, _renderer));
+}
+
+engine::system::AAnimations &sdl::Graphical::createAnimationsSystem(
+    engine::ecs::World &world)
+{
+    return *(new sdl::system::Animations(world));
 }
 
 engine::system::AAudio &sdl::Graphical::createAudioSystem(engine::ecs::World &world)

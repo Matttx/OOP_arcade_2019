@@ -2,29 +2,29 @@
 ** EPITECH PROJECT, 2020
 ** OOP_arcade_2019
 ** File description:
-** Animation
+** Animations
 */
 
-#include "Animation.hpp"
+#include "Animations.hpp"
 
 #include "../../../../engine/component/ARender.hpp"
-#include "../../../../engine/system/AAnimations.hpp"
 #include "../../../../engine/component/Animations.hpp"
 #include "../../../../engine/ecs/World.hpp"
+#include "../../../../engine/system/AAnimations.hpp"
 #include "../component/Render.hpp"
 
 using namespace sdl;
 using namespace system;
 
-Animation::Animation(engine::ecs::World& world) : AAnimations(world)
+Animations::Animations(engine::ecs::World& world) : AAnimations(world)
 {
 }
 
-void Animation::init()
+void Animations::init()
 {
 }
 
-void Animation::update()
+void Animations::update()
 {
     auto entities = getWorld().getEntities<engine::component::ARender, engine::component::Animations>();
     int x = 0;
@@ -47,6 +47,6 @@ void Animation::update()
     }
 }
 
-void Animation::render()
+void Animations::render()
 {
 }

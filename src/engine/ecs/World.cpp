@@ -10,8 +10,6 @@
 #include <algorithm>
 
 #include "../core/Core.hpp"
-#include "../system/AAudio.hpp"
-#include "../system/ARender.hpp"
 
 engine::ecs::World::World(engine::ecs::Universe& universe) : _universe(universe)
 {
@@ -137,6 +135,24 @@ void engine::ecs::World::removeFromGroup(
 
     if (this->_groups.at(name).empty())
         this->_groups.erase(name);
+}
+
+template<>
+engine::system::AAnimations&
+    engine::ecs::World::addSystem<engine::system::AAnimations>()
+{
+    std::type_index id = typeid(system::AAnimations);
+
+    if (this->_systems.count(id))
+        throw util::Error("engine::ecs::World::addSystem()",
+            "Already has this type of system");
+
+    auto& graphical = this->getUniverse().getCore().getCurrentGraphical();
+    auto& system = graphical.createAnimationsSystem(*this);
+
+    this->_systems.emplace(id, system);
+
+    return system;
 }
 
 template<>
