@@ -64,6 +64,10 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/util/Error.cpp				\
 							game/AGame.cpp						\
 							game/IGame.cpp						\
+							game/emulator/Game.cpp				\
+							game/emulator/component/Action.cpp	\
+							game/emulator/component/User.cpp	\
+							game/emulator/system/User.cpp		\
 							graphical/AGraphical.cpp			\
 							graphical/IGraphical.cpp			\
 
