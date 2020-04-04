@@ -12,6 +12,7 @@
 
 #include "../engine/component/AAudio.hpp"
 #include "../engine/component/ARender.hpp"
+#include "../engine/component/AText.hpp"
 #include "../engine/eventbus/EventBus.hpp"
 #include "../engine/system/AAudio.hpp"
 #include "../engine/system/ARender.hpp"
