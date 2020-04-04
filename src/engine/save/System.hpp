@@ -20,7 +20,8 @@ namespace save {
 template<typename T, typename... TArgs>
 class System {
   public:
-    System(ecs::World &world, TArgs... args) : _world(world), _args(args...)
+    explicit System(ecs::World &world, TArgs... args)
+        : _world(world), _args(args...)
     {
     }
 

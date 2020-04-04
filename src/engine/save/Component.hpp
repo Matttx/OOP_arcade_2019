@@ -20,7 +20,7 @@ namespace save {
 template<typename T, typename... TArgs>
 class Component {
   public:
-    Component(ecs::Entity &entity, TArgs... args)
+    explicit Component(ecs::Entity &entity, TArgs... args)
         : _entity(entity), _args(args...)
     {
     }

@@ -10,17 +10,10 @@
 #include <dirent.h>
 
 #include "../../game/IGame.hpp"
-#include "../../game/emulator/Game.hpp"
 #include "../../graphical/IGraphical.hpp"
-#include "../save/Component.hpp"
-#include "../save/System.hpp"
 
 engine::core::Core::Core() : _universe(*this)
 {
-    auto* instance = new game::emulator::Game(this->getUniverse());
-    auto* emulator = new DynamicLibrary<game::IGame>(instance);
-
-    this->_games.emplace("emulator", *emulator);
 }
 
 engine::core::Core::~Core() = default;
@@ -112,17 +105,29 @@ void engine::core::Core::setCurrentGame(const std::string& name)
         throw util::Error("engine::core::Core::setCurrentGame()",
             "The game '" + name + "' doesn't exist");
 
-    if (name == this->_currentGame)
+    this->_nextGame = name;
+}
+
+std::map<std::string, std::string> engine::core::Core::getGames() const
+{
+    std::map<std::string, std::string> map;
+    for (const auto& game : _games) {
+        map.emplace(game.first, game.second.get().getName());
+    }
+    return map;
+}
+
+void engine::core::Core::switchGame()
+{
+    if (this->_currentGame == this->_nextGame)
         return;
 
-    auto previousGame = this->_currentGame;
+    if (this->_games.count(this->_currentGame))
+        this->_games.at(this->_currentGame).get().destroy();
 
-    this->_currentGame = name;
+    this->_currentGame = this->_nextGame;
 
     this->_games.at(this->_currentGame).get().init();
-
-    if (this->_games.count(previousGame))
-        this->_games.at(previousGame).get().destroy();
 }
 
 bool engine::core::Core::hasGraphical(const std::string& name) const
@@ -163,15 +168,6 @@ void engine::core::Core::setCurrentGraphical(const std::string& name)
     this->_nextGraphical = name;
 }
 
-std::map<std::string, std::string> engine::core::Core::getGames() const
-{
-    std::map<std::string, std::string> map;
-    for (const auto& game : _games) {
-        map.emplace(game.first, game.second.get().getName());
-    }
-    return map;
-}
-
 std::map<std::string, std::string> engine::core::Core::getGraphicals() const
 {
     std::map<std::string, std::string> map;
@@ -179,56 +175,6 @@ std::map<std::string, std::string> engine::core::Core::getGraphicals() const
         map.emplace(graphical.first, graphical.second.get().getName());
     }
     return map;
-}
-
-void engine::core::Core::switchGraphicalOld()
-{
-    if (this->_currentGraphical == this->_nextGraphical)
-        return;
-
-    if (this->getUniverse().hasCurrentWorld()) {
-        auto entities = this->getUniverse()
-                            .getCurrentWorld()
-                            .getEntities<engine::component::ARender>();
-        std::vector<
-            save::Component<component::ARender, std::vector<std::string>>>
-            renderSaves;
-
-        for (const auto& entity : entities) {
-            auto& render =
-                entity.get().getComponent<engine::component::ARender>();
-            const auto paths = render.paths;
-
-            save::Component<component::ARender, std::vector<std::string>>
-                renderSave(entity, paths);
-
-            renderSaves.push_back(renderSave);
-
-            renderSave.removeFromEntity();
-        }
-
-        this->getUniverse().getCurrentWorld().removeSystem<system::ARender>();
-
-        if (this->_graphicals.count(this->_currentGraphical))
-            this->_graphicals.at(this->_currentGraphical).get().destroy();
-
-        this->_currentGraphical = this->_nextGraphical;
-
-        this->_graphicals.at(this->_currentGraphical).get().init();
-
-        for (auto& renderSave : renderSaves) {
-            renderSave.addToEntity();
-        }
-
-        this->getUniverse().getCurrentWorld().addSystem<system::ARender>();
-    } else {
-        if (this->_graphicals.count(this->_currentGraphical))
-            this->_graphicals.at(this->_currentGraphical).get().destroy();
-
-        this->_currentGraphical = this->_nextGraphical;
-
-        this->_graphicals.at(this->_currentGraphical).get().init();
-    }
 }
 
 void engine::core::Core::switchGraphical()
@@ -274,7 +220,7 @@ void engine::core::Core::switchGraphical()
 }
 
 std::vector<engine::save::component::AAudio>
-    engine::core::Core::saveAAudioComponents()
+engine::core::Core::saveAAudioComponents()
 {
     std::vector<save::component::AAudio> saves;
 
@@ -282,8 +228,8 @@ std::vector<engine::save::component::AAudio>
 
     for (const auto& worldName : worldNames) {
         auto entities = this->getUniverse()
-                            .getWorld(worldName)
-                            .getEntities<engine::component::AAudio>();
+            .getWorld(worldName)
+            .getEntities<engine::component::AAudio>();
 
         for (const auto& entity : entities) {
             auto& audio =
@@ -297,7 +243,7 @@ std::vector<engine::save::component::AAudio>
 }
 
 std::vector<engine::save::component::ARender>
-    engine::core::Core::saveARenderComponents()
+engine::core::Core::saveARenderComponents()
 {
     std::vector<save::component::ARender> saves;
 
@@ -305,8 +251,8 @@ std::vector<engine::save::component::ARender>
 
     for (const auto& worldName : worldNames) {
         auto entities = this->getUniverse()
-                            .getWorld(worldName)
-                            .getEntities<engine::component::ARender>();
+            .getWorld(worldName)
+            .getEntities<engine::component::ARender>();
 
         for (const auto& entity : entities) {
             auto& render =
@@ -320,7 +266,7 @@ std::vector<engine::save::component::ARender>
 }
 
 std::vector<engine::save::system::AAudio>
-    engine::core::Core::saveAAudioSystems()
+engine::core::Core::saveAAudioSystems()
 {
     std::vector<save::system::AAudio> saves;
 
@@ -328,8 +274,8 @@ std::vector<engine::save::system::AAudio>
 
     for (const auto& worldName : worldNames) {
         if (this->getUniverse()
-                .getWorld(worldName)
-                .hasSystems<engine::system::AAudio>()) {
+            .getWorld(worldName)
+            .hasSystems<engine::system::AAudio>()) {
             saves.emplace_back(this->getUniverse().getCurrentWorld());
         }
     }
@@ -338,7 +284,7 @@ std::vector<engine::save::system::AAudio>
 }
 
 std::vector<engine::save::system::ARender>
-    engine::core::Core::saveARenderSystems()
+engine::core::Core::saveARenderSystems()
 {
     std::vector<save::system::ARender> saves;
 
@@ -346,8 +292,8 @@ std::vector<engine::save::system::ARender>
 
     for (const auto& worldName : worldNames) {
         if (this->getUniverse()
-                .getWorld(worldName)
-                .hasSystems<engine::system::ARender>()) {
+            .getWorld(worldName)
+            .hasSystems<engine::system::ARender>()) {
             saves.emplace_back(this->getUniverse().getCurrentWorld());
         }
     }

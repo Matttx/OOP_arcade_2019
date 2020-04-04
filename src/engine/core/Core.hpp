@@ -10,9 +10,9 @@
 
 #include "../../game/IGame.hpp"
 #include "../../graphical/IGraphical.hpp"
-#include "../ecs/Universe.hpp"
 #include "../save/Component.hpp"
 #include "../save/System.hpp"
+#include "../ecs/Universe.hpp"
 #include "DynamicLibrary.hpp"
 
 namespace engine {
@@ -36,8 +36,8 @@ class Core {
     bool hasGameGraphical() const;
     game::IGame& getGame(const std::string& name) const;
     game::IGame& getCurrentGame() const;
-    std::map<std::string, std::string> getGames() const;
     void setCurrentGame(const std::string& name);
+    std::map<std::string, std::string> getGames() const;
     void switchGame();
 
   public:
@@ -45,10 +45,10 @@ class Core {
     bool hasCurrentGraphical() const;
     graphical::IGraphical& getGraphical(const std::string& name) const;
     graphical::IGraphical& getCurrentGraphical() const;
-    std::map<std::string, std::string> getGraphicals() const;
     void setCurrentGraphical(const std::string& name);
+    std::map<std::string, std::string> getGraphicals() const;
     void switchGraphical();
-    void switchGraphicalOld();
+
 
   private:
     std::string _currentGame;
