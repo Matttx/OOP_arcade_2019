@@ -10,6 +10,8 @@
 
 #include <string>
 
+#include "../engine/ecs/Universe.hpp"
+
 namespace game {
 
 class IGame {
@@ -17,7 +19,8 @@ class IGame {
     virtual ~IGame() = 0;
 
   public:
-    virtual std::string getName() = 0;
+    virtual std::string getName() const = 0;
+    virtual engine::ecs::Universe& getUniverse() const = 0;
 
   public:
     virtual void init() = 0;
