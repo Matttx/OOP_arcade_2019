@@ -84,6 +84,9 @@ void pacman::system::User::inputHandler(engine::event::Input& input)
             motion.velocity.x = NEXT_DIRECTION.at(BOTTOM).first;
             motion.velocity.y = NEXT_DIRECTION.at(BOTTOM).second;
         }
+        if (input.code == engine::event::Input::KEY_ESCAPE) {
+            getWorld().getUniverse().getCore().setCurrentGame("emulator");
+        }
     }
 }
 
