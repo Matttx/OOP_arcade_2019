@@ -11,10 +11,21 @@
 namespace engine {
 
 namespace type {
-
+/**
+ * @class Vector2D
+ * 
+ */
 class Vector2D {
   public:
+    /**
+     * @brief x : position x
+     * 
+     */
     int x;
+    /**
+     * @brief y : position y
+     * 
+     */
     int y;
 };
 

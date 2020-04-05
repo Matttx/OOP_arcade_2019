@@ -13,14 +13,36 @@
 namespace engine {
 
 namespace component {
-
+/**
+ * @class Class of component Hitbox
+ * 
+ */
 class Hitbox : public ecs::AComponent {
   public:
+    /**
+     * @brief width : width of the hitbox
+     * 
+     */
     int width;
+    /**
+     * @brief height : height of the hitbox
+     * 
+     */
     int height;
 
   public:
+    /**
+     * @brief Construct a new Hitbox object
+     * 
+     * @param entity : the entity that the component belongs to
+     * @param width : width of the hitbox
+     * @param height : height of the hitbox
+     */
     Hitbox(engine::ecs::Entity& entity, int width, int height);
+    /**
+     * @brief Destroy the Hitbox object
+     * 
+     */
     ~Hitbox() override;
 };
 

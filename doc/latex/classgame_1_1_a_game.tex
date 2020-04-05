@@ -1,0 +1,126 @@
+\hypertarget{classgame_1_1_a_game}{}\doxysection{game\+::A\+Game Class Reference}
+\label{classgame_1_1_a_game}\index{game::AGame@{game::AGame}}
+Inheritance diagram for game\+::A\+Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgame_1_1_a_game}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgame_1_1_a_game_aa59d9ccaab50a42a3ee98f52dc82b485}{A\+Game}} (const std\+::string \&name, \mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{engine\+::ecs\+::\+Universe}} \&universe)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classgame_1_1_a_game}{A\+Game}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgame_1_1_a_game_a9447d90e965799b695200852ea216d79}{$\sim$\+A\+Game}} () override=0
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classgame_1_1_a_game}{A\+Game}} object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classgame_1_1_a_game_a5b181fc75ecdffd106008c7a3ef65083}{get\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em get\+Name \+: get the name of the game \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{engine\+::ecs\+::\+Universe}} \& \mbox{\hyperlink{classgame_1_1_a_game_a19ed8d271c5eabea8ca864e7784c2896}{get\+Universe}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Universe object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgame_1_1_a_game_a71cdf1d638a0b3ea1b0e552b618f66f0}{init}} () override=0
+\begin{DoxyCompactList}\small\item\em init \+: pure virtual to init the child game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgame_1_1_a_game_aebaa73b4e37b5af64c749ec47405a2f6}{destroy}} () override=0
+\begin{DoxyCompactList}\small\item\em destroy \+: pure virtual to destroy the child game \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+from \mbox{\hyperlink{classgame_1_1_i_game}{I\+Game}} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classgame_1_1_a_game_aa59d9ccaab50a42a3ee98f52dc82b485}\label{classgame_1_1_a_game_aa59d9ccaab50a42a3ee98f52dc82b485}} 
+\index{game::AGame@{game::AGame}!AGame@{AGame}}
+\index{AGame@{AGame}!game::AGame@{game::AGame}}
+\doxysubsubsection{\texorpdfstring{AGame()}{AGame()}}
+{\footnotesize\ttfamily game\+::\+A\+Game\+::\+A\+Game (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{\mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{engine\+::ecs\+::\+Universe}} \&}]{universe }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a new \mbox{\hyperlink{classgame_1_1_a_game}{A\+Game}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: the name of the game \\
+\hline
+{\em universe} & \+: a reference to an universe \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgame_1_1_a_game_a9447d90e965799b695200852ea216d79}\label{classgame_1_1_a_game_a9447d90e965799b695200852ea216d79}} 
+\index{game::AGame@{game::AGame}!````~AGame@{$\sim$AGame}}
+\index{````~AGame@{$\sim$AGame}!game::AGame@{game::AGame}}
+\doxysubsubsection{\texorpdfstring{$\sim$AGame()}{~AGame()}}
+{\footnotesize\ttfamily game\+::\+A\+Game\+::$\sim$\+A\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [pure virtual]}}
+
+
+
+Destroy the \mbox{\hyperlink{classgame_1_1_a_game}{A\+Game}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgame_1_1_a_game_aebaa73b4e37b5af64c749ec47405a2f6}\label{classgame_1_1_a_game_aebaa73b4e37b5af64c749ec47405a2f6}} 
+\index{game::AGame@{game::AGame}!destroy@{destroy}}
+\index{destroy@{destroy}!game::AGame@{game::AGame}}
+\doxysubsubsection{\texorpdfstring{destroy()}{destroy()}}
+{\footnotesize\ttfamily void game\+::\+A\+Game\+::destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [pure virtual]}}
+
+
+
+destroy \+: pure virtual to destroy the child game 
+
+
+
+Implements \mbox{\hyperlink{classgame_1_1_i_game_a112d39e78a0140f9fd679a84607846aa}{game\+::\+I\+Game}}.
+
+\mbox{\Hypertarget{classgame_1_1_a_game_a5b181fc75ecdffd106008c7a3ef65083}\label{classgame_1_1_a_game_a5b181fc75ecdffd106008c7a3ef65083}} 
+\index{game::AGame@{game::AGame}!getName@{getName}}
+\index{getName@{getName}!game::AGame@{game::AGame}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string game\+::\+A\+Game\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get\+Name \+: get the name of the game 
+
+\begin{DoxyReturn}{Returns}
+std\+::string \+: return the name of the game 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgame_1_1_i_game_a2b346c05fe09ef921de6ae2f4d969a34}{game\+::\+I\+Game}}.
+
+\mbox{\Hypertarget{classgame_1_1_a_game_a19ed8d271c5eabea8ca864e7784c2896}\label{classgame_1_1_a_game_a19ed8d271c5eabea8ca864e7784c2896}} 
+\index{game::AGame@{game::AGame}!getUniverse@{getUniverse}}
+\index{getUniverse@{getUniverse}!game::AGame@{game::AGame}}
+\doxysubsubsection{\texorpdfstring{getUniverse()}{getUniverse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{engine\+::ecs\+::\+Universe}}\& game\+::\+A\+Game\+::get\+Universe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Universe object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{engine\+::ecs\+::\+Universe}}\& \+: return a reference to the universe of the game 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgame_1_1_i_game_a056c13b6018abf1eba7015558482ed53}{game\+::\+I\+Game}}.
+
+\mbox{\Hypertarget{classgame_1_1_a_game_a71cdf1d638a0b3ea1b0e552b618f66f0}\label{classgame_1_1_a_game_a71cdf1d638a0b3ea1b0e552b618f66f0}} 
+\index{game::AGame@{game::AGame}!init@{init}}
+\index{init@{init}!game::AGame@{game::AGame}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void game\+::\+A\+Game\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [pure virtual]}}
+
+
+
+init \+: pure virtual to init the child game 
+
+
+
+Implements \mbox{\hyperlink{classgame_1_1_i_game_a4dc615d2e972fa2ff52e9ad5af5ab9f6}{game\+::\+I\+Game}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/thomashidalgo/\+Desktop/epitech/projets/tek2/\+O\+O\+P/\+O\+O\+P\+\_\+arcade\+\_\+2019/src/game/A\+Game.\+hpp\end{DoxyCompactItemize}

@@ -16,13 +16,30 @@
 namespace engine {
 
 namespace component {
-
+/**
+ * @brief Abstract class of component Audio
+ * 
+ */
 class AAudio : public ecs::AComponent {
   public:
+    /**
+     * @brief Vector of audio paths
+     * 
+     */
     const std::vector<std::string> paths;
 
   public:
+    /**
+     * @brief Construct a new AAudio object
+     * 
+     * @param entity : the entity that the component belongs to
+     * @param paths : vector of audio paths
+     */
     AAudio(ecs::Entity& entity, const std::vector<std::string>& paths);
+    /**
+     * @brief Destroy the AAudio object
+     * 
+     */
     ~AAudio() override = 0;
 };
 

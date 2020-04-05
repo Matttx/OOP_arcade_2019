@@ -13,10 +13,22 @@
 namespace engine {
 
 namespace system {
-
+/**
+ * @class AAI that inherits from ASystem
+ * 
+ */
 class AAI : public ecs::ASystem {
   public:
+    /**
+     * @brief Construct a new AAI object
+     * 
+     * @param world
+     */
     explicit AAI(ecs::World& world);
+    /**
+     * @brief Destroy the AAI object
+     * 
+     */
     ~AAI() override = 0;
 };
 

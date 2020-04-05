@@ -1,0 +1,79 @@
+\hypertarget{classengine_1_1ecs_1_1_i_system}{}\doxysection{engine\+::ecs\+::I\+System Class Reference}
+\label{classengine_1_1ecs_1_1_i_system}\index{engine::ecs::ISystem@{engine::ecs::ISystem}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classengine_1_1ecs_1_1_i_system_a35c9f0f1ee4da622a4b3ae061d5722a0}{$\sim$\+I\+System}} ()=0
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classengine_1_1ecs_1_1_i_system}{I\+System}} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_world}{World}} \& \mbox{\hyperlink{classengine_1_1ecs_1_1_i_system_a8cf35035566516d8bca32c38c56cde3a}{get\+World}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_world}{World}} object \+: function that permite child to get a world. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classengine_1_1ecs_1_1_i_system_a465ec40fc322a6dd26d9c7678be0cd9d}{init}} ()=0
+\begin{DoxyCompactList}\small\item\em init \+: pure virtual function for child class in order to init the system \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classengine_1_1ecs_1_1_i_system_a76514446115ac9ffe6eb9cc15c5240b7}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em update \+: pure virtual function for child class in order to update the system \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classengine_1_1ecs_1_1_i_system_ad47541d936d13ae2cb4ef68805521c14}{render}} ()=0
+\begin{DoxyCompactList}\small\item\em render \+: pure virtual function for child class in order to render the system \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_i_system_a35c9f0f1ee4da622a4b3ae061d5722a0}\label{classengine_1_1ecs_1_1_i_system_a35c9f0f1ee4da622a4b3ae061d5722a0}} 
+\index{engine::ecs::ISystem@{engine::ecs::ISystem}!````~ISystem@{$\sim$ISystem}}
+\index{````~ISystem@{$\sim$ISystem}!engine::ecs::ISystem@{engine::ecs::ISystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$ISystem()}{~ISystem()}}
+{\footnotesize\ttfamily virtual engine\+::ecs\+::\+I\+System\+::$\sim$\+I\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Destroy the \mbox{\hyperlink{classengine_1_1ecs_1_1_i_system}{I\+System}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_i_system_a8cf35035566516d8bca32c38c56cde3a}\label{classengine_1_1ecs_1_1_i_system_a8cf35035566516d8bca32c38c56cde3a}} 
+\index{engine::ecs::ISystem@{engine::ecs::ISystem}!getWorld@{getWorld}}
+\index{getWorld@{getWorld}!engine::ecs::ISystem@{engine::ecs::ISystem}}
+\doxysubsubsection{\texorpdfstring{getWorld()}{getWorld()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_world}{World}}\& engine\+::ecs\+::\+I\+System\+::get\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the \mbox{\hyperlink{class_world}{World}} object \+: function that permite child to get a world. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_world}{World}}\& \+: return a reference to a \mbox{\hyperlink{class_world}{World}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_i_system_a465ec40fc322a6dd26d9c7678be0cd9d}\label{classengine_1_1ecs_1_1_i_system_a465ec40fc322a6dd26d9c7678be0cd9d}} 
+\index{engine::ecs::ISystem@{engine::ecs::ISystem}!init@{init}}
+\index{init@{init}!engine::ecs::ISystem@{engine::ecs::ISystem}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily virtual void engine\+::ecs\+::\+I\+System\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+init \+: pure virtual function for child class in order to init the system 
+
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_i_system_ad47541d936d13ae2cb4ef68805521c14}\label{classengine_1_1ecs_1_1_i_system_ad47541d936d13ae2cb4ef68805521c14}} 
+\index{engine::ecs::ISystem@{engine::ecs::ISystem}!render@{render}}
+\index{render@{render}!engine::ecs::ISystem@{engine::ecs::ISystem}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily virtual void engine\+::ecs\+::\+I\+System\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+render \+: pure virtual function for child class in order to render the system 
+
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_i_system_a76514446115ac9ffe6eb9cc15c5240b7}\label{classengine_1_1ecs_1_1_i_system_a76514446115ac9ffe6eb9cc15c5240b7}} 
+\index{engine::ecs::ISystem@{engine::ecs::ISystem}!update@{update}}
+\index{update@{update}!engine::ecs::ISystem@{engine::ecs::ISystem}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void engine\+::ecs\+::\+I\+System\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+update \+: pure virtual function for child class in order to update the system 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/thomashidalgo/\+Desktop/epitech/projets/tek2/\+O\+O\+P/\+O\+O\+P\+\_\+arcade\+\_\+2019/src/engine/ecs/I\+System.\+hpp\end{DoxyCompactItemize}

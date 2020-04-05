@@ -13,15 +13,39 @@
 namespace engine {
 
 namespace system {
-
+/**
+ * @class Movement that inherits from ASystem
+ * 
+ */
 class Movement : public ecs::ASystem {
   public:
+    /**
+     * @brief Construct a new Movement object
+     * 
+     * @param world 
+     */
     explicit Movement(ecs::World& world);
+    /**
+     * @brief Destroy the Movement object
+     * 
+     */
     ~Movement() override;
 
   public:
+    /**
+     * @brief init : init the system movement 
+     * 
+     */
     void init() override;
+    /**
+     * @brief update : update the system movement
+     * 
+     */
     void update() override;
+    /**
+     * @brief render : render the system movement
+     * 
+     */
     void render() override;
 };
 

@@ -13,10 +13,22 @@
 namespace engine {
 
 namespace component {
-
+/**
+ * @class Abstract class of component User
+ * 
+ */
 class AUser : public ecs::AComponent {
   public:
+    /**
+     * @brief Construct a new AUser object
+     * 
+     * @param entity : the entity that the component belongs to
+     */
     explicit AUser(engine::ecs::Entity& entity);
+    /**
+     * @brief Destroy the AUser object
+     * 
+     */
     ~AUser() override = 0;
 };
 

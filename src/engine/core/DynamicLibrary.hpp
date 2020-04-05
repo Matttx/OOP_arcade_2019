@@ -18,7 +18,10 @@
 namespace engine {
 
 namespace core {
-
+/**
+ * @class DynamicLibrary 
+ * 
+ */
 template<typename T>
 class DynamicLibrary {
   public:

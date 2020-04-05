@@ -1,0 +1,254 @@
+\hypertarget{classengine_1_1ecs_1_1_universe}{}\doxysection{engine\+::ecs\+::Universe Class Reference}
+\label{classengine_1_1ecs_1_1_universe}\index{engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classengine_1_1ecs_1_1_universe_a2b94a1af4084114cc4e0023cfe77067f}{Universe}} (\mbox{\hyperlink{classengine_1_1core_1_1_core}{core\+::\+Core}} \&core)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{Universe}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classengine_1_1ecs_1_1_universe_ab1f3d1e77a1d48f2087415214df696ad}{$\sim$\+Universe}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{Universe}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classengine_1_1core_1_1_core}{core\+::\+Core}} \& \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_a9e9720fb5a2585a80517c2d36d128076}{get\+Core}} () const
+\begin{DoxyCompactList}\small\item\em Get the Core object. \end{DoxyCompactList}\item 
+eventbus\+::\+Event\+Bus \& \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_a6726befbb7dd96f900fdf7b5986f0108}{get\+Event\+Bus}} () const
+\begin{DoxyCompactList}\small\item\em Get the Event Bus object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_abbb7718c16dc9832c32a0ff10c766f57}{init}} ()
+\begin{DoxyCompactList}\small\item\em init \+: init the universe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_a4a0c3a2d2c56bd487f2ecd9f821e7423}{update}} ()
+\begin{DoxyCompactList}\small\item\em update \+: update the universe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_a0cbf5b0fa021083e2b9b789f8398f572}{render}} ()
+\begin{DoxyCompactList}\small\item\em render \+: render the universe \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_world}{World}} \& \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_a003740dc37cdc00a42bb6aeb2af5e30f}{create\+World}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{class_world}{World}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_a7d7384943cdc909fb97b32ebce132e0d}{has\+World}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em has\+World \+: check if the world exist with a name \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_ac745a60d1b0faa07c2cf74046de33dba}{has\+Current\+World}} () const
+\begin{DoxyCompactList}\small\item\em has\+Current\+World \+: function that check if there is a current world \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_world}{World}} \& \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_a3ffd4547b10ca0d7c716c83634482019}{get\+World}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_world}{World}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_world}{World}} \& \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_a63ca714528f880c5aa681314baf973f5}{get\+Current\+World}} () const
+\begin{DoxyCompactList}\small\item\em Get the Current \mbox{\hyperlink{class_world}{World}} object. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_a67f2531a95217e4d796f63848abd7994}{get\+World\+Names}} () const
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{class_world}{World}} Names object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_aff83d29b786490256f01ef06642bbd88}{set\+Current\+World}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Set the Current \mbox{\hyperlink{class_world}{World}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1ecs_1_1_universe_ad8f53cb48d11c245e4d1d83d2b94ce71}{delete\+World}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em delete\+World \+: delete a world \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_a2b94a1af4084114cc4e0023cfe77067f}\label{classengine_1_1ecs_1_1_universe_a2b94a1af4084114cc4e0023cfe77067f}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!Universe@{Universe}}
+\index{Universe@{Universe}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{Universe()}{Universe()}}
+{\footnotesize\ttfamily engine\+::ecs\+::\+Universe\+::\+Universe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classengine_1_1core_1_1_core}{core\+::\+Core}} \&}]{core }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a new \mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{Universe}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em core} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_ab1f3d1e77a1d48f2087415214df696ad}\label{classengine_1_1ecs_1_1_universe_ab1f3d1e77a1d48f2087415214df696ad}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!````~Universe@{$\sim$Universe}}
+\index{````~Universe@{$\sim$Universe}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{$\sim$Universe()}{~Universe()}}
+{\footnotesize\ttfamily engine\+::ecs\+::\+Universe\+::$\sim$\+Universe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{Universe}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_a003740dc37cdc00a42bb6aeb2af5e30f}\label{classengine_1_1ecs_1_1_universe_a003740dc37cdc00a42bb6aeb2af5e30f}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!createWorld@{createWorld}}
+\index{createWorld@{createWorld}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{createWorld()}{createWorld()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_world}{World}}\& engine\+::ecs\+::\+Universe\+::create\+World (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{class_world}{World}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: the name of the world \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_world}{World}}\& \+: return a reference of the world created 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_ad8f53cb48d11c245e4d1d83d2b94ce71}\label{classengine_1_1ecs_1_1_universe_ad8f53cb48d11c245e4d1d83d2b94ce71}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!deleteWorld@{deleteWorld}}
+\index{deleteWorld@{deleteWorld}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{deleteWorld()}{deleteWorld()}}
+{\footnotesize\ttfamily void engine\+::ecs\+::\+Universe\+::delete\+World (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+delete\+World \+: delete a world 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: the world to delete \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_a9e9720fb5a2585a80517c2d36d128076}\label{classengine_1_1ecs_1_1_universe_a9e9720fb5a2585a80517c2d36d128076}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!getCore@{getCore}}
+\index{getCore@{getCore}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{getCore()}{getCore()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classengine_1_1core_1_1_core}{core\+::\+Core}}\& engine\+::ecs\+::\+Universe\+::get\+Core (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Core object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classengine_1_1core_1_1_core}{core\+::\+Core}}\& \+: return a reference to the Core object getted 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_a63ca714528f880c5aa681314baf973f5}\label{classengine_1_1ecs_1_1_universe_a63ca714528f880c5aa681314baf973f5}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!getCurrentWorld@{getCurrentWorld}}
+\index{getCurrentWorld@{getCurrentWorld}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{getCurrentWorld()}{getCurrentWorld()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_world}{World}}\& engine\+::ecs\+::\+Universe\+::get\+Current\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Current \mbox{\hyperlink{class_world}{World}} object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_world}{World}}\& \+: return a reference to the current world 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_a6726befbb7dd96f900fdf7b5986f0108}\label{classengine_1_1ecs_1_1_universe_a6726befbb7dd96f900fdf7b5986f0108}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!getEventBus@{getEventBus}}
+\index{getEventBus@{getEventBus}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{getEventBus()}{getEventBus()}}
+{\footnotesize\ttfamily eventbus\+::\+Event\+Bus\& engine\+::ecs\+::\+Universe\+::get\+Event\+Bus (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Event Bus object. 
+
+\begin{DoxyReturn}{Returns}
+eventbus\+::\+Event\+Bus\& \+: return a reference to an Event\+Bus getted 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_a3ffd4547b10ca0d7c716c83634482019}\label{classengine_1_1ecs_1_1_universe_a3ffd4547b10ca0d7c716c83634482019}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!getWorld@{getWorld}}
+\index{getWorld@{getWorld}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{getWorld()}{getWorld()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_world}{World}}\& engine\+::ecs\+::\+Universe\+::get\+World (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+Get the \mbox{\hyperlink{class_world}{World}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: the name of the world to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_world}{World}}\& \+: a reference to the world getted 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_a67f2531a95217e4d796f63848abd7994}\label{classengine_1_1ecs_1_1_universe_a67f2531a95217e4d796f63848abd7994}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!getWorldNames@{getWorldNames}}
+\index{getWorldNames@{getWorldNames}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{getWorldNames()}{getWorldNames()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ engine\+::ecs\+::\+Universe\+::get\+World\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the \mbox{\hyperlink{class_world}{World}} Names object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::string$>$ \+: return a vector of string that represents the name of all the worlds 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_ac745a60d1b0faa07c2cf74046de33dba}\label{classengine_1_1ecs_1_1_universe_ac745a60d1b0faa07c2cf74046de33dba}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!hasCurrentWorld@{hasCurrentWorld}}
+\index{hasCurrentWorld@{hasCurrentWorld}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{hasCurrentWorld()}{hasCurrentWorld()}}
+{\footnotesize\ttfamily bool engine\+::ecs\+::\+Universe\+::has\+Current\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+has\+Current\+World \+: function that check if there is a current world 
+
+\begin{DoxyReturn}{Returns}
+true \+: there is a world 
+
+false \+: there is not a world 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_a7d7384943cdc909fb97b32ebce132e0d}\label{classengine_1_1ecs_1_1_universe_a7d7384943cdc909fb97b32ebce132e0d}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!hasWorld@{hasWorld}}
+\index{hasWorld@{hasWorld}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{hasWorld()}{hasWorld()}}
+{\footnotesize\ttfamily bool engine\+::ecs\+::\+Universe\+::has\+World (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+has\+World \+: check if the world exist with a name 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: name of the world \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true \+: the wordl exists 
+
+false \+: the world doesn\textquotesingle{}t exist 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_abbb7718c16dc9832c32a0ff10c766f57}\label{classengine_1_1ecs_1_1_universe_abbb7718c16dc9832c32a0ff10c766f57}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!init@{init}}
+\index{init@{init}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void engine\+::ecs\+::\+Universe\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+init \+: init the universe 
+
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_a0cbf5b0fa021083e2b9b789f8398f572}\label{classengine_1_1ecs_1_1_universe_a0cbf5b0fa021083e2b9b789f8398f572}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!render@{render}}
+\index{render@{render}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void engine\+::ecs\+::\+Universe\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+render \+: render the universe 
+
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_aff83d29b786490256f01ef06642bbd88}\label{classengine_1_1ecs_1_1_universe_aff83d29b786490256f01ef06642bbd88}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!setCurrentWorld@{setCurrentWorld}}
+\index{setCurrentWorld@{setCurrentWorld}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{setCurrentWorld()}{setCurrentWorld()}}
+{\footnotesize\ttfamily void engine\+::ecs\+::\+Universe\+::set\+Current\+World (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Set the Current \mbox{\hyperlink{class_world}{World}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: the world to set current \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classengine_1_1ecs_1_1_universe_a4a0c3a2d2c56bd487f2ecd9f821e7423}\label{classengine_1_1ecs_1_1_universe_a4a0c3a2d2c56bd487f2ecd9f821e7423}} 
+\index{engine::ecs::Universe@{engine::ecs::Universe}!update@{update}}
+\index{update@{update}!engine::ecs::Universe@{engine::ecs::Universe}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void engine\+::ecs\+::\+Universe\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+update \+: update the universe 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/thomashidalgo/\+Desktop/epitech/projets/tek2/\+O\+O\+P/\+O\+O\+P\+\_\+arcade\+\_\+2019/src/engine/ecs/Universe.\+hpp\end{DoxyCompactItemize}

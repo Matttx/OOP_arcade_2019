@@ -13,15 +13,39 @@
 namespace engine {
 
 namespace system {
-
+/**
+ * @class Physics that inherits from ASystem
+ * 
+ */
 class Physics : public ecs::ASystem {
   public:
+    /**
+     * @brief Construct a new Physics object
+     * 
+     * @param world 
+     */
     explicit Physics(ecs::World& world);
+    /**
+     * @brief Destroy the Physics object
+     * 
+     */
     ~Physics() override;
 
   public:
+    /**
+     * @brief init : init the Physics system
+     * 
+     */
     void init() override;
+    /**
+     * @brief update : update the Physics system
+     * 
+     */
     void update() override;
+    /**
+     * @brief render : render the Physics system
+     * 
+     */
     void render() override;
 };
 

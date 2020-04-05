@@ -13,10 +13,22 @@
 namespace engine {
 
 namespace system {
-
+/**
+ * @class AAnimation that inherits from ASystem
+ * 
+ */
 class AAnimations : public ecs::ASystem {
   public:
+    /**
+     * @brief Construct a new AAnimations object
+     * 
+     * @param world 
+     */
     explicit AAnimations(ecs::World& world);
+    /**
+     * @brief Destroy the AAnimations object
+     * 
+     */
     ~AAnimations() override = 0;
 };
 

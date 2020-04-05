@@ -1,0 +1,315 @@
+\hypertarget{classengine_1_1core_1_1_core}{}\doxysection{engine\+::core\+::Core Class Reference}
+\label{classengine_1_1core_1_1_core}\index{engine::core::Core@{engine::core::Core}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classengine_1_1core_1_1_core_a5f868ab73fe1e2fca81a4312ebc11d64}{Core}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classengine_1_1core_1_1_core}{Core}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classengine_1_1core_1_1_core_a9d8e2b683f7bb256473049ba2cab8a26}{$\sim$\+Core}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classengine_1_1core_1_1_core}{Core}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{ecs\+::\+Universe}} \& \mbox{\hyperlink{classengine_1_1core_1_1_core_af27f672e8080359401f67d2bc46971d0}{get\+Universe}} () const
+\begin{DoxyCompactList}\small\item\em Get the Universe object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1core_1_1_core_adf73014571d1c2e657faed03e077c630}{load\+Games}} ()
+\begin{DoxyCompactList}\small\item\em Load the Games lib. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1core_1_1_core_a907247e09a34a6a12da361a3b376ad31}{load\+Graphics}} ()
+\begin{DoxyCompactList}\small\item\em Load the Graphics lib. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classengine_1_1core_1_1_core_a0a1c63f057ece7cfbb751b20a4c36695}{has\+Game}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em has\+Game \+: Function that check if the core has a game with his name \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classengine_1_1core_1_1_core_af5c364b0034e4b1d07388e3d264b2bf0}{has\+Game\+Graphical}} () const
+\begin{DoxyCompactList}\small\item\em has\+Game\+Graphical \+: Function that check if a game is displaying \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgame_1_1_i_game}{game\+::\+I\+Game}} \& \mbox{\hyperlink{classengine_1_1core_1_1_core_aec26a2538560c1f6897c2726a3a237b8}{get\+Game}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em Get the Game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgame_1_1_i_game}{game\+::\+I\+Game}} \& \mbox{\hyperlink{classengine_1_1core_1_1_core_a336b9654026f6ca1a08bd89f3950ce07}{get\+Current\+Game}} () const
+\begin{DoxyCompactList}\small\item\em Get the Current Game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1core_1_1_core_a2385626bbd480a17da6d453293853ac8}{set\+Current\+Game}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Set the Current Game. \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classengine_1_1core_1_1_core_a9b48bf4a48fac62ec6db92ea05b2eff4}{get\+Games}} () const
+\begin{DoxyCompactList}\small\item\em Get the Games. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1core_1_1_core_a6d87e889b0867feb3d43c6ff6b73013d}{switch\+Game}} ()
+\begin{DoxyCompactList}\small\item\em switch\+Game \+: function that switch a game with another \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classengine_1_1core_1_1_core_a8331512082e9e2e28ce9134b40cdc311}{has\+Graphical}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em has\+Graphical \+: check if there is a graphical library \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classengine_1_1core_1_1_core_ae529050adff90a8ca5d87eb5161852a7}{has\+Current\+Graphical}} () const
+\begin{DoxyCompactList}\small\item\em has\+Current\+Graphical \+: check if a graphical library is displaying \end{DoxyCompactList}\item 
+graphical\+::\+I\+Graphical \& \mbox{\hyperlink{classengine_1_1core_1_1_core_ab73cd2e5c82de729a5f88ae2c6225c10}{get\+Graphical}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em get\+Graphical \+: get a special graphical library \end{DoxyCompactList}\item 
+graphical\+::\+I\+Graphical \& \mbox{\hyperlink{classengine_1_1core_1_1_core_a921f4d288ccf16c4a373ee630bc1a297}{get\+Current\+Graphical}} () const
+\begin{DoxyCompactList}\small\item\em get\+Current\+Graphical \+: get the current graphical library \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1core_1_1_core_ae59913c2d22358cf3284b61d32142b92}{set\+Current\+Graphical}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em set\+Current\+Graphical \+: set the current graphical library \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classengine_1_1core_1_1_core_a65b49e819803d03fdcd3efea8519d06e}{get\+Graphicals}} () const
+\begin{DoxyCompactList}\small\item\em get\+Graphicals \+: get the graphicals library \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classengine_1_1core_1_1_core_a167cbf2a38b0f9027c53a5c235e4ec5d}{switch\+Graphical}} ()
+\begin{DoxyCompactList}\small\item\em switch\+Graphical \+: switch graphical library \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a5f868ab73fe1e2fca81a4312ebc11d64}\label{classengine_1_1core_1_1_core_a5f868ab73fe1e2fca81a4312ebc11d64}} 
+\index{engine::core::Core@{engine::core::Core}!Core@{Core}}
+\index{Core@{Core}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{Core()}{Core()}}
+{\footnotesize\ttfamily engine\+::core\+::\+Core\+::\+Core (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classengine_1_1core_1_1_core}{Core}} object. 
+
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a9d8e2b683f7bb256473049ba2cab8a26}\label{classengine_1_1core_1_1_core_a9d8e2b683f7bb256473049ba2cab8a26}} 
+\index{engine::core::Core@{engine::core::Core}!````~Core@{$\sim$Core}}
+\index{````~Core@{$\sim$Core}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{$\sim$Core()}{~Core()}}
+{\footnotesize\ttfamily engine\+::core\+::\+Core\+::$\sim$\+Core (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \mbox{\hyperlink{classengine_1_1core_1_1_core}{Core}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a336b9654026f6ca1a08bd89f3950ce07}\label{classengine_1_1core_1_1_core_a336b9654026f6ca1a08bd89f3950ce07}} 
+\index{engine::core::Core@{engine::core::Core}!getCurrentGame@{getCurrentGame}}
+\index{getCurrentGame@{getCurrentGame}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{getCurrentGame()}{getCurrentGame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgame_1_1_i_game}{game\+::\+I\+Game}}\& engine\+::core\+::\+Core\+::get\+Current\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Current Game. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classgame_1_1_i_game}{game\+::\+I\+Game}}\& \+: return a reference of I\+Game 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a921f4d288ccf16c4a373ee630bc1a297}\label{classengine_1_1core_1_1_core_a921f4d288ccf16c4a373ee630bc1a297}} 
+\index{engine::core::Core@{engine::core::Core}!getCurrentGraphical@{getCurrentGraphical}}
+\index{getCurrentGraphical@{getCurrentGraphical}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{getCurrentGraphical()}{getCurrentGraphical()}}
+{\footnotesize\ttfamily graphical\+::\+I\+Graphical\& engine\+::core\+::\+Core\+::get\+Current\+Graphical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Current\+Graphical \+: get the current graphical library 
+
+\begin{DoxyReturn}{Returns}
+graphical\+::\+I\+Graphical\& \+: return a I\+Graphical reference of the current graphical library 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_aec26a2538560c1f6897c2726a3a237b8}\label{classengine_1_1core_1_1_core_aec26a2538560c1f6897c2726a3a237b8}} 
+\index{engine::core::Core@{engine::core::Core}!getGame@{getGame}}
+\index{getGame@{getGame}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{getGame()}{getGame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgame_1_1_i_game}{game\+::\+I\+Game}}\& engine\+::core\+::\+Core\+::get\+Game (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+Get the Game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: the name of the game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classgame_1_1_i_game}{game\+::\+I\+Game}}\& \+: return a reference of I\+Game 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a9b48bf4a48fac62ec6db92ea05b2eff4}\label{classengine_1_1core_1_1_core_a9b48bf4a48fac62ec6db92ea05b2eff4}} 
+\index{engine::core::Core@{engine::core::Core}!getGames@{getGames}}
+\index{getGames@{getGames}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{getGames()}{getGames()}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::string$>$ engine\+::core\+::\+Core\+::get\+Games (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Games. 
+
+\begin{DoxyReturn}{Returns}
+std\+::map$<$std\+::string, std\+::string$>$ \+: return a map of games \+: the first key is a string of ... and the second is a string of ... 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_ab73cd2e5c82de729a5f88ae2c6225c10}\label{classengine_1_1core_1_1_core_ab73cd2e5c82de729a5f88ae2c6225c10}} 
+\index{engine::core::Core@{engine::core::Core}!getGraphical@{getGraphical}}
+\index{getGraphical@{getGraphical}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{getGraphical()}{getGraphical()}}
+{\footnotesize\ttfamily graphical\+::\+I\+Graphical\& engine\+::core\+::\+Core\+::get\+Graphical (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+get\+Graphical \+: get a special graphical library 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: the name of the library to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+graphical\+::\+I\+Graphical\& \+: return a I\+Graphical reference of the graphical library get 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a65b49e819803d03fdcd3efea8519d06e}\label{classengine_1_1core_1_1_core_a65b49e819803d03fdcd3efea8519d06e}} 
+\index{engine::core::Core@{engine::core::Core}!getGraphicals@{getGraphicals}}
+\index{getGraphicals@{getGraphicals}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{getGraphicals()}{getGraphicals()}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::string$>$ engine\+::core\+::\+Core\+::get\+Graphicals (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Graphicals \+: get the graphicals library 
+
+\begin{DoxyReturn}{Returns}
+std\+::map$<$std\+::string, std\+::string$>$ \+: return a map of strings that correspond of the graphical library 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_af27f672e8080359401f67d2bc46971d0}\label{classengine_1_1core_1_1_core_af27f672e8080359401f67d2bc46971d0}} 
+\index{engine::core::Core@{engine::core::Core}!getUniverse@{getUniverse}}
+\index{getUniverse@{getUniverse}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{getUniverse()}{getUniverse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{ecs\+::\+Universe}}\& engine\+::core\+::\+Core\+::get\+Universe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Universe object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classengine_1_1ecs_1_1_universe}{ecs\+::\+Universe}}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_ae529050adff90a8ca5d87eb5161852a7}\label{classengine_1_1core_1_1_core_ae529050adff90a8ca5d87eb5161852a7}} 
+\index{engine::core::Core@{engine::core::Core}!hasCurrentGraphical@{hasCurrentGraphical}}
+\index{hasCurrentGraphical@{hasCurrentGraphical}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{hasCurrentGraphical()}{hasCurrentGraphical()}}
+{\footnotesize\ttfamily bool engine\+::core\+::\+Core\+::has\+Current\+Graphical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+has\+Current\+Graphical \+: check if a graphical library is displaying 
+
+\begin{DoxyReturn}{Returns}
+true \+: a graphical library is displaying 
+
+false \+: a graphical library is not displaying 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a0a1c63f057ece7cfbb751b20a4c36695}\label{classengine_1_1core_1_1_core_a0a1c63f057ece7cfbb751b20a4c36695}} 
+\index{engine::core::Core@{engine::core::Core}!hasGame@{hasGame}}
+\index{hasGame@{hasGame}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{hasGame()}{hasGame()}}
+{\footnotesize\ttfamily bool engine\+::core\+::\+Core\+::has\+Game (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+has\+Game \+: Function that check if the core has a game with his name 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: name of the game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true \+: the core has the game 
+
+false \+: the core don\textquotesingle{}t has the game 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_af5c364b0034e4b1d07388e3d264b2bf0}\label{classengine_1_1core_1_1_core_af5c364b0034e4b1d07388e3d264b2bf0}} 
+\index{engine::core::Core@{engine::core::Core}!hasGameGraphical@{hasGameGraphical}}
+\index{hasGameGraphical@{hasGameGraphical}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{hasGameGraphical()}{hasGameGraphical()}}
+{\footnotesize\ttfamily bool engine\+::core\+::\+Core\+::has\+Game\+Graphical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+has\+Game\+Graphical \+: Function that check if a game is displaying 
+
+\begin{DoxyReturn}{Returns}
+true \+: the game is displaying 
+
+false \+: the game is not displaying 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a8331512082e9e2e28ce9134b40cdc311}\label{classengine_1_1core_1_1_core_a8331512082e9e2e28ce9134b40cdc311}} 
+\index{engine::core::Core@{engine::core::Core}!hasGraphical@{hasGraphical}}
+\index{hasGraphical@{hasGraphical}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{hasGraphical()}{hasGraphical()}}
+{\footnotesize\ttfamily bool engine\+::core\+::\+Core\+::has\+Graphical (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+has\+Graphical \+: check if there is a graphical library 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: name of the library \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true \+: the library is found 
+
+false \+: the library is not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_adf73014571d1c2e657faed03e077c630}\label{classengine_1_1core_1_1_core_adf73014571d1c2e657faed03e077c630}} 
+\index{engine::core::Core@{engine::core::Core}!loadGames@{loadGames}}
+\index{loadGames@{loadGames}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{loadGames()}{loadGames()}}
+{\footnotesize\ttfamily void engine\+::core\+::\+Core\+::load\+Games (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Load the Games lib. 
+
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a907247e09a34a6a12da361a3b376ad31}\label{classengine_1_1core_1_1_core_a907247e09a34a6a12da361a3b376ad31}} 
+\index{engine::core::Core@{engine::core::Core}!loadGraphics@{loadGraphics}}
+\index{loadGraphics@{loadGraphics}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{loadGraphics()}{loadGraphics()}}
+{\footnotesize\ttfamily void engine\+::core\+::\+Core\+::load\+Graphics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Load the Graphics lib. 
+
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a2385626bbd480a17da6d453293853ac8}\label{classengine_1_1core_1_1_core_a2385626bbd480a17da6d453293853ac8}} 
+\index{engine::core::Core@{engine::core::Core}!setCurrentGame@{setCurrentGame}}
+\index{setCurrentGame@{setCurrentGame}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{setCurrentGame()}{setCurrentGame()}}
+{\footnotesize\ttfamily void engine\+::core\+::\+Core\+::set\+Current\+Game (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Set the Current Game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: the name of the game to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_ae59913c2d22358cf3284b61d32142b92}\label{classengine_1_1core_1_1_core_ae59913c2d22358cf3284b61d32142b92}} 
+\index{engine::core::Core@{engine::core::Core}!setCurrentGraphical@{setCurrentGraphical}}
+\index{setCurrentGraphical@{setCurrentGraphical}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{setCurrentGraphical()}{setCurrentGraphical()}}
+{\footnotesize\ttfamily void engine\+::core\+::\+Core\+::set\+Current\+Graphical (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+set\+Current\+Graphical \+: set the current graphical library 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: the name of the library to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a6d87e889b0867feb3d43c6ff6b73013d}\label{classengine_1_1core_1_1_core_a6d87e889b0867feb3d43c6ff6b73013d}} 
+\index{engine::core::Core@{engine::core::Core}!switchGame@{switchGame}}
+\index{switchGame@{switchGame}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{switchGame()}{switchGame()}}
+{\footnotesize\ttfamily void engine\+::core\+::\+Core\+::switch\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+switch\+Game \+: function that switch a game with another 
+
+\mbox{\Hypertarget{classengine_1_1core_1_1_core_a167cbf2a38b0f9027c53a5c235e4ec5d}\label{classengine_1_1core_1_1_core_a167cbf2a38b0f9027c53a5c235e4ec5d}} 
+\index{engine::core::Core@{engine::core::Core}!switchGraphical@{switchGraphical}}
+\index{switchGraphical@{switchGraphical}!engine::core::Core@{engine::core::Core}}
+\doxysubsubsection{\texorpdfstring{switchGraphical()}{switchGraphical()}}
+{\footnotesize\ttfamily void engine\+::core\+::\+Core\+::switch\+Graphical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+switch\+Graphical \+: switch graphical library 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/thomashidalgo/\+Desktop/epitech/projets/tek2/\+O\+O\+P/\+O\+O\+P\+\_\+arcade\+\_\+2019/src/engine/core/Core.\+hpp\end{DoxyCompactItemize}

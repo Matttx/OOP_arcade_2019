@@ -1,0 +1,92 @@
+\hypertarget{classengine_1_1component_1_1_animations}{}\doxysection{engine\+::component\+::Animations Class Reference}
+\label{classengine_1_1component_1_1_animations}\index{engine::component::Animations@{engine::component::Animations}}
+Inheritance diagram for engine\+::component\+::Animations\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classengine_1_1component_1_1_animations}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classengine_1_1component_1_1_animations_abb46b35824153b3efe915a18a6386689}{Animations}} (ecs\+::\+Entity \&entity, const std\+::map$<$ std\+::string, \mbox{\hyperlink{classengine_1_1type_1_1_animation}{type\+::\+Animation}} $>$ \&\mbox{\hyperlink{classengine_1_1component_1_1_animations_aaff811d0f3413bbc05d70d045bb1dffa}{list}})
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classengine_1_1component_1_1_animations}{Animations}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classengine_1_1component_1_1_animations_ad253f5194d062efaf2232229bf2a541e}{$\sim$\+Animations}} () override
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classengine_1_1component_1_1_animations}{Animations}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::map$<$ std\+::string, \mbox{\hyperlink{classengine_1_1type_1_1_animation}{type\+::\+Animation}} $>$ \mbox{\hyperlink{classengine_1_1component_1_1_animations_aaff811d0f3413bbc05d70d045bb1dffa}{list}}
+\begin{DoxyCompactList}\small\item\em list \+: map of animation. Its first key is a string that represents the name of the animation. The second is the animation type \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classengine_1_1component_1_1_animations_a4d563399b3cfa383c2f0938c7447b2b9}{current\+Animation}}
+\begin{DoxyCompactList}\small\item\em current\+Animation \+: the name of the current animation \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classengine_1_1component_1_1_animations_aaa2efd8d70b0d79d935b37223eed2164}{current\+Frame}}
+\begin{DoxyCompactList}\small\item\em current\+Frame \+: the current frame of the animation \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classengine_1_1component_1_1_animations_abb46b35824153b3efe915a18a6386689}\label{classengine_1_1component_1_1_animations_abb46b35824153b3efe915a18a6386689}} 
+\index{engine::component::Animations@{engine::component::Animations}!Animations@{Animations}}
+\index{Animations@{Animations}!engine::component::Animations@{engine::component::Animations}}
+\doxysubsubsection{\texorpdfstring{Animations()}{Animations()}}
+{\footnotesize\ttfamily engine\+::component\+::\+Animations\+::\+Animations (\begin{DoxyParamCaption}\item[{ecs\+::\+Entity \&}]{entity,  }\item[{const std\+::map$<$ std\+::string, \mbox{\hyperlink{classengine_1_1type_1_1_animation}{type\+::\+Animation}} $>$ \&}]{list }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classengine_1_1component_1_1_animations}{Animations}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & \+: the entity that the component belongs to \\
+\hline
+{\em list} & \+: a list of animation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classengine_1_1component_1_1_animations_ad253f5194d062efaf2232229bf2a541e}\label{classengine_1_1component_1_1_animations_ad253f5194d062efaf2232229bf2a541e}} 
+\index{engine::component::Animations@{engine::component::Animations}!````~Animations@{$\sim$Animations}}
+\index{````~Animations@{$\sim$Animations}!engine::component::Animations@{engine::component::Animations}}
+\doxysubsubsection{\texorpdfstring{$\sim$Animations()}{~Animations()}}
+{\footnotesize\ttfamily engine\+::component\+::\+Animations\+::$\sim$\+Animations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Destroy the \mbox{\hyperlink{classengine_1_1component_1_1_animations}{Animations}} object. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classengine_1_1component_1_1_animations_a4d563399b3cfa383c2f0938c7447b2b9}\label{classengine_1_1component_1_1_animations_a4d563399b3cfa383c2f0938c7447b2b9}} 
+\index{engine::component::Animations@{engine::component::Animations}!currentAnimation@{currentAnimation}}
+\index{currentAnimation@{currentAnimation}!engine::component::Animations@{engine::component::Animations}}
+\doxysubsubsection{\texorpdfstring{currentAnimation}{currentAnimation}}
+{\footnotesize\ttfamily std\+::string engine\+::component\+::\+Animations\+::current\+Animation}
+
+
+
+current\+Animation \+: the name of the current animation 
+
+\mbox{\Hypertarget{classengine_1_1component_1_1_animations_aaa2efd8d70b0d79d935b37223eed2164}\label{classengine_1_1component_1_1_animations_aaa2efd8d70b0d79d935b37223eed2164}} 
+\index{engine::component::Animations@{engine::component::Animations}!currentFrame@{currentFrame}}
+\index{currentFrame@{currentFrame}!engine::component::Animations@{engine::component::Animations}}
+\doxysubsubsection{\texorpdfstring{currentFrame}{currentFrame}}
+{\footnotesize\ttfamily int engine\+::component\+::\+Animations\+::current\+Frame}
+
+
+
+current\+Frame \+: the current frame of the animation 
+
+\mbox{\Hypertarget{classengine_1_1component_1_1_animations_aaff811d0f3413bbc05d70d045bb1dffa}\label{classengine_1_1component_1_1_animations_aaff811d0f3413bbc05d70d045bb1dffa}} 
+\index{engine::component::Animations@{engine::component::Animations}!list@{list}}
+\index{list@{list}!engine::component::Animations@{engine::component::Animations}}
+\doxysubsubsection{\texorpdfstring{list}{list}}
+{\footnotesize\ttfamily const std\+::map$<$std\+::string, \mbox{\hyperlink{classengine_1_1type_1_1_animation}{type\+::\+Animation}}$>$ engine\+::component\+::\+Animations\+::list}
+
+
+
+list \+: map of animation. Its first key is a string that represents the name of the animation. The second is the animation type 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/thomashidalgo/\+Desktop/epitech/projets/tek2/\+O\+O\+P/\+O\+O\+P\+\_\+arcade\+\_\+2019/src/engine/component/Animations.\+hpp\end{DoxyCompactItemize}

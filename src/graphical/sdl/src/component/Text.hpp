@@ -16,17 +16,57 @@
 namespace sdl {
 
 namespace component {
-  class Text : public engine::component::AText {
-    public:
-      Text(engine::ecs::Entity& entity, const std::string& text, const std::vector<std::string>& paths, SDL_Renderer* renderer);
-      ~Text() override = default;
-      SDL_Surface *sprite;
-      SDL_Texture *texture;
-      SDL_Color color;
-      TTF_Font *font;
-      SDL_Rect srcRect;
-      SDL_Rect dstRect;
-  };
+/**
+ * @class Text
+ * 
+ */
+class Text : public engine::component::AText {
+  public:
+    /**
+     * @brief Construct a new Text object
+     * 
+     * @param entity : the entity of the component
+     * @param text : the text to display
+     * @param paths : vector of paths of fonts
+     * @param renderer : the renderer in order to create other SDL objects
+     */
+    Text(engine::ecs::Entity& entity, const std::string& text, const std::vector<std::string>& paths, SDL_Renderer* renderer);
+    /**
+     * @brief Destroy the Text object
+     * 
+     */
+    ~Text() override = default;
+    /**
+     * @brief sprite : correspond to the sprite load
+     * 
+     */
+    SDL_Surface *sprite;
+    /**
+     * @brief texture : correspond to the texture to display
+     * 
+     */
+    SDL_Texture *texture;
+    /**
+     * @brief color : the color of the text
+     * 
+     */
+    SDL_Color color;
+    /**
+     * @brief font : the font of the text
+     * 
+     */
+    TTF_Font *font;
+    /**
+     * @brief srcRect : the position x and y on the sprite
+     * 
+     */
+    SDL_Rect srcRect;
+    /**
+     * @brief dstRect : the position x and y on the screen
+     * 
+     */
+    SDL_Rect dstRect;
+};
 }
 }
 
