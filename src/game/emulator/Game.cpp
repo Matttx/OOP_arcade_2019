@@ -16,17 +16,6 @@
 #include "component/User.hpp"
 #include "system/User.hpp"
 
-static void resetAnimations(engine::ecs::World& mainWorld)
-{
-    auto entities = mainWorld.getEntities<engine::component::Animations>();
-
-    for (const auto& entity : entities) {
-        auto &animations = entity.get().getComponent<engine::component::Animations>();
-
-        animations.lastTimeMs = 0;
-    }
-}
-
 emulator::Game::Game(engine::ecs::Universe& universe)
     : game::AGame("emulator", universe)
 {
@@ -164,8 +153,6 @@ void emulator::Game::initGraphicalMenu(engine::ecs::World& mainWorld)
         button.addComponent<emulator::component::Action>(
             [&mainWorld, graphicalName](engine::ecs::Universe& universe) {
                 universe.getCore().setCurrentGraphical(graphicalName.first);
-
-                resetAnimations(mainWorld);
             });
         button.addComponent<engine::component::ARender>(buttonPaths);
         button.addComponent<engine::component::Size>(518, 136);
