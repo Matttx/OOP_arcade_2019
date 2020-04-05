@@ -9,11 +9,12 @@
 #define OOP_ARCADE_2019_GAME_HPP
 
 #include "../../../engine/component/Animations.hpp"
+#include "../../../engine/component/Motion.hpp"
 #include "../../../engine/ecs/Universe.hpp"
+#include "../../../engine/event/Collision.hpp"
 #include "../../../graphical/IGraphical.hpp"
 #include "../../AGame.hpp"
 
-#define PACGUMS_NB (240)
 #define DEFAULT_POSITION (500)
 #define DEFAULT_SIZE_BLOCK (40)
 #define MAP_PATH ("./src/game/pacman/map/map.txt")
@@ -57,8 +58,18 @@ class Game : public game::AGame {
   public:
     Game(engine::ecs::Universe& universe);
     ~Game() override = default;
+
+  public:
     void init() override;
     void destroy() override;
+
+  public:
+    static std::vector<bool> isCollide(const engine::component::Motion& motion);
+    void receiveCollision(engine::event::Collision& event);
+    void initEntity(engine::ecs::World& world);
+
+  public:
+    int nbPacGums;
 };
 }
 

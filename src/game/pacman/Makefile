@@ -16,7 +16,7 @@ SRC_DIR				=		src
 TEST_DIR			=		tests
 OUT_DIR				=		../../../games
 
-CC					=		g++
+CC					=		g++ -std=c++17
 MKDIR				=		mkdir -p
 MV					=		mv
 RM					=		rm -rf

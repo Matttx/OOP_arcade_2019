@@ -19,16 +19,10 @@ static bool isCollide(engine::component::Hitbox& hitbox1,
     engine::component::Hitbox& hitbox2,
     engine::component::Transform& transform2)
 {
-    if ((transform1.position.x >= transform2.position.x) &&
-        (transform1.position.x <= transform2.position.x + hitbox2.width) &&
-        (transform1.position.y >= transform2.position.y) &&
-        (transform1.position.y <= transform2.position.y + hitbox2.height))
-        return true;
-
-    return (transform2.position.x >= transform1.position.x) &&
-        (transform2.position.x <= transform1.position.x + hitbox1.width) &&
-        (transform2.position.y >= transform1.position.y) &&
-        (transform2.position.y <= transform1.position.y + hitbox1.height);
+    return transform1.position.x < transform2.position.x + hitbox2.width &&
+        transform2.position.x < transform1.position.x + hitbox1.width &&
+        transform1.position.y < transform2.position.y + hitbox2.height &&
+        transform2.position.y < transform1.position.y + hitbox1.height;
 }
 
 engine::system::Physics::Physics(engine::ecs::World& world) : ASystem(world)
@@ -52,14 +46,14 @@ void engine::system::Physics::update()
             entities[i].get().getComponent<component::Transform>();
 
         for (std::size_t j = i + 1; j < entities.size(); ++j) {
+            if (&entities[j].get() == &entities[i].get())
+                continue;
             auto& hitbox2 = entities[j].get().getComponent<component::Hitbox>();
             auto& transform2 =
                 entities[j].get().getComponent<component::Transform>();
-
             if (isCollide(hitbox1, transform1, hitbox2, transform2)) {
                 auto* event =
                     new event::Collision(entities[i].get(), entities[j].get());
-                std::cout << "entity1: " << std::endl << "tranform : " << transform1.position.x << ", " << transform1.position.y << std::endl << "Hitbox : " << hitbox1.width << ", " << hitbox1.height << std::endl << "entity2:" << std::endl << "transform : " << transform2.position.x << ", " << transform2.position.y << std::endl << "Hitbox : " << hitbox2.width << ", " << hitbox2.height <<std::endl;
                 this->getWorld().getUniverse().getEventBus().publish(*event);
                 delete event;
             }

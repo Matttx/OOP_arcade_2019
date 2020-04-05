@@ -21,7 +21,6 @@ class User : public engine::component::AUser {
   public:
     int eat;
     bool supaSayajin;
-    bool isAlive;
 };
 }
 }

@@ -18,6 +18,11 @@ class AUser : public ecs::ASystem {
   public:
     explicit AUser(ecs::World& world);
     ~AUser() override = 0;
+
+  public:
+    void init() override = 0;
+    void update() override = 0;
+    void render() override = 0;
 };
 
 } // namespace system
