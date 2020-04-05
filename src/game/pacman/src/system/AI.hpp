@@ -9,6 +9,7 @@
 #define OOP_ARCADE_2019_SYSTEM_AI_HPP
 
 #include "../../../../engine/component/Motion.hpp"
+#include "../../../../engine/component/Transform.hpp"
 #include "../../../../engine/ecs/World.hpp"
 #include "../../../../engine/event/Collision.hpp"
 #include "../../../../engine/system/AAI.hpp"

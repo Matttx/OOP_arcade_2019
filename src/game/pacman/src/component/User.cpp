@@ -10,5 +10,4 @@ pacman::component::User::User(engine::ecs::Entity& entity) : engine::component::
 {
     this->eat = 0;
     this->supaSayajin = false;
-    this->isAlive = true;
 }

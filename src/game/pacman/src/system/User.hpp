@@ -22,14 +22,15 @@ class User : public engine::system::AUser {
   public:
     User(engine::ecs::World& world);
     ~User() override = default;
+
+  public:
     void init() override;
     void update() override;
     void render() override;
-    void collisionHandler(engine::event::Collision &collision);
-    static std::vector<bool> isCollide(const engine::component::Motion& motion);
-    bool isCollide(const engine::component::Transform& transform1, const engine::component::Hitbox& hitbox1,
-                    const engine::component::Transform& transform2, const engine::component::Hitbox& hitbox2);
+
+  public:
     void inputHandler(engine::event::Input& input);
+    void collisionHandler(engine::event::Collision& collision);
 };
 }
 }
