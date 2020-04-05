@@ -8,6 +8,7 @@
 #include "Game.hpp"
 
 #include "../../engine/component/ARender.hpp"
+#include "../../engine/component/Animations.hpp"
 #include "../../engine/component/Size.hpp"
 #include "../../engine/component/Transform.hpp"
 #include "../../engine/core/Core.hpp"
@@ -34,6 +35,7 @@ void emulator::Game::init()
     this->initSelector(mainWorld);
 
     mainWorld.addSystem<emulator::system::User>();
+    mainWorld.addSystem<engine::system::AAnimations>();
     mainWorld.addSystem<engine::system::AAudio>();
     mainWorld.addSystem<engine::system::ARender>();
 
@@ -72,10 +74,18 @@ void emulator::Game::initBackground(engine::ecs::World& mainWorld)
 void emulator::Game::initTitle(engine::ecs::World& mainWorld)
 {
     const std::vector<std::string> paths = {"./assets/emulator/arcade.txt",
-        "./assets/emulator/arcade.png", "./assets/emulator/arcade.debug"};
+        "./assets/emulator/arcade-animate.png",
+        "./assets/emulator/arcade.debug"};
+    std::map<std::string, engine::type::Animation> list;
+
+    list["default"] = {0, 5, 100};
 
     auto& title = mainWorld.createEntity();
 
+    title.addComponent<engine::component::Animations>(list);
+    title.getComponent<engine::component::Animations>().currentAnimation =
+        "default";
+    title.getComponent<engine::component::Animations>().currentFrame = 0;
     title.addComponent<engine::component::ARender>(paths);
     title.addComponent<engine::component::Size>(586, 139);
     title.addComponent<engine::component::Transform>(
