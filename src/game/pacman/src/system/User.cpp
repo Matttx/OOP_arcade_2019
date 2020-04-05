@@ -8,7 +8,6 @@
 #include "User.hpp"
 
 #include <ctime>
-#include <iostream>
 
 #include "../../../../engine/component/Motion.hpp"
 #include "../../../../engine/event/Collision.hpp"
@@ -56,7 +55,7 @@ void pacman::system::User::update()
         if (specialPacGum.get().hasComponents<engine::component::ARender>())
             remaining++;
     if (remaining == 0) {
-        getWorld().getUniverse().getCore().switchGame();
+        getWorld().getUniverse().getCore().setCurrentGame("emulator");
     }
 }
 
@@ -94,14 +93,14 @@ void pacman::system::User::collisionHandler(engine::event::Collision &collision)
         collision.entity2.hasComponents<pacman::component::AI>()) {
         auto& pacman = collision.entity1;
         if (!pacman.getComponent<pacman::component::User>().supaSayajin) {
-            getWorld().getUniverse().getCore().switchGame();
+            getWorld().getUniverse().getCore().setCurrentGame("emulator");
         }
     }
     if (collision.entity1.hasComponents<pacman::component::AI>() &&
         collision.entity2.hasComponents<pacman::component::User>()) {
         auto& pacman = collision.entity2;
         if (!pacman.getComponent<pacman::component::User>().supaSayajin) {
-            getWorld().getUniverse().getCore().switchGame();
+            getWorld().getUniverse().getCore().setCurrentGame("emulator");
         }
     }
     if (collision.entity1.hasComponents<pacman::component::User>() &&
