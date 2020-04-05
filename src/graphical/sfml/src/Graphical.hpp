@@ -53,6 +53,7 @@ class Graphical : public graphical::AGraphical {
         engine::ecs::World &world) override;
 
   private:
+    bool _active = false;
     sf::RenderWindow *_window;
     sf::View *_view;
 };

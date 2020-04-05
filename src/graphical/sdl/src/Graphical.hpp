@@ -46,6 +46,7 @@ class Graphical : public graphical::AGraphical {
         engine::ecs::World &world) override;
 
   private:
+    bool _active = false;
     SDL_Window *_window;
     SDL_Renderer *_renderer;
 };

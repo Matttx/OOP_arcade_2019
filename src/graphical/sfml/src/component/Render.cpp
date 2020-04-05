@@ -13,7 +13,8 @@ sfml::component::Render::Render(
     engine::ecs::Entity &entity, const std::vector<std::string> &paths)
     : engine::component::ARender(entity, paths)
 {
-    texture.loadFromFile(paths[LIBTYPE::GRAPHIC]);
+    if (!texture.loadFromFile(paths[LIBTYPE::GRAPHIC]))
+        throw std::runtime_error("SFML: Can't load image");
     sprite.setTexture(texture);
     srcRect.width = texture.getSize().x;
     srcRect.height = texture.getSize().y;

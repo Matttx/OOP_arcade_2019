@@ -29,7 +29,8 @@ sdl::Graphical::Graphical(engine::eventbus::EventBus &eventBus)
 
 sdl::Graphical::~Graphical()
 {
-    destroy();
+    if (_active)
+        destroy();
 }
 
 extern "C" sdl::Graphical *create(engine::eventbus::EventBus *eventBus)
@@ -39,13 +40,36 @@ extern "C" sdl::Graphical *create(engine::eventbus::EventBus *eventBus)
 
 void sdl::Graphical::init()
 {
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
-    IMG_Init(IMG_INIT_PNG);
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO))
+        throw std::runtime_error(
+            std::string("SDL: Can't init SDL: ", SDL_GetError()).c_str());
+
+    if (!IMG_Init(IMG_INIT_PNG))
+        throw std::runtime_error(
+            std::string("SDL: Can't init SDL_image: ", SDL_GetError()).c_str());
+
+    if (TTF_Init())
+        throw std::runtime_error(
+            std::string("SDL: Can't init SDL_ttf: ", SDL_GetError()).c_str());
+
     _window = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_RESIZABLE);
+
+    if (!_window)
+        throw std::runtime_error(
+            std::string("SDL: Can't create Window: ", SDL_GetError()).c_str());
+
     _renderer = SDL_CreateRenderer(_window, -1, 0);
+
+    if (!_renderer)
+        throw std::runtime_error(
+            std::string("SDL: Can't create Renderer: ", SDL_GetError())
+                .c_str());
+
     SDL_RenderSetLogicalSize(_renderer, 1920, 1080);
     SDL_ShowCursor(0);
+
+    _active = true;
 }
 
 void sdl::Graphical::dispatchEvent()
@@ -74,8 +98,11 @@ void sdl::Graphical::destroy()
 {
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
+    TTF_Quit();
     IMG_Quit();
     SDL_Quit();
+
+    _active = false;
 }
 
 engine::component::AAudio &sdl::Graphical::createAudio(

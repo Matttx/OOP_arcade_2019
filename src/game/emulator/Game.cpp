@@ -34,6 +34,7 @@ void emulator::Game::init()
     this->initSelector(mainWorld);
 
     mainWorld.addSystem<emulator::system::User>();
+    mainWorld.addSystem<engine::system::AAudio>();
     mainWorld.addSystem<engine::system::ARender>();
 
     this->getUniverse().setCurrentWorld("emulator");
@@ -42,6 +43,16 @@ void emulator::Game::init()
 void emulator::Game::destroy()
 {
     this->getUniverse().deleteWorld("emulator");
+}
+
+void emulator::Game::initMusic(engine::ecs::World& mainWorld)
+{
+    const std::vector<std::string> paths = {"./assets/emulator/music.txt",
+        "./assets/emulator/music.wav", "./assets/emulator/music.debug"};
+
+    auto& music = mainWorld.createEntity();
+
+    music.addComponent<engine::component::AAudio>(paths);
 }
 
 void emulator::Game::initBackground(engine::ecs::World& mainWorld)
@@ -127,6 +138,7 @@ void emulator::Game::initGraphicalMenu(engine::ecs::World& mainWorld)
 
     for (const auto& graphicalName : graphicalNames) {
         auto& button = mainWorld.createEntity();
+        auto& text = mainWorld.createEntity();
 
         button.addComponent<emulator::component::Action>(
             [graphicalName](engine::ecs::Universe& universe) {
@@ -137,6 +149,17 @@ void emulator::Game::initGraphicalMenu(engine::ecs::World& mainWorld)
         button.addComponent<engine::component::Transform>(
             engine::type::Vector2D {71 + 150, 240 + 170 + 150 * i}, 20);
         mainWorld.addToGroup(button, "graphicals");
+
+        int textWidth = 40 * graphicalName.second.size();
+        int textHeight = 50;
+
+        text.addComponent<engine::component::AText>(
+            graphicalName.second, fontPaths);
+        text.addComponent<engine::component::Size>(textWidth, textHeight);
+        text.addComponent<engine::component::Transform>(
+            engine::type::Vector2D {
+                71 + 150 + ((518 - textWidth) / 2), 240 + 170 + 30 + 150 * i},
+            30);
 
         i++;
     }
@@ -164,6 +187,7 @@ void emulator::Game::initGameMenu(engine::ecs::World& mainWorld)
 
     for (const auto& gameName : gameNames) {
         auto& button = mainWorld.createEntity();
+        auto& text = mainWorld.createEntity();
 
         button.addComponent<emulator::component::Action>(
             [gameName](engine::ecs::Universe& universe) {
@@ -174,6 +198,16 @@ void emulator::Game::initGameMenu(engine::ecs::World& mainWorld)
         button.addComponent<engine::component::Transform>(
             engine::type::Vector2D {1031 + 150, 240 + 170 + 150 * i}, 20);
         mainWorld.addToGroup(button, "games");
+
+        int textWidth = 40 * gameName.second.size();
+        int textHeight = 50;
+
+        text.addComponent<engine::component::AText>(gameName.second, fontPaths);
+        text.addComponent<engine::component::Size>(textWidth, textHeight);
+        text.addComponent<engine::component::Transform>(
+            engine::type::Vector2D {
+                1031 + 150 + ((518 - textWidth) / 2), 240 + 170 + 30 + 150 * i},
+            30);
 
         i++;
     }

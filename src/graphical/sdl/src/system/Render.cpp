@@ -30,8 +30,8 @@ void Render::init()
 
 void Render::update()
 {
-    auto entities = getWorld().getEntities<engine::component::Transform>();
-    for (const auto& entity : entities) {
+    auto entitiesTrans = getWorld().getEntities<engine::component::Transform>();
+    for (const auto& entity : entitiesTrans) {
         if (entity.get().hasComponents<engine::component::AText>()) {
             auto& component =
                 entity.get().getComponent<engine::component::AText>();
@@ -51,6 +51,25 @@ void Render::update()
             sdlRender.dstRect.y = transform.position.y;
         }
     }
+    auto entitiesSize = getWorld().getEntities<engine::component::Size>();
+    for (const auto& entity : entitiesSize) {
+        if (entity.get().hasComponents<engine::component::AText>()) {
+            auto& size = entity.get().getComponent<engine::component::Size>();
+            auto& component =
+                entity.get().getComponent<engine::component::AText>();
+            auto& sdlText = dynamic_cast<sdl::component::Text&>(component);
+            sdlText.dstRect.w = size.width;
+            sdlText.dstRect.h = size.height;
+        }
+        if (entity.get().hasComponents<engine::component::ARender>()) {
+            auto& size = entity.get().getComponent<engine::component::Size>();
+            auto& component =
+                entity.get().getComponent<engine::component::ARender>();
+            auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
+            sdlRender.dstRect.w = size.width;
+            sdlRender.dstRect.h = size.height;
+        }
+    }
 }
 
 void Render::render()
@@ -67,19 +86,19 @@ void Render::render()
     SDL_RenderClear(&_renderer);
 
     for (const auto& entity : entities) {
-        if (entity.get().hasComponents<engine::component::AText>()) {
-            auto& component =
-                entity.get().getComponent<engine::component::AText>();
-            auto& sdlText = dynamic_cast<sdl::component::Text&>(component);
-            SDL_RenderCopy(&_renderer, sdlText.texture, &sdlText.srcRect,
-                &sdlText.dstRect);
-        }
         if (entity.get().hasComponents<engine::component::ARender>()) {
             auto& component =
                 entity.get().getComponent<engine::component::ARender>();
             auto& sdlRender = dynamic_cast<sdl::component::Render&>(component);
             SDL_RenderCopy(&_renderer, sdlRender.texture, &sdlRender.srcRect,
                 &sdlRender.dstRect);
+        }
+        if (entity.get().hasComponents<engine::component::AText>()) {
+            auto& component =
+                entity.get().getComponent<engine::component::AText>();
+            auto& sdlText = dynamic_cast<sdl::component::Text&>(component);
+            SDL_RenderCopy(
+                &_renderer, sdlText.texture, nullptr, &sdlText.dstRect);
         }
     }
 

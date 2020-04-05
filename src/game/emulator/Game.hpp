@@ -23,6 +23,7 @@ class Game : public game::AGame {
     void destroy() override;
 
   private:
+    void initMusic(engine::ecs::World& mainWorld);
     void initBackground(engine::ecs::World& mainWorld);
     void initTitle(engine::ecs::World& mainWorld);
     void initControls(engine::ecs::World& mainWorld);

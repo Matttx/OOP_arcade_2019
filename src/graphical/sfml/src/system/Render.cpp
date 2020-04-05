@@ -56,8 +56,8 @@ void sfml::system::Render::update()
                 entity.get().getComponent<engine::component::AText>();
             auto& sfmlText = dynamic_cast<sfml::component::Text&>(component);
             sfmlText.text.setScale(
-                size.width / sfmlText.text.getGlobalBounds().width,
-                size.height / sfmlText.text.getGlobalBounds().height);
+                size.width / sfmlText.text.getLocalBounds().width,
+                size.height / sfmlText.text.getLocalBounds().height);
         }
         if (entity.get().hasComponents<engine::component::ARender>()) {
             auto& size = entity.get().getComponent<engine::component::Size>();
@@ -68,8 +68,8 @@ void sfml::system::Render::update()
             sfmlRender.destRect.width = size.width;
             sfmlRender.destRect.height = size.height;
             sfmlRender.sprite.setScale(
-                sfmlRender.destRect.width / sfmlRender.srcRect.width,
-                sfmlRender.destRect.height / sfmlRender.srcRect.height);
+                size.width / sfmlRender.sprite.getLocalBounds().width,
+                size.height / sfmlRender.sprite.getLocalBounds().height);
         }
     }
 }
@@ -86,14 +86,18 @@ void sfml::system::Render::render()
     _window.clear();
 
     for (const auto& entity : entities) {
-        if (entity.get().hasComponents<engine::component::AText>()) {
-        }
         if (entity.get().hasComponents<engine::component::ARender>()) {
             auto& component =
                 entity.get().getComponent<engine::component::ARender>();
             auto& sfmlRender =
                 dynamic_cast<sfml::component::Render&>(component);
             _window.draw(sfmlRender.sprite);
+        }
+        if (entity.get().hasComponents<engine::component::AText>()) {
+            auto& component =
+                entity.get().getComponent<engine::component::AText>();
+            auto& sfmlText = dynamic_cast<sfml::component::Text&>(component);
+            _window.draw(sfmlText.text);
         }
     }
 

@@ -13,14 +13,33 @@ sdl::component::Text::Text(engine::ecs::Entity& entity, const std::string& text,
     const std::vector<std::string>& paths, SDL_Renderer* renderer)
     : engine::component::AText(entity, text, paths)
 {
-    font = TTF_OpenFont(paths[LIBTYPE::GRAPHIC].c_str(), 30);
+    font = TTF_OpenFont(paths[LIBTYPE::GRAPHIC].c_str(), 100);
+
+    if (!font)
+        throw std::runtime_error(
+            std::string("SDL: Can't load font: ", SDL_GetError()).c_str());
+
     color = SDL_Color {255, 255, 255, 255};
     sprite = TTF_RenderText_Solid(font, text.c_str(), color);
+
+    if (!sprite)
+        throw std::runtime_error(
+            std::string("SDL: Can't render text: ", SDL_GetError()).c_str());
+
     texture = SDL_CreateTextureFromSurface(renderer, sprite);
-    srcRect.x = 0;
-    srcRect.y = 0;
-    dstRect.x = 0;
-    dstRect.y = 0;
-    SDL_QueryTexture(texture, NULL, NULL, &srcRect.w, &srcRect.h);
-    SDL_QueryTexture(texture, NULL, NULL, &dstRect.w, &dstRect.h);
+
+    if (!texture)
+        throw std::runtime_error(std::string(
+            "SDL: Can't create texture from surface: ", SDL_GetError())
+                                     .c_str());
+
+    SDL_QueryTexture(texture, nullptr, nullptr, &srcRect.w, &srcRect.h);
+    SDL_QueryTexture(texture, nullptr, nullptr, &dstRect.w, &dstRect.h);
+}
+
+sdl::component::Text::~Text()
+{
+    SDL_DestroyTexture(texture);
+    SDL_FreeSurface(sprite);
+    TTF_CloseFont(font);
 }

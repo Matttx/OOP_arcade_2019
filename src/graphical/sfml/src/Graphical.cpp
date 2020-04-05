@@ -25,7 +25,8 @@ sfml::Graphical::Graphical(engine::eventbus::EventBus& eventBus)
 
 sfml::Graphical::~Graphical()
 {
-    destroy();
+    if (_active)
+        destroy();
 }
 
 extern "C" sfml::Graphical* create(engine::eventbus::EventBus* eventBus)
@@ -40,6 +41,8 @@ void sfml::Graphical::init()
 
     _window->setView(*_view);
     _window->setMouseCursorVisible(false);
+
+    _active = true;
 }
 
 void sfml::Graphical::dispatchEvent()
@@ -68,6 +71,8 @@ void sfml::Graphical::destroy()
 {
     delete _view;
     delete _window;
+
+    _active = false;
 }
 
 engine::component::AAudio& sfml::Graphical::createAudio(

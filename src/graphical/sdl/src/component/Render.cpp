@@ -19,13 +19,20 @@ Render::Render(engine::ecs::Entity& entity,
     : engine::component::ARender(entity, paths)
 {
     sprite = IMG_Load(paths[LIBTYPE::GRAPHIC].c_str());
+
+    if (!sprite)
+        throw std::runtime_error(
+            std::string("SDL: Can't load image: ", SDL_GetError()).c_str());
+
     texture = SDL_CreateTextureFromSurface(renderer, sprite);
-    srcRect.x = 0;
-    srcRect.y = 0;
-    dstRect.x = 0;
-    dstRect.y = 0;
-    SDL_QueryTexture(texture, NULL, NULL, &srcRect.w, &srcRect.h);
-    SDL_QueryTexture(texture, NULL, NULL, &dstRect.w, &dstRect.h);
+
+    if (!texture)
+        throw std::runtime_error(std::string(
+            "SDL: Can't create texture from surface: ", SDL_GetError())
+                                     .c_str());
+
+    SDL_QueryTexture(texture, nullptr, nullptr, &srcRect.w, &srcRect.h);
+    SDL_QueryTexture(texture, nullptr, nullptr, &dstRect.w, &dstRect.h);
 }
 
 Render::~Render()
