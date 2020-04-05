@@ -23,9 +23,12 @@ class Game : public game::AGame {
     void destroy() override;
 
   private:
-    void initBackground(engine::ecs::World& main);
-    void initGraphicalMenu(engine::ecs::World& main);
-    void initGameMenu(engine::ecs::World& main);
+    void initBackground(engine::ecs::World& mainWorld);
+    void initTitle(engine::ecs::World& mainWorld);
+    void initControls(engine::ecs::World& mainWorld);
+    void initGraphicalMenu(engine::ecs::World& mainWorld);
+    void initGameMenu(engine::ecs::World& mainWorld);
+    void initSelector(engine::ecs::World& mainWorld);
 };
 
 } // namespace emulator

@@ -9,6 +9,7 @@
 #define OOP_ARCADE_2019_EVENTBUS_EVENTBUS_HPP
 
 #include <functional>
+#include <iostream>
 #include <map>
 #include <typeindex>
 #include <typeinfo>
@@ -72,6 +73,10 @@ class EventBus {
     void publish(E& event)
     {
         std::type_index id = typeid(E);
+
+        if (this->_cbHandlers.count(id) == 0)
+            return;
+
         auto& cbHandler = this->_cbHandlers.at(id);
 
         for (const auto& handler : cbHandler)

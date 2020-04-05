@@ -5,7 +5,34 @@
 ** main.cpp
 */
 
+#include <unistd.h>
+
+#include "engine/core/Core.hpp"
+
 int main()
 {
-    return 0;
+    engine::core::Core core;
+
+    core.loadGames();
+    core.loadGraphics();
+
+    core.setCurrentGraphical("lib_arcade_sdl.so");
+    core.setCurrentGame("emulator");
+
+    core.switchGraphical();
+    core.switchGame();
+
+    auto &universe = core.getUniverse();
+
+    universe.init();
+
+    for (int i = 0; i >= 0; ++i) {
+        core.switchGraphical();
+        core.switchGame();
+        core.getCurrentGraphical().dispatchEvent();
+        universe.update();
+        universe.render();
+
+        usleep(16666);
+    }
 }

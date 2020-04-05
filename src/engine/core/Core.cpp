@@ -10,10 +10,15 @@
 #include <dirent.h>
 
 #include "../../game/IGame.hpp"
+#include "../../game/emulator/Game.hpp"
 #include "../../graphical/IGraphical.hpp"
 
 engine::core::Core::Core() : _universe(*this)
 {
+    auto* instance = new emulator::Game(this->getUniverse());
+    auto* emulator = new DynamicLibrary<game::IGame>(instance);
+
+    this->_games.emplace("emulator", *emulator);
 }
 
 engine::core::Core::~Core() = default;

@@ -6,3 +6,11 @@
 */
 
 #include "Action.hpp"
+
+emulator::component::Action::Action(
+    engine::ecs::Entity& entity, const Callback& callback)
+    : AComponent(entity), callback(callback)
+{
+}
+
+emulator::component::Action::~Action() = default;

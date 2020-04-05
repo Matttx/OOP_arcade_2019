@@ -148,7 +148,7 @@ debug_sweet:		CFLAGS += -g3
 debug_sweet:		sweet
 
 lib_nibbler:
-					cd $(LIB_NIBBLER_DIR) && $(MAKE)
+					cd $(LIB_NIBBLER_DIR) && $(MAKE) all
 
 lib_nibbler_clean:
 					cd $(LIB_NIBBLER_DIR) && $(MAKE) clean
@@ -157,10 +157,11 @@ lib_nibbler_fclean:
 					cd $(LIB_NIBBLER_DIR) && $(MAKE) fclean
 
 lib_nibbler_re:
-					cd $(LIB_NIBBLER_DIR) && $(MAKE) re
+					cd $(LIB_NIBBLER_DIR) && $(MAKE) fclean
+					cd $(LIB_NIBBLER_DIR) && $(MAKE) all
 
 lib_pacman:
-					cd $(LIB_PACMAN_DIR) && $(MAKE)
+					cd $(LIB_PACMAN_DIR) && $(MAKE) all
 
 lib_pacman_clean:
 					cd $(LIB_PACMAN_DIR) && $(MAKE) clean
@@ -169,10 +170,11 @@ lib_pacman_fclean:
 					cd $(LIB_PACMAN_DIR) && $(MAKE) fclean
 
 lib_pacman_re:
-					cd $(LIB_PACMAN_DIR) && $(MAKE) re
+					cd $(LIB_PACMAN_DIR) && $(MAKE) fclean
+					cd $(LIB_PACMAN_DIR) && $(MAKE) all
 
 lib_ncurses:
-					cd $(LIB_NCURSES_DIR) && $(MAKE)
+					cd $(LIB_NCURSES_DIR) && $(MAKE) all
 
 lib_ncurses_clean:
 					cd $(LIB_NCURSES_DIR) && $(MAKE) clean
@@ -181,10 +183,11 @@ lib_ncurses_fclean:
 					cd $(LIB_NCURSES_DIR) && $(MAKE) fclean
 
 lib_ncurses_re:
-					cd $(LIB_NCURSES_DIR) && $(MAKE) re
+					cd $(LIB_NCURSES_DIR) && $(MAKE) fclean
+					cd $(LIB_NCURSES_DIR) && $(MAKE) all
 
 lib_sdl:
-					cd $(LIB_SDL_DIR) && $(MAKE)
+					cd $(LIB_SDL_DIR) && $(MAKE) all
 
 lib_sdl_clean:
 					cd $(LIB_SDL_DIR) && $(MAKE) clean
@@ -193,10 +196,11 @@ lib_sdl_fclean:
 					cd $(LIB_SDL_DIR) && $(MAKE) fclean
 
 lib_sdl_re:
-					cd $(LIB_SDL_DIR) && $(MAKE) re
+					cd $(LIB_SDL_DIR) && $(MAKE) fclean
+					cd $(LIB_SDL_DIR) && $(MAKE) all
 
 lib_sfml:
-					cd $(LIB_SFML_DIR) && $(MAKE)
+					cd $(LIB_SFML_DIR) && $(MAKE) all
 
 lib_sfml_clean:
 					cd $(LIB_SFML_DIR) && $(MAKE) clean
@@ -205,7 +209,8 @@ lib_sfml_fclean:
 					cd $(LIB_SFML_DIR) && $(MAKE) fclean
 
 lib_sfml_re:
-					cd $(LIB_SFML_DIR) && $(MAKE) re
+					cd $(LIB_SFML_DIR) && $(MAKE) fclean
+					cd $(LIB_SFML_DIR) && $(MAKE) all
 
 libs_game:			lib_nibbler lib_pacman
 
