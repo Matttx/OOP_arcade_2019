@@ -76,9 +76,9 @@ void emulator::Game::initTitle(engine::ecs::World& mainWorld)
     const std::vector<std::string> paths = {"./assets/emulator/arcade.txt",
         "./assets/emulator/arcade-animate.png",
         "./assets/emulator/arcade.debug"};
-    std::map<std::string, engine::type::Animation> list;
-
-    list["default"] = {0, 5, 100};
+    const std::map<std::string, engine::type::Animation> list {
+        {"default", engine::type::Animation(0, 5, 100)}
+    };
 
     auto& title = mainWorld.createEntity();
 
