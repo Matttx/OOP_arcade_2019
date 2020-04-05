@@ -20,7 +20,6 @@
 sfml::Graphical::Graphical(engine::eventbus::EventBus& eventBus)
     : graphical::AGraphical("sfml", LIBTYPE::GRAPHIC, eventBus)
 {
-    _window = nullptr;
 }
 
 sfml::Graphical::~Graphical()
@@ -36,11 +35,11 @@ extern "C" sfml::Graphical* create(engine::eventbus::EventBus* eventBus)
 
 void sfml::Graphical::init()
 {
-    _window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Arcade");
-    _view = new sf::View(sf::FloatRect(0, 0, 1920, 1080));
+    _window.create(sf::VideoMode(1920, 1080), "Arcade");
+    _view.reset(sf::FloatRect(0, 0, 1920, 1080));
 
-    _window->setView(*_view);
-    _window->setMouseCursorVisible(false);
+    _window.setView(_view);
+    _window.setMouseCursorVisible(false);
 
     _active = true;
 }
@@ -48,7 +47,7 @@ void sfml::Graphical::init()
 void sfml::Graphical::dispatchEvent()
 {
     sf::Event event {};
-    while (_window->pollEvent(event)) {
+    while (_window.pollEvent(event)) {
         if (event.type == sf::Event::KeyPressed) {
             auto input =
                 new engine::event::Input(KEYCORRESPONDENCE.at(event.key.code));
@@ -69,8 +68,7 @@ void sfml::Graphical::dispatchEvent()
 
 void sfml::Graphical::destroy()
 {
-    delete _view;
-    delete _window;
+    _window.close();
 
     _active = false;
 }
@@ -109,5 +107,5 @@ engine::system::AAudio& sfml::Graphical::createAudioSystem(
 engine::system::ARender& sfml::Graphical::createRenderSystem(
     engine::ecs::World& world)
 {
-    return *(new sfml::system::Render(world, *_window));
+    return *(new sfml::system::Render(world, _window));
 }

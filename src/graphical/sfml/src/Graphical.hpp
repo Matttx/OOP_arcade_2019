@@ -54,8 +54,8 @@ class Graphical : public graphical::AGraphical {
 
   private:
     bool _active = false;
-    sf::RenderWindow *_window;
-    sf::View *_view;
+    sf::RenderWindow _window;
+    sf::View _view;
 };
 } // namespace sfml
 
