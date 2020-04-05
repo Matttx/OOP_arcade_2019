@@ -8,9 +8,10 @@
 #ifndef GRAPHICAL_HPP_
 #define GRAPHICAL_HPP_
 
+#include <SDL2/SDL.h>
+
 #include <string>
 #include <vector>
-#include <SDL2/SDL.h>
 
 #include "../../../engine/event/Input.hpp"
 #include "../../../engine/eventbus/EventBus.hpp"
@@ -21,31 +22,118 @@
 #include "system/Render.hpp"
 
 namespace sdl {
+/**
+ * @class Graphical that inherits from AGraphical
+ * 
+ */
 class Graphical : public graphical::AGraphical {
-    public:
-        Graphical(engine::eventbus::EventBus& eventBus);
-        ~Graphical() override;
+  public:
+  /**
+   * @brief Construct a new Graphical object
+   * 
+   * @param eventBus : an eventbus in order to subscribe and publish events
+   */
+    Graphical(engine::eventbus::EventBus &eventBus);
+    /**
+     * @brief Destroy the Graphical object
+     * 
+     */
+    ~Graphical() override;
 
-        void init() override;
-        void dispatchEvent() override;
-        void destroy() override;
+    /**
+     * @brief init : init the graphical for sdl
+     * 
+     */
+    void init() override;
+    /**
+     * @brief dispatchEvent : dispatch the events from the sdl
+     * 
+     */
+    void dispatchEvent() override;
+    /**
+     * @brief destroy : destroy the sdl
+     * 
+     */
+    void destroy() override;
 
-        engine::component::AAudio &createAudio(engine::ecs::Entity &entity, const std::vector<std::string> &paths) override;
-        engine::component::ARender &createRender(engine::ecs::Entity &entity, const std::vector<std::string> &paths) override;
-        engine::component::AText &createText(engine::ecs::Entity& entity, const std::string& text, const std::vector<std::string>& paths) override;
-        engine::system::AAnimations & createAnimationsSystem(engine::ecs::World &world) override;
-        engine::system::AAudio &createAudioSystem(engine::ecs::World &world) override;
-        engine::system::ARender &createRenderSystem(engine::ecs::World &world) override;
+    /**
+     * @brief Create a Audio object
+     * 
+     * @param entity : the entity in which the component is locate
+     * @param paths : path to an audio file
+     * @return engine::component::AAudio& : return a reference to an AAudio component
+     */
+    engine::component::AAudio &createAudio(engine::ecs::Entity &entity,
+        const std::vector<std::string> &paths) override;
+    /**
+     * @brief Create a Render object
+     * 
+     * @param entity : the entity in which the component is locate
+     * @param paths : path to a sprite file
+     * @return engine::component::ARender& : return a reference to an ARender component
+     */
+    engine::component::ARender &createRender(engine::ecs::Entity &entity,
+        const std::vector<std::string> &paths) override;
+    /**
+     * @brief Create a Text object
+     * 
+     * @param entity : the entity in which the component is locate
+     * @param text : the text to display
+     * @param paths : path to a font file
+     * @return engine::component::AText& : return a reference to a component AText
+     */
+    engine::component::AText &createText(engine::ecs::Entity &entity,
+        const std::string &text,
+        const std::vector<std::string> &paths) override;
+    /**
+     * @brief Create a Animations System object
+     * 
+     * @param world : the world in which is locate the animation system
+     * @return engine::system::AAnimations& : return a reference to an AAnimations system
+     */
+    engine::system::AAnimations &createAnimationsSystem(
+        engine::ecs::World &world) override;
+    /**
+     * @brief Create a Audio System object
+     * 
+     * @param world : the world in which is locate the Audio system
+     * @return engine::system::AAudio& : return a reference to an AAudio systel
+     */
+    engine::system::AAudio &createAudioSystem(
+        engine::ecs::World &world) override;
+    /**
+     * @brief Create a Render System object
+     * 
+     * @param world : the world in which is locate the Render system
+     * @return engine::system::ARender& : return a reference to an ARender system
+     */
+    engine::system::ARender &createRenderSystem(
+        engine::ecs::World &world) override;
 
-    private:
-        SDL_Window *_window;
-        SDL_Renderer *_renderer;
+  private:
+    /**
+     * @brief _activate : bool to know if the library is activate (true) or not (false)
+     * 
+     */
+    bool _active = false;
+    /**
+     * @brief _window : a pointer to a SDL_Window in order to create a window
+     * 
+     */
+    SDL_Window *_window;
+    /**
+     * @brief _renderer : a pointer to a SDL_Renderer in order to create a renderer in a window
+     * 
+     */
+    SDL_Renderer *_renderer;
 };
 
 } // Namespace sdl
-
-static const std::map<SDL_Keycode, engine::event::Input::KEYCODE> SDLKEYCODE =
-{
+/**
+ * @enum SDLKEYCODE : the keypad correspondance for the sdl
+ * 
+ */
+static const std::map<SDL_Keycode, engine::event::Input::KEYCODE> SDLKEYCODE = {
     {SDLK_UNKNOWN, engine::event::Input::KEY_UNKNOWN},
     {SDLK_a, engine::event::Input::KEY_A},
     {SDLK_b, engine::event::Input::KEY_B},
@@ -146,7 +234,6 @@ static const std::map<SDL_Keycode, engine::event::Input::KEYCODE> SDLKEYCODE =
     {SDLK_F13, engine::event::Input::KEY_F13},
     {SDLK_F14, engine::event::Input::KEY_F14},
     {SDLK_F15, engine::event::Input::KEY_F15},
-    {SDLK_PAUSE, engine::event::Input::KEY_PAUSE}
-};
+    {SDLK_PAUSE, engine::event::Input::KEY_PAUSE}};
 
 #endif /* !GRAPHICAL_HPP_ */

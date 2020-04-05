@@ -5,7 +5,16 @@
 ** main.cpp
 */
 
+#include "engine/core/Core.hpp"
+
 int main()
 {
-    return 0;
+    engine::core::Core core;
+
+    core.loadGames();
+    core.loadGraphics();
+
+    core.init("lib_arcade_sdl.so");
+
+    core.run();
 }

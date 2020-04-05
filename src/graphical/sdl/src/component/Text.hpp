@@ -30,12 +30,12 @@ class Text : public engine::component::AText {
      * @param paths : vector of paths of fonts
      * @param renderer : the renderer in order to create other SDL objects
      */
-    Text(engine::ecs::Entity& entity, const std::string& text, const std::vector<std::string>& paths, SDL_Renderer* renderer);
-    /**
+    Text(engine::ecs::Entity& entity, const std::string& text,
+        const std::vector<std::string>& paths, SDL_Renderer* renderer);    /**
      * @brief Destroy the Text object
      * 
      */
-    ~Text() override = default;
+    ~Text() override;
     /**
      * @brief sprite : correspond to the sprite load
      * 
@@ -55,17 +55,17 @@ class Text : public engine::component::AText {
      * @brief font : the font of the text
      * 
      */
-    TTF_Font *font;
+    TTF_Font* font;
     /**
      * @brief srcRect : the position x and y on the sprite
      * 
      */
-    SDL_Rect srcRect;
+    SDL_Rect srcRect {0, 0, 0, 0};
     /**
      * @brief dstRect : the position x and y on the screen
      * 
      */
-    SDL_Rect dstRect;
+    SDL_Rect dstRect {0, 0, 0, 0};
 };
 }
 }

@@ -37,7 +37,12 @@ class Animations : public ecs::AComponent {
      * @brief currentFrame : the current frame of the animation
      * 
      */
-    int currentFrame;
+    int currentFrame{};
+    /**
+     * @brief lastTimeMs : return the time in miliseconds
+     * 
+     */
+    unsigned int lastTimeMs{};
 
   public:
     /**

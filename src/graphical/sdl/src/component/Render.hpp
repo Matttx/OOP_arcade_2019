@@ -8,12 +8,14 @@
 #ifndef RENDER_HPP_
 #define RENDER_HPP_
 
-#include "../../../../engine/component/ARender.hpp"
-#include "../../../../engine/ecs/Entity.hpp"
-#include <string>
-#include <vector>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+
+#include <string>
+#include <vector>
+
+#include "../../../../engine/component/ARender.hpp"
+#include "../../../../engine/ecs/Entity.hpp"
 
 namespace sdl {
 
@@ -31,7 +33,8 @@ class Render : public engine::component::ARender {
          * @param paths : vector of paths of sprite
          * @param renderer : a SDL_renderer in order to create other SDL components
          */
-        Render(engine::ecs::Entity& entity, const std::vector<std::string>& paths, SDL_Renderer *renderer);
+        Render(engine::ecs::Entity &entity, const std::vector<std::string> &paths,
+        SDL_Renderer *renderer);
         /**
          * @brief Destroy the Render object
          * 
@@ -51,12 +54,12 @@ class Render : public engine::component::ARender {
          * @brief srcRect : the position x and y on the sprite
          * 
          */
-        SDL_Rect srcRect;
+        SDL_Rect srcRect {0, 0, 0, 0};
         /**
          * @brief dstRect : the position x and y on the screen
          * 
          */
-        SDL_Rect dstRect;
+        SDL_Rect dstRect {0, 0, 0, 0};
     protected:
     private:
 };

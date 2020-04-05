@@ -41,14 +41,15 @@ class AText : public ecs::AComponent {
      * @param text : the text to display
      * @param paths : vector of fonts use to display the text
      */
-    AText(ecs::Entity& entity, const std::string& text, const std::vector<std::string>& paths);
+    AText(ecs::Entity& entity, const std::string& text,
+        const std::vector<std::string>& paths);
     /**
      * @brief Destroy the AText object
      * 
      */
     ~AText() override = 0;
 };
-}
-}
+} // namespace component
+} // namespace engine
 
 #endif // OOP_ARCADE_2019_ATEXT_HPP

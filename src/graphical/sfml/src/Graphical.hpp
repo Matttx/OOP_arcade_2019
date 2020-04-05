@@ -53,7 +53,9 @@ class Graphical : public graphical::AGraphical {
         engine::ecs::World &world) override;
 
   private:
-    sf::RenderWindow *_window;
+    bool _active = false;
+    sf::RenderWindow _window;
+    sf::View _view;
 };
 } // namespace sfml
 

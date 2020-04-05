@@ -14,17 +14,47 @@
 
 namespace sdl {
 namespace system {
-
+/**
+ * @class Render that inherits from ARender
+ * 
+ */
 class Render : public engine::system::ARender {
-    public:
-        Render(engine::ecs::World& world, SDL_Renderer& renderer);
-        ~Render() override = default;
+  public:
+  /**
+   * @brief Construct a new Render object
+   * 
+   * @param world : the world of the entity
+   * @param renderer : the renderer in order to create other SDL components
+   */
+    Render(engine::ecs::World& world, SDL_Renderer& renderer);
+    /**
+     * @brief Destroy the Render object
+     * 
+     */
+    ~Render() override = default;
 
-        void init() override;
-        void update() override;
-        void render() override;
-    private:
-        SDL_Renderer &_renderer;
+    /**
+     * @brief init : init the Render system
+     * 
+     */
+    void init() override;
+    /**
+     * @brief update : update the Render system
+     * 
+     */
+    void update() override;
+    /**
+     * @brief render : render the Render system
+     * 
+     */
+    void render() override;
+
+  private:
+    /**
+     * @brief _renderer : reference to a renderer in order to give it in parameter to use it in other SDL contexts
+     * 
+     */
+    SDL_Renderer& _renderer;
 };
 
 } // Namespace system

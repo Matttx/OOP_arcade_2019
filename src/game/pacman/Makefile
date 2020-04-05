@@ -16,12 +16,16 @@ SRC_DIR				=		src
 TEST_DIR			=		tests
 OUT_DIR				=		../../../games
 
-CC					=		g++
+CC					=		g++ -std=c++17
 MKDIR				=		mkdir -p
 MV					=		mv
 RM					=		rm -rf
 
-PROJ_SRC			=		src.cpp			\
+PROJ_SRC			=		Game.cpp					\
+							component/User.cpp			\
+							component/AI.cpp			\
+							system/AI.cpp				\
+							system/User.cpp				\
 
 TEST_SRC			=
 

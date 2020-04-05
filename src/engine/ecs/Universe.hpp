@@ -132,7 +132,7 @@ class Universe {
      * @brief _core : a reference to the core
      * 
      */
-    core::Core &_core;
+    core::Core& _core;
     /**
      * @brief _eventBus : contain an eventbus
      * 

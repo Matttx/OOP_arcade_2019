@@ -18,6 +18,14 @@ namespace type {
 class Animation {
   public:
     /**
+     * @brief Construct a new Animation object
+     * 
+     * @param row 
+     * @param frames 
+     * @param speed 
+     */
+    Animation(int row, int frames, int speed): row(row), frames(frames), speed(speed) {};
+    /**
      * @brief row : number of rows for the animation
      * 
      */

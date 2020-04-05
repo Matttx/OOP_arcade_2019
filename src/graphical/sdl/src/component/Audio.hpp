@@ -8,11 +8,13 @@
 #ifndef AUDIO_HPP_
 #define AUDIO_HPP_
 
-#include "../../../../engine/component/AAudio.hpp"
-#include "../../../../engine/ecs/Entity.hpp"
+#include <SDL2/SDL.h>
+
 #include <string>
 #include <vector>
-#include <SDL2/SDL.h>
+
+#include "../../../../engine/component/AAudio.hpp"
+#include "../../../../engine/ecs/Entity.hpp"
 
 namespace sdl {
 

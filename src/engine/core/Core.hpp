@@ -10,9 +10,10 @@
 
 #include "../../game/IGame.hpp"
 #include "../../graphical/IGraphical.hpp"
+#include "../ecs/Universe.hpp"
+#include "../event/Close.hpp"
 #include "../save/Component.hpp"
 #include "../save/System.hpp"
-#include "../ecs/Universe.hpp"
 #include "DynamicLibrary.hpp"
 
 namespace engine {
@@ -48,6 +49,10 @@ class Core {
      * @brief Load the Games lib
      * 
      */
+    void init(const std::string& graphical);
+    void run();
+
+  public:
     void loadGames();
     /**
      * @brief Load the Graphics lib
@@ -149,7 +154,6 @@ class Core {
      */
     void switchGraphical();
 
-
   private:
     /**
      * @brief _currentGame : string that represent the current game
@@ -171,6 +175,7 @@ class Core {
      * 
      */
     std::string _currentGraphical;
+    bool _running;
     /**
      * @brief _nextGraphical : string that represent the next graphical library
      * 
@@ -181,18 +186,11 @@ class Core {
      * 
      */
     std::map<std::string, DynamicLibrary<graphical::IGraphical>> _graphicals;
-    /**
-     * @brief _universe : represent the universe
-     * 
-     */
+
     ecs::Universe _universe;
 
   private:
-    /**
-     * @brief saveAAudioComponents : save a copy of audio parameters for the library change
-     * 
-     * @return std::vector<save::component::AAudio> : return a vector of AAudio component
-     */
+    void closeManager(engine::event::Close&);
     std::vector<save::component::AAudio> saveAAudioComponents();
     /**
      * @brief saveARenderComponents : save a copy of render parameters for the library change

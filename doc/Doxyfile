@@ -848,6 +848,7 @@ INPUT                  =    ../src/engine/component/AAI.hpp             \
                             ../src/engine/ecs/Universe.hpp              \
                             ../src/engine/event/Collision.hpp           \
                             ../src/engine/event/Input.hpp               \
+                            ../src/engine/event/Close.hpp               \
                             ../src/engine/eventbus/AEvent.hpp           \
                             ../src/engine/eventbus/IEvent.hpp           \
                             ../src/engine/system/AAI.hpp                \
@@ -865,6 +866,12 @@ INPUT                  =    ../src/engine/component/AAI.hpp             \
                             ../src/graphical/sdl/src/component/Audio.hpp  \
                             ../src/graphical/sdl/src/component/Render.hpp  \
                             ../src/graphical/sdl/src/component/Text.hpp  \
+                            ../src/graphical/sdl/src/system/Animations.hpp  \
+                            ../src/graphical/sdl/src/system/Audio.hpp  \
+                            ../src/graphical/sdl/src/system/Render.hpp  \
+                            ../src/graphical/sdl/src/Graphical.hpp  \
+                            ../src/graphical/AGraphical.hpp  \
+                            ../src/graphical/IGraphical.hpp  \
 
 
 # This tag can be used to specify the character encoding of the source files

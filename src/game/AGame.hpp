@@ -66,7 +66,7 @@ class AGame : public IGame {
      * @brief _universe : a reference to an universe
      * 
      */
-    engine::ecs::Universe &_universe;
+    engine::ecs::Universe& _universe;
 };
 
 } // namespace game
