@@ -7,6 +7,7 @@
 
 #include "Render.hpp"
 
+#include "../../../../engine/component/Animations.hpp"
 #include "../../../../engine/component/Size.hpp"
 #include "../../../../engine/component/Transform.hpp"
 #include "../../../../engine/ecs/World.hpp"

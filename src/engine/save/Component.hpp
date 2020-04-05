@@ -11,6 +11,7 @@
 #include <functional>
 #include <tuple>
 
+#include "../component/Animations.hpp"
 #include "../ecs/Entity.hpp"
 
 namespace engine {

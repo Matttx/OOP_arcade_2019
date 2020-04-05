@@ -151,8 +151,10 @@ void emulator::Game::initGraphicalMenu(engine::ecs::World& mainWorld)
         auto& text = mainWorld.createEntity();
 
         button.addComponent<emulator::component::Action>(
-            [graphicalName](engine::ecs::Universe& universe) {
+            [this, &mainWorld, graphicalName](engine::ecs::Universe& universe) {
                 universe.getCore().setCurrentGraphical(graphicalName.first);
+
+                this->resetAnimations(mainWorld);
             });
         button.addComponent<engine::component::ARender>(buttonPaths);
         button.addComponent<engine::component::Size>(518, 136);
@@ -235,4 +237,15 @@ void emulator::Game::initSelector(engine::ecs::World& mainWorld)
     selector.addComponent<engine::component::Size>(687, 74);
     selector.addComponent<engine::component::Transform>(
         engine::type::Vector2D {0, 0}, 20);
+}
+
+void emulator::Game::resetAnimations(engine::ecs::World& mainWorld)
+{
+    auto entities = mainWorld.getEntities<engine::component::Animations>();
+
+    for (const auto& entity : entities) {
+        auto &animations = entity.get().getComponent<engine::component::Animations>();
+
+        animations.lastTimeMs = 0;
+    }
 }

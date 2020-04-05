@@ -23,7 +23,7 @@ class Animations : public ecs::AComponent {
     const std::map<std::string, type::Animation> list;
     std::string currentAnimation;
     int currentFrame{};
-    int lastTimeMs{};
+    unsigned int lastTimeMs{};
 
   public:
     Animations(ecs::Entity& entity,
