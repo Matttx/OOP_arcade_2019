@@ -155,7 +155,7 @@ void emulator::Game::initGameMenu(engine::ecs::World& mainWorld)
     auto& frame = mainWorld.createEntity();
 
     frame.addComponent<engine::component::ARender>(framePaths);
-    frame.addComponent<engine::component::Size>(518, 136);
+    frame.addComponent<engine::component::Size>(818, 666);
     frame.addComponent<engine::component::Transform>(
         engine::type::Vector2D {1031, 240}, 10);
 

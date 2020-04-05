@@ -147,19 +147,6 @@ debug_re:			re
 debug_sweet:		CFLAGS += -g3
 debug_sweet:		sweet
 
-lib_nibbler:
-					cd $(LIB_NIBBLER_DIR) && $(MAKE) all
-
-lib_nibbler_clean:
-					cd $(LIB_NIBBLER_DIR) && $(MAKE) clean
-
-lib_nibbler_fclean:
-					cd $(LIB_NIBBLER_DIR) && $(MAKE) fclean
-
-lib_nibbler_re:
-					cd $(LIB_NIBBLER_DIR) && $(MAKE) fclean
-					cd $(LIB_NIBBLER_DIR) && $(MAKE) all
-
 lib_pacman:
 					cd $(LIB_PACMAN_DIR) && $(MAKE) all
 
@@ -172,19 +159,6 @@ lib_pacman_fclean:
 lib_pacman_re:
 					cd $(LIB_PACMAN_DIR) && $(MAKE) fclean
 					cd $(LIB_PACMAN_DIR) && $(MAKE) all
-
-lib_ncurses:
-					cd $(LIB_NCURSES_DIR) && $(MAKE) all
-
-lib_ncurses_clean:
-					cd $(LIB_NCURSES_DIR) && $(MAKE) clean
-
-lib_ncurses_fclean:
-					cd $(LIB_NCURSES_DIR) && $(MAKE) fclean
-
-lib_ncurses_re:
-					cd $(LIB_NCURSES_DIR) && $(MAKE) fclean
-					cd $(LIB_NCURSES_DIR) && $(MAKE) all
 
 lib_sdl:
 					cd $(LIB_SDL_DIR) && $(MAKE) all
@@ -212,19 +186,19 @@ lib_sfml_re:
 					cd $(LIB_SFML_DIR) && $(MAKE) fclean
 					cd $(LIB_SFML_DIR) && $(MAKE) all
 
-libs_game:			lib_nibbler lib_pacman
+libs_game:			lib_pacman
 
-libs_game_clean:	lib_nibbler_clean lib_pacman_clean
+libs_game_clean:	lib_pacman_clean
 
-libs_game_fclean:	lib_nibbler_fclean lib_pacman_fclean
+libs_game_fclean:	lib_pacman_fclean
 
 libs_game_re:		libs_game_fclean libs_game
 
-libs_graphical:			lib_ncurses lib_sdl lib_sfml
+libs_graphical:			lib_sdl lib_sfml
 
-libs_graphical_clean:	lib_ncurses_clean lib_sdl_clean lib_sfml_clean
+libs_graphical_clean:	lib_sdl_clean lib_sfml_clean
 
-libs_graphical_fclean:	lib_ncurses_fclean lib_sdl_fclean lib_sfml_fclean
+libs_graphical_fclean:	lib_sdl_fclean lib_sfml_fclean
 
 libs_graphical_re:		libs_graphical_fclean libs_graphical
 
@@ -286,9 +260,7 @@ full_sweet:			full full_clean
 
 .PHONY:				all clean fclean re sweet															\
 					debug debug_re debug_sweet															\
-					lib_nibbler lib_nibbler_clean lib_nibbler_fclean lib_nibbler_re						\
 					lib_pacman lib_pacman_clean lib_pacman_fclean lib_pacman_re							\
-					lib_ncurses lib_ncurses_clean lib_ncurses_fclean lib_ncurses_re						\
 					lib_sdl lib_sdl_clean lib_sdl_fclean lib_sdl_re										\
 					lib_sfml lib_sfml_clean lib_sfml_fclean lib_sfml_re									\
 					libs_game libs_game_clean libs_game_fclean libs_game_re								\

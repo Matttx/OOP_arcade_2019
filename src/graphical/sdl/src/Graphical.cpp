@@ -42,6 +42,7 @@ void sdl::Graphical::init()
     _window = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_RESIZABLE);
     _renderer = SDL_CreateRenderer(_window, -1, 0);
     SDL_RenderSetLogicalSize(_renderer, 1920, 1080);
+    SDL_ShowCursor(0);
 }
 
 void sdl::Graphical::dispatchEvent()

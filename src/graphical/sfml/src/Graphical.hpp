@@ -54,6 +54,7 @@ class Graphical : public graphical::AGraphical {
 
   private:
     sf::RenderWindow *_window;
+    sf::View *_view;
 };
 } // namespace sfml
 

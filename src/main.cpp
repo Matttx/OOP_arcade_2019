@@ -16,7 +16,7 @@ int main()
     core.loadGames();
     core.loadGraphics();
 
-    core.setCurrentGraphical("lib_arcade_sdl.so");
+    core.setCurrentGraphical("lib_arcade_sfml.so");
     core.setCurrentGame("emulator");
 
     core.switchGraphical();

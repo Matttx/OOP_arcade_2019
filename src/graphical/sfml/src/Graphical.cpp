@@ -35,6 +35,10 @@ extern "C" sfml::Graphical* create(engine::eventbus::EventBus* eventBus)
 void sfml::Graphical::init()
 {
     _window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Arcade");
+    _view = new sf::View(sf::FloatRect(0, 0, 1920, 1080));
+
+    _window->setView(*_view);
+    _window->setMouseCursorVisible(false);
 }
 
 void sfml::Graphical::dispatchEvent()
@@ -55,6 +59,7 @@ void sfml::Graphical::dispatchEvent()
 
 void sfml::Graphical::destroy()
 {
+    delete _view;
     delete _window;
 }
 
