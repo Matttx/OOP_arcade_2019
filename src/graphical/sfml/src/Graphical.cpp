@@ -7,6 +7,7 @@
 
 #include "Graphical.hpp"
 
+#include "../../../engine/event/Close.hpp"
 #include "../../../engine/event/Input.hpp"
 #include "../../AGraphical.hpp"
 #include "component/Audio.hpp"
@@ -46,13 +47,19 @@ void sfml::Graphical::dispatchEvent()
     sf::Event event {};
     while (_window->pollEvent(event)) {
         if (event.type == sf::Event::KeyPressed) {
-            for (auto& i : KEYCORRESPONDENCE) {
-                if (sf::Keyboard::isKeyPressed(i.first)) {
-                    auto input = new engine::event::Input(i.second);
-                    getEventBus().publish(*input);
-                    delete input;
-                }
-            }
+            auto input =
+                new engine::event::Input(KEYCORRESPONDENCE.at(event.key.code));
+
+            getEventBus().publish(*input);
+
+            delete input;
+        }
+        if (event.type == sf::Event::Closed) {
+            auto close = new engine::event::Close();
+
+            getEventBus().publish(*close);
+
+            delete close;
         }
     }
 }

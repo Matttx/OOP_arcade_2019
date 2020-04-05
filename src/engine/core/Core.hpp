@@ -11,6 +11,7 @@
 #include "../../game/IGame.hpp"
 #include "../../graphical/IGraphical.hpp"
 #include "../ecs/Universe.hpp"
+#include "../event/Close.hpp"
 #include "../save/Component.hpp"
 #include "../save/System.hpp"
 #include "DynamicLibrary.hpp"
@@ -26,6 +27,10 @@ class Core {
 
   public:
     ecs::Universe& getUniverse() const;
+
+  public:
+    void init(const std::string& graphical);
+    void run();
 
   public:
     void loadGames();
@@ -50,6 +55,7 @@ class Core {
     void switchGraphical();
 
   private:
+    bool _running;
     std::string _currentGame;
     std::string _nextGame;
     std::map<std::string, DynamicLibrary<game::IGame>> _games;
@@ -59,6 +65,7 @@ class Core {
     ecs::Universe _universe;
 
   private:
+    void closeManager(engine::event::Close&);
     std::vector<save::component::AAudio> saveAAudioComponents();
     std::vector<save::component::ARender> saveARenderComponents();
     std::vector<save::component::AText> saveATextComponents();

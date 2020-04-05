@@ -16,23 +16,7 @@ int main()
     core.loadGames();
     core.loadGraphics();
 
-    core.setCurrentGraphical("lib_arcade_sfml.so");
-    core.setCurrentGame("emulator");
+    core.init("lib_arcade_sfml.so");
 
-    core.switchGraphical();
-    core.switchGame();
-
-    auto &universe = core.getUniverse();
-
-    universe.init();
-
-    for (int i = 0; i >= 0; ++i) {
-        core.switchGraphical();
-        core.switchGame();
-        core.getCurrentGraphical().dispatchEvent();
-        universe.update();
-        universe.render();
-
-        usleep(16666);
-    }
+    core.run();
 }

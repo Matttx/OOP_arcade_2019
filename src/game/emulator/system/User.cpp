@@ -10,6 +10,7 @@
 #include "../../../engine/component/Size.hpp"
 #include "../../../engine/component/Transform.hpp"
 #include "../../../engine/ecs/Universe.hpp"
+#include "../../../engine/event/Close.hpp"
 #include "../component/Action.hpp"
 #include "../component/User.hpp"
 
@@ -126,6 +127,14 @@ void emulator::system::User::inputManager(engine::event::Input &input)
 
             this->inputManagerGraphical(input, user);
         }
+    }
+
+    if (input.code == engine::event::Input::KEY_ESCAPE) {
+        auto close = new engine::event::Close();
+
+        this->getWorld().getUniverse().getEventBus().publish(*close);
+
+        delete close;
     }
 }
 

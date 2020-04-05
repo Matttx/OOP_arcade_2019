@@ -10,6 +10,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "../../../engine/event/Close.hpp"
 #include "../../../engine/event/Input.hpp"
 #include "../../AGraphical.hpp"
 #include "component/Audio.hpp"
@@ -52,13 +53,19 @@ void sdl::Graphical::dispatchEvent()
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         if (e.type == SDL_KEYDOWN) {
-            for (auto &i : SDLKEYCODE) {
-                if (e.key.keysym.sym == (i.first)) {
-                    auto input = new engine::event::Input(i.second);
-                    getEventBus().publish(*input);
-                    delete input;
-                }
-            }
+            auto input =
+                new engine::event::Input(SDLKEYCODE.at(e.key.keysym.sym));
+
+            getEventBus().publish(*input);
+
+            delete input;
+        }
+        if (e.type == SDL_WINDOWEVENT_CLOSE) {
+            auto close = new engine::event::Close();
+
+            getEventBus().publish(*close);
+
+            delete close;
         }
     }
 }

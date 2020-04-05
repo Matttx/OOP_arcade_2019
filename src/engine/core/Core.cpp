@@ -28,6 +28,39 @@ engine::ecs::Universe& engine::core::Core::getUniverse() const
     return const_cast<ecs::Universe&>(this->_universe);
 }
 
+void engine::core::Core::init(const std::string& graphical)
+{
+    this->setCurrentGraphical(graphical);
+    this->setCurrentGame("emulator");
+
+    this->switchGraphical();
+    this->switchGame();
+
+    this->getUniverse().init();
+
+    this->getUniverse().getEventBus().subscribe(*this, &Core::closeManager);
+
+    this->_running = true;
+}
+
+void engine::core::Core::run()
+{
+    while (this->_running) {
+        this->switchGraphical();
+        this->switchGame();
+
+        this->getCurrentGraphical().dispatchEvent();
+
+        this->getUniverse().update();
+        this->getUniverse().render();
+    }
+}
+
+void engine::core::Core::closeManager(engine::event::Close&)
+{
+    this->_running = false;
+}
+
 void engine::core::Core::loadGames()
 {
     DIR* directory = opendir("./games/");
