@@ -35,10 +35,6 @@ void engine::core::Core::init(const std::string& graphical)
     this->switchGraphical();
     this->switchGame();
 
-    this->getUniverse().init();
-
-    this->getUniverse().getEventBus().subscribe(*this, &Core::closeManager);
-
     this->_running = true;
 }
 
@@ -158,8 +154,11 @@ void engine::core::Core::switchGame()
         this->_games.at(this->_currentGame).get().destroy();
 
     this->_currentGame = this->_nextGame;
+    this->getUniverse().getEventBus().unsubscribe();
+    this->getUniverse().getEventBus().subscribe(*this, &Core::closeManager);
 
     this->_games.at(this->_currentGame).get().init();
+    this->getUniverse().init();
 }
 
 bool engine::core::Core::hasGraphical(const std::string& name) const

@@ -31,7 +31,7 @@ static void initPacGums(engine::ecs::World& world, int x, int y);
 static void initWall(engine::ecs::World& world, int x, int y);
 static void initPacman(engine::ecs::World& world, int x, int y);
 static void initBackGround(engine::ecs::World& world);
-static void errorMapHandler();
+//static void errorMapHandler();
 
 game::Game::Game(engine::ecs::Universe& universe): AGame("PACMAN", universe)
 {
@@ -151,7 +151,7 @@ void game::Game::receiveCollision(engine::event::Collision& collision)
     }
 }
 
-void errorMapHandler()
+/*void errorMapHandler()
 {
     std::ifstream file;
     file.open(MAP_PATH);
@@ -203,13 +203,13 @@ void errorMapHandler()
         file.close();
         throw std::exception();
     }
-}
+}*/
 
 void game::Game::initEntity(engine::ecs::World& world)
 {
     std::ifstream file;
     std::string string;
-    errorMapHandler();
+    //errorMapHandler();
     file.open(MAP_PATH);
     for (int y = 0; getline(file, string); y++) {
         for (size_t x = 0; x < string.size(); x++) {
@@ -253,8 +253,6 @@ static void initPacman(engine::ecs::World& world, int x, int y)
     pacman.addComponent<pacman::component::User>();
     pacman.addComponent<engine::component::ARender>(PACMAN_PATH);
     pacman.addComponent<engine::component::Transform>(engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + DEFAULT_POSITION, y * DEFAULT_SIZE_BLOCK + 1), 2);
-    pacman.addComponent<engine::component::Animations>(PACMAN_ANIMATION);
-    pacman.getComponent<engine::component::Animations>().currentAnimation = "living";
     pacman.addComponent<engine::component::Motion>(engine::type::Vector2D(0, 0), engine::type::Vector2D(0, 0));
     pacman.addComponent<engine::component::Hitbox>(38, 38);
     pacman.addComponent<engine::component::Size>(40, 40);
@@ -286,8 +284,6 @@ static void initGhost(engine::ecs::World& world, int x, int y)
     ghost.addComponent<pacman::component::AI>();
     ghost.addComponent<engine::component::ARender>(GHOST_PATH);
     ghost.addComponent<engine::component::Transform>(engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + DEFAULT_POSITION,y * DEFAULT_SIZE_BLOCK), 2);
-    ghost.addComponent<engine::component::Animations>(GHOST_ANIMATION);
-    ghost.getComponent<engine::component::Animations>().currentAnimation = "living";
     ghost.addComponent<engine::component::Motion>(engine::type::Vector2D(0, 0), engine::type::Vector2D(0, 0));
     ghost.addComponent<engine::component::Hitbox>(38, 38);
     ghost.addComponent<engine::component::Size>(40, 40);
