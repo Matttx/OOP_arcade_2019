@@ -89,7 +89,6 @@ void pacman::system::AI::collisionHandler(engine::event::Collision &collision)
         collision.entity2.hasComponents<pacman::component::User>()) {
         auto& ghost = collision.entity1;
         if (collision.entity2.getComponent<pacman::component::User>().supaSayajin) {
-            std::cout << "OOHH" << std::endl;
             ghost.getComponent<pacman::component::AI>().isAlive = false;
         }
     }
@@ -97,7 +96,6 @@ void pacman::system::AI::collisionHandler(engine::event::Collision &collision)
         collision.entity2.hasComponents<pacman::component::AI>()) {
         auto& ghost = collision.entity2;
         if (collision.entity1.getComponent<pacman::component::User>().supaSayajin) {
-            std::cout << "OOHH" << std::endl;
             ghost.getComponent<pacman::component::AI>().isAlive = false;
         }
     }
