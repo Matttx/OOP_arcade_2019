@@ -7,7 +7,7 @@
 
 #include "Physics.hpp"
 
-#include <tuple>
+#include <iostream>
 
 #include "../component/Hitbox.hpp"
 #include "../component/Transform.hpp"
@@ -59,8 +59,9 @@ void engine::system::Physics::update()
             if (isCollide(hitbox1, transform1, hitbox2, transform2)) {
                 auto* event =
                     new event::Collision(entities[i].get(), entities[j].get());
-
+                std::cout << "entity1: " << std::endl << "tranform : " << transform1.position.x << ", " << transform1.position.y << std::endl << "Hitbox : " << hitbox1.width << ", " << hitbox1.height << std::endl << "entity2:" << std::endl << "transform : " << transform2.position.x << ", " << transform2.position.y << std::endl << "Hitbox : " << hitbox2.width << ", " << hitbox2.height <<std::endl;
                 this->getWorld().getUniverse().getEventBus().publish(*event);
+                delete event;
             }
         }
     }

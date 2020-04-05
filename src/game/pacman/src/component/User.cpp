@@ -8,4 +8,7 @@
 #include "User.hpp"
 pacman::component::User::User(engine::ecs::Entity& entity) : engine::component::AUser(entity)
 {
+    this->eat = 0;
+    this->supaSayajin = false;
+    this->isAlive = true;
 }

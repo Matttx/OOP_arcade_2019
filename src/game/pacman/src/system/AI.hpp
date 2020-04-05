@@ -14,21 +14,6 @@
 #include "../../../../engine/system/AAI.hpp"
 #include "../Game.hpp"
 
-enum DIRECTION {
-    LEFT,
-    RIGHT,
-    TOP,
-    BOTTOM,
-    COUNT
-};
-
-static const std::map<int, std::pair<int, int>> NEXT_DIRECTION {
-    {LEFT, {- DEFAULT_SIZE_BLOCK / 4, 0}},
-    {RIGHT, {DEFAULT_SIZE_BLOCK / 4, 0}},
-    {TOP, {0, - DEFAULT_SIZE_BLOCK / 4}},
-    {BOTTOM, {0, DEFAULT_SIZE_BLOCK / 4}}
-};
-
 namespace pacman {
 namespace system {
 class AI : public engine::system::AAI {

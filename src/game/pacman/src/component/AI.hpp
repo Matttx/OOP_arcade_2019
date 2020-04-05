@@ -17,6 +17,12 @@ class AI : public engine::component::AAI {
   public:
     explicit AI(engine::ecs::Entity& entity);
     ~AI() override = default;
+
+  public:
+    int startPosX;
+    int startPosY;
+    bool isAlive;
+    bool scared;
 };
 }
 }

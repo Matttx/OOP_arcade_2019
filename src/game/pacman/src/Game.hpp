@@ -18,6 +18,21 @@
 #define DEFAULT_SIZE_BLOCK (40)
 #define MAP_PATH ("./src/game/pacman/map/map.txt")
 
+enum DIRECTION {
+    LEFT,
+    RIGHT,
+    TOP,
+    BOTTOM,
+    COUNT
+};
+
+static const std::map<int, std::pair<int, int>> NEXT_DIRECTION {
+    {LEFT, {- DEFAULT_SIZE_BLOCK / 4, 0}},
+    {RIGHT, {DEFAULT_SIZE_BLOCK / 4, 0}},
+    {TOP, {0, - DEFAULT_SIZE_BLOCK / 4}},
+    {BOTTOM, {0, DEFAULT_SIZE_BLOCK / 4}}
+};
+
 // Initialisation of assets' paths
 static const std::vector<std::string> BG_PATH = {"", "./assets/pacman/background.png", "./assets/pacman/background.png"};
 static const std::vector<std::string> PACMAN_PATH = {"C", "./assets/pacman/pacman.png", "./assets/pacman/pacman.png"};
@@ -35,15 +50,6 @@ static const std::vector<std::string> PACGUMS_PATH = {".", "./assets/pacman/pacg
 static const std::vector<std::string> VOID_PATH = {" ", "./assets/pacman/void.png", "./assets/pacman/void.png"};
 static const std::vector<std::string> SPECIALPACGUMS_PATH = {"o", "./assets/pacman/special_pacgums.png", "./assets/pacman/special_pacgums.png"};
 
-// Init Entities
-static void initEntity(engine::ecs::World& world);
-static void initSpecialPacGums(engine::ecs::World& world, int x, int y);
-static void initVoid(engine::ecs::World& world, int x, int y);
-static void initGhost(engine::ecs::World& world, int x, int y);
-static void initPacGums(engine::ecs::World& world, int x, int y);
-static void initWall(engine::ecs::World& world, int x, int y);
-static void initPacman(engine::ecs::World& world, int x, int y);
-static void initBackGround(engine::ecs::World& world);
 
 // Class Game
 namespace game {
