@@ -19,8 +19,8 @@ sdl::component::Text::Text(engine::ecs::Entity& entity, const std::string& text,
         throw std::runtime_error(
             std::string("SDL: Can't load font: ", SDL_GetError()).c_str());
 
-    color = SDL_Color {255, 255, 255, 255};
-    sprite = TTF_RenderText_Solid(font, text.c_str(), color);
+    color = SDL_Color {255, 255, 255, 0};
+    sprite = TTF_RenderText_Blended(font, text.c_str(), color);
 
     if (!sprite)
         throw std::runtime_error(

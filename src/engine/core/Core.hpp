@@ -56,12 +56,12 @@ class Core {
 
   private:
     bool _running;
-    std::string _currentGame;
-    std::string _nextGame;
-    std::map<std::string, DynamicLibrary<game::IGame>> _games;
     std::string _currentGraphical;
     std::string _nextGraphical;
     std::map<std::string, DynamicLibrary<graphical::IGraphical>> _graphicals;
+    std::string _currentGame;
+    std::string _nextGame;
+    std::map<std::string, DynamicLibrary<game::IGame>> _games;
     ecs::Universe _universe;
 
   private:

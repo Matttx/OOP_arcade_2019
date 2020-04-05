@@ -40,7 +40,7 @@ extern "C" sdl::Graphical *create(engine::eventbus::EventBus *eventBus)
 
 void sdl::Graphical::init()
 {
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO))
+    if (SDL_Init(SDL_INIT_VIDEO))
         throw std::runtime_error(
             std::string("SDL: Can't init SDL: ", SDL_GetError()).c_str());
 

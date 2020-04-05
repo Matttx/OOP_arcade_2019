@@ -16,9 +16,8 @@
 engine::core::Core::Core() : _universe(*this)
 {
     auto* instance = new emulator::Game(this->getUniverse());
-    auto* emulator = new DynamicLibrary<game::IGame>(instance);
 
-    this->_games.emplace("emulator", *emulator);
+    this->_games.emplace("emulator", instance);
 }
 
 engine::core::Core::~Core() = default;
@@ -75,10 +74,7 @@ void engine::core::Core::loadGames()
         if (ent->d_name[0] != '.') {
             const std::string path = "./games/" + std::string(ent->d_name);
 
-            auto* dynamicLibrary =
-                new DynamicLibrary<game::IGame>(path, &this->getUniverse());
-
-            this->_games.emplace(ent->d_name, *dynamicLibrary);
+            this->_games.try_emplace(ent->d_name, path, &this->getUniverse());
         }
     }
 
@@ -99,10 +95,8 @@ void engine::core::Core::loadGraphics()
         if (ent->d_name[0] != '.') {
             const std::string path = "./lib/" + std::string(ent->d_name);
 
-            auto* dynamicLibrary = new DynamicLibrary<graphical::IGraphical>(
-                path, &this->getUniverse().getEventBus());
-
-            this->_graphicals.emplace(ent->d_name, *dynamicLibrary);
+            this->_graphicals.try_emplace(
+                ent->d_name, path, &this->getUniverse().getEventBus());
         }
     }
 

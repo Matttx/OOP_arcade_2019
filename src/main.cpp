@@ -5,8 +5,6 @@
 ** main.cpp
 */
 
-#include <unistd.h>
-
 #include "engine/core/Core.hpp"
 
 int main()
@@ -16,7 +14,7 @@ int main()
     core.loadGames();
     core.loadGraphics();
 
-    core.init("lib_arcade_sfml.so");
+    core.init("lib_arcade_sdl.so");
 
     core.run();
 }

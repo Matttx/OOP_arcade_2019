@@ -22,7 +22,6 @@ class Render : public engine::component::ARender {
     ~Render() override = default;
     sf::Texture texture;
     sf::Sprite sprite;
-    sf::RenderTexture renderTexture;
     sf::IntRect srcRect;
     sf::IntRect destRect;
 };

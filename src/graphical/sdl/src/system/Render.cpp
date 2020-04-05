@@ -8,6 +8,7 @@
 #include "Render.hpp"
 
 #include <algorithm>
+#include <iostream>
 
 #include "../../../../engine/component/AText.hpp"
 #include "../../../../engine/component/Size.hpp"
@@ -74,9 +75,7 @@ void Render::update()
 
 void Render::render()
 {
-    auto entities = getWorld()
-                        .getEntities<engine::component::ARender,
-                            engine::component::Transform>();
+    auto entities = getWorld().getEntities<engine::component::Transform>();
     std::sort(entities.begin(), entities.end(),
         [](const engine::ecs::Entity& lhs, const engine::ecs::Entity& rhs) {
             return lhs.getComponent<engine::component::Transform>().layer <
