@@ -27,6 +27,6 @@ class IGame {
     virtual void destroy() = 0;
 };
 
-}
+} // namespace game
 
 #endif // OOP_ARCADE_2019_IGAME_HPP

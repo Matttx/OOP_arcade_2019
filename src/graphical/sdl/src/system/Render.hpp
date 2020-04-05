@@ -16,15 +16,16 @@ namespace sdl {
 namespace system {
 
 class Render : public engine::system::ARender {
-    public:
-        Render(engine::ecs::World& world, SDL_Renderer& renderer);
-        ~Render() override = default;
+  public:
+    Render(engine::ecs::World& world, SDL_Renderer& renderer);
+    ~Render() override = default;
 
-        void init() override;
-        void update() override;
-        void render() override;
-    private:
-        SDL_Renderer &_renderer;
+    void init() override;
+    void update() override;
+    void render() override;
+
+  private:
+    SDL_Renderer& _renderer;
 };
 
 } // Namespace system

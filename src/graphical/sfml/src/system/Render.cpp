@@ -25,18 +25,15 @@ void sfml::system::Render::init()
 
 void sfml::system::Render::update()
 {
-    auto entitiesTrans = getWorld()
-                        .getEntities<engine::component::Transform>();
+    auto entitiesTrans = getWorld().getEntities<engine::component::Transform>();
     for (const auto& entity : entitiesTrans) {
         if (entity.get().hasComponents<engine::component::AText>()) {
             auto& component =
                 entity.get().getComponent<engine::component::AText>();
             auto& transform =
                 entity.get().getComponent<engine::component::Transform>();
-            auto& sfmlText =
-                dynamic_cast<sfml::component::Text&>(component);
-            sfmlText.text.setPosition(
-                static_cast<float>(transform.position.x),
+            auto& sfmlText = dynamic_cast<sfml::component::Text&>(component);
+            sfmlText.text.setPosition(static_cast<float>(transform.position.x),
                 static_cast<float>(transform.position.y));
         }
         if (entity.get().hasComponents<engine::component::ARender>()) {
@@ -51,15 +48,13 @@ void sfml::system::Render::update()
                 static_cast<float>(transform.position.y));
         }
     }
-    auto entitiesSize = getWorld()
-        .getEntities<engine::component::Size>();
+    auto entitiesSize = getWorld().getEntities<engine::component::Size>();
     for (const auto& entity : entitiesSize) {
         if (entity.get().hasComponents<engine::component::AText>()) {
             auto& size = entity.get().getComponent<engine::component::Size>();
             auto& component =
                 entity.get().getComponent<engine::component::AText>();
-            auto& sfmlText =
-                dynamic_cast<sfml::component::Text&>(component);
+            auto& sfmlText = dynamic_cast<sfml::component::Text&>(component);
             sfmlText.text.setScale(
                 size.width / sfmlText.text.getGlobalBounds().width,
                 size.height / sfmlText.text.getGlobalBounds().height);
@@ -82,15 +77,16 @@ void sfml::system::Render::update()
 void sfml::system::Render::render()
 {
     auto entities = getWorld().getEntities<engine::component::Transform>();
-    std::sort(entities.begin(), entities.end(), [](const engine::ecs::Entity& lhs, const engine::ecs::Entity& rhs) {
-        return lhs.getComponent<engine::component::Transform>().layer < rhs.getComponent<engine::component::Transform>().layer;
-    });
+    std::sort(entities.begin(), entities.end(),
+        [](const engine::ecs::Entity& lhs, const engine::ecs::Entity& rhs) {
+            return lhs.getComponent<engine::component::Transform>().layer <
+                rhs.getComponent<engine::component::Transform>().layer;
+        });
 
     _window.clear();
 
     for (const auto& entity : entities) {
         if (entity.get().hasComponents<engine::component::AText>()) {
-
         }
         if (entity.get().hasComponents<engine::component::ARender>()) {
             auto& component =

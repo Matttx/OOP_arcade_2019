@@ -130,7 +130,7 @@ void emulator::Game::initGraphicalMenu(engine::ecs::World& mainWorld)
 
         button.addComponent<emulator::component::Action>(
             [graphicalName](engine::ecs::Universe& universe) {
-              universe.getCore().setCurrentGraphical(graphicalName.first);
+                universe.getCore().setCurrentGraphical(graphicalName.first);
             });
         button.addComponent<engine::component::ARender>(buttonPaths);
         button.addComponent<engine::component::Size>(518, 136);

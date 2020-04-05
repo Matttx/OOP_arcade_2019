@@ -76,7 +76,8 @@ engine::component::ARender& sfml::Graphical::createRender(
 }
 
 engine::component::AText& sfml::Graphical::createText(
-    engine::ecs::Entity &entity, const std::string &text, const std::vector<std::string> &paths)
+    engine::ecs::Entity& entity, const std::string& text,
+    const std::vector<std::string>& paths)
 {
     return *(new sfml::component::Text(entity, text, paths));
 }

@@ -8,9 +8,10 @@
 #ifndef GRAPHICAL_HPP_
 #define GRAPHICAL_HPP_
 
+#include <SDL2/SDL.h>
+
 #include <string>
 #include <vector>
-#include <SDL2/SDL.h>
 
 #include "../../../engine/event/Input.hpp"
 #include "../../../engine/eventbus/EventBus.hpp"
@@ -22,30 +23,36 @@
 
 namespace sdl {
 class Graphical : public graphical::AGraphical {
-    public:
-        Graphical(engine::eventbus::EventBus& eventBus);
-        ~Graphical() override;
+  public:
+    Graphical(engine::eventbus::EventBus &eventBus);
+    ~Graphical() override;
 
-        void init() override;
-        void dispatchEvent() override;
-        void destroy() override;
+    void init() override;
+    void dispatchEvent() override;
+    void destroy() override;
 
-        engine::component::AAudio &createAudio(engine::ecs::Entity &entity, const std::vector<std::string> &paths) override;
-        engine::component::ARender &createRender(engine::ecs::Entity &entity, const std::vector<std::string> &paths) override;
-        engine::component::AText &createText(engine::ecs::Entity& entity, const std::string& text, const std::vector<std::string>& paths) override;
-        engine::system::AAnimations & createAnimationsSystem(engine::ecs::World &world) override;
-        engine::system::AAudio &createAudioSystem(engine::ecs::World &world) override;
-        engine::system::ARender &createRenderSystem(engine::ecs::World &world) override;
+    engine::component::AAudio &createAudio(engine::ecs::Entity &entity,
+        const std::vector<std::string> &paths) override;
+    engine::component::ARender &createRender(engine::ecs::Entity &entity,
+        const std::vector<std::string> &paths) override;
+    engine::component::AText &createText(engine::ecs::Entity &entity,
+        const std::string &text,
+        const std::vector<std::string> &paths) override;
+    engine::system::AAnimations &createAnimationsSystem(
+        engine::ecs::World &world) override;
+    engine::system::AAudio &createAudioSystem(
+        engine::ecs::World &world) override;
+    engine::system::ARender &createRenderSystem(
+        engine::ecs::World &world) override;
 
-    private:
-        SDL_Window *_window;
-        SDL_Renderer *_renderer;
+  private:
+    SDL_Window *_window;
+    SDL_Renderer *_renderer;
 };
 
 } // Namespace sdl
 
-static const std::map<SDL_Keycode, engine::event::Input::KEYCODE> SDLKEYCODE =
-{
+static const std::map<SDL_Keycode, engine::event::Input::KEYCODE> SDLKEYCODE = {
     {SDLK_UNKNOWN, engine::event::Input::KEY_UNKNOWN},
     {SDLK_a, engine::event::Input::KEY_A},
     {SDLK_b, engine::event::Input::KEY_B},
@@ -146,7 +153,6 @@ static const std::map<SDL_Keycode, engine::event::Input::KEYCODE> SDLKEYCODE =
     {SDLK_F13, engine::event::Input::KEY_F13},
     {SDLK_F14, engine::event::Input::KEY_F14},
     {SDLK_F15, engine::event::Input::KEY_F15},
-    {SDLK_PAUSE, engine::event::Input::KEY_PAUSE}
-};
+    {SDLK_PAUSE, engine::event::Input::KEY_PAUSE}};
 
 #endif /* !GRAPHICAL_HPP_ */

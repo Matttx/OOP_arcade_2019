@@ -5,14 +5,18 @@
 ** Render
 */
 
-#include <iostream>
 #include "Render.hpp"
+
+#include <iostream>
+
 #include "../../../IGraphical.hpp"
 
 using namespace sdl;
 using namespace component;
 
-Render::Render(engine::ecs::Entity& entity, const std::vector<std::string>& paths, SDL_Renderer* renderer) : engine::component::ARender(entity, paths)
+Render::Render(engine::ecs::Entity& entity,
+    const std::vector<std::string>& paths, SDL_Renderer* renderer)
+    : engine::component::ARender(entity, paths)
 {
     sprite = IMG_Load(paths[LIBTYPE::GRAPHIC].c_str());
     texture = SDL_CreateTextureFromSurface(renderer, sprite);

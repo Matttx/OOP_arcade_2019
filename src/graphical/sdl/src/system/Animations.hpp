@@ -15,13 +15,13 @@ namespace sdl {
 namespace system {
 
 class Animations : public engine::system::AAnimations {
-    public:
-      Animations(engine::ecs::World& world);
-        ~Animations() override = default;
+  public:
+    Animations(engine::ecs::World& world);
+    ~Animations() override = default;
 
-        void init() override;
-        void update() override;
-        void render() override;
+    void init() override;
+    void update() override;
+    void render() override;
 };
 
 } // Namespace system

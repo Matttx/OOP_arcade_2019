@@ -49,7 +49,7 @@ class Universe {
     void deleteWorld(const std::string& name);
 
   private:
-    core::Core &_core;
+    core::Core& _core;
     eventbus::EventBus _eventBus;
     std::map<std::string, std::reference_wrapper<World>> _worlds;
     std::string _current;

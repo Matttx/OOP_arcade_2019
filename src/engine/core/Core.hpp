@@ -10,9 +10,9 @@
 
 #include "../../game/IGame.hpp"
 #include "../../graphical/IGraphical.hpp"
+#include "../ecs/Universe.hpp"
 #include "../save/Component.hpp"
 #include "../save/System.hpp"
-#include "../ecs/Universe.hpp"
 #include "DynamicLibrary.hpp"
 
 namespace engine {
@@ -48,7 +48,6 @@ class Core {
     void setCurrentGraphical(const std::string& name);
     std::map<std::string, std::string> getGraphicals() const;
     void switchGraphical();
-
 
   private:
     std::string _currentGame;
