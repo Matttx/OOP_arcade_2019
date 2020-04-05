@@ -87,6 +87,12 @@ void pacman::system::User::inputHandler(engine::event::Input& input)
         if (input.code == engine::event::Input::KEY_ESCAPE) {
             getWorld().getUniverse().getCore().setCurrentGame("emulator");
         }
+        if (input.code == engine::event::Input::KEY_W) {
+            getWorld().getUniverse().getCore().setCurrentGraphical("lib_arcade_sfml.so");
+        }
+        if (input.code == engine::event::Input::KEY_X) {
+            getWorld().getUniverse().getCore().setCurrentGraphical("lib_arcade_sdl.so");
+        }
     }
 }
 

@@ -51,7 +51,7 @@ void pacman::system::AI::update()
                 motion.velocity.y = NEXT_DIRECTION.at(TOP).second;
             }
         }
-        if (!entity.get().getComponent<pacman::component::AI>().scared) {
+        if (entity.get().getComponent<pacman::component::AI>().scared) {
             auto tmp = clock() - t;
             if ((((float)tmp) / CLOCKS_PER_SEC) >= 10) {
                 entity.get().getComponent<pacman::component::AI>().scared = false;
@@ -88,16 +88,16 @@ void pacman::system::AI::collisionHandler(engine::event::Collision &collision)
     if (collision.entity1.hasComponents<pacman::component::AI>() &&
         collision.entity2.hasComponents<pacman::component::User>()) {
         auto& ghost = collision.entity1;
-        if (ghost.getComponent<pacman::component::AI>().scared &&
-            collision.entity2.getComponent<pacman::component::User>().supaSayajin) {
+        if (collision.entity2.getComponent<pacman::component::User>().supaSayajin) {
+            std::cout << "OOHH" << std::endl;
             ghost.getComponent<pacman::component::AI>().isAlive = false;
         }
     }
     if (collision.entity1.hasComponents<pacman::component::User>() &&
         collision.entity2.hasComponents<pacman::component::AI>()) {
         auto& ghost = collision.entity2;
-        if (ghost.getComponent<pacman::component::AI>().scared&&
-            collision.entity1.getComponent<pacman::component::User>().supaSayajin) {
+        if (collision.entity1.getComponent<pacman::component::User>().supaSayajin) {
+            std::cout << "OOHH" << std::endl;
             ghost.getComponent<pacman::component::AI>().isAlive = false;
         }
     }
