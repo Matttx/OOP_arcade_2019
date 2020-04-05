@@ -14,6 +14,7 @@ namespace type {
 
 class Animation {
   public:
+    Animation(int row, int frames, int speed): row(row), frames(frames), speed(speed) {};
     int row;
     int frames;
     int speed;

@@ -11,4 +11,8 @@ engine::eventbus::EventBus::ICallbackHandler::~ICallbackHandler() = default;
 
 engine::eventbus::EventBus::EventBus() = default;
 
-engine::eventbus::EventBus::~EventBus() = default;
+engine::eventbus::EventBus::~EventBus() {
+    for (const auto &_cbHandler : _cbHandlers)
+        for (const auto &callback : _cbHandler.second)
+            delete &callback.get();
+}

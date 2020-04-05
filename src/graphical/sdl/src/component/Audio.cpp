@@ -6,15 +6,26 @@
 */
 
 #include "Audio.hpp"
+
 #include "../../../IGraphical.hpp"
 
 using namespace sdl;
 using namespace component;
 
-Audio::Audio(engine::ecs::Entity& entity, const std::vector<std::string>& paths) : engine::component::AAudio(entity, paths)
+Audio::Audio(engine::ecs::Entity& entity, const std::vector<std::string>& paths)
+    : engine::component::AAudio(entity, paths)
 {
-    SDL_LoadWAV(paths[LIBTYPE::GRAPHIC].c_str(), &wavSpec, &wavBuffer, &wavLength);
-    deviceId = SDL_OpenAudioDevice(NULL, 0, &wavSpec, NULL, 0);
+    if (!SDL_LoadWAV(
+            paths[LIBTYPE::GRAPHIC].c_str(), &wavSpec, &wavBuffer, &wavLength))
+        throw std::runtime_error(
+            std::string("SDL: Can't load music: ", SDL_GetError()).c_str());
+
+    deviceId = SDL_OpenAudioDevice(nullptr, 0, &wavSpec, nullptr, 0);
+
+    if (!deviceId)
+        throw std::runtime_error(
+            std::string("SDL: Can't open audio device: ", SDL_GetError())
+                .c_str());
 }
 
 Audio::~Audio()

@@ -7,6 +7,7 @@
 
 #include "Graphical.hpp"
 
+#include "../../../engine/event/Close.hpp"
 #include "../../../engine/event/Input.hpp"
 #include "../../AGraphical.hpp"
 #include "component/Audio.hpp"
@@ -19,12 +20,12 @@
 sfml::Graphical::Graphical(engine::eventbus::EventBus& eventBus)
     : graphical::AGraphical("sfml", LIBTYPE::GRAPHIC, eventBus)
 {
-    _window = nullptr;
 }
 
 sfml::Graphical::~Graphical()
 {
-    destroy();
+    if (_active)
+        destroy();
 }
 
 extern "C" sfml::Graphical* create(engine::eventbus::EventBus* eventBus)
@@ -34,28 +35,42 @@ extern "C" sfml::Graphical* create(engine::eventbus::EventBus* eventBus)
 
 void sfml::Graphical::init()
 {
-    _window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Arcade");
+    _window.create(sf::VideoMode(1920, 1080), "Arcade");
+    _view.reset(sf::FloatRect(0, 0, 1920, 1080));
+
+    _window.setView(_view);
+    _window.setMouseCursorVisible(false);
+
+    _active = true;
 }
 
 void sfml::Graphical::dispatchEvent()
 {
     sf::Event event {};
-    while (_window->pollEvent(event)) {
+    while (_window.pollEvent(event)) {
         if (event.type == sf::Event::KeyPressed) {
-            for (auto& i : KEYCORRESPONDENCE) {
-                if (sf::Keyboard::isKeyPressed(i.first)) {
-                    auto input = new engine::event::Input(i.second);
-                    getEventBus().publish(*input);
-                    delete input;
-                }
-            }
+            auto input =
+                new engine::event::Input(KEYCORRESPONDENCE.at(event.key.code));
+
+            getEventBus().publish(*input);
+
+            delete input;
+        }
+        if (event.type == sf::Event::Closed) {
+            auto close = new engine::event::Close();
+
+            getEventBus().publish(*close);
+
+            delete close;
         }
     }
 }
 
 void sfml::Graphical::destroy()
 {
-    delete _window;
+    _window.close();
+
+    _active = false;
 }
 
 engine::component::AAudio& sfml::Graphical::createAudio(
@@ -71,7 +86,8 @@ engine::component::ARender& sfml::Graphical::createRender(
 }
 
 engine::component::AText& sfml::Graphical::createText(
-    engine::ecs::Entity &entity, const std::string &text, const std::vector<std::string> &paths)
+    engine::ecs::Entity& entity, const std::string& text,
+    const std::vector<std::string>& paths)
 {
     return *(new sfml::component::Text(entity, text, paths));
 }
@@ -91,5 +107,5 @@ engine::system::AAudio& sfml::Graphical::createAudioSystem(
 engine::system::ARender& sfml::Graphical::createRenderSystem(
     engine::ecs::World& world)
 {
-    return *(new sfml::system::Render(world, *_window));
+    return *(new sfml::system::Render(world, _window));
 }

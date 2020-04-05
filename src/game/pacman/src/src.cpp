@@ -4,3 +4,8 @@
 ** File description:
 ** src.cpp
 */
+
+void initPacman()
+{
+
+}

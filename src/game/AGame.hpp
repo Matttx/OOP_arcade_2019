@@ -27,7 +27,7 @@ class AGame : public IGame {
 
   private:
     std::string _name;
-    engine::ecs::Universe &_universe;
+    engine::ecs::Universe& _universe;
 };
 
 } // namespace game

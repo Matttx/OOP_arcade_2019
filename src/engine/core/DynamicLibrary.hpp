@@ -42,8 +42,8 @@ class DynamicLibrary {
 
     explicit DynamicLibrary(T* instance)
     {
-        _instance = instance;
         _handler = nullptr;
+        _instance = instance;
     }
 
     ~DynamicLibrary()

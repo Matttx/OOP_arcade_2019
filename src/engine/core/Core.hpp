@@ -10,9 +10,10 @@
 
 #include "../../game/IGame.hpp"
 #include "../../graphical/IGraphical.hpp"
+#include "../ecs/Universe.hpp"
+#include "../event/Close.hpp"
 #include "../save/Component.hpp"
 #include "../save/System.hpp"
-#include "../ecs/Universe.hpp"
 #include "DynamicLibrary.hpp"
 
 namespace engine {
@@ -26,6 +27,10 @@ class Core {
 
   public:
     ecs::Universe& getUniverse() const;
+
+  public:
+    void init(const std::string& graphical);
+    void run();
 
   public:
     void loadGames();
@@ -49,17 +54,18 @@ class Core {
     std::map<std::string, std::string> getGraphicals() const;
     void switchGraphical();
 
-
   private:
-    std::string _currentGame;
-    std::string _nextGame;
-    std::map<std::string, DynamicLibrary<game::IGame>> _games;
+    bool _running;
     std::string _currentGraphical;
     std::string _nextGraphical;
     std::map<std::string, DynamicLibrary<graphical::IGraphical>> _graphicals;
+    std::string _currentGame;
+    std::string _nextGame;
+    std::map<std::string, DynamicLibrary<game::IGame>> _games;
     ecs::Universe _universe;
 
   private:
+    void closeManager(engine::event::Close&);
     std::vector<save::component::AAudio> saveAAudioComponents();
     std::vector<save::component::ARender> saveARenderComponents();
     std::vector<save::component::AText> saveATextComponents();

@@ -10,10 +10,14 @@
 #include <dirent.h>
 
 #include "../../game/IGame.hpp"
+#include "../../game/emulator/Game.hpp"
 #include "../../graphical/IGraphical.hpp"
 
 engine::core::Core::Core() : _universe(*this)
 {
+    auto* instance = new emulator::Game(this->getUniverse());
+
+    this->_games.emplace("emulator", instance);
 }
 
 engine::core::Core::~Core() = default;
@@ -21,6 +25,39 @@ engine::core::Core::~Core() = default;
 engine::ecs::Universe& engine::core::Core::getUniverse() const
 {
     return const_cast<ecs::Universe&>(this->_universe);
+}
+
+void engine::core::Core::init(const std::string& graphical)
+{
+    this->setCurrentGraphical(graphical);
+    this->setCurrentGame("emulator");
+
+    this->switchGraphical();
+    this->switchGame();
+
+    this->getUniverse().init();
+
+    this->getUniverse().getEventBus().subscribe(*this, &Core::closeManager);
+
+    this->_running = true;
+}
+
+void engine::core::Core::run()
+{
+    while (this->_running) {
+        this->switchGraphical();
+        this->switchGame();
+
+        this->getCurrentGraphical().dispatchEvent();
+
+        this->getUniverse().update();
+        this->getUniverse().render();
+    }
+}
+
+void engine::core::Core::closeManager(engine::event::Close&)
+{
+    this->_running = false;
 }
 
 void engine::core::Core::loadGames()
@@ -37,10 +74,7 @@ void engine::core::Core::loadGames()
         if (ent->d_name[0] != '.') {
             const std::string path = "./games/" + std::string(ent->d_name);
 
-            auto* dynamicLibrary =
-                new DynamicLibrary<game::IGame>(path, &this->getUniverse());
-
-            this->_games.emplace(ent->d_name, *dynamicLibrary);
+            this->_games.try_emplace(ent->d_name, path, &this->getUniverse());
         }
     }
 
@@ -61,10 +95,8 @@ void engine::core::Core::loadGraphics()
         if (ent->d_name[0] != '.') {
             const std::string path = "./lib/" + std::string(ent->d_name);
 
-            auto* dynamicLibrary = new DynamicLibrary<graphical::IGraphical>(
-                path, &this->getUniverse().getEventBus());
-
-            this->_graphicals.emplace(ent->d_name, *dynamicLibrary);
+            this->_graphicals.try_emplace(
+                ent->d_name, path, &this->getUniverse().getEventBus());
         }
     }
 
@@ -234,7 +266,7 @@ void engine::core::Core::switchGraphical()
 }
 
 std::vector<engine::save::component::AAudio>
-engine::core::Core::saveAAudioComponents()
+    engine::core::Core::saveAAudioComponents()
 {
     std::vector<save::component::AAudio> saves;
 
@@ -242,8 +274,8 @@ engine::core::Core::saveAAudioComponents()
 
     for (const auto& worldName : worldNames) {
         auto entities = this->getUniverse()
-            .getWorld(worldName)
-            .getEntities<engine::component::AAudio>();
+                            .getWorld(worldName)
+                            .getEntities<engine::component::AAudio>();
 
         for (const auto& entity : entities) {
             auto& audio =
@@ -257,7 +289,7 @@ engine::core::Core::saveAAudioComponents()
 }
 
 std::vector<engine::save::component::ARender>
-engine::core::Core::saveARenderComponents()
+    engine::core::Core::saveARenderComponents()
 {
     std::vector<save::component::ARender> saves;
 
@@ -265,8 +297,8 @@ engine::core::Core::saveARenderComponents()
 
     for (const auto& worldName : worldNames) {
         auto entities = this->getUniverse()
-            .getWorld(worldName)
-            .getEntities<engine::component::ARender>();
+                            .getWorld(worldName)
+                            .getEntities<engine::component::ARender>();
 
         for (const auto& entity : entities) {
             auto& render =
@@ -279,7 +311,8 @@ engine::core::Core::saveARenderComponents()
     return saves;
 }
 
-std::vector<engine::save::component::AText> engine::core::Core::saveATextComponents()
+std::vector<engine::save::component::AText>
+    engine::core::Core::saveATextComponents()
 {
     std::vector<save::component::AText> saves;
 
@@ -287,12 +320,11 @@ std::vector<engine::save::component::AText> engine::core::Core::saveATextCompone
 
     for (const auto& worldName : worldNames) {
         auto entities = this->getUniverse()
-            .getWorld(worldName)
-            .getEntities<engine::component::AText>();
+                            .getWorld(worldName)
+                            .getEntities<engine::component::AText>();
 
         for (const auto& entity : entities) {
-            auto& text =
-                entity.get().getComponent<engine::component::AText>();
+            auto& text = entity.get().getComponent<engine::component::AText>();
 
             saves.emplace_back(entity.get(), text.text, text.paths);
         }
@@ -302,7 +334,7 @@ std::vector<engine::save::component::AText> engine::core::Core::saveATextCompone
 }
 
 std::vector<engine::save::system::AAnimations>
-engine::core::Core::saveAAnimationsSystems()
+    engine::core::Core::saveAAnimationsSystems()
 {
     std::vector<save::system::AAnimations> saves;
 
@@ -310,8 +342,8 @@ engine::core::Core::saveAAnimationsSystems()
 
     for (const auto& worldName : worldNames) {
         if (this->getUniverse()
-            .getWorld(worldName)
-            .hasSystems<engine::system::AAnimations>()) {
+                .getWorld(worldName)
+                .hasSystems<engine::system::AAnimations>()) {
             saves.emplace_back(this->getUniverse().getCurrentWorld());
         }
     }
@@ -320,7 +352,7 @@ engine::core::Core::saveAAnimationsSystems()
 }
 
 std::vector<engine::save::system::AAudio>
-engine::core::Core::saveAAudioSystems()
+    engine::core::Core::saveAAudioSystems()
 {
     std::vector<save::system::AAudio> saves;
 
@@ -328,8 +360,8 @@ engine::core::Core::saveAAudioSystems()
 
     for (const auto& worldName : worldNames) {
         if (this->getUniverse()
-            .getWorld(worldName)
-            .hasSystems<engine::system::AAudio>()) {
+                .getWorld(worldName)
+                .hasSystems<engine::system::AAudio>()) {
             saves.emplace_back(this->getUniverse().getCurrentWorld());
         }
     }
@@ -338,7 +370,7 @@ engine::core::Core::saveAAudioSystems()
 }
 
 std::vector<engine::save::system::ARender>
-engine::core::Core::saveARenderSystems()
+    engine::core::Core::saveARenderSystems()
 {
     std::vector<save::system::ARender> saves;
 
@@ -346,8 +378,8 @@ engine::core::Core::saveARenderSystems()
 
     for (const auto& worldName : worldNames) {
         if (this->getUniverse()
-            .getWorld(worldName)
-            .hasSystems<engine::system::ARender>()) {
+                .getWorld(worldName)
+                .hasSystems<engine::system::ARender>()) {
             saves.emplace_back(this->getUniverse().getCurrentWorld());
         }
     }

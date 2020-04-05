@@ -18,6 +18,11 @@ class AAI : public ecs::ASystem {
   public:
     explicit AAI(ecs::World& world);
     ~AAI() override = 0;
+
+  public:
+    void init() override = 0;
+    void update() override = 0;
+    void render() override = 0;
 };
 
 } // namespace system
