@@ -24,7 +24,7 @@ LIB_SFML_DIR		=		src/graphical/sfml
 CC					=		g++
 RM					=		rm -rf
 
-LDLIBS				=		-ldl
+LDLIBS				=		-ldl -rdynamic
 
 MAIN_SRC			=		main.cpp
 
@@ -32,6 +32,7 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/component/AAudio.cpp			\
 							engine/component/Animations.cpp		\
 							engine/component/ARender.cpp		\
+							engine/component/AText.cpp			\
 							engine/component/AUser.cpp			\
 							engine/component/Hitbox.cpp			\
 							engine/component/Motion.cpp			\
@@ -46,11 +47,14 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/ecs/ISystem.cpp				\
 							engine/ecs/Universe.cpp				\
 							engine/ecs/World.cpp				\
+							engine/event/Close.cpp				\
 							engine/event/Collision.cpp			\
 							engine/event/Input.cpp				\
 							engine/eventbus/AEvent.cpp			\
 							engine/eventbus/EventBus.cpp		\
 							engine/eventbus/IEvent.cpp			\
+							engine/save/Component.cpp			\
+							engine/save/System.cpp				\
 							engine/system/AAI.cpp				\
 							engine/system/AAnimations.cpp		\
 							engine/system/AAudio.cpp			\
@@ -58,15 +62,25 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/system/AUser.cpp				\
 							engine/system/Movement.cpp			\
 							engine/system/Physics.cpp			\
+							engine/util/Error.cpp				\
 							game/AGame.cpp						\
 							game/IGame.cpp						\
+							game/emulator/Game.cpp				\
+							game/emulator/component/Action.cpp	\
+							game/emulator/component/User.cpp	\
+							game/emulator/system/User.cpp		\
 							graphical/AGraphical.cpp			\
 							graphical/IGraphical.cpp			\
 
-TEST_SRC			=
+TEST_SRC			=		test_Universe.cpp					\
+							test_World.cpp						\
+							test_Entity.cpp						\
+							test_AComponent.cpp					\
+							test_ASystem.cpp					\
+
 
 CFLAGS				+=		-I $(INCL_DIR)
-CFLAGS				+=		-W -Wall -Wextra -Werror
+CFLAGS				+=		-W -Wall -Wextra -Werror -std=c++17
 
 MAIN_OBJ			=		$(MAIN_SRC:%.cpp=$(OBJ_DIR)/%.o)
 
@@ -134,20 +148,8 @@ debug_re:			re
 debug_sweet:		CFLAGS += -g3
 debug_sweet:		sweet
 
-lib_nibbler:
-					cd $(LIB_NIBBLER_DIR) && $(MAKE)
-
-lib_nibbler_clean:
-					cd $(LIB_NIBBLER_DIR) && $(MAKE) clean
-
-lib_nibbler_fclean:
-					cd $(LIB_NIBBLER_DIR) && $(MAKE) fclean
-
-lib_nibbler_re:
-					cd $(LIB_NIBBLER_DIR) && $(MAKE) re
-
 lib_pacman:
-					cd $(LIB_PACMAN_DIR) && $(MAKE)
+					cd $(LIB_PACMAN_DIR) && $(MAKE) all
 
 lib_pacman_clean:
 					cd $(LIB_PACMAN_DIR) && $(MAKE) clean
@@ -156,22 +158,11 @@ lib_pacman_fclean:
 					cd $(LIB_PACMAN_DIR) && $(MAKE) fclean
 
 lib_pacman_re:
-					cd $(LIB_PACMAN_DIR) && $(MAKE) re
-
-lib_ncurses:
-					cd $(LIB_NCURSES_DIR) && $(MAKE)
-
-lib_ncurses_clean:
-					cd $(LIB_NCURSES_DIR) && $(MAKE) clean
-
-lib_ncurses_fclean:
-					cd $(LIB_NCURSES_DIR) && $(MAKE) fclean
-
-lib_ncurses_re:
-					cd $(LIB_NCURSES_DIR) && $(MAKE) re
+					cd $(LIB_PACMAN_DIR) && $(MAKE) fclean
+					cd $(LIB_PACMAN_DIR) && $(MAKE) all
 
 lib_sdl:
-					cd $(LIB_SDL_DIR) && $(MAKE)
+					cd $(LIB_SDL_DIR) && $(MAKE) all
 
 lib_sdl_clean:
 					cd $(LIB_SDL_DIR) && $(MAKE) clean
@@ -180,10 +171,11 @@ lib_sdl_fclean:
 					cd $(LIB_SDL_DIR) && $(MAKE) fclean
 
 lib_sdl_re:
-					cd $(LIB_SDL_DIR) && $(MAKE) re
+					cd $(LIB_SDL_DIR) && $(MAKE) fclean
+					cd $(LIB_SDL_DIR) && $(MAKE) all
 
 lib_sfml:
-					cd $(LIB_SFML_DIR) && $(MAKE)
+					cd $(LIB_SFML_DIR) && $(MAKE) all
 
 lib_sfml_clean:
 					cd $(LIB_SFML_DIR) && $(MAKE) clean
@@ -192,21 +184,22 @@ lib_sfml_fclean:
 					cd $(LIB_SFML_DIR) && $(MAKE) fclean
 
 lib_sfml_re:
-					cd $(LIB_SFML_DIR) && $(MAKE) re
+					cd $(LIB_SFML_DIR) && $(MAKE) fclean
+					cd $(LIB_SFML_DIR) && $(MAKE) all
 
-libs_game:			lib_nibbler lib_pacman
+libs_game:			lib_pacman
 
-libs_game_clean:	lib_nibbler_clean lib_pacman_clean
+libs_game_clean:	lib_pacman_clean
 
-libs_game_fclean:	lib_nibbler_fclean lib_pacman_fclean
+libs_game_fclean:	lib_pacman_fclean
 
 libs_game_re:		libs_game_fclean libs_game
 
-libs_graphical:			lib_ncurses lib_sdl lib_sfml
+libs_graphical:			lib_sdl lib_sfml
 
-libs_graphical_clean:	lib_ncurses_clean lib_sdl_clean lib_sfml_clean
+libs_graphical_clean:	lib_sdl_clean lib_sfml_clean
 
-libs_graphical_fclean:	lib_ncurses_fclean lib_sdl_fclean lib_sfml_fclean
+libs_graphical_fclean:	lib_sdl_fclean lib_sfml_fclean
 
 libs_graphical_re:		libs_graphical_fclean libs_graphical
 
@@ -268,9 +261,7 @@ full_sweet:			full full_clean
 
 .PHONY:				all clean fclean re sweet															\
 					debug debug_re debug_sweet															\
-					lib_nibbler lib_nibbler_clean lib_nibbler_fclean lib_nibbler_re						\
 					lib_pacman lib_pacman_clean lib_pacman_fclean lib_pacman_re							\
-					lib_ncurses lib_ncurses_clean lib_ncurses_fclean lib_ncurses_re						\
 					lib_sdl lib_sdl_clean lib_sdl_fclean lib_sdl_re										\
 					lib_sfml lib_sfml_clean lib_sfml_fclean lib_sfml_re									\
 					libs_game libs_game_clean libs_game_fclean libs_game_re								\

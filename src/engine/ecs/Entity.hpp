@@ -20,6 +20,10 @@ class World;
 #include <typeinfo>
 #include <vector>
 
+#include "../component/AAudio.hpp"
+#include "../component/ARender.hpp"
+#include "../component/AText.hpp"
+#include "../util/Error.hpp"
 #include "AComponent.hpp"
 
 namespace engine {
@@ -41,11 +45,14 @@ class Entity {
         std::type_index id = typeid(T);
 
         if (this->_components.count(id))
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::Entity::addComponent()",
+                "Already has this type of component");
 
         auto* component = new T(*this, args...);
 
         this->_components.emplace(id, *component);
+
+        return *component;
     }
 
     template<typename T = void, typename... TArgs>
@@ -66,11 +73,12 @@ class Entity {
         std::type_index id = typeid(T);
 
         if (this->_components.count(id) == 0)
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::Entity::getComponent()",
+                "Doesn't have this type of component");
 
         AComponent& component = this->_components.at(id).get();
 
-        return static_cast<T&>(component);
+        return dynamic_cast<T&>(component);
     }
 
     template<typename T>
@@ -79,7 +87,8 @@ class Entity {
         std::type_index id = typeid(T);
 
         if (this->_components.count(id) == 0)
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::Entity::getComponent()",
+                "Doesn't have this type of component");
 
         delete &this->_components.at(id).get();
 
@@ -92,6 +101,19 @@ class Entity {
   private:
     std::map<std::type_index, std::reference_wrapper<AComponent>> _components;
 };
+
+template<>
+component::AAudio& Entity::addComponent<component::AAudio>(
+    const std::vector<std::string>& paths);
+
+template<>
+component::ARender& Entity::addComponent<component::ARender>(
+    const std::vector<std::string>& paths);
+
+template<>
+engine::component::AText&
+    engine::ecs::Entity::addComponent<engine::component::AText>(
+        const std::string& text, const std::vector<std::string>& paths);
 
 } // namespace ecs
 

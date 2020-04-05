@@ -9,6 +9,7 @@
 
 #include "../component/Motion.hpp"
 #include "../component/Transform.hpp"
+#include "../ecs/World.hpp"
 
 engine::system::Movement::Movement(engine::ecs::World& world) : ASystem(world)
 {

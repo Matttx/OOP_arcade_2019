@@ -41,7 +41,7 @@ class EventBus {
 
         void call(AEvent& event) override
         {
-            this->_subscriber->*this->_callback(static_cast<E&>(event));
+            (this->_subscriber.*this->_callback)(static_cast<E&>(event));
         }
 
       private:
@@ -72,6 +72,10 @@ class EventBus {
     void publish(E& event)
     {
         std::type_index id = typeid(E);
+
+        if (this->_cbHandlers.count(id) == 0)
+            return;
+
         auto& cbHandler = this->_cbHandlers.at(id);
 
         for (const auto& handler : cbHandler)

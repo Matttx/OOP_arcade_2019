@@ -28,14 +28,20 @@ class AGraphical : public IGraphical {
   public:
     std::string getName() const override;
     LIBTYPE getType() const override;
+    engine::eventbus::EventBus& getEventBus() const override;
 
   public:
     engine::component::AAudio& createAudio(engine::ecs::Entity& entity,
         const std::vector<std::string>& paths) override = 0;
     engine::component::ARender& createRender(engine::ecs::Entity& entity,
         const std::vector<std::string>& paths) override = 0;
+    engine::component::AText& createText(engine::ecs::Entity& entity,
+        const std::string& text,
+        const std::vector<std::string>& paths) override = 0;
 
   public:
+    engine::system::AAnimations& createAnimationsSystem(
+        engine::ecs::World& world) override = 0;
     engine::system::AAudio& createAudioSystem(
         engine::ecs::World& world) override = 0;
     engine::system::ARender& createRenderSystem(
@@ -44,7 +50,7 @@ class AGraphical : public IGraphical {
   private:
     std::string _name;
     LIBTYPE _type;
-    engine::eventbus::EventBus _eventBus;
+    engine::eventbus::EventBus& _eventBus;
 };
 
 } // namespace graphical

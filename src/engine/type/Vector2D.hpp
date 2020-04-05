@@ -14,6 +14,7 @@ namespace type {
 
 class Vector2D {
   public:
+    Vector2D(int x, int y): x(x), y(y) {};
     int x;
     int y;
 };

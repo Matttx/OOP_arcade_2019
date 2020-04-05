@@ -21,6 +21,9 @@ class Universe;
 #include <typeinfo>
 #include <vector>
 
+#include "../system/AAnimations.hpp"
+#include "../system/AAudio.hpp"
+#include "../system/ARender.hpp"
 #include "ASystem.hpp"
 #include "Entity.hpp"
 
@@ -71,11 +74,14 @@ class World {
         std::type_index id = typeid(T);
 
         if (this->_systems.count(id))
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::World::addSystem()",
+                "Already has this type of system");
 
         auto* system = new T(*this, args...);
 
         this->_systems.emplace(id, *system);
+
+        return *system;
     }
 
     template<typename T = void, typename... TArgs>
@@ -96,11 +102,12 @@ class World {
         std::type_index id = typeid(T);
 
         if (this->_systems.count(id) == 0)
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::World::getSystem()",
+                "Doesn't have this type of system");
 
         ASystem& system = this->_systems.at(id).get();
 
-        return static_cast<T&>(system);
+        return dynamic_cast<T&>(system);
     }
 
     template<typename T>
@@ -109,7 +116,8 @@ class World {
         std::type_index id = typeid(T);
 
         if (this->_systems.count(id) == 0)
-            throw std::exception(); // TODO: Custom Error class
+            throw util::Error("engine::ecs::World::removeSystem()",
+                "Doesn't have this type of system");
 
         delete &this->_systems.at(id).get();
 
@@ -126,6 +134,16 @@ class World {
   private:
     std::map<std::type_index, std::reference_wrapper<ASystem>> _systems;
 };
+
+template<>
+engine::system::AAnimations&
+    engine::ecs::World::addSystem<engine::system::AAnimations>();
+
+template<>
+system::AAudio& World::addSystem<system::AAudio>();
+
+template<>
+system::ARender& World::addSystem<system::ARender>();
 
 } // namespace ecs
 

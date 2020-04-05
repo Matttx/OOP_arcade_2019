@@ -11,6 +11,9 @@
 #include "../../game/IGame.hpp"
 #include "../../graphical/IGraphical.hpp"
 #include "../ecs/Universe.hpp"
+#include "../event/Close.hpp"
+#include "../save/Component.hpp"
+#include "../save/System.hpp"
 #include "DynamicLibrary.hpp"
 
 namespace engine {
@@ -26,27 +29,49 @@ class Core {
     ecs::Universe& getUniverse() const;
 
   public:
+    void init(const std::string& graphical);
+    void run();
+
+  public:
     void loadGames();
     void loadGraphics();
 
   public:
     bool hasGame(const std::string& name) const;
+    bool hasGameGraphical() const;
     game::IGame& getGame(const std::string& name) const;
     game::IGame& getCurrentGame() const;
     void setCurrentGame(const std::string& name);
+    std::map<std::string, std::string> getGames() const;
+    void switchGame();
 
   public:
     bool hasGraphical(const std::string& name) const;
+    bool hasCurrentGraphical() const;
     graphical::IGraphical& getGraphical(const std::string& name) const;
     graphical::IGraphical& getCurrentGraphical() const;
     void setCurrentGraphical(const std::string& name);
+    std::map<std::string, std::string> getGraphicals() const;
+    void switchGraphical();
 
   private:
-    ecs::Universe _universe;
-    std::string _currentGame;
-    std::map<std::string, DynamicLibrary<game::IGame>> _games;
+    bool _running;
     std::string _currentGraphical;
+    std::string _nextGraphical;
     std::map<std::string, DynamicLibrary<graphical::IGraphical>> _graphicals;
+    std::string _currentGame;
+    std::string _nextGame;
+    std::map<std::string, DynamicLibrary<game::IGame>> _games;
+    ecs::Universe _universe;
+
+  private:
+    void closeManager(engine::event::Close&);
+    std::vector<save::component::AAudio> saveAAudioComponents();
+    std::vector<save::component::ARender> saveARenderComponents();
+    std::vector<save::component::AText> saveATextComponents();
+    std::vector<save::system::AAnimations> saveAAnimationsSystems();
+    std::vector<save::system::AAudio> saveAAudioSystems();
+    std::vector<save::system::ARender> saveARenderSystems();
 };
 
 } // namespace core

@@ -41,13 +41,15 @@ class Universe {
   public:
     World& createWorld(const std::string& name);
     bool hasWorld(const std::string& name) const;
+    bool hasCurrentWorld() const;
     World& getWorld(const std::string& name) const;
     World& getCurrentWorld() const;
+    std::vector<std::string> getWorldNames() const;
     void setCurrentWorld(const std::string& name);
     void deleteWorld(const std::string& name);
 
   private:
-    core::Core &_core;
+    core::Core& _core;
     eventbus::EventBus _eventBus;
     std::map<std::string, std::reference_wrapper<World>> _worlds;
     std::string _current;
