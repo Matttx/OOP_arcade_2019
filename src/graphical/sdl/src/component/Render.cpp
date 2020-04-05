@@ -7,8 +7,6 @@
 
 #include "Render.hpp"
 
-#include <iostream>
-
 #include "../../../IGraphical.hpp"
 
 using namespace sdl;

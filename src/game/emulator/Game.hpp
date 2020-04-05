@@ -30,7 +30,6 @@ class Game : public game::AGame {
     void initGraphicalMenu(engine::ecs::World& mainWorld);
     void initGameMenu(engine::ecs::World& mainWorld);
     void initSelector(engine::ecs::World& mainWorld);
-    void resetAnimations(engine::ecs::World& mainWorld);
 };
 
 } // namespace emulator

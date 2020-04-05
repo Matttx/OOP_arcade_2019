@@ -7,8 +7,6 @@
 
 #include "Animations.hpp"
 
-#include <iostream>
-
 #include "../../../../engine/component/ARender.hpp"
 #include "../../../../engine/component/Animations.hpp"
 #include "../../../../engine/ecs/World.hpp"
@@ -21,6 +19,15 @@ sfml::system::Animations::Animations(engine::ecs::World& world)
 
 void sfml::system::Animations::init()
 {
+    auto entities =
+        this->getWorld().getEntities<engine::component::Animations>();
+
+    for (const auto& entity : entities) {
+        auto& animations =
+            entity.get().getComponent<engine::component::Animations>();
+
+        animations.lastTimeMs = 0;
+    }
 }
 
 void sfml::system::Animations::update()

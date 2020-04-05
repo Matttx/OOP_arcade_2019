@@ -84,7 +84,7 @@ void sdl::Graphical::dispatchEvent()
 
             delete input;
         }
-        if (e.type == SDL_WINDOWEVENT_CLOSE) {
+        if (e.type == SDL_QUIT) {
             auto close = new engine::event::Close();
 
             getEventBus().publish(*close);

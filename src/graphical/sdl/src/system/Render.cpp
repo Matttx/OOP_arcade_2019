@@ -8,7 +8,6 @@
 #include "Render.hpp"
 
 #include <algorithm>
-#include <iostream>
 
 #include "../../../../engine/component/AText.hpp"
 #include "../../../../engine/component/Size.hpp"

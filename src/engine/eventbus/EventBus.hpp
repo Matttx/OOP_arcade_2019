@@ -9,7 +9,6 @@
 #define OOP_ARCADE_2019_EVENTBUS_EVENTBUS_HPP
 
 #include <functional>
-#include <iostream>
 #include <map>
 #include <typeindex>
 #include <typeinfo>
