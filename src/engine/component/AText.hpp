@@ -5,6 +5,10 @@
 ** AText.hpp
 */
 
+/**
+ * @brief Class for text implementation
+ */
+
 #ifndef OOP_ARCADE_2019_ATEXT_HPP
 #define OOP_ARCADE_2019_ATEXT_HPP
 
@@ -17,35 +21,34 @@ namespace engine {
 
 namespace component {
 /**
- * @class Abstract class of component text
- * 
+ * @class Abstract class of Text component
+ *
  */
 class AText : public ecs::AComponent {
   public:
     /**
-     * @brief text : string that contain the text
-     * 
+     * @brief text : Text to display
+     *
      */
     const std::string text;
     /**
-     * @brief paths : vector of fonts use to display the text
-     * 
+     * @brief paths : Vector of fonts used to display the text
+     *
      */
     const std::vector<std::string> paths;
 
   public:
     /**
-     * @brief Construct a new AText object
-     * 
-     * @param entity : the entity that the component belongs to
-     * @param text : the text to display
-     * @param paths : vector of fonts use to display the text
+     * @brief Constructor of AText
+     *
+     * @param entity : Entity that the component belongs to
+     * @param text : Text to display
+     * @param paths : Vector of fonts used to display the text
      */
-    AText(ecs::Entity& entity, const std::string& text,
-        const std::vector<std::string>& paths);
+    AText(ecs::Entity& entity, const std::string& text, const std::vector<std::string>& paths);
     /**
-     * @brief Destroy the AText object
-     * 
+     * @brief Destructor of AText
+     *
      */
     ~AText() override = 0;
 };

@@ -7,8 +7,8 @@
 
 #include "Animations.hpp"
 
-engine::component::Animations::Animations(engine::ecs::Entity& entity,
-    const std::map<std::string, type::Animation>& list)
+engine::component::Animations::Animations(
+    engine::ecs::Entity& entity, const std::map<std::string, type::Animation>& list)
     : AComponent(entity), list(list)
 {
 }

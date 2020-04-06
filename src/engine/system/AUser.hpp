@@ -14,20 +14,20 @@ namespace engine {
 
 namespace system {
 /**
- * @class AUser that inherits from ASystem 
- * 
+ * @class AUser that inherits from ASystem
+ *
  */
 class AUser : public ecs::ASystem {
   public:
     /**
      * @brief Construct a new AUser object
-     * 
-     * @param world 
+     *
+     * @param world
      */
     explicit AUser(ecs::World& world);
     /**
      * @brief Destroy the AUser object
-     * 
+     *
      */
     ~AUser() override = 0;
 

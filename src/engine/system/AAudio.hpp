@@ -15,19 +15,19 @@ namespace engine {
 namespace system {
 /**
  * @class AAudio that inherits from ASystem
- * 
+ *
  */
 class AAudio : public ecs::ASystem {
   public:
     /**
      * @brief Construct a new AAudio object
-     * 
-     * @param world 
+     *
+     * @param world
      */
     explicit AAudio(ecs::World& world);
     /**
      * @brief Destroy the AAudio object
-     * 
+     *
      */
     ~AAudio() override = 0;
 };

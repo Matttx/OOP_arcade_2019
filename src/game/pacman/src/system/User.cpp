@@ -10,10 +10,10 @@
 #include <ctime>
 
 #include "../../../../engine/component/Motion.hpp"
+#include "../../../../engine/core/Core.hpp"
 #include "../../../../engine/event/Collision.hpp"
 #include "../component/AI.hpp"
 #include "../component/User.hpp"
-#include "../../../../engine/core/Core.hpp"
 
 pacman::system::User::User(engine::ecs::World& world) : engine::system::AUser(world)
 {
@@ -96,7 +96,7 @@ void pacman::system::User::inputHandler(engine::event::Input& input)
     }
 }
 
-void pacman::system::User::collisionHandler(engine::event::Collision &collision)
+void pacman::system::User::collisionHandler(engine::event::Collision& collision)
 {
     if (collision.entity1.hasComponents<pacman::component::User>() &&
         collision.entity2.hasComponents<pacman::component::AI>()) {

@@ -15,13 +15,13 @@ namespace engine {
 namespace event {
 /**
  * @class Input that inherits from AEvent
- * 
+ *
  */
 class Input : public eventbus::AEvent {
   public:
     /**
      * @enum KEYCODE that refers to all the keypad codes
-     * 
+     *
      */
     enum KEYCODE {
         KEY_UNKNOWN = -1,
@@ -132,20 +132,20 @@ class Input : public eventbus::AEvent {
   public:
     /**
      * @brief code : the code that correspond to the enum
-     * 
+     *
      */
     KEYCODE code;
 
   public:
     /**
      * @brief Construct a new Input object
-     * 
+     *
      * @param code : the code that correspond to the enum
      */
     explicit Input(KEYCODE code);
     /**
      * @brief Destroy the Input object
-     * 
+     *
      */
     ~Input() override;
 };

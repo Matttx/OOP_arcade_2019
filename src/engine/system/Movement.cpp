@@ -23,8 +23,7 @@ void engine::system::Movement::init()
 
 void engine::system::Movement::update()
 {
-    auto entities =
-        this->getWorld().getEntities<component::Motion, component::Transform>();
+    auto entities = this->getWorld().getEntities<component::Motion, component::Transform>();
 
     for (const auto& entity : entities) {
         auto& motion = entity.get().getComponent<component::Motion>();

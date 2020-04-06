@@ -32,7 +32,7 @@ class User : public engine::system::AUser {
     void inputHandler(engine::event::Input& input);
     void collisionHandler(engine::event::Collision& collision);
 };
-}
-}
+} // namespace system
+} // namespace pacman
 
 #endif // OOP_ARCADE_2019_USER_HPP

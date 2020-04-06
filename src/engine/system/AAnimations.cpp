@@ -7,8 +7,7 @@
 
 #include "AAnimations.hpp"
 
-engine::system::AAnimations::AAnimations(engine::ecs::World& world)
-    : ASystem(world)
+engine::system::AAnimations::AAnimations(engine::ecs::World& world) : ASystem(world)
 {
 }
 

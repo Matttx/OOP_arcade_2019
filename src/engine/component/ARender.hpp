@@ -8,6 +8,10 @@
 #ifndef OOP_ARCADE_2019_COMPONENT_ARENDER_HPP
 #define OOP_ARCADE_2019_COMPONENT_ARENDER_HPP
 
+/**
+ * @brief Class for render implementation
+ */
+
 #include <string>
 #include <vector>
 
@@ -17,28 +21,28 @@ namespace engine {
 
 namespace component {
 /**
- * @class Abstract class of component Render
- * 
+ * @class Abstract class of Render component
+ *
  */
 class ARender : public ecs::AComponent {
   public:
     /**
-     * @brief paths : vector of sprite paths
-     * 
+     * @brief paths : Vector of sprite paths
+     *
      */
     std::vector<std::string> paths;
 
   public:
     /**
-     * @brief Construct a new ARender object
-     * 
-     * @param entity : the entity that the component belongs to
-     * @param paths : vector of sprite paths
+     * @brief Constructor of ARender
+     *
+     * @param entity : Entity that the component belongs to
+     * @param paths : Vector of sprite paths
      */
     ARender(ecs::Entity& entity, const std::vector<std::string>& paths);
     /**
-     * @brief Destroy the ARender object
-     * 
+     * @brief Destructor of ARender
+     *
      */
     ~ARender() override = 0;
 };

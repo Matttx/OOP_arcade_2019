@@ -5,6 +5,10 @@
 ** Size.hpp
 */
 
+/**
+ * @brief Class for size
+ */
+
 #ifndef OOP_ARCADE_2019_COMPONENT_SIZE_HPP
 #define OOP_ARCADE_2019_COMPONENT_SIZE_HPP
 
@@ -14,34 +18,34 @@ namespace engine {
 
 namespace component {
 /**
- * @class Class of the component size
- * 
+ * @class Class of the Size component
+ *
  */
 class Size : public ecs::AComponent {
   public:
     /**
-     * @brief width : width of the render of the entity
-     * 
+     * @brief width : Width of the entity
+     *
      */
     int width;
     /**
-     * @brief height : height of the render of the entity
-     * 
+     * @brief height : Height of the entity
+     *
      */
     int height;
 
   public:
     /**
-     * @brief Construct a new Size object
-     * 
-     * @param entity : the entity that the component belongs to
-     * @param width : width of the render of the entity
-     * @param height : height of the render of the entity
+     * @brief Constructor of Size
+     *
+     * @param entity : Entity that the component belongs to
+     * @param width : Width of the entity
+     * @param height : Height of the entity
      */
     Size(ecs::Entity& entity, int width, int height);
     /**
-     * @brief Destroy the Size object
-     * 
+     * @brief Destructor of Size
+     *
      */
     ~Size() override;
 };

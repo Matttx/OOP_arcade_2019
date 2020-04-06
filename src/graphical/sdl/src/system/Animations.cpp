@@ -22,12 +22,10 @@ Animations::Animations(engine::ecs::World& world) : AAnimations(world)
 
 void Animations::init()
 {
-    auto entities =
-        this->getWorld().getEntities<engine::component::Animations>();
+    auto entities = this->getWorld().getEntities<engine::component::Animations>();
 
     for (const auto& entity : entities) {
-        auto& animations =
-            entity.get().getComponent<engine::component::Animations>();
+        auto& animations = entity.get().getComponent<engine::component::Animations>();
 
         animations.lastTimeMs = 0;
     }
@@ -37,20 +35,15 @@ void Animations::update()
 {
     unsigned int currentTimeMs = SDL_GetTicks();
 
-    auto entities = getWorld()
-                        .getEntities<engine::component::ARender,
-                            engine::component::Animations>();
+    auto entities = getWorld().getEntities<engine::component::ARender, engine::component::Animations>();
 
     for (auto& entity : entities) {
-        auto& animations =
-            entity.get().getComponent<engine::component::Animations>();
+        auto& animations = entity.get().getComponent<engine::component::Animations>();
         auto& render = entity.get().getComponent<engine::component::ARender>();
         auto& sdlRender = dynamic_cast<sdl::component::Render&>(render);
-        auto& currentAnimation =
-            animations.list.at(animations.currentAnimation);
+        auto& currentAnimation = animations.list.at(animations.currentAnimation);
 
-        if (currentTimeMs >
-            animations.lastTimeMs + (unsigned int)(currentAnimation.speed)) {
+        if (currentTimeMs > animations.lastTimeMs + (unsigned int)(currentAnimation.speed)) {
             int x = 0;
             int y = 0;
 

@@ -13,25 +13,25 @@ namespace engine {
 namespace type {
 /**
  * @class Vector2D
- * 
+ *
  */
 class Vector2D {
   public:
     /**
      * @brief Construct a new Vector 2 D object
-     * 
-     * @param x 
-     * @param y 
+     *
+     * @param x
+     * @param y
      */
-    Vector2D(int x, int y): x(x), y(y) {};
+    Vector2D(int x, int y) : x(x), y(y) {};
     /**
      * @brief x : position x
-     * 
+     *
      */
     int x;
     /**
      * @brief y : position y
-     * 
+     *
      */
     int y;
 };

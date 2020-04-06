@@ -7,8 +7,7 @@
 
 #include "AGraphical.hpp"
 
-graphical::AGraphical::AGraphical(
-    const std::string& name, LIBTYPE type, engine::eventbus::EventBus& eventBus)
+graphical::AGraphical::AGraphical(const std::string& name, LIBTYPE type, engine::eventbus::EventBus& eventBus)
     : _name(name), _type(type), _eventBus(eventBus)
 {
 }

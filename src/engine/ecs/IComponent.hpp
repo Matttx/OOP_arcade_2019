@@ -15,20 +15,20 @@ namespace engine {
 namespace ecs {
 /**
  * @class IComponent
- * 
+ *
  */
 class IComponent {
   public:
     /**
      * @brief Destroy the IComponent object
-     * 
+     *
      */
     virtual ~IComponent() = 0;
 
   public:
     /**
      * @brief Get the Entity object : pure virtual function that permite child to get an entity
-     * 
+     *
      * @return Entity& : return a reference to an Entity
      */
     virtual Entity& getEntity() const = 0;

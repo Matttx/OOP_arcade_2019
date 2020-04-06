@@ -7,8 +7,7 @@
 
 #include "Error.hpp"
 
-engine::util::Error::Error(
-    const std::string& subject, const std::string& message)
+engine::util::Error::Error(const std::string& subject, const std::string& message)
 {
     this->_what = subject + ": " + message;
 }

@@ -8,6 +8,10 @@
 #ifndef OOP_ARCADE_2019_COMPONENT_ANIMATIONS_HPP
 #define OOP_ARCADE_2019_COMPONENT_ANIMATIONS_HPP
 
+/**
+ * @brief Class for animations
+ */
+
 #include <map>
 #include <string>
 
@@ -18,44 +22,45 @@ namespace engine {
 
 namespace component {
 /**
- * @class Class of component Animation
- * 
+ * @class Class of Animation component
+ *
  */
 class Animations : public ecs::AComponent {
   public:
     /**
-     * @brief list : map of animation. Its first key is a string that represents the name of the animation. The second is the animation type
-     * 
+     * @brief list : Map of animations.
+     * Key: Name of the animation
+     * Value: Animation definition
+     *
      */
     const std::map<std::string, type::Animation> list;
     /**
-     * @brief currentAnimation : the name of the current animation
-     * 
+     * @brief currentAnimation : Name of the current animation
+     *
      */
     std::string currentAnimation;
     /**
-     * @brief currentFrame : the current frame of the animation
-     * 
+     * @brief currentFrame : Current frame of the animation
+     *
      */
-    int currentFrame{};
+    int currentFrame {};
     /**
-     * @brief lastTimeMs : return the time in miliseconds
-     * 
+     * @brief lastTimeMs : Time in miliseconds
+     *
      */
-    unsigned int lastTimeMs{};
+    unsigned int lastTimeMs {};
 
   public:
     /**
-     * @brief Construct a new Animations object
-     * 
-     * @param entity : the entity that the component belongs to
-     * @param list : a list of animation 
+     * @brief Constructor of Animations
+     *
+     * @param entity : Entity that the component belongs to
+     * @param list : List of animation
      */
-    Animations(ecs::Entity& entity,
-        const std::map<std::string, type::Animation>& list);
+    Animations(ecs::Entity& entity, const std::map<std::string, type::Animation>& list);
     /**
-     * @brief Destroy the Animations object
-     * 
+     * @brief Destructor of Annimations
+     *
      */
     ~Animations() override;
 };

@@ -24,7 +24,7 @@ class AI : public engine::component::AAI {
     bool isAlive;
     bool scared;
 };
-}
-}
+} // namespace component
+} // namespace pacman
 
 #endif // OOP_ARCADE_2019_AI_HPP

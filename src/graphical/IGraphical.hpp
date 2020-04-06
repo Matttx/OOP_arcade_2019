@@ -41,16 +41,13 @@ class IGraphical {
         engine::ecs::Entity& entity, const std::vector<std::string>& paths) = 0;
     virtual engine::component::ARender& createRender(
         engine::ecs::Entity& entity, const std::vector<std::string>& paths) = 0;
-    virtual engine::component::AText& createText(engine::ecs::Entity& entity,
-        const std::string& text, const std::vector<std::string>& paths) = 0;
+    virtual engine::component::AText& createText(
+        engine::ecs::Entity& entity, const std::string& text, const std::vector<std::string>& paths) = 0;
 
   public:
-    virtual engine::system::AAnimations& createAnimationsSystem(
-        engine::ecs::World& world) = 0;
-    virtual engine::system::AAudio& createAudioSystem(
-        engine::ecs::World& world) = 0;
-    virtual engine::system::ARender& createRenderSystem(
-        engine::ecs::World& world) = 0;
+    virtual engine::system::AAnimations& createAnimationsSystem(engine::ecs::World& world) = 0;
+    virtual engine::system::AAudio& createAudioSystem(engine::ecs::World& world) = 0;
+    virtual engine::system::ARender& createRenderSystem(engine::ecs::World& world) = 0;
 };
 
 } // namespace graphical

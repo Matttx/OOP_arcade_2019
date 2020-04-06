@@ -5,6 +5,10 @@
 ** AUser.hpp
 */
 
+/**
+ * @brief Class for user implementation
+ */
+
 #ifndef OOP_ARCADE_2019_COMPONENT_AUSER_HPP
 #define OOP_ARCADE_2019_COMPONENT_AUSER_HPP
 
@@ -15,19 +19,19 @@ namespace engine {
 namespace component {
 /**
  * @class Abstract class of component User
- * 
+ *
  */
 class AUser : public ecs::AComponent {
   public:
     /**
-     * @brief Construct a new AUser object
-     * 
-     * @param entity : the entity that the component belongs to
+     * @brief Constructor of AUser
+     *
+     * @param entity : Entity that the component belongs to
      */
     explicit AUser(engine::ecs::Entity& entity);
     /**
-     * @brief Destroy the AUser object
-     * 
+     * @brief Destructor of AUser
+     *
      */
     ~AUser() override = 0;
 };

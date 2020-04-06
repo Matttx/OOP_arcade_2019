@@ -7,8 +7,7 @@
 
 #include "Transform.hpp"
 
-engine::component::Transform::Transform(
-    engine::ecs::Entity &entity, engine::type::Vector2D position, int layer)
+engine::component::Transform::Transform(engine::ecs::Entity &entity, engine::type::Vector2D position, int layer)
     : engine::ecs::AComponent(entity), position(position), layer(layer)
 {
 }

@@ -5,6 +5,10 @@
 ** AAudio.hpp
 */
 
+/**
+ * @brief Class for audio implementation
+ */
+
 #ifndef OOP_ARCADE_2019_COMPONENT_AAUDIO_HPP
 #define OOP_ARCADE_2019_COMPONENT_AAUDIO_HPP
 
@@ -17,28 +21,28 @@ namespace engine {
 
 namespace component {
 /**
- * @brief Abstract class of component Audio
- * 
+ * @brief Abstract class of Audio component
+ *
  */
 class AAudio : public ecs::AComponent {
   public:
     /**
      * @brief Vector of audio paths
-     * 
+     *
      */
     const std::vector<std::string> paths;
 
   public:
     /**
-     * @brief Construct a new AAudio object
-     * 
-     * @param entity : the entity that the component belongs to
-     * @param paths : vector of audio paths
+     * @brief Constructor of AAudio
+     *
+     * @param entity : Entity that the component belongs to
+     * @param paths : Vector of audio paths
      */
     AAudio(ecs::Entity& entity, const std::vector<std::string>& paths);
     /**
-     * @brief Destroy the AAudio object
-     * 
+     * @brief Destructor of AAudio
+     *
      */
     ~AAudio() override = 0;
 };

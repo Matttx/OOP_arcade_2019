@@ -45,8 +45,7 @@ class Entity {
         std::type_index id = typeid(T);
 
         if (this->_components.count(id))
-            throw util::Error("engine::ecs::Entity::addComponent()",
-                "Already has this type of component");
+            throw util::Error("engine::ecs::Entity::addComponent()", "Already has this type of component");
 
         auto* component = new T(*this, args...);
 
@@ -73,8 +72,7 @@ class Entity {
         std::type_index id = typeid(T);
 
         if (this->_components.count(id) == 0)
-            throw util::Error("engine::ecs::Entity::getComponent()",
-                "Doesn't have this type of component");
+            throw util::Error("engine::ecs::Entity::getComponent()", "Doesn't have this type of component");
 
         AComponent& component = this->_components.at(id).get();
 
@@ -87,8 +85,7 @@ class Entity {
         std::type_index id = typeid(T);
 
         if (this->_components.count(id) == 0)
-            throw util::Error("engine::ecs::Entity::getComponent()",
-                "Doesn't have this type of component");
+            throw util::Error("engine::ecs::Entity::getComponent()", "Doesn't have this type of component");
 
         delete &this->_components.at(id).get();
 
@@ -103,17 +100,14 @@ class Entity {
 };
 
 template<>
-component::AAudio& Entity::addComponent<component::AAudio>(
-    const std::vector<std::string>& paths);
+component::AAudio& Entity::addComponent<component::AAudio>(const std::vector<std::string>& paths);
 
 template<>
-component::ARender& Entity::addComponent<component::ARender>(
-    const std::vector<std::string>& paths);
+component::ARender& Entity::addComponent<component::ARender>(const std::vector<std::string>& paths);
 
 template<>
-engine::component::AText&
-    engine::ecs::Entity::addComponent<engine::component::AText>(
-        const std::string& text, const std::vector<std::string>& paths);
+engine::component::AText& engine::ecs::Entity::addComponent<engine::component::AText>(
+    const std::string& text, const std::vector<std::string>& paths);
 
 } // namespace ecs
 

@@ -5,6 +5,10 @@
 ** Core.hpp
 */
 
+/**
+ * @brief Class to manage core system, game and graphicals libraries
+ */
+
 #ifndef OOP_ARCADE_2019_CORE_HPP
 #define OOP_ARCADE_2019_CORE_HPP
 
@@ -21,33 +25,33 @@ namespace engine {
 namespace core {
 /**
  * @class Core
- * 
+ *
  */
 class Core {
   public:
     /**
-     * @brief Construct a new Core object
-     * 
+     * @brief Constructor of Core
+     *
      */
     Core();
     /**
-     * @brief Destroy the Core object
-     * 
+     * @brief Destructor of Core
+     *
      */
     ~Core();
 
   public:
     /**
-     * @brief Get the Universe object
-     * 
-     * @return ecs::Universe& 
+     * @brief Get the universe
+     *
+     * @return ecs::Universe& : Reference of the universe
      */
     ecs::Universe& getUniverse() const;
 
   public:
     /**
-     * @brief Load the Games lib
-     * 
+     * @brief Load the game libraries
+     *
      */
     void init(const std::string& graphical);
     void run();
@@ -55,171 +59,193 @@ class Core {
   public:
     void loadGames();
     /**
-     * @brief Load the Graphics lib
-     * 
+     * @brief Load the graphical libraries
+     *
      */
     void loadGraphics();
 
   public:
     /**
-     * @brief hasGame : Function that check if the core has a game with his name
-     * 
-     * @param name : name of the game
-     * @return true : the core has the game
-     * @return false : the core don't has the game
+     * @brief hasGame : Check if the core has a game with the specified name
+     *
+     * @param name : Name of the game
+     *
+     * @return true : Core has the game
+     * @return false : Core doesn't have the game
      */
     bool hasGame(const std::string& name) const;
     /**
-     * @brief hasGameGraphical : Function that check if a game is displaying
-     * 
-     * @return true : the game is displaying
-     * @return false : the game is not displaying
+     * @brief hasCurrentGame : Check if the core has a valid current game
+     *
+     * @return true : Current game is valid
+     * @return false : Current game is invalid
      */
-    bool hasGameGraphical() const;
+    bool hasCurrentGame() const;
     /**
-     * @brief Get the Game
-     * 
-     * @param name : the name of the game
-     * @return game::IGame& : return a reference of IGame 
+     * @brief Get the game with the specified name
+     *
+     * @param name : Name of the game
+     *
+     * @return game::IGame& : Reference of the game
      */
     game::IGame& getGame(const std::string& name) const;
     /**
-     * @brief Get the Current Game
-     * 
-     * @return game::IGame& : return a reference of IGame
+     * @brief Get the current game
+     *
+     * @return game::IGame& : Reference of the game
      */
     game::IGame& getCurrentGame() const;
     /**
-     * @brief Set the Current Game
-     * 
-     * @param name : the name of the game to set
+     * @brief Set the current game
+     *
+     * @param name : Name of the game
      */
     void setCurrentGame(const std::string& name);
     /**
-     * @brief Get the Games
-     * 
-     * @return std::map<std::string, std::string> : return a map of games : the first key is a string of ... and the second is a string of ...
+     * @brief Get the game names
+     *
+     * @return std::map<std::string, std::string> : Map of games
+     * Key: Game identifier
+     * Value: Game name
      */
     std::map<std::string, std::string> getGames() const;
     /**
-     * @brief switchGame : function that switch a game with another
-     * 
+     * @brief switchGame : Switch the current game
+     *
      */
     void switchGame();
 
   public:
     /**
-     * @brief hasGraphical : check if there is a graphical library
-     * 
-     * @param name : name of the library
-     * @return true : the library is found
-     * @return false : the library is not found
+     * @brief hasGraphical : Check if the core has a graphical with the specified name
+     *
+     * @param name : Name of the graphical
+     *
+     * @return true : Core has the game
+     * @return false : Core doesn't have the game
      */
     bool hasGraphical(const std::string& name) const;
     /**
-     * @brief hasCurrentGraphical : check if a graphical library is displaying
-     * 
-     * @return true : a graphical library is displaying
-     * @return false : a graphical library is not displaying
+     * @brief hasCurrentGraphical : Check if the core has a valid current graphical
+     *
+     * @return true : Current game is valid
+     * @return false : Current game is invalid
      */
     bool hasCurrentGraphical() const;
     /**
-     * @brief getGraphical : get a special graphical library 
-     * 
-     * @param name : the name of the library to get
-     * @return graphical::IGraphical& : return a IGraphical reference of the graphical library get
+     * @brief getGraphical : Get the graphical with the specified name
+     *
+     * @param name : Name of the graphical
+     *
+     * @return graphical::IGraphical& : Reference of the graphical
      */
     graphical::IGraphical& getGraphical(const std::string& name) const;
     /**
-     * @brief getCurrentGraphical : get the current graphical library
-     * 
-     * @return graphical::IGraphical& : return a IGraphical reference of the current graphical library
+     * @brief getCurrentGraphical : Get the current graphical
+     *
+     * @return graphical::IGraphical& : Reference of the graphical
      */
     graphical::IGraphical& getCurrentGraphical() const;
     /**
-     * @brief setCurrentGraphical : set the current graphical library
-     * 
-     * @param name : the name of the library to set
+     * @brief setCurrentGraphical : Set the current graphical
+     *
+     * @param name : Name of the graphical
      */
     void setCurrentGraphical(const std::string& name);
     /**
-     * @brief getGraphicals : get the graphicals library
-     * 
-     * @return std::map<std::string, std::string> : return a map of strings that correspond of the graphical library
+     * @brief Get the graphical names
+     *
+     * @return std::map<std::string, std::string> : Map of graphicals
+     * Key: Graphical identifier
+     * Value: Graphical name
      */
     std::map<std::string, std::string> getGraphicals() const;
     /**
-     * @brief switchGraphical : switch graphical library
-     * 
+     * @brief switchGraphical : Switch the current graphical
+     *
      */
     void switchGraphical();
 
   private:
     /**
-     * @brief _currentGame : string that represent the current game
-     * 
+     * @brief _currentGame : Identifier of the current game
+     *
      */
     std::string _currentGame;
     /**
-     * @brief _nextGame : string that represent the next game
-     * 
+     * @brief _nextGame : Identifier of the next game
+     *
      */
     std::string _nextGame;
     /**
-     * @brief _games : map of games : the first key is a string that represent the name of the game and the second is e dynamic library of the corresponding game
-     * 
+     * @brief _games : Map of games
+     * Key: Game identifier
+     * Value: Game
+     *
      */
     std::map<std::string, DynamicLibrary<game::IGame>> _games;
     /**
-     * @brief _currentGraphical : string that represent the current graphical library
-     * 
+     * @brief _currentGraphical : Identifier of the current graphical
+     *
      */
     std::string _currentGraphical;
     bool _running;
     /**
-     * @brief _nextGraphical : string that represent the next graphical library
-     * 
+     * @brief _nextGraphical : Identifier of the next graphical
+     *
      */
     std::string _nextGraphical;
     /**
-     * @brief _graphicals : map of graphical library : the first key is a string that represent the name of the library and the second is a dynamic library of the corresponding library
-     * 
+     * @brief _games : Map of graphicals
+     * Key: Graphical identifier
+     * Value: Graphical
+     *
      */
     std::map<std::string, DynamicLibrary<graphical::IGraphical>> _graphicals;
 
     ecs::Universe _universe;
 
   private:
+    /**
+     * @brief Close event manager
+     *
+     * @param Close event reference
+     */
     void closeManager(engine::event::Close&);
+    /**
+     * @brief saveAAudioComponents : Save a copy of audio component parameters
+     *
+     * @return std::vector<save::component::AAudio> : Vector of AAudio component saves
+     */
     std::vector<save::component::AAudio> saveAAudioComponents();
     /**
-     * @brief saveARenderComponents : save a copy of render parameters for the library change
-     * 
-     * @return std::vector<save::component::ARender> : return a vector of ARender component
+     * @brief saveARenderComponents : Save a copy of render component parameters
+     *
+     * @return std::vector<save::component::ARender> : Vector of ARender component saves
      */
     std::vector<save::component::ARender> saveARenderComponents();
     /**
-     * @brief saveTextComponents : save a copy of text parameters for the library change
-     * 
-     * @return std::vector<save::component::AText> : return a vector of AText component
+     * @brief saveTextComponents : Save a copy of text component parameters
+     *
+     * @return std::vector<save::component::AText> : Vector of AText component saves
      */
     std::vector<save::component::AText> saveATextComponents();
     /**
-     * @brief saveAAnimationsSystem : save a copy of animations systems parameters for the library change
-     * 
-     * @return std::vector<save::system::AAnimations> : return a vector of AAnimation system
+     * @brief saveAAnimationsSystem : Save a copy of animations system parameters
+     *
+     * @return std::vector<save::system::AAnimations> : Vector of AAnimations system saves
      */
     std::vector<save::system::AAnimations> saveAAnimationsSystems();
     /**
-     * @brief saveAAudioSystems : save a copy of audio systems parameters for the library change
-     * 
-     * @return std::vector<save::system::AAudio> : return a vector of AAudio systems
+     * @brief saveAAudioSystems : Save a copy of audio system parameters
+     *
+     * @return std::vector<save::system::AAudio> : Vector of AAudio system saves
      */
     std::vector<save::system::AAudio> saveAAudioSystems();
     /**
-     * @brief saveARenderSystems : save a copy of render systems parameters for the library change
-     * 
-     * @return std::vector<save::system::ARender> : return a vector of ARender systems
+     * @brief saveARenderSystems : Save a copy of render system parameters
+     *
+     * @return std::vector<save::system::ARender> : Vector of ARender system saves
      */
     std::vector<save::system::ARender> saveARenderSystems();
 };

@@ -63,8 +63,7 @@ class World {
   public:
     void addToGroup(Entity& entity, const std::string& name);
     bool hasGroup(Entity& entity, const std::string& name) const;
-    std::vector<std::reference_wrapper<Entity>>& getGroup(
-        const std::string& name) const;
+    std::vector<std::reference_wrapper<Entity>>& getGroup(const std::string& name) const;
     void removeFromGroup(Entity& entity, const std::string& name);
 
   public:
@@ -74,8 +73,7 @@ class World {
         std::type_index id = typeid(T);
 
         if (this->_systems.count(id))
-            throw util::Error("engine::ecs::World::addSystem()",
-                "Already has this type of system");
+            throw util::Error("engine::ecs::World::addSystem()", "Already has this type of system");
 
         auto* system = new T(*this, args...);
 
@@ -102,8 +100,7 @@ class World {
         std::type_index id = typeid(T);
 
         if (this->_systems.count(id) == 0)
-            throw util::Error("engine::ecs::World::getSystem()",
-                "Doesn't have this type of system");
+            throw util::Error("engine::ecs::World::getSystem()", "Doesn't have this type of system");
 
         ASystem& system = this->_systems.at(id).get();
 
@@ -116,8 +113,7 @@ class World {
         std::type_index id = typeid(T);
 
         if (this->_systems.count(id) == 0)
-            throw util::Error("engine::ecs::World::removeSystem()",
-                "Doesn't have this type of system");
+            throw util::Error("engine::ecs::World::removeSystem()", "Doesn't have this type of system");
 
         delete &this->_systems.at(id).get();
 
@@ -136,8 +132,7 @@ class World {
 };
 
 template<>
-engine::system::AAnimations&
-    engine::ecs::World::addSystem<engine::system::AAnimations>();
+engine::system::AAnimations& engine::ecs::World::addSystem<engine::system::AAnimations>();
 
 template<>
 system::AAudio& World::addSystem<system::AAudio>();

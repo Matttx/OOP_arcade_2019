@@ -27,8 +27,7 @@ void sfml::system::Audio::render()
 {
     auto entities = getWorld().getEntities<engine::component::AAudio>();
     for (const auto& entity : entities) {
-        auto& component =
-            entity.get().getComponent<engine::component::AAudio>();
+        auto& component = entity.get().getComponent<engine::component::AAudio>();
         auto& sfmlAudio = dynamic_cast<sfml::component::Audio&>(component);
         if (sfmlAudio.music.getStatus() != sf::Music::Status::Playing)
             sfmlAudio.music.play();

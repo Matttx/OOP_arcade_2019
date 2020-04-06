@@ -7,8 +7,7 @@
 
 #include "ARender.hpp"
 
-engine::component::ARender::ARender(
-    engine::ecs::Entity &entity, const std::vector<std::string> &paths)
+engine::component::ARender::ARender(engine::ecs::Entity &entity, const std::vector<std::string> &paths)
     : engine::ecs::AComponent(entity), paths(paths)
 {
 }

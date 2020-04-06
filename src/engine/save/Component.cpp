@@ -12,8 +12,7 @@ void engine::save::component::AAudio::addToEntity()
 {
     std::apply(
         [this](const std::vector<std::string>& paths) {
-            this->_entity.template addComponent<engine::component::AAudio>(
-                paths);
+            this->_entity.template addComponent<engine::component::AAudio>(paths);
         },
         _args);
 }
@@ -23,8 +22,7 @@ void engine::save::component::ARender::addToEntity()
 {
     std::apply(
         [this](const std::vector<std::string>& paths) {
-            this->_entity.template addComponent<engine::component::ARender>(
-                paths);
+            this->_entity.template addComponent<engine::component::ARender>(paths);
         },
         _args);
 }
@@ -34,8 +32,7 @@ void engine::save::component::AText::addToEntity()
 {
     std::apply(
         [this](const std::string& text, const std::vector<std::string>& paths) {
-            this->_entity.template addComponent<engine::component::AText>(
-                text, paths);
+            this->_entity.template addComponent<engine::component::AText>(text, paths);
         },
         _args);
 }

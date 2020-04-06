@@ -41,30 +41,24 @@ extern "C" sdl::Graphical *create(engine::eventbus::EventBus *eventBus)
 void sdl::Graphical::init()
 {
     if (SDL_Init(SDL_INIT_VIDEO))
-        throw std::runtime_error(
-            std::string("SDL: Can't init SDL: ", SDL_GetError()).c_str());
+        throw std::runtime_error(std::string("SDL: Can't init SDL: ", SDL_GetError()).c_str());
 
     if (!IMG_Init(IMG_INIT_PNG))
-        throw std::runtime_error(
-            std::string("SDL: Can't init SDL_image: ", SDL_GetError()).c_str());
+        throw std::runtime_error(std::string("SDL: Can't init SDL_image: ", SDL_GetError()).c_str());
 
     if (TTF_Init())
-        throw std::runtime_error(
-            std::string("SDL: Can't init SDL_ttf: ", SDL_GetError()).c_str());
+        throw std::runtime_error(std::string("SDL: Can't init SDL_ttf: ", SDL_GetError()).c_str());
 
-    _window = SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_RESIZABLE);
+    _window =
+        SDL_CreateWindow("Arcade", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_RESIZABLE);
 
     if (!_window)
-        throw std::runtime_error(
-            std::string("SDL: Can't create Window: ", SDL_GetError()).c_str());
+        throw std::runtime_error(std::string("SDL: Can't create Window: ", SDL_GetError()).c_str());
 
     _renderer = SDL_CreateRenderer(_window, -1, 0);
 
     if (!_renderer)
-        throw std::runtime_error(
-            std::string("SDL: Can't create Renderer: ", SDL_GetError())
-                .c_str());
+        throw std::runtime_error(std::string("SDL: Can't create Renderer: ", SDL_GetError()).c_str());
 
     SDL_RenderSetLogicalSize(_renderer, 1920, 1080);
     SDL_ShowCursor(0);
@@ -77,8 +71,7 @@ void sdl::Graphical::dispatchEvent()
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         if (e.type == SDL_KEYDOWN) {
-            auto input =
-                new engine::event::Input(SDLKEYCODE.at(e.key.keysym.sym));
+            auto input = new engine::event::Input(SDLKEYCODE.at(e.key.keysym.sym));
 
             getEventBus().publish(*input);
 
@@ -118,26 +111,22 @@ engine::component::ARender &sdl::Graphical::createRender(
 }
 
 engine::component::AText &sdl::Graphical::createText(
-    engine::ecs::Entity &entity, const std::string &text,
-    const std::vector<std::string> &paths)
+    engine::ecs::Entity &entity, const std::string &text, const std::vector<std::string> &paths)
 {
     return *(new sdl::component::Text(entity, text, paths, _renderer));
 }
 
-engine::system::AAnimations &sdl::Graphical::createAnimationsSystem(
-    engine::ecs::World &world)
+engine::system::AAnimations &sdl::Graphical::createAnimationsSystem(engine::ecs::World &world)
 {
     return *(new sdl::system::Animations(world));
 }
 
-engine::system::AAudio &sdl::Graphical::createAudioSystem(
-    engine::ecs::World &world)
+engine::system::AAudio &sdl::Graphical::createAudioSystem(engine::ecs::World &world)
 {
     return *(new sdl::system::Audio(world));
 }
 
-engine::system::ARender &sdl::Graphical::createRenderSystem(
-    engine::ecs::World &world)
+engine::system::ARender &sdl::Graphical::createRenderSystem(engine::ecs::World &world)
 {
     return *(new sdl::system::Render(world, *_renderer));
 }

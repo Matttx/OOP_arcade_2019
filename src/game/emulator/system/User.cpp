@@ -37,8 +37,7 @@ void emulator::system::User::update()
 
 void emulator::system::User::updateUserGame()
 {
-    auto userEntities =
-        this->getWorld().getEntities<emulator::component::User>();
+    auto userEntities = this->getWorld().getEntities<emulator::component::User>();
     auto &buttonEntities = this->getWorld().getGroup("games");
 
     for (const auto &userEntity : userEntities) {
@@ -47,14 +46,12 @@ void emulator::system::User::updateUserGame()
         if (user.step != component::User::USERSTEP::GAME)
             continue;
 
-        auto &transform =
-            userEntity.get().getComponent<engine::component::Transform>();
+        auto &transform = userEntity.get().getComponent<engine::component::Transform>();
         auto &size = userEntity.get().getComponent<engine::component::Size>();
 
         if ((unsigned long)(user.index) < buttonEntities.size()) {
             auto &button = buttonEntities.at(user.index).get();
-            auto &buttonTransform =
-                button.getComponent<engine::component::Transform>();
+            auto &buttonTransform = button.getComponent<engine::component::Transform>();
             auto &buttonSize = button.getComponent<engine::component::Size>();
             int deltaX = (buttonSize.width - size.width) / 2;
             int deltaY = (buttonSize.height - size.height) / 2;
@@ -67,8 +64,7 @@ void emulator::system::User::updateUserGame()
 
 void emulator::system::User::updateUserGraphical()
 {
-    auto userEntities =
-        this->getWorld().getEntities<emulator::component::User>();
+    auto userEntities = this->getWorld().getEntities<emulator::component::User>();
     auto &buttonEntities = this->getWorld().getGroup("graphicals");
 
     for (const auto &userEntity : userEntities) {
@@ -77,14 +73,12 @@ void emulator::system::User::updateUserGraphical()
         if (user.step != component::User::USERSTEP::GRAPHICAL)
             continue;
 
-        auto &transform =
-            userEntity.get().getComponent<engine::component::Transform>();
+        auto &transform = userEntity.get().getComponent<engine::component::Transform>();
         auto &size = userEntity.get().getComponent<engine::component::Size>();
 
         if ((unsigned long)(user.index) < buttonEntities.size()) {
             auto &button = buttonEntities.at(user.index).get();
-            auto &buttonTransform =
-                button.getComponent<engine::component::Transform>();
+            auto &buttonTransform = button.getComponent<engine::component::Transform>();
             auto &buttonSize = button.getComponent<engine::component::Size>();
             int deltaX = (buttonSize.width - size.width) / 2;
             int deltaY = (buttonSize.height - size.height) / 2;
@@ -101,8 +95,7 @@ void emulator::system::User::render()
 
 void emulator::system::User::inputManager(engine::event::Input &input)
 {
-    auto userEntities =
-        this->getWorld().getEntities<emulator::component::User>();
+    auto userEntities = this->getWorld().getEntities<emulator::component::User>();
     int gameCount = this->getWorld().getGroup("games").size();
     int graphicalCount = this->getWorld().getGroup("graphicals").size();
 
@@ -138,11 +131,9 @@ void emulator::system::User::inputManager(engine::event::Input &input)
     }
 }
 
-void emulator::system::User::inputManagerGame(
-    engine::event::Input &input, emulator::component::User &user)
+void emulator::system::User::inputManagerGame(engine::event::Input &input, emulator::component::User &user)
 {
-    auto userEntities =
-        this->getWorld().getEntities<emulator::component::User>();
+    auto userEntities = this->getWorld().getEntities<emulator::component::User>();
     auto &buttonEntities = this->getWorld().getGroup("games");
 
     if (input.code == engine::event::Input::KEY_BACKSPACE) {
@@ -151,25 +142,19 @@ void emulator::system::User::inputManagerGame(
     }
 
     if (input.code == engine::event::Input::KEY_ENTER) {
-        auto &action = buttonEntities.at(user.index)
-                           .get()
-                           .getComponent<emulator::component::Action>();
+        auto &action = buttonEntities.at(user.index).get().getComponent<emulator::component::Action>();
 
         action.callback(this->getWorld().getUniverse());
     }
 }
 
-void emulator::system::User::inputManagerGraphical(
-    engine::event::Input &input, emulator::component::User &user)
+void emulator::system::User::inputManagerGraphical(engine::event::Input &input, emulator::component::User &user)
 {
-    auto userEntities =
-        this->getWorld().getEntities<emulator::component::User>();
+    auto userEntities = this->getWorld().getEntities<emulator::component::User>();
     auto &buttonEntities = this->getWorld().getGroup("graphicals");
 
     if (input.code == engine::event::Input::KEY_ENTER) {
-        auto &action = buttonEntities.at(user.index)
-                           .get()
-                           .getComponent<emulator::component::Action>();
+        auto &action = buttonEntities.at(user.index).get().getComponent<emulator::component::Action>();
 
         user.step = component::User::GAME;
         user.index = 0;

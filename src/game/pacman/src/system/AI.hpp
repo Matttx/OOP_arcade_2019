@@ -24,11 +24,10 @@ class AI : public engine::system::AAI {
     void init() override;
     void update() override;
     void render() override;
-    void collisionHandler(engine::event::Collision &collision);
+    void collisionHandler(engine::event::Collision& collision);
     static std::vector<bool> isCollide(const engine::component::Motion& motion);
 };
-}
-}
-
+} // namespace system
+} // namespace pacman
 
 #endif // OOP_ARCADE_2019_AI_HPP

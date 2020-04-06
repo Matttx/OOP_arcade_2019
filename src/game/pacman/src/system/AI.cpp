@@ -64,8 +64,7 @@ void pacman::system::AI::render()
 {
 }
 
-std::vector<bool> pacman::system::AI::isCollide(
-    const engine::component::Motion& motion)
+std::vector<bool> pacman::system::AI::isCollide(const engine::component::Motion& motion)
 {
     std::vector<bool> vec = {false, false, false, false};
     if (motion.velocity.x > 0) {
@@ -83,7 +82,7 @@ std::vector<bool> pacman::system::AI::isCollide(
     return vec;
 }
 
-void pacman::system::AI::collisionHandler(engine::event::Collision &collision)
+void pacman::system::AI::collisionHandler(engine::event::Collision& collision)
 {
     if (collision.entity1.hasComponents<pacman::component::AI>() &&
         collision.entity2.hasComponents<pacman::component::User>()) {

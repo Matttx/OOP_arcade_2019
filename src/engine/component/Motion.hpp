@@ -5,6 +5,10 @@
 ** Motion.hpp
 */
 
+/**
+ * @brief Class for motion
+ */
+
 #ifndef OOP_ARCADE_2019_COMPONENT_MOTION_HPP
 #define OOP_ARCADE_2019_COMPONENT_MOTION_HPP
 
@@ -15,35 +19,34 @@ namespace engine {
 
 namespace component {
 /**
- * @class Class of component Motion
- * 
+ * @class Class of Motion component
+ *
  */
 class Motion : public ecs::AComponent {
   public:
     /**
      * @brief velocity : vector2D that correspond at the direction of the movement of an entity
-     * 
+     *
      */
     engine::type::Vector2D velocity;
     /**
      * @brief acceleration : vector2D that correspond at the speed of the movement
-     * 
+     *
      */
     engine::type::Vector2D acceleration;
 
   public:
     /**
      * @brief Construct a new Motion object
-     * 
+     *
      * @param entity : the entity that the component belongs to
      * @param velocity : vector2D that correspond at the direction of the movement of an entity
      * @param acceleration : vector2D that correspond at the speed of the movement
      */
-    Motion(ecs::Entity& entity, type::Vector2D velocity,
-        type::Vector2D acceleration);
+    Motion(ecs::Entity& entity, type::Vector2D velocity, type::Vector2D acceleration);
     /**
      * @brief Destroy the Motion object
-     * 
+     *
      */
     ~Motion() override;
 };

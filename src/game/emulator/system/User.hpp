@@ -30,10 +30,8 @@ class User : public engine::system::AUser {
     void updateUserGame();
     void updateUserGraphical();
     void inputManager(engine::event::Input& input);
-    void inputManagerGame(
-        engine::event::Input& input, emulator::component::User& user);
-    void inputManagerGraphical(
-        engine::event::Input& input, emulator::component::User& user);
+    void inputManagerGame(engine::event::Input& input, emulator::component::User& user);
+    void inputManagerGraphical(engine::event::Input& input, emulator::component::User& user);
 };
 
 } // namespace system

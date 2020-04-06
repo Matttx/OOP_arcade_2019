@@ -25,18 +25,15 @@ engine::ecs::World& engine::ecs::Entity::getWorld() const
 }
 
 template<>
-engine::component::AAudio&
-    engine::ecs::Entity::addComponent<engine::component::AAudio>(
-        const std::vector<std::string>& paths)
+engine::component::AAudio& engine::ecs::Entity::addComponent<engine::component::AAudio>(
+    const std::vector<std::string>& paths)
 {
     std::type_index id = typeid(component::AAudio);
 
     if (this->_components.count(id))
-        throw util::Error("engine::ecs::Entity::addComponent()",
-            "Already has this type of component");
+        throw util::Error("engine::ecs::Entity::addComponent()", "Already has this type of component");
 
-    auto& graphical =
-        this->getWorld().getUniverse().getCore().getCurrentGraphical();
+    auto& graphical = this->getWorld().getUniverse().getCore().getCurrentGraphical();
     auto& component = graphical.createAudio(*this, paths);
 
     this->_components.emplace(id, component);
@@ -45,18 +42,15 @@ engine::component::AAudio&
 }
 
 template<>
-engine::component::ARender&
-    engine::ecs::Entity::addComponent<engine::component::ARender>(
-        const std::vector<std::string>& paths)
+engine::component::ARender& engine::ecs::Entity::addComponent<engine::component::ARender>(
+    const std::vector<std::string>& paths)
 {
     std::type_index id = typeid(component::ARender);
 
     if (this->_components.count(id))
-        throw util::Error("engine::ecs::Entity::addComponent()",
-            "Already has this type of component");
+        throw util::Error("engine::ecs::Entity::addComponent()", "Already has this type of component");
 
-    auto& graphical =
-        this->getWorld().getUniverse().getCore().getCurrentGraphical();
+    auto& graphical = this->getWorld().getUniverse().getCore().getCurrentGraphical();
     auto& component = graphical.createRender(*this, paths);
 
     this->_components.emplace(id, component);
@@ -65,18 +59,15 @@ engine::component::ARender&
 }
 
 template<>
-engine::component::AText&
-    engine::ecs::Entity::addComponent<engine::component::AText>(
-        const std::string& text, const std::vector<std::string>& paths)
+engine::component::AText& engine::ecs::Entity::addComponent<engine::component::AText>(
+    const std::string& text, const std::vector<std::string>& paths)
 {
     std::type_index id = typeid(component::AText);
 
     if (this->_components.count(id))
-        throw util::Error("engine::ecs::Entity::addComponent()",
-            "Already has this type of component");
+        throw util::Error("engine::ecs::Entity::addComponent()", "Already has this type of component");
 
-    auto& graphical =
-        this->getWorld().getUniverse().getCore().getCurrentGraphical();
+    auto& graphical = this->getWorld().getUniverse().getCore().getCurrentGraphical();
     auto& component = graphical.createText(*this, text, paths);
 
     this->_components.emplace(id, component);

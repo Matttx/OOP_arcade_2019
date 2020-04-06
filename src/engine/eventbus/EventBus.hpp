@@ -35,8 +35,7 @@ class EventBus {
     template<typename T, typename E>
     class CallbackHandler : public ICallbackHandler {
       public:
-        CallbackHandler(T& subscriber, Callback<T, E> callback)
-            : _subscriber(subscriber), _callback(callback) {};
+        CallbackHandler(T& subscriber, Callback<T, E> callback) : _subscriber(subscriber), _callback(callback) {};
         ~CallbackHandler() override = default;
 
         void call(AEvent& event) override
@@ -83,9 +82,7 @@ class EventBus {
     }
 
   private:
-    std::map<std::type_index,
-        std::vector<std::reference_wrapper<ICallbackHandler>>>
-        _cbHandlers;
+    std::map<std::type_index, std::vector<std::reference_wrapper<ICallbackHandler>>> _cbHandlers;
 };
 
 } // namespace eventbus

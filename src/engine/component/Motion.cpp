@@ -7,8 +7,8 @@
 
 #include "Motion.hpp"
 
-engine::component::Motion::Motion(engine::ecs::Entity& entity,
-    engine::type::Vector2D velocity, engine::type::Vector2D acceleration)
+engine::component::Motion::Motion(
+    engine::ecs::Entity& entity, engine::type::Vector2D velocity, engine::type::Vector2D acceleration)
     : AComponent(entity), velocity(velocity), acceleration(acceleration)
 {
 }

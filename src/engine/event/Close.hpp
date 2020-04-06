@@ -15,18 +15,18 @@ namespace engine {
 namespace event {
 /**
  * @class Close that inherits form AEvent
- * 
+ *
  */
 class Close : public eventbus::AEvent {
   public:
     /**
      * @brief Construct a new Close object
-     * 
+     *
      */
     Close();
     /**
      * @brief Destroy the Close object
-     * 
+     *
      */
     ~Close() override;
 };

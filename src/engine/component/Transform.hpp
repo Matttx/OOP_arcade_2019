@@ -5,6 +5,10 @@
 ** Transform.hpp
 */
 
+/**
+ * @brief Class for transform
+ */
+
 #ifndef OOP_ARCADE_2019_COMPONENT_TRANSFORM_HPP
 #define OOP_ARCADE_2019_COMPONENT_TRANSFORM_HPP
 
@@ -15,34 +19,34 @@ namespace engine {
 
 namespace component {
 /**
- * @class Class of component Transform
- * 
+ * @class Class of Transform component
+ *
  */
 class Transform : public ecs::AComponent {
   public:
     /**
-     * @brief position : the positions x and y of the render on the screen
-     * 
+     * @brief position : Coordinate of the entity
+     *
      */
     type::Vector2D position;
     /**
-     * @brief layer : layer of the render on the screen
-     * 
+     * @brief layer : Layer level of the entity
+     *
      */
     int layer;
 
   public:
     /**
-     * @brief Construct a new Transform object
-     * 
-     * @param entity : the entity that the component belongs to
-     * @param position : the positions x and y of the render on the screen
-     * @param layer : layer of the render on the screen
+     * @brief Constructor of Transform
+     *
+     * @param entity : Entity that the component belongs to
+     * @param position : Coordinate of the entity
+     * @param layer : Layer level of the entity
      */
     Transform(ecs::Entity& entity, type::Vector2D position, int layer);
     /**
-     * @brief Destroy the Transform object
-     * 
+     * @brief Destructor of Transform
+     *
      */
     ~Transform() override;
 };

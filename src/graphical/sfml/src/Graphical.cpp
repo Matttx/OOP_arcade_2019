@@ -49,8 +49,7 @@ void sfml::Graphical::dispatchEvent()
     sf::Event event {};
     while (_window.pollEvent(event)) {
         if (event.type == sf::Event::KeyPressed) {
-            auto input =
-                new engine::event::Input(KEYCORRESPONDENCE.at(event.key.code));
+            auto input = new engine::event::Input(KEYCORRESPONDENCE.at(event.key.code));
 
             getEventBus().publish(*input);
 
@@ -86,26 +85,22 @@ engine::component::ARender& sfml::Graphical::createRender(
 }
 
 engine::component::AText& sfml::Graphical::createText(
-    engine::ecs::Entity& entity, const std::string& text,
-    const std::vector<std::string>& paths)
+    engine::ecs::Entity& entity, const std::string& text, const std::vector<std::string>& paths)
 {
     return *(new sfml::component::Text(entity, text, paths));
 }
 
-engine::system::AAnimations& sfml::Graphical::createAnimationsSystem(
-    engine::ecs::World& world)
+engine::system::AAnimations& sfml::Graphical::createAnimationsSystem(engine::ecs::World& world)
 {
     return *(new sfml::system::Animations(world));
 }
 
-engine::system::AAudio& sfml::Graphical::createAudioSystem(
-    engine::ecs::World& world)
+engine::system::AAudio& sfml::Graphical::createAudioSystem(engine::ecs::World& world)
 {
     return *(new sfml::system::Audio(world));
 }
 
-engine::system::ARender& sfml::Graphical::createRenderSystem(
-    engine::ecs::World& world)
+engine::system::ARender& sfml::Graphical::createRenderSystem(engine::ecs::World& world)
 {
     return *(new sfml::system::Render(world, _window));
 }

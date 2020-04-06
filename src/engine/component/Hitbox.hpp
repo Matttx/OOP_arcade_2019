@@ -5,6 +5,10 @@
 ** Hitbox.hpp
 */
 
+/**
+ * @brief Class for hitbox
+ */
+
 #ifndef OOP_ARCADE_2019_COMPONENT_HITBOX_HPP
 #define OOP_ARCADE_2019_COMPONENT_HITBOX_HPP
 
@@ -14,34 +18,34 @@ namespace engine {
 
 namespace component {
 /**
- * @class Class of component Hitbox
- * 
+ * @class Class of Hitbox component
+ *
  */
 class Hitbox : public ecs::AComponent {
   public:
     /**
-     * @brief width : width of the hitbox
-     * 
+     * @brief width : Width of the entity's hitbox
+     *
      */
     int width;
     /**
-     * @brief height : height of the hitbox
-     * 
+     * @brief height : Height of the entity's hitbox
+     *
      */
     int height;
 
   public:
     /**
-     * @brief Construct a new Hitbox object
-     * 
-     * @param entity : the entity that the component belongs to
-     * @param width : width of the hitbox
-     * @param height : height of the hitbox
+     * @brief Constructor of Hitbox
+     *
+     * @param entity : Entity that the component belongs to
+     * @param width : Width of the hitbox
+     * @param height : Height of the hitbox
      */
     Hitbox(engine::ecs::Entity& entity, int width, int height);
     /**
-     * @brief Destroy the Hitbox object
-     * 
+     * @brief Destructor of Hitbox
+     *
      */
     ~Hitbox() override;
 };

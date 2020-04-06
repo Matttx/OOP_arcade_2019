@@ -31,13 +31,14 @@ static void initPacGums(engine::ecs::World& world, int x, int y);
 static void initWall(engine::ecs::World& world, int x, int y);
 static void initPacman(engine::ecs::World& world, int x, int y);
 static void initBackGround(engine::ecs::World& world);
-//static void errorMapHandler();
+// static void errorMapHandler();
 
-game::Game::Game(engine::ecs::Universe& universe): AGame("PACMAN", universe)
+game::Game::Game(engine::ecs::Universe& universe) : AGame("PACMAN", universe)
 {
 }
 
-extern "C"  game::IGame* create(engine::ecs::Universe* universe) {
+extern "C" game::IGame* create(engine::ecs::Universe* universe)
+{
     return new game::Game(*universe);
 }
 
@@ -56,15 +57,13 @@ void game::Game::init()
     auto& eventBus = world.getUniverse().getEventBus();
     eventBus.subscribe(*this, &Game::receiveCollision);
     getUniverse().setCurrentWorld("main");
-
 }
 void game::Game::destroy()
 {
     getUniverse().deleteWorld("main");
 }
 
-std::vector<bool> game::Game::isCollide(
-    const engine::component::Motion& motion)
+std::vector<bool> game::Game::isCollide(const engine::component::Motion& motion)
 {
     std::vector<bool> vec = {false, false, false, false};
     if (motion.velocity.x > 0) {
@@ -209,7 +208,7 @@ void game::Game::initEntity(engine::ecs::World& world)
 {
     std::ifstream file;
     std::string string;
-    //errorMapHandler();
+    // errorMapHandler();
     file.open(MAP_PATH);
     for (int y = 0; getline(file, string); y++) {
         for (size_t x = 0; x < string.size(); x++) {
@@ -219,7 +218,7 @@ void game::Game::initEntity(engine::ecs::World& world)
                     break;
                 case '2':
                     initPacGums(world, x, y);
-                    nbPacGums ++;
+                    nbPacGums++;
                     break;
                 case '3':
                     initPacman(world, x, y);
@@ -252,7 +251,8 @@ static void initPacman(engine::ecs::World& world, int x, int y)
     auto& pacman = world.createEntity();
     pacman.addComponent<pacman::component::User>();
     pacman.addComponent<engine::component::ARender>(PACMAN_PATH);
-    pacman.addComponent<engine::component::Transform>(engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + DEFAULT_POSITION, y * DEFAULT_SIZE_BLOCK + 1), 2);
+    pacman.addComponent<engine::component::Transform>(
+        engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + DEFAULT_POSITION, y * DEFAULT_SIZE_BLOCK + 1), 2);
     pacman.addComponent<engine::component::Motion>(engine::type::Vector2D(0, 0), engine::type::Vector2D(0, 0));
     pacman.addComponent<engine::component::Hitbox>(38, 38);
     pacman.addComponent<engine::component::Size>(40, 40);
@@ -262,7 +262,8 @@ static void initWall(engine::ecs::World& world, int x, int y)
 {
     auto& wall = world.createEntity();
     wall.addComponent<engine::component::ARender>(WALL_PATH);
-    wall.addComponent<engine::component::Transform>(engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + DEFAULT_POSITION, y * DEFAULT_SIZE_BLOCK), 5);
+    wall.addComponent<engine::component::Transform>(
+        engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + DEFAULT_POSITION, y * DEFAULT_SIZE_BLOCK), 5);
     wall.addComponent<engine::component::Hitbox>(38, 38);
     wall.addComponent<engine::component::Size>(40, 40);
     world.addToGroup(wall, "wall");
@@ -272,7 +273,8 @@ static void initPacGums(engine::ecs::World& world, int x, int y)
 {
     auto& pacGums = world.createEntity();
     pacGums.addComponent<engine::component::ARender>(PACGUMS_PATH);
-    pacGums.addComponent<engine::component::Transform>(engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + 16 + DEFAULT_POSITION ,y * DEFAULT_SIZE_BLOCK + 16), 1);
+    pacGums.addComponent<engine::component::Transform>(
+        engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + 16 + DEFAULT_POSITION, y * DEFAULT_SIZE_BLOCK + 16), 1);
     pacGums.addComponent<engine::component::Hitbox>(8, 8);
     pacGums.addComponent<engine::component::Size>(8, 8);
     world.addToGroup(pacGums, "pacGums");
@@ -283,7 +285,8 @@ static void initGhost(engine::ecs::World& world, int x, int y)
     auto& ghost = world.createEntity();
     ghost.addComponent<pacman::component::AI>();
     ghost.addComponent<engine::component::ARender>(GHOST_PATH);
-    ghost.addComponent<engine::component::Transform>(engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + DEFAULT_POSITION,y * DEFAULT_SIZE_BLOCK), 2);
+    ghost.addComponent<engine::component::Transform>(
+        engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + DEFAULT_POSITION, y * DEFAULT_SIZE_BLOCK), 2);
     ghost.addComponent<engine::component::Motion>(engine::type::Vector2D(0, 0), engine::type::Vector2D(0, 0));
     ghost.addComponent<engine::component::Hitbox>(38, 38);
     ghost.addComponent<engine::component::Size>(40, 40);
@@ -296,16 +299,18 @@ static void initVoid(engine::ecs::World& world, int x, int y)
 {
     auto& empty = world.createEntity();
     empty.addComponent<engine::component::ARender>(VOID_PATH);
-    empty.addComponent<engine::component::Transform>(engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + DEFAULT_POSITION,y * DEFAULT_SIZE_BLOCK), 0);
+    empty.addComponent<engine::component::Transform>(
+        engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + DEFAULT_POSITION, y * DEFAULT_SIZE_BLOCK), 0);
     empty.addComponent<engine::component::Hitbox>(40, 40);
-    empty.addComponent<engine::component::Size>(40,  40);
+    empty.addComponent<engine::component::Size>(40, 40);
 }
 
 static void initSpecialPacGums(engine::ecs::World& world, int x, int y)
 {
     auto& specialPacGums = world.createEntity();
     specialPacGums.addComponent<engine::component::ARender>(SPECIALPACGUMS_PATH);
-    specialPacGums.addComponent<engine::component::Transform>(engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + 20 - 8 + DEFAULT_POSITION,y * DEFAULT_SIZE_BLOCK + 20 - 8), 1);
+    specialPacGums.addComponent<engine::component::Transform>(
+        engine::type::Vector2D(x * DEFAULT_SIZE_BLOCK + 20 - 8 + DEFAULT_POSITION, y * DEFAULT_SIZE_BLOCK + 20 - 8), 1);
     specialPacGums.addComponent<engine::component::Hitbox>(16, 16);
     specialPacGums.addComponent<engine::component::Size>(16, 16);
     world.addToGroup(specialPacGums, "specialPacGums");

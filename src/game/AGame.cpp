@@ -7,8 +7,7 @@
 
 #include "AGame.hpp"
 
-game::AGame::AGame(const std::string& name, engine::ecs::Universe& universe)
-    : _name(name), _universe(universe)
+game::AGame::AGame(const std::string& name, engine::ecs::Universe& universe) : _name(name), _universe(universe)
 {
 }
 

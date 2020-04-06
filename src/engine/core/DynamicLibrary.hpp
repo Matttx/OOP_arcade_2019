@@ -5,6 +5,10 @@
 ** DynamicLibrary.hpp
 */
 
+/**
+ * @brief Class to manage dynamic library
+ */
+
 #ifndef OOP_ARCADE_2019_DYNAMICLIBRARY_HPP
 #define OOP_ARCADE_2019_DYNAMICLIBRARY_HPP
 
@@ -19,12 +23,19 @@ namespace engine {
 
 namespace core {
 /**
- * @class DynamicLibrary 
- * 
+ * @class Class of DynamicLibrary
+ *
  */
 template<typename T>
 class DynamicLibrary {
   public:
+    /**
+     * @brief Constructor of DynamicLibrary
+     *
+     * @tparam TArgs Variadic parameter pack
+     * @param path Path of the dynamic library
+     * @param args Arguments that dynamic library constructor takes
+     */
     template<typename... TArgs>
     explicit DynamicLibrary(const std::string& path, TArgs... args)
     {
@@ -43,12 +54,20 @@ class DynamicLibrary {
         _instance = creator(args...);
     }
 
+    /**
+     * @brief Constructor of DynamicLibrary (with an already defined instance)
+     *
+     * @param instance Instance of the dynamic library
+     */
     explicit DynamicLibrary(T* instance)
     {
         _handler = nullptr;
         _instance = instance;
     }
 
+    /**
+     * @brief Destructor of DynamicLibrary
+     */
     ~DynamicLibrary()
     {
         if (_instance)
@@ -58,18 +77,28 @@ class DynamicLibrary {
             dlclose(_handler);
     }
 
+    /**
+     * @brief Get the instance of the dynamic library
+     *
+     * @return Reference of the instance
+     */
   public:
     T& get() const
     {
         if (_instance == nullptr)
-            throw util::Error(
-                "engine::core::DynamicLibrary::get()", "Bad instance");
+            throw util::Error("engine::core::DynamicLibrary::get()", "Bad instance");
 
         return *_instance;
     }
 
   private:
+    /**
+     * @brief Handler of the dynamic library
+     */
     void* _handler;
+    /**
+     * @brief Instance of the dynamic library
+     */
     T* _instance;
 };
 

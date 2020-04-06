@@ -22,7 +22,7 @@ class User : public engine::component::AUser {
     int eat;
     bool supaSayajin;
 };
-}
-}
+} // namespace component
+} // namespace pacman
 
 #endif // OOP_ARCADE_2019_USER_HPP

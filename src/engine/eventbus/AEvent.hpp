@@ -13,18 +13,18 @@ namespace engine {
 namespace eventbus {
 /**
  * @class AEvent
- * 
+ *
  */
 class AEvent {
   public:
     /**
      * @brief Construct a new AEvent object
-     * 
+     *
      */
     AEvent();
     /**
      * @brief Destroy the AEvent object
-     * 
+     *
      */
     virtual ~AEvent() = 0;
 };
