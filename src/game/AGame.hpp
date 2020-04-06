@@ -5,6 +5,11 @@
 ** AGame.hpp
 */
 
+/**
+ * @file AGame.hpp
+ * @brief Class for game implementation
+ */
+
 #ifndef OOP_ARCADE_2019_AGAME_HPP
 #define OOP_ARCADE_2019_AGAME_HPP
 
@@ -12,58 +17,58 @@
 
 namespace game {
 /**
- * @class AGame that inherits from IGame
+ * @class Abstract class for game
  *
  */
 class AGame : public IGame {
   public:
     /**
-     * @brief Construct a new AGame object
+     * @brief Constructor of AGame
      *
-     * @param name : the name of the game
-     * @param universe : a reference to an universe
+     * @param name : Name of the game
+     * @param universe : Reference to an universe
      */
     explicit AGame(const std::string& name, engine::ecs::Universe& universe);
     /**
-     * @brief Destroy the AGame object
+     * @brief Destructor of AGame
      *
      */
     ~AGame() override = 0;
 
   public:
     /**
-     * @brief getName : get the name of the game
+     * @brief getName : Get the name of the game
      *
-     * @return std::string : return the name of the game
+     * @return std::string : Name of the game
      */
     std::string getName() const override;
     /**
-     * @brief Get the Universe object
+     * @brief Get the universe
      *
-     * @return engine::ecs::Universe& : return a reference to the universe of the game
+     * @return engine::ecs::Universe& : Reference to the universe
      */
     engine::ecs::Universe& getUniverse() const override;
 
   public:
     /**
-     * @brief init : pure virtual to init the child game
+     * @brief init : Initialize the game
      *
      */
     void init() override = 0;
     /**
-     * @brief destroy : pure virtual to destroy the child game
+     * @brief destroy : Destroy the game
      *
      */
     void destroy() override = 0;
 
   private:
     /**
-     * @brief _name : the game name
+     * @brief _name : Name of the game
      *
      */
     std::string _name;
     /**
-     * @brief _universe : a reference to an universe
+     * @brief _universe : Reference of the universe
      *
      */
     engine::ecs::Universe& _universe;

@@ -5,6 +5,11 @@
 ** IGame.hpp
 */
 
+/**
+ * @file IGame.hpp
+ * @brief Interface for game implementation
+ */
+
 #ifndef OOP_ARCADE_2019_IGAME_HPP
 #define OOP_ARCADE_2019_IGAME_HPP
 
@@ -14,39 +19,39 @@
 
 namespace game {
 /**
- * @class IGame interface
+ * @class Interface for game
  *
  */
 class IGame {
   public:
     /**
-     * @brief Destroy the IGame object
+     * @brief Destructor of IGame
      *
      */
     virtual ~IGame() = 0;
 
   public:
     /**
-     * @brief getName : pure virtual to get name
+     * @brief getName : Get the name of the game
      *
-     * @return std::string : return a string of the name
+     * @return std::string : Name of the game
      */
     virtual std::string getName() const = 0;
     /**
-     * @brief getUniverse : pure virtual to get universe
+     * @brief getUniverse : Get the universe
      *
-     * @return engine::ecs::Universe& : return a reference to an universe
+     * @return engine::ecs::Universe& : Reference to the universe
      */
     virtual engine::ecs::Universe& getUniverse() const = 0;
 
   public:
     /**
-     * @brief init : pure virtual for the init of the game
+     * @brief init : Initialize the game
      *
      */
     virtual void init() = 0;
     /**
-     * @brief destroy : pure virtual for the destroy of the game
+     * @brief destroy : Destroy the game
      *
      */
     virtual void destroy() = 0;
