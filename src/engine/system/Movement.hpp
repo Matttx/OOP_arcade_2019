@@ -5,6 +5,10 @@
 ** Movement.hpp
 */
 
+/**
+ * @brief Movement system
+ */
+
 #ifndef OOP_ARCADE_2019_SYSTEM_MOVEMENT_HPP
 #define OOP_ARCADE_2019_SYSTEM_MOVEMENT_HPP
 
@@ -14,36 +18,36 @@ namespace engine {
 
 namespace system {
 /**
- * @class Movement that inherits from ASystem
+ * @class Class of movement system
  *
  */
 class Movement : public ecs::ASystem {
   public:
     /**
-     * @brief Construct a new Movement object
+     * @brief Constructor of Movement
      *
-     * @param world
+     * @param world World that the system belongs to
      */
     explicit Movement(ecs::World& world);
     /**
-     * @brief Destroy the Movement object
+     * @brief Destructor of Movement
      *
      */
     ~Movement() override;
 
   public:
     /**
-     * @brief init : init the system movement
+     * @brief init : Initialize the movement system
      *
      */
     void init() override;
     /**
-     * @brief update : update the system movement
+     * @brief update : Update the movement system
      *
      */
     void update() override;
     /**
-     * @brief render : render the system movement
+     * @brief render : Render the movement system
      *
      */
     void render() override;

@@ -5,6 +5,10 @@
 ** AAI.hpp
 */
 
+/**
+ * @brief Class for AI system implementation
+ */
+
 #ifndef OOP_ARCADE_2019_SYSTEM_AAI_HPP
 #define OOP_ARCADE_2019_SYSTEM_AAI_HPP
 
@@ -14,27 +18,22 @@ namespace engine {
 
 namespace system {
 /**
- * @class AAI that inherits from ASystem
+ * @class Abstract class of AI system
  *
  */
 class AAI : public ecs::ASystem {
   public:
     /**
-     * @brief Construct a new AAI object
+     * @brief Constructor of AAI
      *
-     * @param world
+     * @param world World that the system belongs to
      */
     explicit AAI(ecs::World& world);
     /**
-     * @brief Destroy the AAI object
+     * @brief Destructor of AAI
      *
      */
     ~AAI() override = 0;
-
-  public:
-    void init() override = 0;
-    void update() override = 0;
-    void render() override = 0;
 };
 
 } // namespace system

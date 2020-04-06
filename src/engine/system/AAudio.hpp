@@ -5,6 +5,10 @@
 ** AAudio.hpp
 */
 
+/**
+ * @brief Class for audio system implementation
+ */
+
 #ifndef OOP_ARCADE_2019_SYSTEM_AAUDIO_HPP
 #define OOP_ARCADE_2019_SYSTEM_AAUDIO_HPP
 
@@ -14,19 +18,19 @@ namespace engine {
 
 namespace system {
 /**
- * @class AAudio that inherits from ASystem
+ * @class Abstract class of audio system
  *
  */
 class AAudio : public ecs::ASystem {
   public:
     /**
-     * @brief Construct a new AAudio object
+     * @brief Constructor of AAudio
      *
-     * @param world
+     * @param world World that the system belongs to
      */
     explicit AAudio(ecs::World& world);
     /**
-     * @brief Destroy the AAudio object
+     * @brief Destructor of AAudio
      *
      */
     ~AAudio() override = 0;

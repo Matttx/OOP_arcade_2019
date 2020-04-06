@@ -5,6 +5,10 @@
 ** AUser.hpp
 */
 
+/**
+ * @brief Class for user system implementation
+ */
+
 #ifndef OOP_ARCADE_2019_SYSTEM_AUSER_HPP
 #define OOP_ARCADE_2019_SYSTEM_AUSER_HPP
 
@@ -14,27 +18,22 @@ namespace engine {
 
 namespace system {
 /**
- * @class AUser that inherits from ASystem
+ * @class Abstract class of user system
  *
  */
 class AUser : public ecs::ASystem {
   public:
     /**
-     * @brief Construct a new AUser object
+     * @brief Constructor of AUser
      *
-     * @param world
+     * @param world World that the system belongs to
      */
     explicit AUser(ecs::World& world);
     /**
-     * @brief Destroy the AUser object
+     * @brief Destructor of AUser
      *
      */
     ~AUser() override = 0;
-
-  public:
-    void init() override = 0;
-    void update() override = 0;
-    void render() override = 0;
 };
 
 } // namespace system

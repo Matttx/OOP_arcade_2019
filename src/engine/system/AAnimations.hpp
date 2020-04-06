@@ -5,6 +5,10 @@
 ** AAnimations.hpp
 */
 
+/**
+ * @brief Class for animations system implementation
+ */
+
 #ifndef OOP_ARCADE_2019_SYSTEM_AANIMATIONS_HPP
 #define OOP_ARCADE_2019_SYSTEM_AANIMATIONS_HPP
 
@@ -14,19 +18,19 @@ namespace engine {
 
 namespace system {
 /**
- * @class AAnimation that inherits from ASystem
+ * @class Abstract class of animations system
  *
  */
 class AAnimations : public ecs::ASystem {
   public:
     /**
-     * @brief Construct a new AAnimations object
+     * @brief Constructor of AAnimations
      *
-     * @param world
+     * @param world World that the system belongs to
      */
     explicit AAnimations(ecs::World& world);
     /**
-     * @brief Destroy the AAnimations object
+     * @brief Destructor of AAnimations
      *
      */
     ~AAnimations() override = 0;

@@ -5,6 +5,10 @@
 ** Physics.hpp
 */
 
+/**
+ * @brief Physics system
+ */
+
 #ifndef OOP_ARCADE_2019_SYSTEM_PHYSICS_HPP
 #define OOP_ARCADE_2019_SYSTEM_PHYSICS_HPP
 
@@ -14,36 +18,36 @@ namespace engine {
 
 namespace system {
 /**
- * @class Physics that inherits from ASystem
+ * @class Class of physics system
  *
  */
 class Physics : public ecs::ASystem {
   public:
     /**
-     * @brief Construct a new Physics object
+     * @brief Constructor of Physics
      *
-     * @param world
+     * @param world World that the system belongs to
      */
     explicit Physics(ecs::World& world);
     /**
-     * @brief Destroy the Physics object
+     * @brief Destructor of Physics
      *
      */
     ~Physics() override;
 
   public:
     /**
-     * @brief init : init the Physics system
+     * @brief init : Initialize the physics system
      *
      */
     void init() override;
     /**
-     * @brief update : update the Physics system
+     * @brief update : Update the physics system
      *
      */
     void update() override;
     /**
-     * @brief render : render the Physics system
+     * @brief render : Render the physics system
      *
      */
     void render() override;

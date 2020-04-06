@@ -5,6 +5,10 @@
 ** ARender.hpp
 */
 
+/**
+ * @brief Class for render system implementation
+ */
+
 #ifndef OOP_ARCADE_2019_SYSTEM_ARENDER_HPP
 #define OOP_ARCADE_2019_SYSTEM_ARENDER_HPP
 
@@ -14,7 +18,7 @@ namespace engine {
 
 namespace system {
 /**
- * @class ARender that inherits from ASystem
+ * @class Abstract class of render system
  *
  */
 class ARender : public ecs::ASystem {
@@ -22,7 +26,7 @@ class ARender : public ecs::ASystem {
     /**
      * @brief Construct a new ARender object
      *
-     * @param world
+     * @param world World that the system belongs to
      */
     explicit ARender(ecs::World& world);
     /**
