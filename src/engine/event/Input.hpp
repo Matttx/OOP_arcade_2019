@@ -8,19 +8,23 @@
 #ifndef OOP_ARCADE_2019_EVENT_INPUT_HPP
 #define OOP_ARCADE_2019_EVENT_INPUT_HPP
 
+/**
+ * @brief Input event
+ */
+
 #include "../eventbus/AEvent.hpp"
 
 namespace engine {
 
 namespace event {
 /**
- * @class Input that inherits from AEvent
+ * @class Class of Input
  *
  */
 class Input : public eventbus::AEvent {
   public:
     /**
-     * @enum KEYCODE that refers to all the keypad codes
+     * @enum List of key codes
      *
      */
     enum KEYCODE {
@@ -131,20 +135,20 @@ class Input : public eventbus::AEvent {
 
   public:
     /**
-     * @brief code : the code that correspond to the enum
+     * @brief code : Pressed key code
      *
      */
     KEYCODE code;
 
   public:
     /**
-     * @brief Construct a new Input object
+     * @brief Constructor of Input
      *
-     * @param code : the code that correspond to the enum
+     * @param code : Pressed key code
      */
     explicit Input(KEYCODE code);
     /**
-     * @brief Destroy the Input object
+     * @brief Destructor of Input
      *
      */
     ~Input() override;

@@ -50,7 +50,6 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/event/Input.cpp				\
 							engine/eventbus/AEvent.cpp			\
 							engine/eventbus/EventBus.cpp		\
-							engine/eventbus/IEvent.cpp			\
 							engine/save/Component.cpp			\
 							engine/save/System.cpp				\
 							engine/system/AAI.cpp				\

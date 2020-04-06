@@ -18,19 +18,19 @@ namespace type {
 class Vector2D {
   public:
     /**
-     * @brief Construct a new Vector 2 D object
+     * @brief Constructor of Vector2D
      *
-     * @param x
-     * @param y
+     * @param x X coordinate
+     * @param y Y coordinate
      */
     Vector2D(int x, int y) : x(x), y(y) {};
     /**
-     * @brief x : position x
+     * @brief x : X coordinate
      *
      */
     int x;
     /**
-     * @brief y : position y
+     * @brief y : Y coordinate
      *
      */
     int y;

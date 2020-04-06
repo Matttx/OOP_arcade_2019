@@ -5,6 +5,10 @@
 ** Close.hpp
 */
 
+/**
+ * @brief Close event
+ */
+
 #ifndef OOP_ARCADE_2019_SRC_ENGINE_EVENT_CLOSE_HPP
 #define OOP_ARCADE_2019_SRC_ENGINE_EVENT_CLOSE_HPP
 
@@ -14,18 +18,18 @@ namespace engine {
 
 namespace event {
 /**
- * @class Close that inherits form AEvent
+ * @class Class of Close
  *
  */
 class Close : public eventbus::AEvent {
   public:
     /**
-     * @brief Construct a new Close object
+     * @brief Constructor of Close
      *
      */
     Close();
     /**
-     * @brief Destroy the Close object
+     * @brief Destructor of Close
      *
      */
     ~Close() override;

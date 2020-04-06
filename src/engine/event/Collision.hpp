@@ -5,6 +5,10 @@
 ** Collision.hpp
 */
 
+/**
+ * @brief Collision event
+ */
+
 #ifndef OOP_ARCADE_2019_EVENT_COLLISION_HPP
 #define OOP_ARCADE_2019_EVENT_COLLISION_HPP
 
@@ -15,32 +19,32 @@ namespace engine {
 
 namespace event {
 /**
- * @class Collision that inherits from AEvent
+ * @class Class of Collision
  *
  */
 class Collision : public eventbus::AEvent {
   public:
     /**
-     * @brief entity1 : a reference to an entity
+     * @brief entity1 : Reference to the first entity
      *
      */
     ecs::Entity& entity1;
     /**
-     * @brief entity2 : a reference to an entity
+     * @brief entity2 : Reference to the second entity
      *
      */
     ecs::Entity& entity2;
 
   public:
     /**
-     * @brief Construct a new Collision object
+     * @brief Constructor of Collision
      *
-     * @param entity1 : a reference to an entity
-     * @param entity2 : a reference to an entity
+     * @param entity1 : Reference to the first entity
+     * @param entity2 : Reference to the second entity
      */
     Collision(ecs::Entity& entity1, ecs::Entity& entity2);
     /**
-     * @brief Destroy the Collision object
+     * @brief Destructor of Collision
      *
      */
     ~Collision() override;

@@ -5,6 +5,10 @@
 ** AEvent.hpp
 */
 
+/**
+ * @brief Class for event implementation
+ */
+
 #ifndef OOP_ARCADE_2019_AEVENT_HPP
 #define OOP_ARCADE_2019_AEVENT_HPP
 
@@ -12,18 +16,18 @@ namespace engine {
 
 namespace eventbus {
 /**
- * @class AEvent
+ * @class Class of AEvent
  *
  */
 class AEvent {
   public:
     /**
-     * @brief Construct a new AEvent object
+     * @brief Constructor of AEvent
      *
      */
     AEvent();
     /**
-     * @brief Destroy the AEvent object
+     * @brief Destructor of AEvent
      *
      */
     virtual ~AEvent() = 0;

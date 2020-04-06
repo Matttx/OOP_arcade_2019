@@ -8,6 +8,10 @@
 #ifndef OOP_ARCADE_2019_ERROR_HPP
 #define OOP_ARCADE_2019_ERROR_HPP
 
+/**
+ * @brief Error
+ */
+
 #include <exception>
 #include <string>
 
@@ -15,35 +19,35 @@ namespace engine {
 
 namespace util {
 /**
- * @class Error that inherits from std::exception
+ * @class Class of Error
  *
  */
 class Error : public std::exception {
   public:
     /**
-     * @brief Construct a new Error object
+     * @brief Constructor of Error
      *
-     * @param subject : the subject of the error
-     * @param message : the error message
+     * @param subject : Subject
+     * @param message : Error message
      */
     Error(const std::string& subject, const std::string& message);
     /**
-     * @brief Destroy the Error object
+     * @brief Destructor of Error
      *
      */
     ~Error() override;
 
   public:
     /**
-     * @brief what : function that say the origin of the error
+     * @brief what : Return the full error message
      *
-     * @return const char* : the error message
+     * @return const char* : Full error message
      */
     const char* what() const noexcept override;
 
   private:
     /**
-     * @brief _what : error message
+     * @brief _what : Full error message
      *
      */
     std::string _what;

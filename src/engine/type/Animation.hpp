@@ -5,6 +5,10 @@
 ** Animation.hpp
 */
 
+/**
+ * @brief Animation type
+ */
+
 #ifndef OOP_ARCADE_2019_TYPE_ANIMATION_HPP
 #define OOP_ARCADE_2019_TYPE_ANIMATION_HPP
 
@@ -18,25 +22,25 @@ namespace type {
 class Animation {
   public:
     /**
-     * @brief Construct a new Animation object
+     * @brief Constructor of Animation
      *
-     * @param row
-     * @param frames
-     * @param speed
+     * @param row Row where the animation is
+     * @param frames Total frames of the animation
+     * @param speed Speed of the animation in milliseconds
      */
     Animation(int row, int frames, int speed) : row(row), frames(frames), speed(speed) {};
     /**
-     * @brief row : number of rows for the animation
+     * @brief row : Row where the animation is
      *
      */
     int row;
     /**
-     * @brief frames : number of frames for the animation
+     * @brief frames : Total frames of the animation
      *
      */
     int frames;
     /**
-     * @brief speed : the speed of the animation
+     * @brief speed : Speed of the animation in milliseconds
      *
      */
     int speed;
