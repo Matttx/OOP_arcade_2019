@@ -8,12 +8,12 @@
 #ifndef OOP_ARCADE_2019_ECS_ASYSTEM_HPP
 #define OOP_ARCADE_2019_ECS_ASYSTEM_HPP
 
+/**
+ * @brief Base class of systems
+ */
+
 namespace engine {
 namespace ecs {
-/**
- * @class World
- *
- */
 class World;
 } // namespace ecs
 } // namespace engine
@@ -22,51 +22,51 @@ namespace engine {
 
 namespace ecs {
 /**
- * @brief ASystem
+ * @brief Abstract class of system
  *
  */
 class ASystem {
   public:
     /**
-     * @brief Construct a new ASystem object
+     * @brief Constructor of ASystem
      *
-     * @param world : the world object to set in the constructor
+     * @param world : World that the system belongs to
      */
     explicit ASystem(World& world);
     /**
-     * @brief Destroy the ASystem object
+     * @brief Destructor of ASystem
      *
      */
     virtual ~ASystem() = 0;
 
   public:
     /**
-     * @brief Get the World object
+     * @brief Get the world
      *
-     * @return World& : return a reference to a world get
+     * @return World& : Reference of the world
      */
     World& getWorld() const;
 
   public:
     /**
-     * @brief init : pure virtual function for child class in order to init the system
+     * @brief init : Initialize the system
      *
      */
     virtual void init() = 0;
     /**
-     * @brief update : pure virtual function for child class in order to update the system
+     * @brief update : Update the system
      *
      */
     virtual void update() = 0;
     /**
-     * @brief render : pure virtual function for child class in order to render the system
+     * @brief render : Render the system
      *
      */
     virtual void render() = 0;
 
   private:
     /**
-     * @brief _world : reference to a World
+     * @brief _world : Reference of the world
      *
      */
     World& _world;

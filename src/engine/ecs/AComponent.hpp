@@ -8,12 +8,12 @@
 #ifndef OOP_ARCADE_2019_ECS_ACOMPONENT_HPP
 #define OOP_ARCADE_2019_ECS_ACOMPONENT_HPP
 
+/**
+ * @brief Base class of components
+ */
+
 namespace engine {
 namespace ecs {
-/**
- * @class Entity
- *
- */
 class Entity;
 } // namespace ecs
 } // namespace engine
@@ -22,34 +22,34 @@ namespace engine {
 
 namespace ecs {
 /**
- * @class AComponent
+ * @class Abstract class of component
  *
  */
 class AComponent {
   public:
     /**
-     * @brief Construct a new AComponent object
+     * @brief Constructor of AComponent
      *
-     * @param entity : : the entity that the component belongs to
+     * @param entity : : Entity that the component belongs to
      */
     explicit AComponent(Entity& entity);
     /**
-     * @brief Destroy the AComponent object
+     * @brief Destructor of AComponent
      *
      */
     virtual ~AComponent() = 0;
 
   public:
     /**
-     * @brief Get the Entity object
+     * @brief Get the entity
      *
-     * @return Entity& : return the entity get
+     * @return Entity& : Reference of the entity
      */
     Entity& getEntity() const;
 
   private:
     /**
-     * @brief _entity : reference to an Entity
+     * @brief _entity : Reference of the entity
      *
      */
     Entity& _entity;

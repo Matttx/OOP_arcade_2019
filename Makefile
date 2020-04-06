@@ -43,8 +43,6 @@ PROJ_SRC			=		engine/component/AAI.cpp			\
 							engine/ecs/AComponent.cpp			\
 							engine/ecs/ASystem.cpp				\
 							engine/ecs/Entity.cpp				\
-							engine/ecs/IComponent.cpp			\
-							engine/ecs/ISystem.cpp				\
 							engine/ecs/Universe.cpp				\
 							engine/ecs/World.cpp				\
 							engine/event/Close.cpp				\

@@ -8,6 +8,10 @@
 #ifndef OOP_ARCADE_2019_ECS_ENTITY_HPP
 #define OOP_ARCADE_2019_ECS_ENTITY_HPP
 
+/**
+ * @brief Entity class, container of components
+ */
+
 namespace engine {
 namespace ecs {
 class World;
@@ -30,15 +34,43 @@ namespace engine {
 
 namespace ecs {
 
+/**
+ * @brief Class of entity
+ */
 class Entity {
   public:
+    /**
+     * @brief Constructor of Entity
+     *
+     * @param world World that the entity belongs to
+     */
     explicit Entity(World& world);
+    /**
+     * @brief Destructor of Entity
+     */
     ~Entity();
 
+    /**
+     * @brief
+     */
   public:
+    /**
+     * @brief Get the world
+     *
+     * @return Reference of the world
+     */
     World& getWorld() const;
 
   public:
+    /**
+     * @brief Add a component
+     *
+     * @tparam T Type of the component
+     * @tparam TArgs Variadic parameter-pack
+     * @param args Arguments of the component
+     *
+     * @return Reference of the added component
+     */
     template<typename T, typename... TArgs>
     T& addComponent(TArgs&&... args)
     {
@@ -54,6 +86,15 @@ class Entity {
         return *component;
     }
 
+    /**
+     * @brief Check if the entity has the specified components
+     *
+     * @tparam T Type of the component
+     * @tparam TArgs Type of the components
+     *
+     * @return true : Entity has the components
+     * @return false : Entity doesn't have all the components
+     */
     template<typename T = void, typename... TArgs>
     bool hasComponents() const
     {
@@ -66,6 +107,13 @@ class Entity {
         return has;
     }
 
+    /**
+     * @brief Get the specified component
+     *
+     * @tparam T Type of the component
+     *
+     * @return Reference of the component
+     */
     template<typename T>
     T& getComponent() const
     {
@@ -79,6 +127,11 @@ class Entity {
         return dynamic_cast<T&>(component);
     }
 
+    /**
+     * @brief Remove the specified component
+     *
+     * @tparam T Type of the component
+     */
     template<typename T>
     void removeComponent()
     {
@@ -93,9 +146,17 @@ class Entity {
     }
 
   private:
+    /**
+     * @brief Reference to the world
+     */
     World& _world;
 
   private:
+    /**
+     * @brief Map of components
+     * Key: Component identifier
+     * Value: Component
+     */
     std::map<std::type_index, std::reference_wrapper<AComponent>> _components;
 };
 
