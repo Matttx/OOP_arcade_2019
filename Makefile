@@ -256,6 +256,15 @@ full_re:			full_fclean full
 
 full_sweet:			full full_clean
 
+doc:
+					doxygen
+
+doc_pdf:
+					cd doc/latex && $(MAKE)
+
+doc_clean:
+					$(RM) doc
+
 .PHONY:				all clean fclean re sweet															\
 					debug debug_re debug_sweet															\
 					lib_pacman lib_pacman_clean lib_pacman_fclean lib_pacman_re							\
