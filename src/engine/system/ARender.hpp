@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file ARender.hpp
  * @brief Class for render system implementation
  */
 

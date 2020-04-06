@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Class for motion
+ * @file Motion.hpp
+ * @brief Motion component
  */
 
 #ifndef OOP_ARCADE_2019_COMPONENT_MOTION_HPP
@@ -19,7 +20,7 @@ namespace engine {
 
 namespace component {
 /**
- * @class Class of Motion component
+ * @class Class of motion component
  *
  */
 class Motion : public ecs::AComponent {

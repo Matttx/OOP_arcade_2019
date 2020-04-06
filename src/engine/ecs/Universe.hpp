@@ -9,7 +9,8 @@
 #define OOP_ARCADE_2019_ECS_UNIVERSE_HPP
 
 /**
- * @brief Universe class, container of worlds
+ * @file Universe.hpp
+ * @brief Contain and manage worlds
  */
 
 namespace engine {
@@ -28,7 +29,7 @@ namespace engine {
 
 namespace ecs {
 /**
- * @class Class of Universe
+ * @class Class of universe
  *
  */
 class Universe {

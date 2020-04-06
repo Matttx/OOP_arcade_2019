@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Class for hitbox
+ * @file Hitbox.hpp
+ * @brief Hitbox component
  */
 
 #ifndef OOP_ARCADE_2019_COMPONENT_HITBOX_HPP
@@ -18,7 +19,7 @@ namespace engine {
 
 namespace component {
 /**
- * @class Class of Hitbox component
+ * @class Class of hitbox component
  *
  */
 class Hitbox : public ecs::AComponent {

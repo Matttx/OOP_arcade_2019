@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file Collision.hpp
  * @brief Collision event
  */
 
@@ -19,7 +20,7 @@ namespace engine {
 
 namespace event {
 /**
- * @class Class of Collision
+ * @class Class of collision event
  *
  */
 class Collision : public eventbus::AEvent {

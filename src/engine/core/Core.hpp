@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Class to manage core system, game and graphicals libraries
+ * @file Core.hpp
+ * @brief Manage core system, game and graphicals libraries
  */
 
 #ifndef OOP_ARCADE_2019_CORE_HPP
@@ -24,7 +25,7 @@ namespace engine {
 
 namespace core {
 /**
- * @class Core
+ * @class Class of core
  *
  */
 class Core {

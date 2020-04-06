@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file Animation.hpp
  * @brief Animation type
  */
 
@@ -16,7 +17,7 @@ namespace engine {
 
 namespace type {
 /**
- * @class Animation
+ * @class Class of animation type
  *
  */
 class Animation {

@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file AAudio.hpp
  * @brief Class for audio system implementation
  */
 

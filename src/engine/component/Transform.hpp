@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Class for transform
+ * @file Transform.hpp
+ * @brief Transform component
  */
 
 #ifndef OOP_ARCADE_2019_COMPONENT_TRANSFORM_HPP
@@ -19,7 +20,7 @@ namespace engine {
 
 namespace component {
 /**
- * @class Class of Transform component
+ * @class Class of transform component
  *
  */
 class Transform : public ecs::AComponent {

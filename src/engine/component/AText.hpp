@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Class for text implementation
+ * @file AText.hpp
+ * @brief Class for text component implementation
  */
 
 #ifndef OOP_ARCADE_2019_ATEXT_HPP
@@ -21,7 +22,7 @@ namespace engine {
 
 namespace component {
 /**
- * @class Abstract class of Text component
+ * @class Abstract class of text component
  *
  */
 class AText : public ecs::AComponent {

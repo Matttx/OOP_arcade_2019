@@ -5,6 +5,11 @@
 ** Vector2D.hpp
 */
 
+/**
+ * @file Vector2D.hpp
+ * @brief Vector2D type
+ */
+
 #ifndef OOP_ARCADE_2019_TYPE_VECTOR2D_HPP
 #define OOP_ARCADE_2019_TYPE_VECTOR2D_HPP
 
@@ -12,7 +17,7 @@ namespace engine {
 
 namespace type {
 /**
- * @class Vector2D
+ * @class Class of vector type
  *
  */
 class Vector2D {

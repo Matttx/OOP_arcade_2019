@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file AAI.hpp
  * @brief Class for AI system implementation
  */
 

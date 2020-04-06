@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Class to manage dynamic library
+ * @file DynamicLibrary.hpp
+ * @brief Manage dynamic library
  */
 
 #ifndef OOP_ARCADE_2019_DYNAMICLIBRARY_HPP
@@ -23,7 +24,7 @@ namespace engine {
 
 namespace core {
 /**
- * @class Class of DynamicLibrary
+ * @class Class of dynamic library
  *
  */
 template<typename T>

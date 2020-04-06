@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Class for audio implementation
+ * @file AAudio.hpp
+ * @brief Class for audio component implementation
  */
 
 #ifndef OOP_ARCADE_2019_COMPONENT_AAUDIO_HPP
@@ -21,7 +22,7 @@ namespace engine {
 
 namespace component {
 /**
- * @brief Abstract class of Audio component
+ * @brief Abstract class of audio component
  *
  */
 class AAudio : public ecs::AComponent {

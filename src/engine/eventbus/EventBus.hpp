@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Event bus, manager of events
+ * @file EventBus.hpp
+ * @brief Contain callbacks and manage events
  */
 
 #ifndef OOP_ARCADE_2019_EVENTBUS_EVENTBUS_HPP
@@ -31,7 +32,7 @@ template<typename T, typename E>
 using Callback = void (T::*)(E&);
 
 /**
- * @brief Class of EventBus
+ * @brief Class of event bus
  */
 class EventBus {
   public:

@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file Close.hpp
  * @brief Close event
  */
 
@@ -18,7 +19,7 @@ namespace engine {
 
 namespace event {
 /**
- * @class Class of Close
+ * @class Class of close event
  *
  */
 class Close : public eventbus::AEvent {

@@ -9,7 +9,8 @@
 #define OOP_ARCADE_2019_ERROR_HPP
 
 /**
- * @brief Error
+ * @file Error.hpp
+ * @brief Custom exception
  */
 
 #include <exception>
@@ -19,7 +20,7 @@ namespace engine {
 
 namespace util {
 /**
- * @class Class of Error
+ * @class Class of error
  *
  */
 class Error : public std::exception {

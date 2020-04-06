@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Class for user implementation
+ * @file AUser.hpp
+ * @brief Class for user component implementation
  */
 
 #ifndef OOP_ARCADE_2019_COMPONENT_AUSER_HPP
@@ -18,7 +19,7 @@ namespace engine {
 
 namespace component {
 /**
- * @class Abstract class of component User
+ * @class Abstract class of user component
  *
  */
 class AUser : public ecs::AComponent {

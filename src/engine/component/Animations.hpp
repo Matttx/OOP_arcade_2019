@@ -5,12 +5,13 @@
 ** Animations.hpp
 */
 
+/**
+ * @file Animations.hpp
+ * @brief Animations component
+ */
+
 #ifndef OOP_ARCADE_2019_COMPONENT_ANIMATIONS_HPP
 #define OOP_ARCADE_2019_COMPONENT_ANIMATIONS_HPP
-
-/**
- * @brief Class for animations
- */
 
 #include <map>
 #include <string>
@@ -22,7 +23,7 @@ namespace engine {
 
 namespace component {
 /**
- * @class Class of Animation component
+ * @class Class of animation component
  *
  */
 class Animations : public ecs::AComponent {

@@ -9,6 +9,7 @@
 #define OOP_ARCADE_2019_EVENT_INPUT_HPP
 
 /**
+ * @file Input.hpp
  * @brief Input event
  */
 
@@ -18,7 +19,7 @@ namespace engine {
 
 namespace event {
 /**
- * @class Class of Input
+ * @class Class of input event
  *
  */
 class Input : public eventbus::AEvent {

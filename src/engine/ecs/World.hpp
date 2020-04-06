@@ -9,7 +9,8 @@
 #define OOP_ARCADE_2019_ECS_WORLD_HPP
 
 /**
- * @brief World class, container of entities, groups and systems
+ * @file World.hpp
+ * @brief Contain and manage entities, groups and systems
  */
 
 namespace engine {
@@ -36,7 +37,7 @@ namespace engine {
 namespace ecs {
 
 /**
- * @brief Class of World
+ * @brief Class of world
  */
 class World {
   public:

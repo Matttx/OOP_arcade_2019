@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file AAnimations.hpp
  * @brief Class for animations system implementation
  */
 

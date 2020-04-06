@@ -5,12 +5,13 @@
 ** ARender.hpp
 */
 
+/**
+ * @file ARender.hpp
+ * @brief Class for render component implementation
+ */
+
 #ifndef OOP_ARCADE_2019_COMPONENT_ARENDER_HPP
 #define OOP_ARCADE_2019_COMPONENT_ARENDER_HPP
-
-/**
- * @brief Class for render implementation
- */
 
 #include <string>
 #include <vector>
@@ -21,7 +22,7 @@ namespace engine {
 
 namespace component {
 /**
- * @class Abstract class of Render component
+ * @class Abstract class of render component
  *
  */
 class ARender : public ecs::AComponent {

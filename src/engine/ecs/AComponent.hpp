@@ -9,7 +9,8 @@
 #define OOP_ARCADE_2019_ECS_ACOMPONENT_HPP
 
 /**
- * @brief Base class of components
+ * @file AComponent.hpp
+ * @brief Class for component implementation
  */
 
 namespace engine {

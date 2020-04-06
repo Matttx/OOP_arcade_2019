@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file AUser.hpp
  * @brief Class for user system implementation
  */
 

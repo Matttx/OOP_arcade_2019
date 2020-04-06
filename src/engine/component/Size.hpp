@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Class for size
+ * @file Size.hpp
+ * @brief Size component
  */
 
 #ifndef OOP_ARCADE_2019_COMPONENT_SIZE_HPP
@@ -18,7 +19,7 @@ namespace engine {
 
 namespace component {
 /**
- * @class Class of the Size component
+ * @class Class of size component
  *
  */
 class Size : public ecs::AComponent {

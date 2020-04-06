@@ -6,7 +6,8 @@
 */
 
 /**
- * @brief Class for AI implementation
+ * @file AAI.hpp
+ * @brief Class for AI component implementation
  */
 
 #ifndef OOP_ARCADE_2019_COMPONENT_AAI_HPP
@@ -18,7 +19,7 @@ namespace engine {
 
 namespace component {
 /**
- * @brief Abstract Class of AI component
+ * @brief Abstract class of AI component
  *
  */
 class AAI : public ecs::AComponent {

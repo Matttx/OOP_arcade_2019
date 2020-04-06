@@ -9,7 +9,8 @@
 #define OOP_ARCADE_2019_ECS_ASYSTEM_HPP
 
 /**
- * @brief Base class of systems
+ * @file ASystem.hpp
+ * @brief Class for system implementation
  */
 
 namespace engine {

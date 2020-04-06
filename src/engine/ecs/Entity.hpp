@@ -9,7 +9,8 @@
 #define OOP_ARCADE_2019_ECS_ENTITY_HPP
 
 /**
- * @brief Entity class, container of components
+ * @file Entity.hpp
+ * @brief Contain and manage components
  */
 
 namespace engine {

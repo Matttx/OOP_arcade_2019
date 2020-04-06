@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file AEvent.hpp
  * @brief Class for event implementation
  */
 
@@ -16,7 +17,7 @@ namespace engine {
 
 namespace eventbus {
 /**
- * @class Class of AEvent
+ * @class Abstract class of event
  *
  */
 class AEvent {

@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file Component.hpp
  * @brief Component parameters saver
  */
 
@@ -23,7 +24,7 @@ namespace engine {
 namespace save {
 
 /**
- * @brief Class of Component
+ * @brief Class of component saver
  *
  * @tparam T Type of component
  * @tparam TArgs Type of component parameters

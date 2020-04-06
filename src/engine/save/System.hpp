@@ -6,6 +6,7 @@
 */
 
 /**
+ * @file System.hpp
  * @brief System parameters saver
  */
 
@@ -22,7 +23,7 @@ namespace engine {
 namespace save {
 
 /**
- * @brief Class of System
+ * @brief Class of system saver
  *
  * @tparam T Type of system
  * @tparam TArgs Type of system parameters
